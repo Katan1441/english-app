@@ -15,19 +15,25 @@ who is learning English from below A1. Everything the learner sees is in Thai; E
   existing content (`pathBuild`, no new lesson data), 1,484 nodes in 82 units over the levels A1–B2. Header: streak,
   today's XP against the goal (ring), quests button, and `#open-me` for the **ฉัน** screen (view `me`: streak card with the
   7-day strip, quests, progress tiles, `#open-level`, `#open-prefs`). Only the current unit and two on each side are drawn;
-  other units are rows (`data-act="p-unit"`). Tapping a node opens a sheet (`#sheet`, `#p-start`); a unit banner has
-  "คู่มือ" (its grammar lesson) and "ทดสอบข้าม" (its checkpoint). First run with no progress: three questions
+  other units are rows (`data-act="p-unit"`). Every circle has a short label (`.pn-l`); tapping one opens a sheet (what it
+  is, minutes, what you will do; `#sheet`, `#p-start`). A "เรียนต่อ" button above the menu (`#p-go`) starts the next lesson
+  in one tap; when words are due a card (`#p-due`) reviews them like a lesson (a node that is not on the path, `virt`,
+  nothing stored). The header has `#p-prefs` (settings) and `#open-me`. A unit banner has "ไวยากรณ์" (its grammar lesson)
+  and, on units ahead, "ทดสอบข้าม" (its checkpoint). First run with no progress: three questions
   (`#ob-why-*`, `#ob-min-*`, `#ob-zero` / `#ob-check` → level check → `#p-place`), then the first node opens. Existing
   learners see a one-time note (`UI.pn`).
 - **A node runs as parts** (`PRUN`, `nodeParts`): a word stage = its three steps in a row; a grammar lesson = the lesson
   text (path mode) then its 10 questions; a story = "คำใหม่ในเรื่องนี้" (`p-words`) then the story; a say-along
   (`p-say`, needs speech recognition) = 3–5 story lines said with the speaking panel; a review = due words plus missed
   grammar questions; a checkpoint = 12 questions from the unit (words, grammar, one listening item), pass at 80%.
-  The close button asks in the app (`#dlg`); a combo chip (`#combo`) and praise show at 3, 5, 10, 15, 20 right in a row;
+  Inside, the title names the part and "ส่วนที่ i จาก n" (a checkpoint or a review counts as one round); the bar weighs
+  reading the lesson text or new words lightly (`partW`). The close button asks in the app (`#dlg`); a combo chip
+  (`#combo`) and praise show at 3, 5, 10, 15, 20 right in a row;
   `navigator.vibrate` on answers (setting "สั่นเมื่อตอบ", `UI.vib`); the end screen (`p-end`) shows XP (counts up),
-  accuracy, time, best run, "เต็ม" at 100%, "ต่อไป" / "กลับเส้นทาง"; confetti only for a perfect node, a passed unit or a
-  finished level.
-- **XP and quests**: +1 per answer right the first time (anywhere), +10 per node finished, +5 when perfect, +15 per story,
+  accuracy, time, best run, "เต็ม" at 100%, the next lesson's name, "เรียนบทต่อไป" / "กลับเส้นทาง"; confetti only for a
+  perfect node, a passed unit or a finished level. On screen a node is a "บท" (lesson) everywhere.
+- **XP and quests**: +1 per answer right the first time (anywhere; a flash card marked as known and an own sentence that
+  passes count too), +10 per node finished, +5 when perfect, +15 per story,
   +20 per checkpoint passed, +2 per sentence said right (once per opening of the speaking panel). Daily XP goal
   10/20/30/50 (`UI.xg`). Three quests a day (`questsFor(day)`: the XP goal plus a pair picked from the day number);
   all three done → `DAYS[t][5] = 1` and a toast.

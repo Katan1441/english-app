@@ -186,7 +186,7 @@ const DAY = Math.floor((Date.now() - new Date().getTimezoneOffset() * 60000) / 8
   let ui = await store(page, 'vocab3000-ui-v1');
   check(ui.why === 'work' && ui.xg === 30 && ui.ob === 1, 'first run: answers saved ' + JSON.stringify(ui));
   check((await viewOf(page)) === 'run' && await has(page, '#reveal') && await page.evaluate(() => getComputedStyle(document.getElementById('tabbar')).display === 'none'), 'first run: the first node opens straight away, no menu');
-  check(/ขั้นที่ 1 บัตรคำ/.test(await txt(page, '.run-title b')) && await page.evaluate(() => document.querySelector('.runbar .bar i').style.width) === '0%', 'node 1 starts with the cards');
+  check((await txt(page, '.run-title b')) === 'บัตรคำ' && /^ส่วนที่ 1 จาก 3 · รู้จักคำ ชุดที่ 1$/.test(await txt(page, '.run-title span')) && await page.evaluate(() => document.querySelector('.runbar .bar i').style.width) === '0%', 'node 1 starts with the cards, part 1 of 3: ' + await txt(page, '.run-title span'));
   // combo chip and praise at three right in a row, vibration on each answer
   let sawCombo = false, sawPraise = false;
   await play(page, allOk, 'node 1', async (p) => {
@@ -197,25 +197,35 @@ const DAY = Math.floor((Date.now() - new Date().getTimezoneOffset() * 60000) / 8
   check(vib.filter((x) => x === 12).length >= 15 && vib.some((x) => Array.isArray(x) && x.length === 3 && x[2] === 90), 'vibration: short buzz per right answer, a longer one at the end ' + JSON.stringify(vib.slice(-3)));
   check((await viewOf(page)) === 'p-end', 'end screen after the last step');
   let xp = await page.evaluate(() => +document.getElementById('xp-up').getAttribute('data-xp'));
-  check(xp === 35 && await has(page, '#p-full') && (await txt(page, '#p-acc')) === '100%' && /\d+:\d\d/.test(await txt(page, '#p-time')) && +(await txt(page, '#p-best')) >= 10, 'end screen: 20 right + 10 + 5 perfect = 35 XP, full mark, accuracy, time, best run: ' + xp);
+  check(xp === 45 && await has(page, '#p-full') && (await txt(page, '#p-acc')) === '100%' && /\d+:\d\d/.test(await txt(page, '#p-time')) && +(await txt(page, '#p-best')) >= 10, 'end screen: 10 cards + 20 right + 10 + 5 perfect = 45 XP, full mark, accuracy, time, best run: ' + xp);
+  check(/^บทต่อไป: รู้จักคำ ชุดที่ 2$/.test(await txt(page, '#p-next-what')) && /เรียนบทต่อไป/.test(await txt(page, '#p-next-node')), 'end screen says what comes next: ' + await txt(page, '#p-next-what'));
   await sleep(1300);
-  check((await txt(page, '#xp-up')) === '+35', 'XP counted up to the total');
+  check((await txt(page, '#xp-up')) === '+45', 'XP counted up to the total');
   check(await has(page, '#p-next-node') && await has(page, '#p-back'), 'end screen: next and back to the path');
   check(await overflow(page) <= 0, 'end screen overflow');
   await page.screenshot({ path: path.join(shots, 'p-end.png') });
   let xs = await store(page, 'vocab3000-xp-v1');
-  check(xs.b === 1 && xs.d[DAY] === 35 && xs.c[DAY] >= 10 && xs.p[DAY] === 1, 'XP record: today, best run, a perfect node ' + JSON.stringify(xs));
+  check(xs.b === 1 && xs.d[DAY] === 45 && xs.c[DAY] >= 10 && xs.p[DAY] === 1, 'XP record: today, best run, a perfect node ' + JSON.stringify(xs));
   check(Object.keys(await store(page, 'vocab3000-days-v1')).length === 1 && (await store(page, 'vocab3000-days-v1'))[DAY][1] === 3, 'days: three words steps logged');
   await page.click('#p-back');
   check((await viewOf(page)) === 'path' && (await cur(page)) === 'v:36.1.0' && await has(page, '.pnode.done[data-id="v:36.0.0"]'), 'path: node 1 done, the next node is current: ' + await cur(page));
-  check(/35\/30/.test(await txt(page, '#p-xp')) && /^1/.test(await txt(page, '#p-streak .pstat-t')), 'header: XP against the goal and the streak');
+  check(/45\/30/.test(await txt(page, '#p-xp')) && /^1/.test(await txt(page, '#p-streak .pstat-t')), 'header: XP against the goal and the streak');
+  // every circle has a label; the button at the bottom starts the next lesson; settings are one tap away
+  const labels = await page.evaluate(() => Array.from(document.querySelectorAll('.pnodes .pn')).slice(0, 4).map((li) => li.querySelector('.pn-l').textContent));
+  check(labels.join('|') === 'ชุดที่ 1 รู้จักคำ|ชุดที่ 2 รู้จักคำ|ไวยากรณ์|ชุดที่ 1 จำตัวสะกด', 'labels under the circles: ' + labels.join('|'));
+  check(/^เรียนต่อ · รู้จักคำ ชุดที่ 2$/.test(await txt(page, '#p-go')) && await page.evaluate(() => { const r = document.getElementById('p-go').getBoundingClientRect(), t = document.getElementById('tabbar').getBoundingClientRect(); return r.bottom <= t.top && r.top > window.innerHeight / 2; }), 'the next lesson button sits just above the menu: ' + await txt(page, '#p-go'));
+  await page.click('#p-prefs');
+  check((await viewOf(page)) === 'prefs' && /เส้นทาง/.test(await txt(page, '.crumb .back')), 'settings from the path, back leads to the path');
+  await page.click('.crumb .back');
   await page.click('#p-quests');
   check(await has(page, '#sheet .quest.done#quest-xp') && (await page.$$('#sheet .quest')).length === 3, 'quests: the XP goal is done');
   await page.click('#p-close');
   // the next node: right from the end screen, then leave it through the dialog
-  await page.click('.pnode.cur'); check(/เริ่ม/.test(await txt(page, '#p-start')) && /ประมาณ \d+ นาที/.test(await txt(page, '#sheet')), 'node sheet: title, minutes, start');
-  await page.click('#p-start');
-  check((await viewOf(page)) === 'run', 'node 2 started');
+  await page.click('.pnode.cur');
+  check(/^เริ่ม$/.test(await txt(page, '#p-start')) && /ราว \d+ นาที/.test(await txt(page, '#sheet')) && /ดูบัตรคำ เลือกคำแปล/.test(await txt(page, '#sheet')), 'node sheet: what it is, minutes, what you will do, start');
+  await page.click('#p-close');
+  await page.click('#p-go');
+  check((await viewOf(page)) === 'run', 'node 2 started from the button at the bottom');
   await page.click('#quit');
   check(await has(page, '#dlg') && /ออกจากบทนี้ไหม/.test(await txt(page, '#dlg')) && /ที่ทำไปแล้วยังเก็บไว้/.test(await txt(page, '#dlg')), 'leaving asks first, in the app');
   await page.screenshot({ path: path.join(shots, 'p-quit.png') });
@@ -277,31 +287,32 @@ const DAY = Math.floor((Date.now() - new Date().getTimezoneOffset() * 60000) / 8
   ({ ctx, page } = await open({ store: { 'vocab3000-progress-v1': JSON.stringify({ w: {}, s: u1 }), 'vocab3000-grammar-v1': JSON.stringify({ v: 1, l: { l1: [10, 10, 1000] }, x: {} }), 'vocab3000-ui-v1': JSON.stringify({ pn: 1, ob: 1 }) } }));
   check((await cur(page)) === 'k:1', 'unit 1 finished: its checkpoint is next: ' + await cur(page));
   await page.click('.pnode.cur');
-  check(/12 ข้อ/.test(await txt(page, '#sheet')) && /80%/.test(await txt(page, '#sheet')), 'checkpoint sheet: 12 questions, pass at 80%');
-  await page.click('#p-start');
-  let kinds = {};
-  await play(page, failOnce(), 'checkpoint fail', async (p) => { const v = await viewOf(p); kinds[v] = 1; });
-  check(kinds.run && kinds['g-run'], 'checkpoint mixes words and grammar ' + Object.keys(kinds).join(','));
-  check(/ยังไม่ผ่านการทดสอบ/.test(await txt(page, '#app h2')) && /ได้ 0 จาก 12 ข้อ/.test(await txt(page, '.pend')) && await has(page, '#p-next-node') && await has(page, '#p-again'), 'failed checkpoint: told kindly, next and retry offered');
-  let pr = await store(page, 'vocab3000-path-v1');
-  check(pr && pr.k['1'] && pr.k['1'][0] === 0 && pr.k['1'][1] === 12, 'failed checkpoint stored ' + JSON.stringify(pr));
-  await page.click('#p-back');
-  check((await cur(page)) === 'v:38.0.0' && await has(page, '.pnode.tried[data-id="k:1"]'), 'the next unit is open, the checkpoint shows as tried: ' + await cur(page));
-  // test out of unit 2
+  check(/12 ข้อ/.test(await txt(page, '#sheet')) && /ถูก 10 ข้อขึ้นไป/.test(await txt(page, '#sheet')), 'checkpoint sheet: 12 questions, 10 to pass');
+  await page.click('#p-close');
+  check(!(await has(page, '#p-testout-1')) && await has(page, '#p-testout-2'), 'test-out only on units ahead');
   await page.click('#p-testout-2');
   check(/ทดสอบข้ามหน่วยที่ 2/.test(await txt(page, '#sheet')), 'test-out sheet');
   await page.click('#p-start');
   await play(page, allOk, 'test-out');
   check(/ผ่านหน่วยที่ 2 แล้ว/.test(await txt(page, '#app h2')) && await has(page, '#p-full'), 'test-out passed with full marks');
-  pr = await store(page, 'vocab3000-path-v1');
+  let pr = await store(page, 'vocab3000-path-v1');
   check(pr.k['2'][0] === 12 && pr.k['2'][1] === 12, 'test-out result stored ' + JSON.stringify(pr.k));
   xp = await page.evaluate(() => +document.getElementById('xp-up').getAttribute('data-xp'));
   check(xp === 12 + 20 + 10 + 5, 'checkpoint XP: 12 right + 20 passed + 10 + 5 = 47: ' + xp);
   check(await page.evaluate(() => !!document.querySelector('.confetti')), 'a finished unit gets confetti');
   await page.click('#p-back');
+  check((await cur(page)) === 'k:1' && /ผ่านแล้ว/.test(await txt(page, '#unit-2')), 'unit 2 passed, unit 1 still waits for its checkpoint');
+  await page.click('.pnode.cur'); await page.click('#p-start');
+  let kinds = {};
+  await play(page, failOnce(), 'checkpoint fail', async (p) => { const v = await viewOf(p); kinds[v] = 1; });
+  check(kinds.run && kinds['g-run'], 'checkpoint mixes words and grammar ' + Object.keys(kinds).join(','));
+  check(/ยังไม่ผ่านการทดสอบ/.test(await txt(page, '#app h2')) && /ได้ 0 จาก 12 ข้อ/.test(await txt(page, '.pend')) && await has(page, '#p-next-node') && await has(page, '#p-again'), 'failed checkpoint: told kindly, next and retry offered');
+  pr = await store(page, 'vocab3000-path-v1');
+  check(pr && pr.k['1'] && pr.k['1'][0] === 0 && pr.k['1'][1] === 12, 'failed checkpoint stored ' + JSON.stringify(pr));
+  await page.click('#p-back');
   const c3 = await cur(page);
-  check(c3 && (await page.evaluate((id) => document.querySelector('[data-id="' + id + '"]').closest('.pnodes').getAttribute('aria-label'), c3)) === 'วงของหน่วยที่ 3' && await has(page, '.pnode.done[data-id="k:2"]'), 'unit 2 skipped: the current node is in unit 3: ' + c3);
-  check(/ผ่านแล้ว/.test(await txt(page, '#unit-2')), 'unit 2 banner says passed');
+  check(c3 && (await page.evaluate((id) => document.querySelector('[data-id="' + id + '"]').closest('.pnodes').getAttribute('aria-label'), c3)) === 'บทเรียนของหน่วยที่ 3' &&
+    await has(page, '.pnode.tried[data-id="k:1"]') && await has(page, '.pnode.done[data-id="k:2"]'), 'failed checkpoint does not stop the path, the tested-out unit is skipped: next is in unit 3: ' + c3);
   // retry the first checkpoint and pass it
   await page.click('[data-act="p-node"][data-id="k:1"]'); await page.click('#p-start');
   await play(page, allOk, 'checkpoint retry');
@@ -356,7 +367,7 @@ const DAY = Math.floor((Date.now() - new Date().getTimezoneOffset() * 60000) / 8
     'vocab3000-grammar-v1': JSON.stringify({ v: 1, l: { l1: [9, 10, 1000] }, x: { 'l1-1': 2 } }), 'vocab3000-ui-v1': JSON.stringify({ ob: 1, pn: 1 }) } }));
   check((await cur(page)) === 'x:1', 'words are due: the review is next: ' + await cur(page));
   await page.click('.pnode.cur');
-  check(/ถึงเวลาทบทวน 2 คำ/.test(await txt(page, '#sheet')), 'review sheet counts the due words');
+  check(/ถึงเวลา 2 คำ/.test(await txt(page, '#sheet')) && !(await has(page, '#p-due')), 'review sheet counts the due words; no separate words-due card while the review is next');
   await page.click('#p-start');
   kinds = {};
   await play(page, allOk, 'review', async (p) => { kinds[await viewOf(p)] = 1; });
@@ -366,6 +377,18 @@ const DAY = Math.floor((Date.now() - new Date().getTimezoneOffset() * 60000) / 8
   check(pr.x['1'] === DAY && (await store(page, 'vocab3000-grammar-v1')).x['l1-1'] === 1, 'review stored, the grammar miss count went down');
   await page.click('#p-back');
   check((await cur(page)) === 'v:36.0.2' && await has(page, '.pnode.done[data-id="x:1"]'), 'review done, the path moved on: ' + await cur(page));
+  await ctx.close();
+
+  /* 3d. words due while the next lesson is something else: a card on the path reviews them in one tap */
+  ({ ctx, page } = await open({ store: { 'vocab3000-progress-v1': JSON.stringify({ w: { 3001: [1, DAY, DAY - 1, 0, 5000], 3002: [1, DAY - 1, DAY - 2, 0, 5001], 3003: [3, DAY + 3, DAY - 1, 0, 5002] }, s: { '36-0': 511, '36-1': 35 } }), 'vocab3000-ui-v1': JSON.stringify({ ob: 1, pn: 1 }) } }));
+  check((await cur(page)) === 'g:l1' && /ถึงเวลาทบทวน 2 คำ/.test(await txt(page, '#p-due-box')) && (await txt(page, '#tab-due')) === '2', 'words due: a card on the path and the count on the tab');
+  await page.click('#p-due');
+  check((await viewOf(page)) === 'run' && /ทบทวน/.test(await txt(page, '.run-title b')) && /เหลืออีก 2 ข้อ/.test(await txt(page, '.count')), 'the card starts a review of the due words');
+  await play(page, allOk, 'words due');
+  check(/ทบทวนเสร็จแล้ว/.test(await txt(page, '#app h2')) && await page.evaluate(() => +document.getElementById('xp-up').getAttribute('data-xp')) === 2 && /ไวยากรณ์: ทักทายและแนะนำตัว/.test(await txt(page, '#p-next-what')), 'review done: 2 XP, the next lesson named');
+  check(!(await store(page, 'vocab3000-path-v1')), 'nothing stored on the path for it');
+  await page.click('#p-back');
+  check(!(await has(page, '#p-due-box')) && (await cur(page)) === 'g:l1', 'no words due any more, the path is where it was');
   await ctx.close();
 
   /* 4. a story from the path: new words first, then the story with a lesson bar, the questions, the end screen */

@@ -482,6 +482,7 @@ button.tile b{color:var(--primary)}
    The one mango thing on the screen is the current node with its "เริ่ม" bubble. */
 .phead{display:flex;flex-direction:column;gap:12px;min-width:0}
 .phead-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.phead-btns{display:flex;gap:8px}
 .pstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .pstat{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:0;min-height:76px;padding:6px 4px;border-radius:16px;border:2px solid var(--line);background:var(--surface);box-shadow:0 3px 0 var(--line);text-align:center}
 .pstat:active{transform:translateY(2px);box-shadow:0 1px 0 var(--line)}
@@ -506,9 +507,20 @@ button.tile b{color:var(--primary)}
 .ub-act{display:flex;flex-direction:column;gap:8px}
 .ubtn{min-height:44px;padding:4px 12px;border-radius:14px;border:2px solid var(--on-primary);background:transparent;color:var(--on-primary);font-family:var(--f-display);font-weight:500;font-size:.92rem;white-space:nowrap}
 .ubtn:active{transform:translateY(2px)}
-.pnodes{display:flex;flex-direction:column;align-items:center;gap:20px;padding:14px 0 10px}
+.pnodes{display:flex;flex-direction:column;align-items:center;gap:14px;padding:14px 0 10px}
 .pn{position:relative;transform:translateX(var(--x,0px));display:flex;flex-direction:column;align-items:center}
 .pn.has-bub{margin-top:48px}
+.pn-l{margin-top:9px;max-width:150px;font-size:.76rem;font-weight:600;line-height:1.3;color:var(--ink-soft);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pn.has-bub .pn-l{color:var(--primary)}
+/* words due for review: one tap to review them; the next lesson: one tap from anywhere on the path */
+.pdue{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;background:var(--primary-wash);border-radius:18px;padding:12px 14px;min-width:0}
+.pdue b{display:block;font-weight:600;line-height:1.35}
+.pdue small{display:block;font-size:.84rem;color:var(--ink-soft);line-height:1.4}
+.pgo{position:fixed;left:0;right:0;bottom:calc(73px + env(safe-area-inset-bottom,0px));z-index:25;max-width:640px;margin-inline:auto;padding:0 16px 10px;pointer-events:none}
+.pgo .btn{pointer-events:auto;width:100%;box-shadow:0 4px 0 var(--primary-deep),0 6px 18px var(--shade)}
+.pgo .btn span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bottom,0px))}
+.pend-next{font-size:.92rem;font-weight:600}
 .pnode{width:64px;height:64px;border-radius:50%;border:0;padding:0;display:grid;place-items:center;background:var(--surface-2);color:var(--ink-soft);box-shadow:0 5px 0 var(--line);transition:transform .07s ease,box-shadow .07s ease}
 .pnode svg{width:30px;height:30px}
 .pnode:active{transform:translateY(4px);box-shadow:0 1px 0 var(--line)}
@@ -861,7 +873,15 @@ button.tile b{color:var(--primary)}
   function runTop(quitAct, autoAct, title, where, left, pct) {
     var on = UI.auto, lab = 'เสียงอัตโนมัติ ' + (on ? 'เปิดอยู่' : 'ปิดอยู่'), cb = '';
     if (PRUN) {
+      var R = PRUN, pn = R.n, pp = R.parts[R.pi];
       quitAct = 'p-quit'; pct = pathPct(pct);
+      if (pn.t === 'k' || pn.t === 'x') {
+        R.parts.slice(R.pi + 1).forEach(function (q) { left += q.items ? q.items.length : 0; });
+        title = nodeTitle(pn); where = pn.t === 'k' ? pm().PU[pn.u].title : 'คำที่ถึงเวลาและข้อที่เคยตอบผิด';
+      } else if (pp) {
+        title = partName(pp, pn);
+        where = (R.parts.length > 1 ? 'ส่วนที่ ' + (R.pi + 1) + ' จาก ' + R.parts.length + ' · ' : '') + nodeTitle(pn);
+      }
       if (PRUN.combo >= 3) cb = '<span class="combo' + (PRUN.pop ? ' pop' : '') + '" id="combo">ถูกติดกัน ' + PRUN.combo + '</span>';
       PRUN.pop = false;
     }
@@ -1497,7 +1517,7 @@ button.tile b{color:var(--primary)}
       if (v.verdict !== 'ok' && v.verdict !== 'almost' && v.verdict !== 'wrong') { req.state = 'err'; req.msg = 'ตรวจไม่สำเร็จในครั้งนี้ ลองกดตรวจอีกครั้ง'; render(); focusInput(); return; }
       req.state = 'done'; req.verdict = v.verdict;
       req.corrected = cut(v.corrected, 300); req.thai = cut(v.thai, 300); req.note = cut(v.note, 400);
-      if (S.first[w.n] === undefined) S.first[w.n] = v.verdict === 'ok';
+      if (S.first[w.n] === undefined) { S.first[w.n] = v.verdict === 'ok'; if (S.first[w.n]) xpAdd(1); }
       cur.done = true; cur.ok = v.verdict !== 'wrong';
       if (v.verdict !== 'almost') FX.play(v.verdict === 'ok' ? 'ok' : 'no');
       render(); focusNext();
@@ -1605,7 +1625,7 @@ button.tile b{color:var(--primary)}
     var st = stats(), nx = resumeSet(), total = ALL.length, req = reqBits(), tot = stepCount();
     var started = st.learned > 0 || Object.keys(P.s).length > 0;
     var h = '<header class="hello"><h1>ฝึกศัพท์ ' + fmt(total) + ' คำ</h1>' +
-      '<p class="lede">วันละชุด ชุดละ 10 คำ ฝึก ' + tot + ' ขั้นจนใช้ในประโยคได้</p></header>';
+      '<p class="lede">วันละชุด ชุดละ 10 คำ ฝึก ' + tot + ' ขั้นจนใช้ในประโยคได้</p><p class="note">เลือกเรียนชุดไหนก็ได้ ที่ทำในแท็บนี้นับในเส้นทางด้วย</p></header>';
 
     if (nx) {
       var cat = CATS[nx.c], m = maskOf(nx.c, nx.si), dn = bitCount(m & req);
@@ -2132,7 +2152,7 @@ button.tile b{color:var(--primary)}
     if (act === 'reveal') { cur.revealed = true; render(); var y = document.getElementById('card-yes'); if (y) { try { y.focus(); } catch (e) {} } return; }
     if (act === 'card-yes' || act === 'card-no') {
       var known = act === 'card-yes';
-      if (S.first[n] === undefined) S.first[n] = known;
+      if (S.first[n] === undefined) { S.first[n] = known; if (known) xpAdd(1); }
       if (!known) S.queue.push({ n: n, q: 'card' });
       advance();
       return;
@@ -2199,7 +2219,7 @@ button.tile b{color:var(--primary)}
     if (prob) { cur.note = prob; cur.ai = null; render(); focusInput(); return; }
     cur.self = { cap: /^[A-Z]/.test(t), end: /[.?!]$/.test(t) };
     cur.ai = null; cur.done = true; cur.ok = true;
-    if (S.first[w.n] === undefined) S.first[w.n] = cur.self.cap && cur.self.end;
+    if (S.first[w.n] === undefined) { S.first[w.n] = cur.self.cap && cur.self.end; if (S.first[w.n]) xpAdd(1); }
     render(); focusNext();
   }
 
@@ -2325,7 +2345,7 @@ button.tile b{color:var(--primary)}
   function gHome() {
     var dn = GLS.filter(gPassed).length, total = GLS.length, nx = gNext(), pool = gPool();
     var h = '<header class="hello"><h1>ไวยากรณ์</h1>' +
-      '<p class="lede">อ่านคำอธิบายสั้นๆ ฟังตัวอย่าง แล้วทำแบบฝึกบทละ 10 ข้อ ได้ 8 ข้อขึ้นไปถือว่าผ่าน เรียนวันละ 1 บทคู่กับศัพท์ 1 ชุด</p></header>';
+      '<p class="lede">อ่านคำอธิบายสั้นๆ ฟังตัวอย่าง แล้วทำแบบฝึกบทละ 10 ข้อ ได้ 8 ข้อขึ้นไปถือว่าผ่าน</p><p class="note">เลือกเรียนบทไหนก็ได้ ที่ทำในแท็บนี้นับในเส้นทางด้วย</p></header>';
     if (nx) {
       var begun = !!(gRec(nx.id) || dn);
       h += '<section class="today" aria-label="บทเรียนถัดไป"><div class="today-top"><div class="today-text">' +
@@ -2633,13 +2653,13 @@ button.tile b{color:var(--primary)}
         return '<button type="button" class="chip" id="pref-' + k + '-' + o[0] + '" data-act="pref" data-k="' + k + '" data-v="' + o[0] + '" aria-pressed="' + (cur === o[0] ? 'true' : 'false') + '">' + o[1] + '</button>';
       }).join('') + '</div>';
     }
-    var h = crumb([{ label: 'ฉัน', act: 'me' }]) + '<header class="top"><h2>ตั้งค่า</h2></header>' +
+    var h = crumb([view.from === 'path' ? { label: 'เส้นทาง', act: 'path' } : { label: 'ฉัน', act: 'me' }]) + '<header class="top"><h2>ตั้งค่า</h2></header>' +
       '<section class="block"><h3>เสียง</h3><div class="prefs">' +
       '<div class="pref"><p class="pref-name">อ่านออกเสียงอัตโนมัติ<small>อ่านคำหรือประโยคให้ฟังเองตอนเริ่มข้อและหลังตอบ</small></p>' + seg('auto', [[1, 'เปิด'], [0, 'ปิด']]) + '</div>' +
       '<div class="pref"><p class="pref-name">เสียงตอนตอบถูกหรือผิด<small>เสียงติ๊งสั้นๆ เมื่อตอบถูก เสียงต่ำเมื่อตอบผิด</small></p>' + seg('fx', [[1, 'เปิด'], [0, 'ปิด']]) + '</div>' +
       (canVib ? '<div class="pref"><p class="pref-name">สั่นเมื่อตอบ<small>เครื่องสั่นสั้นๆ เมื่อตอบถูก สั่นสองครั้งเมื่อตอบผิด</small></p>' + seg('vib', [[1, 'เปิด'], [0, 'ปิด']]) + '</div>' : '') + '</div></section>' +
       '<section class="block"><h3>การแสดงผล</h3><div class="prefs"><div class="pref"><p class="pref-name">ขนาดตัวอักษร</p>' + seg('fs', [[100, 'ปกติ'], [112, 'ใหญ่'], [125, 'ใหญ่มาก']]) + '</div></div></section>' +
-      '<section class="block"><h3>เป้าหมายรายวัน</h3><div class="prefs"><div class="pref"><p class="pref-name">XP ต่อวัน<small>ตอบถูกได้ 1 XP จบหนึ่งวงในเส้นทางได้อีก 10 XP วงละราว 5 นาที</small></p>' + seg('xg', [[10, '10 สบายๆ'], [20, '20 ปกติ'], [30, '30 จริงจัง'], [50, '50 เต็มที่']]) + '</div></div></section>' +
+      '<section class="block"><h3>เป้าหมายรายวัน</h3><div class="prefs"><div class="pref"><p class="pref-name">XP ต่อวัน<small>ตอบถูกได้ 1 XP จบหนึ่งบทในเส้นทางได้อีก 10 XP บทละราว 5 นาที</small></p>' + seg('xg', [[10, '10 สบายๆ'], [20, '20 ปกติ'], [30, '30 จริงจัง'], [50, '50 เต็มที่']]) + '</div></div></section>' +
       '<section class="block"><h3>การบันทึกความคืบหน้า</h3><p class="syncnote" id="syncnote"></p></section>' +
       '<section class="block"><h3>สำรองและย้ายความคืบหน้า</h3>' +
       '<p class="note">ใช้ย้ายความคืบหน้าไปเครื่องอื่นหรือแอปอื่น กดคัดลอกรหัส แล้วเก็บไว้ในโน้ตหรือส่งให้ตัวเอง จากนั้นไปวางในหน้าตั้งค่าของอีกที่ ความคืบหน้าที่ใหม่กว่าจะไม่ถูกทับ</p>' +
@@ -2863,7 +2883,7 @@ button.tile b{color:var(--primary)}
   }
   function vRead() {
     var nx = rNext(), dn = rDoneCount();
-    var h = '<header class="hello"><h1>อ่าน-ฟัง</h1><p class="lede">เรื่องสั้นและบทสนทนาพร้อมเสียง ฟังทีละประโยค แตะคำที่ไม่รู้เพื่อดูความหมาย แล้วตอบคำถามท้ายเรื่อง</p></header>';
+    var h = '<header class="hello"><h1>อ่าน-ฟัง</h1><p class="lede">เรื่องสั้นและบทสนทนาพร้อมเสียง ฟังทีละประโยค แตะคำที่ไม่รู้เพื่อดูความหมาย แล้วตอบคำถามท้ายเรื่อง</p><p class="note">เลือกอ่านเรื่องไหนก็ได้ ที่ทำในแท็บนี้นับในเส้นทางด้วย</p></header>';
     if (nx) h += '<section class="today" aria-label="เรื่องถัดไป"><div class="today-top"><div class="today-text"><p class="eyebrow">' + (dn ? 'เรื่องถัดไป' : 'เริ่มต้นที่นี่') + '</p>' +
       '<h2 class="en">' + esc(nx.en) + '</h2><p class="today-sub">' + esc(nx.th) + (nx.v === 'talk' ? ' (บทสนทนา)' : '') + '</p></div><span class="today-no en" aria-hidden="true"><small>ระดับ</small>' + esc(nx.lv) + '</span></div>' +
       '<div class="dots-row"><div class="bar" role="img" aria-label="อ่านแล้ว ' + dn + ' จาก ' + RDS.length + ' เรื่อง"><i class="b-strong" style="width:' + (dn / RDS.length * 100) + '%"></i></div><span>อ่านแล้ว ' + dn + '/' + RDS.length + '</span></div>' +
@@ -3062,7 +3082,7 @@ button.tile b{color:var(--primary)}
     if (!el || el.disabled) return;
     var act = el.getAttribute('data-act'), s;
     if (act === 'today') { go({ name: 'path' }); return; }
-    if (act === 'prefs') { go({ name: 'prefs' }); return; }
+    if (act === 'prefs') { go({ name: 'prefs', from: view.name === 'path' ? 'path' : 'me' }); return; }
     if (act === 'pref') {
       var k = el.getAttribute('data-k'), v = Number(el.getAttribute('data-v'));
       if (k === 'auto' || k === 'fx') UI[k] = !!v;
@@ -3562,18 +3582,33 @@ button.tile b{color:var(--primary)}
       (d > 0 ? '<circle class="pg" cx="12" cy="12" r="9.5" stroke-dasharray="' + d.toFixed(2) + ' ' + c.toFixed(2) + '" transform="rotate(-90 12 12)"/>' : '') + '</svg>';
   }
   var PTYPE = { v: 'คำศัพท์', g: 'ไวยากรณ์', r: 'อ่าน-ฟัง', t: 'ฝึกพูด', x: 'ทบทวน', k: 'ทดสอบหน่วย' };
+  /* what a node is called on its sheet, on the button that starts it and inside it; the short label under its circle */
   function nodeTitle(n) {
-    if (n.t === 'v') return STAGES[n.st] + ' ' + CATS[n.c].th + ' ชุดที่ ' + (n.si + 1);
-    if (n.t === 'g') return 'บทที่ ' + (n.l.i + 1) + ' ' + n.l.title;
+    if (n.t === 'v') return STAGES[n.st] + ' ชุดที่ ' + (n.si + 1);
+    if (n.t === 'g') return 'ไวยากรณ์: ' + n.l.title;
     if (n.t === 'r') return n.r.en;
     if (n.t === 't') return 'พูดตามเรื่อง ' + n.r.en;
-    if (n.t === 'x') return 'ทบทวนคำและข้อที่เคยผิด';
+    if (n.t === 'x') return 'ทบทวน';
     return 'ทดสอบหน่วยที่ ' + n.n;
   }
+  function nodeLabel(n) { return n.t === 'v' ? 'ชุดที่ ' + (n.si + 1) + ' ' + STAGES[n.st] : ({ g: 'ไวยากรณ์', r: 'อ่าน-ฟัง', t: 'พูดตาม', x: 'ทบทวน', k: 'ทดสอบหน่วย' })[n.t]; }
+  function partName(p, n) {
+    if (p.k === 'step') return MODE[p.mode].name;
+    if (p.k === 'gram') return 'แบบฝึก ' + n.l.q.length + ' ข้อ';
+    if (p.k === 'rev') return 'ทบทวนคำศัพท์';
+    if (p.k === 'grev') return 'ทบทวนไวยากรณ์';
+    return nodeTitle(n);
+  }
+  /* reading the lesson text or the new words weighs little on the bar, a round of questions much more */
+  function partW(p) { return p.items ? p.items.length : ({ lesson: 3, words: 3, story: 8, say: 5, gram: 10 })[p.k] || (p.mode === 'order' ? 5 : (p.mode === 'write' ? 3 : 10)); }
   function nodeMins(n) { return n.t === 'v' ? [4, 5, 5][n.st] : ({ g: 6, r: 5, t: 2, x: 3, k: 4 })[n.t]; }
 
   /* ---------------- a path lesson: one node run as a few parts in a row (the steps of a stage, a lesson and its round, ...) ---------------- */
-  function revWords() { return shuffle(reviewList(10)).map(function (w) { var q = qForBox(w); if (q === 'mean' && !thAlts(w).length) q = 'e2t'; return { n: w.n, q: q }; }); }
+  /* the words that are due (up to 10); when none are due, the ones not seen for the longest time */
+  function revWords() {
+    var t = today(), list = reviewList(10), due = list.filter(function (w) { return P.w[w.n][1] <= t; });
+    return shuffle(due.length ? due : list).map(function (w) { var q = qForBox(w); if (q === 'mean' && !thAlts(w).length) q = 'e2t'; return { n: w.n, q: q }; });
+  }
   function revGram() {
     return Object.keys(GP.x).filter(function (id) { return GP.x[id] > 0 && GQ[id]; })
       .sort(function (a, b) { return GP.x[b] - GP.x[a] || (a < b ? -1 : 1); }).slice(0, 5).map(function (id) { return GQ[id]; });
@@ -3627,9 +3662,10 @@ button.tile b{color:var(--primary)}
     return true;
   }
   function pathPct(local) {
-    var R = PRUN;
+    var R = PRUN, tot = 0, before = 0;
     if (!R) return local;
-    return Math.round((Math.max(0, R.pi) + Math.max(0, Math.min(100, local)) / 100) / R.parts.length * 100);
+    R.parts.forEach(function (p, i) { var w = partW(p); tot += w; if (i < R.pi) before += w; });
+    return Math.round((before + (R.parts[R.pi] ? partW(R.parts[R.pi]) : 0) * Math.max(0, Math.min(100, local)) / 100) / tot * 100);
   }
   function pathNextPart() {
     var R = PRUN;
@@ -3638,7 +3674,7 @@ button.tile b{color:var(--primary)}
     if (R.pi >= R.parts.length) { pathEnd(); return; }
     var p = R.parts[R.pi], n = R.n, u = pm().PU[n.u];
     if (p.k === 'step') startSet(n.c, n.si, p.mode);
-    else if (p.k === 'rev') startSession({ kind: 'review', fmt: 'pick', title: 'ทบทวนคำศัพท์', where: 'วงทบทวนในเส้นทาง หน่วยที่ ' + u.no, items: p.items });
+    else if (p.k === 'rev') startSession({ kind: 'review', fmt: 'pick', title: 'ทบทวนคำศัพท์', where: 'ทบทวนในเส้นทาง', items: p.items });
     else if (p.k === 'grev') gStartRun('review', p.items, null);
     else if (p.k === 'ckv') startSession({ kind: 'ck', title: 'ทดสอบหน่วยที่ ' + u.no, where: u.title, items: p.items });
     else if (p.k === 'ckg') gStartRun('ck', p.items, null, 'ทดสอบหน่วยที่ ' + u.no);
@@ -3657,7 +3693,7 @@ button.tile b{color:var(--primary)}
       R.ans = tried; R.right = said;
       if (!o || said >= o[0]) PATH.t[n.r.id] = [said, R.say.lines.length, nowSec()];
       pathSave();
-    } else if (n.t === 'x') { PATH.x[n.n] = today(); pathSave(); }
+    } else if (n.t === 'x') { if (!n.virt) { PATH.x[n.n] = today(); pathSave(); } }
     else if (n.t === 'k') {
       var o2 = PATH.k[n.n];
       if (!o2 || R.right >= o2[0]) PATH.k[n.n] = [R.right, R.ans, nowSec()];
@@ -3740,8 +3776,9 @@ button.tile b{color:var(--primary)}
     if (!UI.ob && !hasProgress()) { vOnboard(); return; }
     var M = pm(), sc = pathScan(), t = today(), skn = streak(), xp = xpDay(t), qs = questsFor(t), qd = qs.filter(function (q) { return q.done; }).length;
     var curN = sc.cur >= 0 ? M.PN[sc.cur] : null, fu = PFOCUS !== null && M.PU[PFOCUS] ? PFOCUS : (curN ? curN.u : M.PU.length - 1);
-    var h = '<header class="phead"><div class="phead-top"><h1>เรียน</h1>' +
-      '<button type="button" class="iconbtn" id="open-me" data-act="me" aria-label="ฉัน สถิติ ภารกิจ และตั้งค่า" title="ฉัน">' + IC_ME + '</button></div>' +
+    var h = '<header class="phead"><div class="phead-top"><h1>เรียน</h1><span class="phead-btns">' +
+      '<button type="button" class="iconbtn" id="p-prefs" data-act="prefs" aria-label="ตั้งค่า" title="ตั้งค่า">' + IC_GEAR + '</button>' +
+      '<button type="button" class="iconbtn" id="open-me" data-act="me" aria-label="ฉัน สถิติและภารกิจ" title="ฉัน">' + IC_ME + '</button></span></div>' +
       '<div class="pstats">' +
       '<button type="button" class="pstat" id="p-streak" data-act="me" aria-label="เรียนติดต่อกัน ' + skn.n + ' วัน"><span class="fl' + (skn.today ? ' on' : '') + '">' + IC_FLAME + '</span>' +
       '<span class="pstat-t"><b>' + skn.n + '</b><small>วันติดกัน</small></span></button>' +
@@ -3750,6 +3787,9 @@ button.tile b{color:var(--primary)}
       '<button type="button" class="pstat" id="p-quests" data-act="p-quests" aria-label="ภารกิจวันนี้ ทำแล้ว ' + qd + ' จาก 3"><span class="flag">' + IC_FLAG + '</span>' +
       '<span class="pstat-t"><b>' + qd + '/3</b><small>ภารกิจ</small></span></button></div>' +
       '<p class="syncnote" id="sndnote"></p></header>';
+    var due = stats().due;
+    if (due && !(curN && curN.t === 'x')) h += '<section class="pdue" id="p-due-box"><p><b>ถึงเวลาทบทวน ' + fmt(due) + ' คำ</b><small>ทบทวนตอนนี้จะจำได้นานขึ้น ราว ' + (due > 10 ? 3 : 2) + ' นาที</small></p>' +
+      '<button type="button" class="btn small" id="p-due" data-act="p-due">ทบทวน</button></section>';
     M.PSEC.forEach(function (S) {
       var dn = S.units.filter(function (u) { return sc.upass[u.i]; }).length, meta = S.units.length + ' หน่วย' + (dn ? ' ผ่านแล้ว ' + dn + ' หน่วย' : '');
       var near = function (u) { return Math.abs(u.i - fu) <= 2; };
@@ -3768,10 +3808,13 @@ button.tile b{color:var(--primary)}
       h += '</section>';
     });
     if (!curN) h += '<section class="today"><p class="eyebrow">เรียนครบทั้งเส้นทางแล้ว</p><h2>ครบทุกหน่วย</h2><p class="today-sub">ทบทวนทุกวัน และเลือกเรียนซ้ำได้จากแท็บด้านล่าง</p></section>';
+    else h += '<div class="pgo" id="p-go-box"><button type="button" class="btn" id="p-go" data-act="p-start" data-id="' + curN.id + '">' + IC_PLAY +
+      '<span>' + (sc.done.some(Boolean) ? 'เรียนต่อ · ' : 'เริ่มเรียน · ') + esc(nodeTitle(curN)) + '</span></button></div>';
     app.innerHTML = h;
     renderSndNote();
+    try { var pg = document.getElementById('p-go-box'); if (pg && TABBAR && getComputedStyle(TABBAR).display !== 'none') pg.style.bottom = TABBAR.offsetHeight + 'px'; } catch (e) {}
     if (!UI.pn) pathSheet('<div class="sheet nd enter" id="sheet" role="dialog" aria-labelledby="sheet-t"><div class="sheet-body"><p class="fb-status" id="sheet-t"><span class="fb-icon">' + PIC.r + '</span>ใหม่: เส้นทางการเรียน</p>' +
-      '<p>ทำวงถัดไปได้เลย แท็บเดิมยังอยู่ครบ</p><p class="note">ทุกอย่างที่เคยทำไว้นับให้แล้ว วงที่ทำแล้วมีเครื่องหมายถูก</p></div>' +
+      '<p>แอปเรียงบทเรียนให้แล้ว กดปุ่มเรียนต่อด้านล่างได้เลย แท็บเดิมยังอยู่ครบ</p><p class="note">ทุกอย่างที่เคยทำไว้นับให้แล้ว บทที่ทำแล้วมีเครื่องหมายถูก</p></div>' +
       '<div class="sheet-actions"><button type="button" class="btn" id="p-news-ok" data-act="p-news-ok">เข้าใจแล้ว</button></div></div>', true);
   }
   function unitRow(u, sc) {
@@ -3779,21 +3822,22 @@ button.tile b{color:var(--primary)}
     u.nodes.forEach(function (n) { if (n.t === 't' && !sc.sr) return; all++; if (sc.done[n.i]) d++; });
     return '<li><button type="button" class="row" data-act="p-unit" data-u="' + u.i + '"><span class="row-no' + (sc.upass[u.i] ? ' done' : '') + '">' + u.no + '</span>' +
       '<span class="row-main"><b>' + esc(u.title) + '</b><small>หน่วยที่ ' + u.no + '</small></span>' +
-      '<span class="row-side">' + (sc.upass[u.i] ? 'ผ่านแล้ว' : d + '/' + all + ' วง') + '<span class="mini"><i style="width:' + (all ? d / all * 100 : 0) + '%"></i></span></span></button></li>';
+      '<span class="row-side">' + (sc.upass[u.i] ? 'ผ่านแล้ว' : d + '/' + all + ' บท') + '<span class="mini"><i style="width:' + (all ? d / all * 100 : 0) + '%"></i></span></span></button></li>';
   }
   function unitHtml(u, sc, curN) {
-    var S = pm().PSEC[u.sec], passed = sc.upass[u.i], ahead = !!curN && u.i >= curN.u, gl = unitGuide(u), j = 0;
+    var S = pm().PSEC[u.sec], passed = sc.upass[u.i], ahead = !!curN && u.i > curN.u, gl = unitGuide(u), j = 0;
     var h = '<div class="ubanner" id="unit-' + u.no + '"><div class="ub-text"><p class="ub-no"><span class="lvchip">' + esc(S.lv) + '</span>หน่วยที่ ' + u.no + (passed ? ' · ผ่านแล้ว' : '') + '</p>' +
       '<h3>' + esc(u.title) + '</h3></div><div class="ub-act">' +
-      (gl ? '<button type="button" class="ubtn" id="p-guide-' + u.no + '" data-act="p-guide" data-id="' + gl.id + '">คู่มือ</button>' : '') +
+      (gl ? '<button type="button" class="ubtn" id="p-guide-' + u.no + '" data-act="p-guide" data-id="' + gl.id + '" aria-label="อ่านไวยากรณ์ของหน่วยนี้">ไวยากรณ์</button>' : '') +
       (ahead && !passed ? '<button type="button" class="ubtn" id="p-testout-' + u.no + '" data-act="p-testout" data-u="' + u.i + '">ทดสอบข้าม</button>' : '') + '</div></div>';
-    h += '<ol class="pnodes" aria-label="วงของหน่วยที่ ' + u.no + '">';
+    h += '<ol class="pnodes" aria-label="บทเรียนของหน่วยที่ ' + u.no + '">';
     u.nodes.forEach(function (n) {
       if (n.t === 't' && !sc.sr) return;
       var st = sc.done[n.i] ? 'done' : (curN && n.i === curN.i ? 'cur' : (n.t === 'k' && PATH.k[n.n] ? 'tried' : ''));
-      var say = st === 'done' ? 'ทำแล้ว' : (st === 'cur' ? 'วงถัดไป' : (st === 'tried' ? 'ทำแล้วแต่ยังไม่ผ่าน' : 'ยังไม่ทำ'));
+      var say = st === 'done' ? 'ทำแล้ว' : (st === 'cur' ? 'บทถัดไป' : (st === 'tried' ? 'ทำแล้วแต่ยังไม่ผ่าน' : 'ยังไม่ทำ'));
       h += '<li class="pn' + (st === 'cur' ? ' has-bub' : '') + '" style="--x:' + POFF[j++ % POFF.length] + 'px">' + (st === 'cur' ? '<span class="pbub" aria-hidden="true">เริ่ม</span>' : '') +
-        '<button type="button" class="pnode' + (st ? ' ' + st : '') + '" data-act="p-node" data-id="' + n.id + '" aria-label="' + esc(nodeTitle(n) + ' ' + say) + '">' + nodeIcon(n, st) + '</button></li>';
+        '<button type="button" class="pnode' + (st ? ' ' + st : '') + '" data-act="p-node" data-id="' + n.id + '" aria-label="' + esc(nodeTitle(n) + (n.t === 'v' ? ' ' + CATS[n.c].th : '') + ' ' + say) + '">' + nodeIcon(n, st) + '</button>' +
+        '<span class="pn-l" aria-hidden="true">' + esc(nodeLabel(n)) + '</span></li>';
     });
     return h + '</ol>';
   }
@@ -3813,19 +3857,21 @@ button.tile b{color:var(--primary)}
     return '<div class="sheet nd enter" id="sheet" role="dialog" aria-labelledby="sheet-t"><div class="sheet-body"><p class="fb-status" id="sheet-t"><span class="fb-icon">' + icon + '</span>' + esc(title) + '</p>' + body + '</div>' +
       '<div class="sheet-actions">' + acts + '<button type="button" class="btn ghost" id="p-close" data-act="p-close">ปิด</button></div></div>';
   }
+  var DOES = ['ดูบัตรคำ เลือกคำแปล แล้วฟังเสียง 10 คำ', 'พิมพ์ตาม เลือกคำศัพท์ แล้วพิมพ์จากความจำ', 'เติมคำในประโยค เรียงประโยค แล้วแต่งประโยคเอง'];
   function nodeSheet(n) {
-    var sc = pathScan(), u = pm().PU[n.u], done = sc.done[n.i], ahead = !done && sc.cur >= 0 && n.i > sc.cur, can = true, info = '';
-    if (n.t === 'v') info = '<p class="en">' + esc(CATS[n.c].sets[n.si].slice(0, 4).map(function (w) { return w.w; }).join(', ')) + ' …</p>';
-    else if (n.t === 'g') info = '<p>' + esc(n.l.goal) + '</p>';
-    else if (n.t === 'r') info = '<p>' + esc(n.r.th) + (n.r.v === 'talk' ? ' (บทสนทนา)' : '') + '</p>';
-    else if (n.t === 't') info = '<p>พูดตาม 3 ถึง 5 ประโยคจากเรื่องนี้ด้วยปุ่มไมค์</p>';
+    var sc = pathScan(), u = pm().PU[n.u], done = sc.done[n.i], ahead = !done && sc.cur >= 0 && n.i > sc.cur, can = true, does = '', more = '';
+    var sub = n.t === 'v' ? CATS[n.c].th : (n.t === 'r' || n.t === 't' ? n.r.th : 'หน่วยที่ ' + u.no + ' ' + u.title);
+    if (n.t === 'v') { does = DOES[n.st]; more = '<p class="note en">' + esc(CATS[n.c].sets[n.si].slice(0, 4).map(function (w) { return w.w; }).join(', ')) + ' …</p>'; }
+    else if (n.t === 'g') { does = 'อ่านคำอธิบายสั้นๆ แล้วตอบ ' + n.l.q.length + ' ข้อ ถูก ' + Math.ceil(n.l.q.length * GPASS) + ' ข้อขึ้นไปถือว่าผ่าน'; more = '<p class="note">' + esc(n.l.goal) + '</p>'; }
+    else if (n.t === 'r') does = 'ดูคำใหม่ อ่านและฟังเรื่องสั้น แล้วตอบ ' + n.r.q.length + ' ข้อ';
+    else if (n.t === 't') does = 'พูดตาม 3 ถึง 5 ประโยคจากเรื่องนี้ ด้วยปุ่มไมค์';
     else if (n.t === 'x') {
       var due = stats().due;
       can = !!nodeParts(n);
-      info = '<p>' + (!can ? 'ยังไม่มีคำหรือข้อให้ทบทวน ทำวงก่อนหน้าก่อน' : (due ? 'คำที่ถึงเวลาทบทวน ' + fmt(due) + ' คำ และข้อไวยากรณ์ที่เคยผิด' : 'ตอนนี้ไม่มีคำที่ถึงเวลา ทบทวนเพิ่มได้')) + '</p>';
-    } else if (n.t === 'k') { var r = PATH.k[n.n]; info = '<p>12 ข้อจากหน่วยนี้ ได้ 80% ขึ้นไปถือว่าผ่าน' + (r ? ' ผลดีที่สุด ' + r[0] + ' จาก ' + r[1] + ' ข้อ' : '') + '</p>'; }
-    var body = '<p class="note">' + PTYPE[n.t] + ' · หน่วยที่ ' + u.no + ' ' + esc(u.title) + ' · ประมาณ ' + nodeMins(n) + ' นาที' + (done ? ' · ทำแล้ว' : '') + '</p>' + info +
-      (ahead ? '<p class="note">วงนี้อยู่ข้างหน้า ทำวงถัดไปของเส้นทางก่อนก็ได้ หรือทำวงนี้เลยก็ได้</p>' : '');
+      does = !can ? 'ยังไม่มีคำให้ทบทวน เรียนบทก่อนหน้าก่อน' : (due ? 'ทบทวนคำที่ถึงเวลา ' + fmt(due) + ' คำ และข้อที่เคยตอบผิด' : 'ทบทวนคำที่เรียนแล้ว และข้อที่เคยตอบผิด');
+    } else if (n.t === 'k') { var r = PATH.k[n.n]; does = 'ตอบ 12 ข้อจากหน่วยนี้ ถูก 10 ข้อขึ้นไปถือว่าผ่าน' + (r ? ' ครั้งก่อนได้ ' + r[0] + ' ข้อ' : ''); }
+    var body = '<p class="note">' + esc(sub) + ' · ราว ' + nodeMins(n) + ' นาที' + (done ? ' · ทำแล้ว' : '') + '</p><p>' + does + '</p>' + more +
+      (ahead ? '<p class="note">บทนี้อยู่ข้างหน้า จะทำเลยก็ได้</p>' : '');
     pathSheet(sheetBox(nodeIcon(n, ''), nodeTitle(n), body, can ? '<button type="button" class="btn" id="p-start" data-act="p-start" data-id="' + n.id + '">' + (done ? 'ทำอีกครั้ง' : (ahead ? 'ทำเลย' : 'เริ่ม')) + '</button>' : ''));
   }
   function vOnboard() {
@@ -3856,7 +3902,7 @@ button.tile b{color:var(--primary)}
       '<button type="button" class="iconbtn" id="open-prefs" data-act="prefs" aria-label="ตั้งค่า" title="ตั้งค่า">' + IC_GEAR + '</button></header>';
     h += '<section class="today" aria-label="สถิติการเรียนต่อเนื่อง"><div class="streak"><span class="flame' + (skn.today ? '' : ' off') + '">' + IC_FLAME + '</span>' +
       '<p class="streak-n">' + skn.n + '<small>วันติดต่อกัน</small></p>' +
-      '<p class="today-sub">' + (full ? 'วันนี้ทำภารกิจครบแล้ว เก่งมาก' : (skn.today ? 'วันนี้ได้ ' + xp + ' XP เป้า ' + UI.xg + ' XP' : (skn.n ? 'วันนี้ยังไม่ได้เริ่ม ทำสักวงเพื่อให้สถิติไม่หาย' : 'เริ่มวันแรกได้เลย ทำวงแรกในเส้นทาง'))) + '</p></div>' +
+      '<p class="today-sub">' + (full ? 'วันนี้ทำภารกิจครบแล้ว เก่งมาก' : (skn.today ? 'วันนี้ได้ ' + xp + ' XP เป้า ' + UI.xg + ' XP' : (skn.n ? 'วันนี้ยังไม่ได้เริ่ม ทำสักบทเพื่อให้สถิติไม่หาย' : 'เริ่มวันแรกได้เลย ทำบทแรกในเส้นทาง'))) + '</p></div>' +
       weekHtml(t) + '</section>';
     h += '<section class="block"><h2>ภารกิจวันนี้</h2>' + questsHtml(qs) + '<p class="note">ภารกิจเปลี่ยนทุกวัน ทำครบ 3 อย่างนับเป็นวันที่ทำครบ</p></section>';
     h += '<section class="block"><h2>ความก้าวหน้า</h2><div class="tiles">' +
@@ -3890,19 +3936,20 @@ button.tile b{color:var(--primary)}
     var R = PRUN, E = R && R.end;
     if (!E) { go({ name: 'path' }); return; }
     var n = R.n, M = pm(), u = M.PU[n.u], acc = R.ans ? Math.round(R.right / R.ans * 100) : null, nx = pathNextNode(n), head, sub = '', btns = '';
-    if (n.t === 'g' && !E.done) { head = 'ยังไม่ผ่านบทนี้'; sub = 'ต้องได้ ' + Math.ceil(n.l.q.length * GPASS) + ' จาก ' + n.l.q.length + ' ข้อ อ่านคำอธิบายอีกรอบแล้วลองใหม่ หรือทำวงอื่นไปก่อนก็ได้'; }
+    if (n.virt) head = 'ทบทวนเสร็จแล้ว';
+    else if (n.t === 'g' && !E.done) { head = 'ยังไม่ผ่านบทนี้'; sub = 'ต้องได้ ' + Math.ceil(n.l.q.length * GPASS) + ' จาก ' + n.l.q.length + ' ข้อ อ่านคำอธิบายอีกรอบแล้วลองใหม่ หรือทำบทอื่นไปก่อนก็ได้'; }
     else if (n.t === 'k') { head = E.passed ? 'ผ่านหน่วยที่ ' + u.no + ' แล้ว' : 'ยังไม่ผ่านการทดสอบ'; if (!E.passed) sub = 'ได้ ' + R.right + ' จาก ' + R.ans + ' ข้อ ต้องได้ ' + Math.ceil(R.ans * CKPASS) + ' ข้อ เรียนต่อได้เลย แล้วกลับมาลองใหม่ทีหลัง'; }
     else if (n.t === 't' && !R.right) { head = 'ไว้ฝึกพูดครั้งหน้า'; sub = 'ข้ามได้ ไม่นับว่าผิด กดไมค์ที่เรื่องไหนก็ได้เมื่อพร้อม'; }
     else head = 'จบบทนี้แล้ว';
     if (E.sec) sub = (sub ? sub + ' ' : '') + 'จบระดับ ' + M.PSEC[u.sec].lv + ' แล้ว';
     if (n.t === 'g' && !E.done) btns = '<button type="button" class="btn" id="p-again" data-act="p-again">ลองอีกครั้ง</button>' +
-      (nx ? '<button type="button" class="btn ghost" id="p-next-node" data-act="p-go-next">ข้ามไปวงถัดไป</button>' : '');
+      (nx ? '<button type="button" class="btn ghost" id="p-next-node" data-act="p-go-next">ข้ามไปบทถัดไป</button>' : '');
     else {
-      if (nx) btns += '<button type="button" class="btn" id="p-next-node" data-act="p-go-next">ต่อไป</button>';
+      if (nx) btns += '<p class="pend-next" id="p-next-what">บทต่อไป: ' + esc(nodeTitle(nx)) + '</p><button type="button" class="btn" id="p-next-node" data-act="p-go-next">เรียนบทต่อไป</button>';
       if (n.t === 'k' && !E.passed) btns += '<button type="button" class="btn ghost" id="p-again" data-act="p-again">ลองทดสอบอีกครั้ง</button>';
     }
     btns += '<button type="button" class="btn' + (btns ? ' ghost' : '') + '" id="p-back" data-act="path">กลับเส้นทาง</button>';
-    var h = '<header class="top"><p class="eyebrow">' + esc(PTYPE[n.t] + ' · หน่วยที่ ' + u.no + ' ' + u.title) + '</p><h2>' + head + '</h2></header>' +
+    var h = '<header class="top"><p class="eyebrow">' + esc(n.virt ? 'ทบทวนคำที่ถึงเวลา' : PTYPE[n.t] + ' · หน่วยที่ ' + u.no + ' ' + u.title) + '</p><h2>' + head + '</h2></header>' +
       '<section class="today pend" aria-label="ผลของบทนี้"><p class="score"><span><span id="xp-up" data-xp="' + R.xp + '">+' + R.xp + '</span><small> XP</small></span>' +
       (E.perfect ? '<span class="full" id="p-full">เต็ม</span>' : '') + '</p>' +
       '<div class="pend-stats"><div><b id="p-acc">' + (acc === null ? '-' : acc + '%') + '</b><span>ความแม่น</span></div><div><b id="p-time">' + dur(E.secs) + '</b><span>เวลา</span></div>' +
@@ -3958,6 +4005,12 @@ button.tile b{color:var(--primary)}
     var act = el.getAttribute('data-act'), M, n, u;
     if (act === 'path') { go({ name: 'path' }); return; }
     if (act === 'me') { go({ name: 'me' }); return; }
+    if (act === 'p-due') {
+      M = pm(); var s0 = pathScan(), cu = s0.cur >= 0 ? M.PN[s0.cur].u : M.PU.length - 1;
+      pathSheetClose();
+      if (!pathStart({ t: 'x', id: 'x:0', n: 0, u: cu, virt: true })) render();
+      return;
+    }
     if (act === 'p-quests') { pathSheet(sheetBox(IC_FLAG, 'ภารกิจวันนี้', questsHtml(questsFor(today())) + '<p class="note">ภารกิจเปลี่ยนทุกวัน ทำครบ 3 อย่างนับเป็นวันที่ทำครบ</p>', '')); return; }
     if (act === 'p-close') { pathSheetClose(); return; }
     if (act === 'p-news-ok') { UI.pn = 1; saveUI(); pathSheetClose(); return; }
@@ -3993,6 +4046,8 @@ button.tile b{color:var(--primary)}
     try {
       var el = unit ? document.getElementById('unit-' + (PFOCUS + 1)) : document.querySelector('.pnode.cur');
       if (el && el.scrollIntoView) el.scrollIntoView({ block: unit ? 'start' : 'center' });
+      /* the next-lesson button and the menu cover the bottom of the screen: keep the current circle in the middle of what is left */
+      if (el && !unit && document.getElementById('p-go-box')) window.scrollBy(0, 70);
     } catch (e) {}
   }
 
