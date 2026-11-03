@@ -73,8 +73,11 @@
 - **8.1 Setup.** Settings section "ครู AI": a step-by-step Thai guide to get a free key in Google AI Studio, a field to
   paste it, "ทดสอบ", "ลบ key". The key stays only in this device's storage: never in the repository, never in the backup
   code, never in a URL. A short Thai note: free use has limits, Google may use the chats to improve its products, so do
-  not share personal information. Suggest restricting the key to `katan1441.github.io` in Google Cloud. A model field
-  defaults to a current free Flash model and can be changed when models change.
+  not share personal information (Google's terms for unpaid use say human reviewers may read the chats, and that the API
+  is for people 18 or older). Tell the learner to restrict the key to the Gemini API in AI Studio and never to turn on
+  billing, so only the free tier can be used. Google advises a backend proxy for keys in web apps; this app has no
+  server, so say plainly that the key is safe only on the learner's own device. A model field defaults to a current
+  free Flash model and can be changed when models change.
 - **8.2 Conversation.** Voice or text. The tutor speaks at the learner's level (from the skill levels or the path
   section): short replies, words the learner knows plus a few new ones, one question back each turn. After each learner
   turn: at most two corrections, shown as the learner's sentence and the better one, with a one-line Thai reason. Tap
