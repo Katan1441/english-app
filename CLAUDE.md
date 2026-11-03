@@ -18,8 +18,10 @@ who is learning English from below A1. Everything the learner sees is in Thai; E
   other units are rows (`data-act="p-unit"`). Every circle has a short label (`.pn-l`); tapping one opens a sheet (what it
   is, minutes, what you will do; `#sheet`, `#p-start`). A "เรียนต่อ" button above the menu (`#p-go`) starts the next lesson
   in one tap; when words are due a card (`#p-due`) reviews them like a lesson (a node that is not on the path, `virt`,
-  nothing stored). The header has `#p-prefs` (settings) and `#open-me`. A unit banner has "ไวยากรณ์" (its grammar lesson)
-  and, on units ahead, "ทดสอบข้าม" (its checkpoint). First run with no progress: three questions
+  nothing stored). The header has `#p-prefs` (settings) and `#open-me`. Each drawn unit is a `section.punit#unit-N`: its
+  banner (`.ubanner`, sticky while its circles scroll by) shows "ทำแล้ว x จาก y บท" and has "ไวยากรณ์" (its grammar lesson)
+  and, on units ahead, "ทดสอบข้าม" (its checkpoint); a trail (`pathTrail`, an SVG drawn after layout and on resize) links
+  the circles, teal where walked, grey ahead. First run with no progress: three questions
   (`#ob-why-*`, `#ob-min-*`, `#ob-zero` / `#ob-check` → level check → `#p-place`), then the first node opens. Existing
   learners see a one-time note (`UI.pn`).
 - **A node runs as parts** (`PRUN`, `nodeParts`): a word stage = its three steps in a row; a grammar lesson = the lesson
