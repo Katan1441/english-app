@@ -299,7 +299,7 @@ const DAY = Math.floor((Date.now() - new Date().getTimezoneOffset() * 60000) / 8
   check(pr.k['2'][0] === 12 && pr.k['2'][1] === 12, 'test-out result stored ' + JSON.stringify(pr.k));
   xp = await page.evaluate(() => +document.getElementById('xp-up').getAttribute('data-xp'));
   check(xp === 12 + 20 + 10 + 5, 'checkpoint XP: 12 right + 20 passed + 10 + 5 = 47: ' + xp);
-  check(await page.evaluate(() => !!document.querySelector('.confetti')), 'a finished unit gets confetti');
+  check(await page.evaluate(() => !!document.querySelector('.speedfx')), 'a finished unit gets the speed-line burst');
   await page.click('#p-back');
   check((await cur(page)) === 'k:1' && /ผ่านแล้ว/.test(await txt(page, '#unit-2')), 'unit 2 passed, unit 1 still waits for its checkpoint');
   await page.click('.pnode.cur'); await page.click('#p-start');

@@ -35,7 +35,8 @@ def app(html):
     head, body = html[:i], html[i:]
     return ('<!doctype html>\n<html lang="th">\n<head>\n<meta charset="utf-8">\n'
             '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n'
-            '<meta name="theme-color" content="#0B8A7E">\n'
+            '<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">\n'
+            '<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">\n'
             '<meta name="robots" content="noindex">\n'
             '<link rel="manifest" href="manifest.webmanifest">\n'
             '<link rel="icon" type="image/png" href="icons/icon-192.png">\n'

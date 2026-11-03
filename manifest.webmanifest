@@ -1,14 +1,14 @@
 {
  "name": "ฝึกภาษาอังกฤษ",
  "short_name": "ฝึกอังกฤษ",
- "description": "ศัพท์ 3,600 คำ ไวยากรณ์ 64 บท เรื่องอ่าน-ฟัง 30 เรื่อง พร้อมเสียง ใช้แบบออฟไลน์ได้",
+ "description": "ศัพท์ 3,600 คำ ไวยากรณ์ 64 บท เรื่องอ่าน-ฟัง 48 เรื่อง พร้อมเสียง ใช้แบบออฟไลน์ได้",
  "lang": "th",
  "start_url": "./",
  "scope": "./",
  "display": "standalone",
  "orientation": "portrait",
- "background_color": "#F1F7F5",
- "theme_color": "#0B8A7E",
+ "background_color": "#FFFFFF",
+ "theme_color": "#FFFFFF",
  "icons": [
   {
    "src": "icons/icon-192.png",

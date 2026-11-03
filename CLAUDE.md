@@ -21,7 +21,7 @@ who is learning English from below A1. Everything the learner sees is in Thai; E
   nothing stored). The header has `#p-prefs` (settings) and `#open-me`. Each drawn unit is a `section.punit#unit-N`: its
   banner (`.ubanner`, sticky while its circles scroll by) shows "ทำแล้ว x จาก y บท" and has "ไวยากรณ์" (its grammar lesson)
   and, on units ahead, "ทดสอบข้าม" (its checkpoint); a trail (`pathTrail`, an SVG drawn after layout and on resize) links
-  the circles, teal where walked, grey ahead. First run with no progress: three questions
+  the circles, a screentone ribbon where walked, dotted ahead. First run with no progress: three questions
   (`#ob-why-*`, `#ob-min-*`, `#ob-zero` / `#ob-check` → level check → `#p-place`), then the first node opens. Existing
   learners see a one-time note (`UI.pn`).
 - **A node runs as parts** (`PRUN`, `nodeParts`): a word stage = its three steps in a row; a grammar lesson = the lesson
@@ -52,7 +52,7 @@ who is learning English from below A1. Everything the learner sees is in Thai; E
 - Answer panel slides up from the bottom after each answer; short answer sounds (oscillators) and confetti;
   settings (auto voice, answer sounds, vibration, text size, XP goal), backup code, offline sound download. The listening
   question has "ตอนนี้ฟังไม่ได้" (`#no-listen`): the rest of that round shows the word, not scored, not wrong.
-- **ฝึกพูด (speaking)**: a mango mic button (`micBtn`, `data-act="sp-open"`) next to every word, example sentence,
+- **ฝึกพูด (speaking)**: an inked mic button (`micBtn`, `data-act="sp-open"`) next to every word, example sentence,
   flash card, grammar example and story line opens the speaking panel (`Spk`, `#spk`). Speech recognition
   (`SpeechRecognition`/`webkitSpeechRecognition`, `en-US`) hears the learner; `spGrade` marks each word green or red
   (contractions, numbers and hyphens are normalised; best of up to 5 guesses). The voice is recorded at the same time
@@ -131,10 +131,29 @@ in light and dark: no horizontal scroll (the tests check this too).
 
 ## Design
 
-Teal primary (`--primary`), one loud mango card per screen (`.today`; on the path it is the current node and its "เริ่ม"
-bubble), chunky buttons with a pressed edge, Mitr for
-headings, Anuphan for Thai text, Lexend for English. Colours only through the tokens at the top of the CSS (light block,
-then two dark blocks). Thai copy: short, plain, no emoji.
+Black-and-white manga (the owner's choice, 3 Nov 2026; rules and three mockups in `design/manga/`). Every new screen
+uses this look.
+
+- **Colour** only through the tokens at the top of the CSS (light block, then two dark blocks): `--paper`, `--ink`,
+  `--ink-soft` and `--ink-mute` (grey text, at least 4.5:1), `--tone-1` to `--tone-3` (greys), `--shade`, and the
+  patterns `--dots` (screentone), `--hatch` and `--hatch-up`. Dark mode is white ink on black paper, same patterns.
+- **Ink**: outlines of about 3 px, hard offset shadows (`5px 5px 0` ink), no soft shadows. `.btn` is ink with a grey
+  pressed edge, `.btn.ghost` is paper with an ink edge.
+- **Tones** mark emphasis and never sit behind text: the current circle's halo, the unit banner's corner, the checkpoint
+  ring, progress fills, the walked trail, the hatched strip on top of `.today` (the one loud panel per screen; on the
+  path the loud thing is the current circle with its "เริ่ม" bubble).
+- **Right and wrong** never rely on grey alone: a drawn ○ (`MK_O`; `MARK_OK` rings the right choice), ✕ (`MK_X`,
+  `MARK_NO`, with a dashed edge and struck-through text on the wrong pick) and △ (`MK_TRI`, nearly right). Speaking marks
+  heard words bold and underlined, missed words struck through; its result line gets the same marks.
+- **Bubbles** (`.bubble`, Mali, with a tail): what the cast says in the answer panel (`sayHtml`, keeps `#praise`), the
+  "เริ่ม" bubble, toasts, the end screen's note, and dialogue lines (`.line.sp-a` / `.sp-b`); narration is a square box.
+- **The cast**: original ink faces in `FACE` (Ploy, Ton, Anna, Khun Mint, and `other` for anyone else), drawn with the
+  classes `fo` / `fi` / `fl` / `fp` so they follow the tokens; `storyCast` picks a story's people (Ploy narrates the
+  `f1` stories, Ton the `m1` ones), `castNow` the one who talks in the answer panel. Keep them simple and original.
+- **Celebration**: speed lines and an impact burst (`celebrate()` → `.speedfx`, `BURST`; the end screen's `.pend-fx`),
+  nothing with reduced motion.
+- **Type**: Kanit 700–900 for headings, numbers and sound words, Mali in bubbles, Anuphan for Thai text, Lexend for
+  English. Thai copy: short, plain, no emoji.
 
 ## Ideas the owner and Claude discussed, in order (the full plan is `ROADMAP.md`)
 

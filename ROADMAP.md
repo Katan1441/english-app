@@ -6,6 +6,7 @@
 
 - **ขั้น 1 ฝึกพูด** (เสร็จแล้ว): ปุ่มไมค์ที่ประโยค พูดแล้วแอปบอกว่าคำไหนถูก
 - **ขั้น 2 เส้นทางแบบ Duolingo** (เสร็จแล้ว): บทเรียนเป็นวงกลมเรียงเป็นทางเดียว กดวงถัดไปได้เลยไม่ต้องคิด มี XP เป้า XP ต่อวัน ภารกิจประจำวัน 3 อย่าง หน้าสรุปตอนจบบท และนับข้อที่ถูกติดกัน
+- **หน้าตาแบบมังงะขาวดำ** (เสร็จแล้ว): เส้นหมึก ลายสกรีนโทน วง ○ เมื่อตอบถูก กากบาท ✕ เมื่อตอบผิด ตัวละครพูดในกรอบคำพูด
 - **ขั้น 3 ฝึกและสร้างนิสัย**: หน้า "ฝึก" รวมคำและข้อที่ผิดบ่อย ฟังแล้วพิมพ์ จับคู่แข่งเวลา วันพักกันสถิติหาย ต้อนรับตอนกลับมาเรียน เหรียญรางวัล ตั้งเตือนในปฏิทิน และเซฟสำรองเป็นไฟล์
 - **ขั้น 4 เนื้อหาให้ครบ** (ทำแล้วบางส่วน: เรื่องอ่านใหม่ 18 เรื่อง): ฝึกเสียงที่คนไทยพูดยาก บทสนทนาที่เราเล่นเป็นตัวละคร แบบฝึกหาที่ผิดในประโยค เรื่องอ่านเพิ่ม 18 เรื่อง (B1–B2) งานเขียนสั้นๆ และศัพท์งานกับเทคโนโลยี
 - **ขั้น 5 ปรับตามผู้เรียน**: ความยากพอดี (ตอบถูกราว 85%) คำที่จำได้แล้วเว้นช่วงทบทวนนานขึ้น ระดับ CEFR แยกตามทักษะ และสอบผ่านระดับพร้อมใบผ่าน
@@ -33,7 +34,7 @@
 | :- | :- | :- |
 | 1 | Speaking practice (`CLAUDE.md` idea 1) | done (3 Nov 2026) |
 | 2 | Learning path, XP, daily quests, end-of-lesson screen, combo | done (3 Nov 2026), see "As built" under Phase 2 |
-| M | Black-and-white manga look (`design/manga/README.md`), before phase 3 | todo |
+| M | Black-and-white manga look (`design/manga/README.md`), before phase 3 | done (3 Nov 2026): see the Design section of `CLAUDE.md` |
 | 3 | Practice tab, mistakes review, dictation, match race, streak protection, comeback, badges, reminders, backup file | todo |
 | 4 | Content: Thai-speaker sounds, role-play dialogues, error-correction drills, 18 stories, writing tasks, work and technology words | partly done (3 Nov 2026): 4.4 stories done; 4.1, 4.2, 4.3, 4.5, 4.6 left |
 | 5 | Adaptive difficulty, longer reviews for known words, skill levels, level exit tests with certificate | todo |
@@ -118,7 +119,7 @@
 ### 2.2 Path screen
 
 - Becomes the landing tab "เรียน". The header shows the streak (flame and number), today's XP against the daily goal (small
-  ring) and the quests button. Only one mango element per screen: the current node's "เริ่ม" bubble.
+  ring) and the quests button. Only one loud element per screen: the current node's "เริ่ม" bubble (mango then, ink since the manga look).
 - Nodes are 64 px circles (current one 76 px) with the same pressed edge as buttons, sideways offset in a gentle wave
   (0, 44, 64, 44, 0, −44, −64, −44 px, kept inside 320 px). Each unit starts with a banner: level chip (A1), unit number, Thai
   title, and a "คู่มือ" button that opens the related grammar explanation.
