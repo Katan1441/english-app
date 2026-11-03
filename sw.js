@@ -3,7 +3,7 @@
    - Sound files: kept whole in the cache the first time they are used (or all at once from Settings) and then served
      from there, including the parts of a file the page asks for, so the app works without internet.
    - Fonts from Google Fonts: cached after the first visit. */
-const VERSION = '0aae4d1af3';
+const VERSION = 'd9f6562a00';
 const SHELL = 'shell-' + VERSION;
 const AUDIO = 'audio-v1';
 const FONTS = 'fonts-v1';

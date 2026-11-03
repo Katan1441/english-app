@@ -98,7 +98,9 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const sp = (page) => page.evaluate(() => window.__sp);
   const say = (page, cfg) => page.evaluate((c) => { window.__sr = c; }, cfg);
   const marks = (page) => page.evaluate(() => Array.prototype.map.call(document.querySelectorAll('#spk-target span'), (s) => (s.className === 'ok' ? '+' : '-') + s.textContent));
-  const progress = (page) => page.evaluate(() => Object.keys(localStorage).filter((k) => /^vocab3000-/.test(k) && k !== 'vocab3000-ui-v1').sort().map((k) => k + '=' + localStorage.getItem(k)).join('\n'));
+  // learning records apart from settings and XP (saying a sentence right earns XP, nothing else)
+  const progress = (page) => page.evaluate(() => Object.keys(localStorage).filter((k) => /^vocab3000-/.test(k) && k !== 'vocab3000-ui-v1' && k !== 'vocab3000-xp-v1').sort().map((k) => k + '=' + localStorage.getItem(k)).join('\n'));
+  const xpNow = (page) => page.evaluate(() => { const x = JSON.parse(localStorage.getItem('vocab3000-xp-v1') || '{}'), t = String(Math.floor((Date.now() - new Date().getTimezoneOffset() * 60000) / 86400000)); return { d: (x.d || {})[t] || 0, s: (x.s || {})[t] || 0 }; });
   // a mic button on the page for any text, the way the app writes them
   const micFor = (page, text, kind) => page.evaluate(([t, k]) => {
     const old = document.getElementById('test-mic'); if (old) old.remove();
@@ -165,11 +167,13 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   check(!(await has(page, '#spk')), 'tap outside closes the panel');
   await say(page, { say: ['x'], hold: true });
   await page.click('#line-1 .mic'); await page.click('#spk-mic'); await sleep(100);
-  await page.evaluate(() => { document.querySelector('.tab[data-tab="today"]').click(); });
+  await page.evaluate(() => { document.querySelector('.tab[data-tab="path"]').click(); });
   await sleep(100);
   st = await sp(page);
   check(!(await has(page, '#spk')) && st.aborts >= 1 && st.tracksLive === 0, 'leaving the page stops listening and closes the panel ' + JSON.stringify(st));
   check((await progress(page)) === before, 'speaking leaves progress untouched');
+  const xp1 = await xpNow(page);
+  check(xp1.s === 1 && xp1.d === 2, 'a line said right earns 2 XP once per opening of the panel, retries do not add more ' + JSON.stringify(xp1));
   await ctx.close();
 
   /* 2. how words are compared: contractions, numbers, punctuation, case, best of several guesses */

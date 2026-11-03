@@ -11,8 +11,26 @@ who is learning English from below A1. Everything the learner sees is in Thai; E
 
 ## What is in the app
 
-- **วันนี้ (Today)**, the landing tab: daily checklist (review due words, new-word steps up to a daily goal, one grammar
-  round, one story), streak and 7-day strip, progress tiles, level check, settings.
+- **เรียน (the path)**, the landing tab (`data-tab="path"`, view `path`): one learning path built at runtime from the
+  existing content (`pathBuild`, no new lesson data), 1,484 nodes in 82 units over the levels A1–B2. Header: streak,
+  today's XP against the goal (ring), quests button, and `#open-me` for the **ฉัน** screen (view `me`: streak card with the
+  7-day strip, quests, progress tiles, `#open-level`, `#open-prefs`). Only the current unit and two on each side are drawn;
+  other units are rows (`data-act="p-unit"`). Tapping a node opens a sheet (`#sheet`, `#p-start`); a unit banner has
+  "คู่มือ" (its grammar lesson) and "ทดสอบข้าม" (its checkpoint). First run with no progress: three questions
+  (`#ob-why-*`, `#ob-min-*`, `#ob-zero` / `#ob-check` → level check → `#p-place`), then the first node opens. Existing
+  learners see a one-time note (`UI.pn`).
+- **A node runs as parts** (`PRUN`, `nodeParts`): a word stage = its three steps in a row; a grammar lesson = the lesson
+  text (path mode) then its 10 questions; a story = "คำใหม่ในเรื่องนี้" (`p-words`) then the story; a say-along
+  (`p-say`, needs speech recognition) = 3–5 story lines said with the speaking panel; a review = due words plus missed
+  grammar questions; a checkpoint = 12 questions from the unit (words, grammar, one listening item), pass at 80%.
+  The close button asks in the app (`#dlg`); a combo chip (`#combo`) and praise show at 3, 5, 10, 15, 20 right in a row;
+  `navigator.vibrate` on answers (setting "สั่นเมื่อตอบ", `UI.vib`); the end screen (`p-end`) shows XP (counts up),
+  accuracy, time, best run, "เต็ม" at 100%, "ต่อไป" / "กลับเส้นทาง"; confetti only for a perfect node, a passed unit or a
+  finished level.
+- **XP and quests**: +1 per answer right the first time (anywhere), +10 per node finished, +5 when perfect, +15 per story,
+  +20 per checkpoint passed, +2 per sentence said right (once per opening of the speaking panel). Daily XP goal
+  10/20/30/50 (`UI.xg`). Three quests a day (`questsFor(day)`: the XP goal plus a pair picked from the day number);
+  all three done → `DAYS[t][5] = 1` and a toast.
 - **คำศัพท์**: 3,600 words in 55 topics (group A basics first, then 36 topics from the Oxford 3000 PDF, group C last),
   sets of 10, nine practice steps per set, spaced review, search, Thai readings with the stressed syllable marked.
 - **ไวยากรณ์**: 64 lessons (A1 18, A2 18, B1 16, B2 12), each with explanation, patterns, examples with sound,
@@ -20,18 +38,19 @@ who is learning English from below A1. Everything the learner sees is in Thai; E
 - **อ่าน-ฟัง**: 30 graded stories/dialogues (A1 12, A2 12, B1 6) with a clip per line, play-all with line highlight,
   tap any word for its meaning (dictionary + word forms + glossary), 3 questions each.
 - Answer panel slides up from the bottom after each answer; short answer sounds (oscillators) and confetti;
-  settings (auto voice, answer sounds, text size, daily goal), backup code, offline sound download.
+  settings (auto voice, answer sounds, vibration, text size, XP goal), backup code, offline sound download. The listening
+  question has "ตอนนี้ฟังไม่ได้" (`#no-listen`): the rest of that round shows the word, not scored, not wrong.
 - **ฝึกพูด (speaking)**: a mango mic button (`micBtn`, `data-act="sp-open"`) next to every word, example sentence,
   flash card, grammar example and story line opens the speaking panel (`Spk`, `#spk`). Speech recognition
   (`SpeechRecognition`/`webkitSpeechRecognition`, `en-US`) hears the learner; `spGrade` marks each word green or red
   (contractions, numbers and hyphens are normalised; best of up to 5 guesses). The voice is recorded at the same time
   (MediaRecorder) for "ฟังเสียงตัวเอง"; if the phone cannot share the mic, it listens again without recording.
-  No recognition → explained in Thai, recording only. Optional: it saves nothing and is not logged in today's activity
-  (the days record has a fixed format).
+  No recognition → explained in Thai, recording only. A sentence said right (80% of its words heard, all of a short one)
+  earns 2 XP and counts in `XP.s` for the day; nothing else is saved and the days record is not touched.
 
 ## Files
 
-- `src/trainer.src.html` — the whole app in one file: CSS, markup slots and JavaScript (≈3,000 lines).
+- `src/trainer.src.html` — the whole app in one file: CSS, markup slots and JavaScript (≈4,200 lines).
 - `src/data/vocab.js` (topics and words), `src/data/gram.json` (grammar), `src/data/read.json` (stories and word tables),
   `src/data/audio-index.json` (frame counts of every clip in every sound file, file names).
 - `src/build.py` → writes `index.html` (page + data + app head) and `sw.js` (from `src/sw.template.js` with a new version).
@@ -50,13 +69,15 @@ python3 src/build.py
 python3 src/build.py --plain /tmp/app/vocab-trainer.html && cp -r audio /tmp/app/audio
 node src/tests/t2.js /tmp/app /tmp/app/shots     # vocabulary: 9 steps, review, sound fallbacks, saving
 node src/tests/gt2.js /tmp/app /tmp/app/gshots   # grammar: all 64 lessons
-node src/tests/t3.js /tmp/app /tmp/app/shots3    # today, answer panel, settings, reading, level check, backup code
+node src/tests/t3.js /tmp/app /tmp/app/shots3    # path tab and me screen, answer panel, settings, reading, level check, backup
 node src/tests/sp.js /tmp/app /tmp/app/spshots   # speaking: mic buttons, word marking, errors, recording, layout
+node src/tests/t4.js /tmp/app /tmp/app/pshots    # path: first run, nodes, XP, combo, quests, checkpoints, backup, layout
 node src/tests/pwatest.js .                      # app from a sub-path, service worker, all sound offline
 ```
 
 Chromium is expected at `/opt/pw-browsers/chromium`, or set `CHROMIUM` to a browser path (on Windows also pass
-`C:\...` folders to the tests, not `/c/...`); `NODE_PATH` must reach `playwright`. Tests click by ids and
+`C:\...` folders to the tests, not `/c/...`); `NODE_PATH` must reach `playwright`. Run the suites one after another,
+not in parallel: some checks wait a fixed time and fail on a busy machine. Tests click by ids and
 `data-act` values — keep them, or update the tests in the same change. Check the layout at 390 px and 320 px wide,
 in light and dark: no horizontal scroll (the tests check this too).
 
@@ -65,13 +86,20 @@ in light and dark: no horizontal scroll (the tests check this too).
 - Progress lives only in this browser's localStorage. **Never rename these keys or change their record formats**:
   `vocab3000-progress-v1` (`{w: {n: [level 0-5, due day, last right day, last wrong day, time]}, s: {"topic-set": step bits}}`),
   `vocab3000-ui-v1`, `vocab3000-grammar-v1` (`{l: {lessonId: [best, total, time]}, x: {questionId: misses}}`),
-  `vocab3000-days-v1` (`{day: [review, vocab steps, grammar, stories, level checks, perfect]}`),
-  `vocab3000-read-v1` (`{storyId: [best, total, time]}`), `vocab3000-level-v1` (list of results).
-  Days are `Math.floor((local ms) / 86400000)`.
+  `vocab3000-days-v1` (`{day: [review, vocab steps, grammar, stories, level checks, perfect]}`; "perfect" now means all
+  three quests done), `vocab3000-read-v1` (`{storyId: [best, total, time]}`), `vocab3000-level-v1` (list of results),
+  `vocab3000-xp-v1` (`{d: {day: XP}, c: {day: best run}, p: {day: perfect path nodes}, s: {day: sentences said right},
+  b: 1}`; `b` marks the one-time estimate of past days from the days record),
+  `vocab3000-path-v1` (`{k: {unitNo: [best, total, time]}, x: {reviewNo: day}, t: {storyId: [said, lines, time]}, s: start
+  level index}`). Days are `Math.floor((local ms) / 86400000)`.
+- **Path node ids are stable**: `v:<topic>.<set>.<stage>`, `g:<lessonId>`, `r:<storyId>`, `t:<storyId>`, `x:<n>`,
+  `k:<unitNo>`. Done comes from existing records (step bits, `gPassed`, `rDone`) plus the path key; never write fake
+  progress to mark a node done. Changing `pathBuild` changes unit numbers and review numbers that the path key stores, so
+  add new kinds of nodes inside the existing units (phase 4) rather than re-cutting them, and topics 56+ go into B1.
 - Word numbers `n`, topic indexes and step bits are fixed: topics 37-55 were appended after the first 36, and the display
   order (`ORD`) differs from the data order. Add new words or topics only at the end.
-- The backup code (`EN1:` + base64 JSON of the documents `cNN`, `gram`, `days`, `read`, `level`) must keep working;
-  restoring merges and never lowers progress (`Sync.merge`).
+- The backup code (`EN1:` + base64 JSON of the documents `cNN`, `gram`, `days`, `read`, `level`, `xp`, `path`) must keep
+  working, also for old codes without the last two; restoring merges and never lowers progress (`Sync.merge`, `EXTRA`).
 - `Sync` (account saving) and `AI` (sentence check by Claude) only exist inside claude.ai; on GitHub Pages they stay off
   and the app saves locally and offers the self-check. Keep both paths working.
 
@@ -87,13 +115,14 @@ in light and dark: no horizontal scroll (the tests check this too).
 
 ## Design
 
-Teal primary (`--primary`), one loud mango card per screen (`.today`), chunky buttons with a pressed edge, Mitr for
+Teal primary (`--primary`), one loud mango card per screen (`.today`; on the path it is the current node and its "เริ่ม"
+bubble), chunky buttons with a pressed edge, Mitr for
 headings, Anuphan for Thai text, Lexend for English. Colours only through the tokens at the top of the CSS (light block,
 then two dark blocks). Thai copy: short, plain, no emoji.
 
-## Ideas the owner and Claude discussed, in order
+## Ideas the owner and Claude discussed, in order (the full plan is `ROADMAP.md`)
 
-1. **ฝึกพูด (speaking)** — done (see "What is in the app"); a later step could count speaking rounds under a new key.
+1. **ฝึกพูด (speaking)** — done (see "What is in the app"); sentences said right are counted in `XP.s` (phase 2).
    The original note: the biggest gap left. Now that the app runs outside claude.ai, Chrome on Android offers
    speech recognition (`webkitSpeechRecognition`, `lang: 'en-US'`) and the microphone. Add a mic button to story lines,
    grammar examples and word cards: the learner says the sentence, show what was heard word by word (right words green,

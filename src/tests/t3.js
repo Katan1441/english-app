@@ -74,7 +74,7 @@ const fails = [];
 function check(ok, msg) { if (!ok) { fails.push(msg); console.log('FAIL', msg); } }
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-// t3: the parts added in version 11 — today tab, answer panel, sounds, settings, reading and listening, level check, saving.
+// t3: the path tab and the me screen (streak, week), answer panel, sounds, settings, reading and listening, level check, saving.
 (async () => {
   await new Promise((r) => server.listen(0, '127.0.0.1', r));
   const base = 'http://127.0.0.1:' + server.address().port + '/wrapped.html';
@@ -103,17 +103,22 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const txt = (page, sel) => page.evaluate((s) => { const e = document.querySelector(s); return e ? e.textContent.trim() : null; }, sel);
   const overflow = (page) => page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
 
-  /* 1. a first visit opens on today */
+  /* 1. a first visit opens on the path tab with the first-run questions; skipping them shows the path */
   let { ctx, page } = await open({ touch: true });
-  check(/วันนี้/.test(await txt(page, '#app h1')), 'opens on the today tab');
-  check(await has(page, '.tab[data-tab="today"][aria-current="page"]'), 'today tab marked');
-  check((await page.$$('.plan li')).length === 4 && !(await has(page, '.plan li.done#plan-voc')), 'today: four tasks, words not done yet');
-  check(/0/.test(await txt(page, '.streak-n')), 'today: streak starts at 0');
-  check(await overflow(page) <= 0, 'today overflow');
-  await page.screenshot({ path: path.join(shots, 't-today.png'), fullPage: true });
-  // learn: the words button goes to the next set; one step done counts for today
-  await page.click('#today-voc');
-  check(await has(page, '#start-next'), 'today -> set view');
+  check(/เรียนเพื่ออะไร/.test(await txt(page, '#app h1')), 'opens on the first-run questions');
+  check(await has(page, '.tab[data-tab="path"][aria-current="page"]'), 'path tab marked');
+  check(await overflow(page) <= 0, 'first-run overflow');
+  await page.click('#ob-skip');
+  check(/เรียน/.test(await txt(page, '#app h1')) && await has(page, '.pnode.cur[data-id="v:36.0.0"]'), 'path: the first node is next');
+  check(/^0/.test(await txt(page, '#p-streak .pstat-t')), 'path: streak starts at 0');
+  await page.click('#p-quests');
+  check((await page.$$('#sheet .quest')).length === 3 && !(await has(page, '#sheet .quest.done#quest-xp')), 'path: three quests, XP goal not reached yet');
+  await page.click('#p-close');
+  check(await overflow(page) <= 0, 'path overflow');
+  await page.screenshot({ path: path.join(shots, 't-path.png'), fullPage: true });
+  // learn in the words tab: one step done counts for today
+  await page.click('.tab[data-tab="vocab"]'); await page.click('#resume');
+  check(await has(page, '#start-next'), 'words tab -> set view');
   await page.click('#start-next'); await page.waitForSelector('#card');
   for (let i = 0; i < 40 && (await has(page, '#card')); i++) {
     if (await has(page, '#reveal')) await page.click('#reveal');
@@ -123,10 +128,12 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const days = await page.evaluate(() => JSON.parse(localStorage.getItem('vocab3000-days-v1') || '{}'));
   const dk = Object.keys(days);
   check(dk.length === 1 && days[dk[0]][1] === 1, 'activity: one vocabulary step logged ' + JSON.stringify(days));
-  await page.click('.tab[data-tab="today"]');
-  check(/1/.test(await txt(page, '.streak-n')) && await has(page, '.day.now.on'), 'streak 1 and today marked in the week');
+  await page.click('.tab[data-tab="path"]');
+  check(/^1/.test(await txt(page, '#p-streak .pstat-t')), 'path: streak 1');
+  await page.click('#open-me');
+  check(/1/.test(await txt(page, '.streak-n')) && await has(page, '.day.now.on'), 'me: streak 1 and today marked in the week');
   // the answer panel: e2t step
-  await page.click('#today-voc'); await page.click('#start-next'); await page.waitForSelector('#card');
+  await page.click('.tab[data-tab="vocab"]'); await page.click('#resume'); await page.click('#start-next'); await page.waitForSelector('#card');
   await page.click('#opt-0'); await page.waitForSelector('#sheet'); await sleep(450);
   const sh = await page.evaluate(() => { const s = document.getElementById('sheet'), r = s.getBoundingClientRect(), n = document.getElementById('next-btn').getBoundingClientRect(); return { fixed: getComputedStyle(s).position, bottom: Math.round(r.bottom), vh: window.innerHeight, nextVisible: n.bottom <= window.innerHeight && n.top >= 0, pad: parseInt(document.getElementById('app').style.paddingBottom, 10) || 0, h: Math.round(r.height) }; });
   check(sh.fixed === 'fixed' && sh.bottom === sh.vh && sh.nextVisible && sh.pad >= sh.h, 'answer panel at the bottom, next button visible, page keeps room ' + JSON.stringify(sh));
@@ -137,18 +144,18 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   await page.click('#quit');
   await ctx.close();
 
-  /* 2. settings: sounds off, bigger text, goal */
+  /* 2. settings: sounds off, bigger text, XP goal */
   ({ ctx, page } = await open({}));
-  await page.click('#open-prefs');
-  check(await has(page, '#pref-fx-0') && await has(page, '#pref-fs-125') && await has(page, '#pref-goal-18'), 'settings shown');
-  await page.click('#pref-fx-0'); await page.click('#pref-fs-125'); await page.click('#pref-goal-5');
+  await page.click('#ob-skip'); await page.click('#open-me'); await page.click('#open-prefs');
+  check(await has(page, '#pref-fx-0') && await has(page, '#pref-fs-125') && await has(page, '#pref-xg-50') && await has(page, '#pref-vib-0'), 'settings shown');
+  await page.click('#pref-fx-0'); await page.click('#pref-fs-125'); await page.click('#pref-xg-10');
   const ui = await page.evaluate(() => JSON.parse(localStorage.getItem('vocab3000-ui-v1')));
-  check(ui.fx === false && ui.fs === 125 && ui.goal === 5, 'settings saved ' + JSON.stringify(ui));
+  check(ui.fx === false && ui.fs === 125 && ui.xg === 10 && ui.goal === 9, 'settings saved, the old words goal kept as it was ' + JSON.stringify(ui));
   check(await page.evaluate(() => document.documentElement.style.fontSize) === '125%', 'text size applied');
   check(await overflow(page) <= 0, 'settings overflow at large text');
   await page.screenshot({ path: path.join(shots, 't-prefs.png'), fullPage: true });
   await page.click('.crumb .back');
-  check(/จาก 5 ขั้น/.test(await txt(page, '#plan-voc')), 'goal shown on today: ' + await txt(page, '#plan-voc'));
+  check(/10 XP/.test(await txt(page, '#quest-xp')) && /เป้า 10 XP/.test(await txt(page, '#me-xp')), 'XP goal shown on the me screen: ' + await txt(page, '#quest-xp'));
   await page.reload(); await page.waitForSelector('#app h1');
   check(await page.evaluate(() => document.documentElement.style.fontSize) === '125%', 'text size kept after reload');
   // with answer sounds off no oscillator starts
@@ -216,13 +223,14 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   await page.click('[data-act="r-wclose"]');
   await page.click('.line:nth-child(9) .tw[data-w="9"]');   // "back" in "took the train back" -> phrase or word
   check(await has(page, '#wsheet .went') || /ไม่มีคำนี้/.test(await txt(page, '#wsheet')), 'any word gives an answer');
-  await page.click('.tab[data-tab="today"]');
-  check(await has(page, '#plan-read.done'), 'today: reading task done');
+  await page.click('.tab[data-tab="path"]'); await page.click('#open-me');
+  const tiles = await page.evaluate(() => Array.from(document.querySelectorAll('.tile b')).map((b) => b.textContent));
+  check(tiles.indexOf('1/30') >= 0, 'me: stories read counted ' + tiles.join(' | '));
   await ctx.close();
 
   /* 4. level check */
   ({ ctx, page } = await open({}));
-  await page.click('#open-level');
+  await page.click('#ob-skip'); await page.click('#open-me'); await page.click('#open-level');
   await page.click('#lvl-start'); await page.waitForSelector('#card');
   const n = await page.evaluate(() => document.querySelector('.count').textContent);
   check(/3[0-9]/.test(n), 'level check has about 36 questions: ' + n);
@@ -234,7 +242,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   check(Array.isArray(lv) && lv.length === 1 && lv[0].o === 'pre' && lv[0].v === 0, 'level result saved ' + JSON.stringify(lv));
   await page.screenshot({ path: path.join(shots, 't-level.png'), fullPage: true });
   await page.click('.crumb .back');
-  check(/ก่อน A1/.test(await txt(page, '#open-level')), 'today shows the level');
+  check(/ก่อน A1/.test(await txt(page, '#open-level')), 'me shows the level');
   await page.waitForTimeout(3600);
   const db = await page.evaluate(() => JSON.parse(localStorage.getItem('__mockdb') || '{}'));
   const keys = Object.keys(db).map((k) => k.split('/').pop());
@@ -244,6 +252,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   /* 5. the account copy wins on a fresh device: days, stories, level */
   ({ ctx, page } = await open({ store: { '__mockdb': JSON.stringify({ 'data/users/u_test1234567890abcdefgh/days': { v: 1, d: { [String(Math.floor((Date.now() - new Date().getTimezoneOffset() * 60000) / 86400000) - 1)]: [1, 9, 1, 0, 0, 1] } }, 'data/users/u_test1234567890abcdefgh/read': { v: 1, r: { r2: [2, 3, 1000] } }, 'data/users/u_test1234567890abcdefgh/level': { v: 1, h: [{ t: 20000, o: 'A1', v: 800, vl: 'A1', gl: 'A1', g: [3, 1, 0, 0], gt: [5, 5, 5, 5] }] } }) } }));
   await sleep(600);
+  await page.click('#open-me');
   check(/1/.test(await txt(page, '.streak-n')) && /A1/.test(await txt(page, '#open-level')), 'streak and level came from the account: ' + await txt(page, '.streak-n') + ' / ' + await txt(page, '#open-level'));
   await page.click('.tab[data-tab="read"]');
   await page.evaluate(() => document.querySelectorAll('details.group').forEach((d) => { d.open = true; }));
@@ -252,7 +261,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
   /* 6. dark, narrow phone: today and a story fit */
   ({ ctx, page } = await open({ dark: true, viewport: { width: 320, height: 640 } }));
-  check(await overflow(page) <= 0, 'today overflow at 320');
+  check(await overflow(page) <= 0, 'first-run overflow at 320');
   await page.click('.tab[data-tab="read"]'); await page.click('#r-resume');
   check(await overflow(page) <= 0, 'story overflow at 320');
   await page.screenshot({ path: path.join(shots, 't-story-dark.png') });
@@ -263,12 +272,12 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
     const t7 = Math.floor((Date.now() - new Date().getTimezoneOffset() * 60000) / 86400000);
     const w7 = { 3001: [2, t7 + 1, t7 - 1, 0, 5000], 3002: [1, t7, t7 - 2, 0, 5001] };
     ({ ctx, page } = await open({ store: { 'vocab3000-progress-v1': JSON.stringify({ w: w7, s: { '36-0': 511, '36-1': 7 } }), 'vocab3000-read-v1': JSON.stringify({ r1: [3, 3, 7000] }), 'vocab3000-days-v1': JSON.stringify({ [String(t7)]: [1, 3, 0, 1, 0, 0] }) }, flags: { __noClaude: true } }));
-    await page.click('#open-prefs'); await page.click('#bk-copy');
+    await page.click('#open-me'); await page.click('#open-prefs'); await page.click('#bk-copy');
     const code = await page.evaluate(() => document.getElementById('bk-out').value);
     check(/^EN1:[A-Za-z0-9+/=]+$/.test(code) && code.length < 4000, 'backup code made: ' + code.length + ' chars');
     await ctx.close();
     ({ ctx, page } = await open({ flags: { __noClaude: true }, store: { 'vocab3000-progress-v1': JSON.stringify({ w: { 3001: [4, t7 + 7, t7, 0, 9000] }, s: {} }) } }));
-    await page.click('#open-prefs');
+    await page.click('#open-me'); await page.click('#open-prefs');
     await page.fill('#bk-in', 'not a code'); await page.click('#bk-restore');
     check(/ไม่ถูกต้อง/.test(await txt(page, '#bk-note')), 'a wrong code is refused');
     await page.fill('#bk-in', code); await page.click('#bk-restore');
@@ -276,6 +285,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
     const pr = await page.evaluate(() => ({ p: JSON.parse(localStorage.getItem('vocab3000-progress-v1')), r: JSON.parse(localStorage.getItem('vocab3000-read-v1') || '{}'), d: JSON.parse(localStorage.getItem('vocab3000-days-v1') || '{}') }));
     check(pr.p.w[3001][0] === 4 && pr.p.w[3002][0] === 1 && pr.p.s['36-0'] === 511 && pr.r.r1 && pr.r.r1[0] === 3 && Object.keys(pr.d).length === 1, 'restored and merged, newer word record kept ' + JSON.stringify(pr));
     await page.reload(); await page.waitForSelector('#app h1');
+    await page.click('#open-me');
     check(/1/.test(await txt(page, '.streak-n')), 'streak restored');
     await ctx.close();
   }

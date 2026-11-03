@@ -63,7 +63,7 @@
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:1.0625rem;line-height:1.6;-webkit-tap-highlight-color:transparent}
 .page{max-width:640px;margin-inline:auto;padding-inline:16px;padding-block:8px calc(108px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:24px}
-body[data-view="run"] .page,body[data-view="g-run"] .page,body[data-view="lvl"] .page{padding-bottom:calc(28px + env(safe-area-inset-bottom,0px))}
+body[data-view="run"] .page,body[data-view="g-run"] .page,body[data-view="lvl"] .page,body[data-run] .page{padding-bottom:calc(28px + env(safe-area-inset-bottom,0px))}
 #app{display:flex;flex-direction:column;gap:20px;min-width:0}
 h1,h2,h3,p,ul,ol{margin:0}
 ul,ol{padding:0;list-style:none}
@@ -346,7 +346,7 @@ body[data-view]:not([data-view="home"]):not([data-view="g-home"]) .foot{display:
 .tabbar .tab{position:relative}
 .tab-badge{position:absolute;top:0;left:calc(50% + 8px);min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--sun);color:var(--on-sun);border:2px solid var(--surface);font-family:var(--f-body);font-size:.72rem;font-weight:600;line-height:18px;text-align:center;font-variant-numeric:tabular-nums}
 .tab-badge:empty{display:none}
-body[data-view="run"] .tabbar,body[data-view="g-run"] .tabbar,body[data-view="lvl"] .tabbar{display:none}
+body[data-view="run"] .tabbar,body[data-view="g-run"] .tabbar,body[data-view="lvl"] .tabbar,body[data-run] .tabbar{display:none}
 
 /* answer panel: rises from the bottom edge after an answer, with the result, the right answer and the button that moves on */
 .sheet{position:fixed;left:0;right:0;bottom:0;z-index:40;margin-inline:auto;max-width:640px;display:flex;flex-direction:column;max-height:72vh;border-radius:24px 24px 0 0;border-top:4px solid var(--line);box-shadow:0 -10px 30px var(--shade);padding:16px 16px calc(14px + env(safe-area-inset-bottom,0px));gap:12px}
@@ -376,7 +376,7 @@ body[data-view="run"] .tabbar,body[data-view="g-run"] .tabbar,body[data-view="lv
 .confetti i.c1{background:var(--sun)}.confetti i.c2{background:var(--primary)}.confetti i.c3{background:var(--good)}.confetti i.c4{background:var(--bad)}
 @keyframes fall{to{transform:translateY(105vh) rotate(540deg);opacity:.9}}
 
-/* today: streak card, the week, the plan for the day, overall progress */
+/* the me screen: streak card, the week, overall progress */
 .hello-row{display:flex;flex-direction:row;align-items:flex-start;justify-content:space-between;gap:12px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .opt.is-sel{border-color:var(--primary);background:var(--primary-wash);box-shadow:0 3px 0 var(--primary)}
@@ -398,18 +398,8 @@ body[data-view="run"] .tabbar,body[data-view="g-run"] .tabbar,body[data-view="lv
 .day.full i{background:var(--on-sun);color:var(--sun);box-shadow:0 0 0 3px var(--sun-chip)}
 .day.now i{outline:2px dashed var(--on-sun);outline-offset:2px}
 .day i svg{width:16px;height:16px}
-.plan{background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden}
-.plan li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:2px 12px;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line)}
-.plan li:last-child{border-bottom:0}
 .chk{width:34px;height:34px;border-radius:50%;border:2.5px solid var(--line);display:grid;place-items:center;color:var(--on-primary)}
 .chk svg{width:18px;height:18px;opacity:0}
-.plan li.done .chk{background:var(--good);border-color:var(--good)}
-.plan li.done .chk svg{opacity:1}
-.plan-main{min-width:0;display:flex;flex-direction:column}
-.plan-main b{font-weight:600;line-height:1.35}
-.plan-main small{color:var(--ink-soft);font-size:.84rem;overflow-wrap:anywhere}
-.plan li.done .plan-main b{color:var(--ink-soft)}
-.plan .extra{font-size:.72rem;font-weight:600;color:var(--primary);background:var(--primary-wash);border-radius:999px;padding:0 8px;margin-left:6px;vertical-align:middle}
 .tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .tile{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:12px 14px;display:flex;flex-direction:column;gap:2px;min-width:0;text-align:left}
 .tile b{font-family:var(--f-display);font-weight:500;font-size:1.45rem;line-height:1.2;font-variant-numeric:tabular-nums}
@@ -488,8 +478,88 @@ button.tile b{color:var(--primary)}
 .btn.spk-on{background:var(--bad);color:var(--on-bad);box-shadow:0 4px 0 var(--ink-soft)}
 .spk-play{display:flex;flex-wrap:wrap;gap:10px}
 .spk-play .btn{flex:1 1 9rem}
+/* learning path: a header with the streak, today's XP and the quests, then units of round nodes in a gentle wave.
+   The one mango thing on the screen is the current node with its "เริ่ม" bubble. */
+.phead{display:flex;flex-direction:column;gap:12px;min-width:0}
+.phead-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.pstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.pstat{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:0;min-height:76px;padding:6px 4px;border-radius:16px;border:2px solid var(--line);background:var(--surface);box-shadow:0 3px 0 var(--line);text-align:center}
+.pstat:active{transform:translateY(2px);box-shadow:0 1px 0 var(--line)}
+.pstat svg{width:26px;height:26px}
+.pstat-t{display:flex;flex-direction:column;align-items:center;min-width:0;max-width:100%;line-height:1.25}
+.pstat-t b{font-family:var(--f-display);font-weight:500;font-size:1.05rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pstat-t small{font-size:.72rem;font-weight:600;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.pstat .fl{display:grid;color:var(--ink-soft)}
+.pstat .fl.on{color:var(--stress)}
+.pstat .flag{display:grid;color:var(--primary)}
+.ring circle{fill:none;stroke-width:4}
+.ring .tr{stroke:var(--surface-2)}
+.ring .pg{stroke:var(--primary);stroke-linecap:round}
+.psec{display:flex;flex-direction:column;gap:14px;min-width:0}
+.psec-h{display:flex;align-items:baseline;gap:4px 10px;flex-wrap:wrap}
+.psec-h small{font-family:var(--f-body);font-size:.86rem;font-weight:400;color:var(--ink-soft)}
+.ubanner{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:center;background:var(--primary);color:var(--on-primary);border-radius:22px;padding:14px 16px;box-shadow:0 5px 0 var(--primary-deep);min-width:0;scroll-margin-top:16px}
+.ub-text{min-width:0}
+.ub-no{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;font-size:.84rem;font-weight:600}
+.ubanner h3{font-size:1.15rem;overflow-wrap:anywhere}
+.lvchip{font-family:var(--f-en);font-weight:600;font-size:.74rem;line-height:1.7;border-radius:999px;padding:0 8px;background:var(--on-primary);color:var(--primary)}
+.ub-act{display:flex;flex-direction:column;gap:8px}
+.ubtn{min-height:44px;padding:4px 12px;border-radius:14px;border:2px solid var(--on-primary);background:transparent;color:var(--on-primary);font-family:var(--f-display);font-weight:500;font-size:.92rem;white-space:nowrap}
+.ubtn:active{transform:translateY(2px)}
+.pnodes{display:flex;flex-direction:column;align-items:center;gap:20px;padding:14px 0 10px}
+.pn{position:relative;transform:translateX(var(--x,0px));display:flex;flex-direction:column;align-items:center}
+.pn.has-bub{margin-top:48px}
+.pnode{width:64px;height:64px;border-radius:50%;border:0;padding:0;display:grid;place-items:center;background:var(--surface-2);color:var(--ink-soft);box-shadow:0 5px 0 var(--line);transition:transform .07s ease,box-shadow .07s ease}
+.pnode svg{width:30px;height:30px}
+.pnode:active{transform:translateY(4px);box-shadow:0 1px 0 var(--line)}
+.pnode.done{background:var(--primary);color:var(--on-primary);box-shadow:0 5px 0 var(--primary-deep)}
+.pnode.done:active{box-shadow:0 1px 0 var(--primary-deep)}
+.pnode.cur{width:76px;height:76px;background:var(--surface);color:var(--primary);border:5px solid var(--sun);box-shadow:0 6px 0 var(--sun-deep)}
+.pnode.cur svg{width:34px;height:34px}
+.pnode.cur:active{box-shadow:0 2px 0 var(--sun-deep)}
+.pnode.tried{background:var(--surface);color:var(--primary);border:3px dashed var(--primary)}
+.pbub{position:absolute;bottom:calc(100% + 12px);left:50%;transform:translateX(-50%);background:var(--sun);color:var(--on-sun);font-family:var(--f-display);font-weight:500;font-size:1rem;line-height:1.3;padding:6px 16px;border-radius:14px;white-space:nowrap;box-shadow:0 3px 0 var(--sun-deep);animation:bob 1.6s ease-in-out infinite;pointer-events:none}
+.pbub::after{content:"";position:absolute;top:100%;left:50%;margin-left:-8px;border:8px solid transparent;border-top-color:var(--sun)}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-6px)}}
+.sheet.nd{background:var(--surface);border-top-color:var(--primary)}
+.sheet.nd .fb-icon{background:var(--primary);color:var(--on-primary)}
+.sheet.nd .fb-status{font-size:1.15rem;overflow-wrap:anywhere}
+/* inside a lesson: the run of right answers, a word of praise, the question before leaving, the result at the end */
+.run-side{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.combo{display:inline-flex;align-items:center;font-size:.82rem;font-weight:600;color:var(--primary);background:var(--primary-wash);border-radius:999px;padding:2px 10px;white-space:nowrap}
+.combo.pop{animation:pop .32s ease-out}
+.praise{font-family:var(--f-display);font-weight:500;font-size:1.05rem;color:var(--good)}
+.dlg{position:fixed;inset:0;z-index:58;display:flex;align-items:flex-end;justify-content:center}
+.dlg-shade{position:absolute;inset:0;background:var(--shade)}
+.dlg-panel{position:relative;width:100%;max-width:640px;background:var(--surface);border-radius:24px 24px 0 0;border-top:4px solid var(--line);box-shadow:0 -10px 30px var(--shade);padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:12px;animation:sheetUp .2s ease-out}
+.pend .score{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 12px}
+.full{align-self:center;font-family:var(--f-display);font-weight:500;font-size:1rem;line-height:1.5;background:var(--on-sun);color:var(--sun);border-radius:999px;padding:2px 14px}
+.pend-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.pend-stats div{background:var(--sun-chip);border-radius:16px;padding:10px 6px;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:0;text-align:center}
+.pend-stats b{font-family:var(--f-display);font-weight:500;font-size:1.3rem;line-height:1.2;font-variant-numeric:tabular-nums}
+.pend-stats span{font-size:.76rem;font-weight:600;line-height:1.3}
+/* daily quests */
+.quests{display:flex;flex-direction:column;gap:10px}
+.quest{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:12px 14px}
+.quest-main{display:flex;flex-direction:column;gap:6px;min-width:0}
+.quest-main b{font-weight:600;line-height:1.35}
+.quest-main small{font-size:.82rem;color:var(--ink-soft)}
+.quest .bar{height:8px}
+.quest.done .chk{background:var(--good);border-color:var(--good)}
+.quest.done .chk svg{opacity:1}
+.toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:70;display:flex;align-items:center;gap:10px;width:max-content;max-width:calc(100% - 32px);background:var(--good);color:var(--on-primary);font-weight:600;line-height:1.4;border-radius:16px;padding:10px 16px;box-shadow:0 6px 20px var(--shade);animation:toastIn .25s ease-out}
+.toast svg{width:22px;height:22px;flex:none}
+@keyframes toastIn{from{transform:translate(-50%,16px);opacity:0}to{transform:translateX(-50%);opacity:1}}
+/* first run, new words before a story, saying lines after it */
+.ob{display:flex;flex-direction:column;gap:20px}
+.opt-t{display:flex;flex-direction:column;gap:2px;min-width:0}
+.opt-t b{font-family:var(--f-display);font-weight:500}
+.opt-t small{font-size:.86rem;color:var(--ink-soft)}
+.line.said{border-color:var(--good);background:var(--good-wash)}
+.said-chip{grid-column:1 / -1;display:inline-flex;align-items:center;gap:6px;font-size:.84rem;font-weight:600;color:var(--good)}
+.said-chip svg{width:18px;height:18px}
 @media (max-width:359px){.ex{grid-template-columns:minmax(0,1fr)}.ex .ex-say{grid-row:2}}
-@media (prefers-reduced-motion:reduce){.sheet.enter,.wsheet,.spk-panel,.opt.pop{animation:none}.confetti{display:none}}
+@media (prefers-reduced-motion:reduce){.sheet.enter,.wsheet,.spk-panel,.opt.pop,.pbub,.combo.pop,.dlg-panel,.toast{animation:none}.confetti{display:none}}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -502,7 +572,7 @@ button.tile b{color:var(--primary)}
   <footer class="foot">คำศัพท์ 3,000 คำ หมวดหมู่ และคำแปลมาจากไฟล์ Oxford 3000 Words by Minimal English คำพื้นฐานและคำที่ใช้บ่อยเพิ่มเติมคัดจากคำที่ใช้บ่อยที่สุดในภาษาอังกฤษซึ่งไฟล์นั้นไม่มี ประโยคตัวอย่างและคำอ่านภาษาไทยเขียนเพิ่ม คำอ่านเป็นเสียงใกล้เคียงตามสำเนียงอเมริกัน ให้กดฟังเสียงประกอบทุกครั้ง เสียงอ่านเป็นเสียงสังเคราะห์จากโมเดล Piper และ Kokoro</footer>
 </div>
 <nav class="tabbar" id="tabbar" aria-label="เมนูหลัก">
-  <button type="button" class="tab" data-nav="today" data-tab="today"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3.5 10h17M8 3v4M16 3v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M9 15l2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>วันนี้</span><span class="tab-badge" id="tab-due"></span></button>
+  <button type="button" class="tab" data-nav="path" data-tab="path"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="18.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="5.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 18.5H15a3.25 3.25 0 0 0 0-6.5H9a3.25 3.25 0 0 1 0-6.5h6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>เรียน</span><span class="tab-badge" id="tab-due"></span></button>
   <button type="button" class="tab" data-nav="vocab" data-tab="vocab"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="13" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 3.5h9.5A3.5 3.5 0 0 1 21 7v10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>คำศัพท์</span></button>
   <button type="button" class="tab" data-nav="gram" data-tab="gram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="8" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13" y="13" width="8" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="8" y="3" width="8" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>ไวยากรณ์</span></button>
   <button type="button" class="tab" data-nav="read" data-tab="read"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.5C10 5 7 4.5 3.5 5v13c3.5-.5 6.5 0 8.5 1.5 2-1.5 5-2 8.5-1.5V5C17 4.5 14 5 12 6.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 6.5v13" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>อ่าน-ฟัง</span></button>
@@ -573,7 +643,10 @@ button.tile b{color:var(--primary)}
   /* ---------------- storage ---------------- */
   var KEY = 'vocab3000-progress-v1', UIKEY = 'vocab3000-ui-v1';
   var P = { w: {}, s: {} };
-  var UI = { auto: true, last: null, rn: 10, tab: 'vocab', og: {}, fx: true, fs: 100, goal: 9, rth: false, rslow: false, rf: 'pick' };   /* og: topic groups and grammar levels the learner opened or closed */
+  /* og: topic groups and grammar levels the learner opened or closed; goal: new-word steps a day (the old daily goal, kept as it was);
+     xg: XP a day; vib: buzz on answers; ob: first-run questions answered or skipped; pn: the note about the new path was seen;
+     why: what the learner studies for (study, work, travel, general) */
+  var UI = { auto: true, last: null, rn: 10, tab: 'vocab', og: {}, fx: true, fs: 100, goal: 9, rth: false, rslow: false, rf: 'pick', xg: 20, vib: true, ob: 0, pn: 0, why: '' };
   function lsGet(k) { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) { return null; } }
   function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   function cleanRec(a) {
@@ -603,6 +676,14 @@ button.tile b{color:var(--primary)}
       if (typeof u.rslow === 'boolean') UI.rslow = u.rslow;
       if (u.rf === 'mean' || u.rf === 'type' || u.rf === 'both' || u.rf === 'pick') UI.rf = u.rf;
       if (u.og && typeof u.og === 'object') for (var gk in u.og) { if (typeof u.og[gk] === 'boolean' && gk.length < 12) UI.og[gk] = u.og[gk]; }
+      /* the XP goal; a learner who had changed the old words goal starts from the matching XP goal */
+      if (u.xg === 10 || u.xg === 20 || u.xg === 30 || u.xg === 50) UI.xg = u.xg;
+      else if (u.goal === 5) UI.xg = 10;
+      else if (u.goal === 18) UI.xg = 30;
+      if (typeof u.vib === 'boolean') UI.vib = u.vib;
+      if (u.ob === 1) UI.ob = 1;
+      if (u.pn === 1) UI.pn = 1;
+      if (u.why === 'study' || u.why === 'work' || u.why === 'travel' || u.why === 'general') UI.why = u.why;
     }
   })();
   var saveT = null;
@@ -776,13 +857,25 @@ button.tile b{color:var(--primary)}
     return '<nav class="crumb" aria-label="ทางกลับ"><button type="button" class="back" data-act="' + it.act + '"' + (it.c !== undefined ? ' data-c="' + it.c + '"' : '') + (it.s !== undefined ? ' data-s="' + it.s + '"' : '') + '>' + IC_BACK + '<span>' + esc(it.label) + '</span></button></nav>';
   }
   /* close, progress and the sound switch on one line at the top of a practice round, then its name and what is left */
+  /* Inside a path lesson the close button asks first, the bar shows the whole lesson, and a run of right answers shows as a chip. */
   function runTop(quitAct, autoAct, title, where, left, pct) {
-    var on = UI.auto, lab = 'เสียงอัตโนมัติ ' + (on ? 'เปิดอยู่' : 'ปิดอยู่');
+    var on = UI.auto, lab = 'เสียงอัตโนมัติ ' + (on ? 'เปิดอยู่' : 'ปิดอยู่'), cb = '';
+    if (PRUN) {
+      quitAct = 'p-quit'; pct = pathPct(pct);
+      if (PRUN.combo >= 3) cb = '<span class="combo' + (PRUN.pop ? ' pop' : '') + '" id="combo">ถูกติดกัน ' + PRUN.combo + '</span>';
+      PRUN.pop = false;
+    }
     return '<div class="runbar"><button type="button" class="x" id="quit" data-act="' + quitAct + '" aria-label="ออกจากรอบนี้" title="ออกจากรอบนี้">' + IC_X + '</button>' +
       '<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '" aria-label="ความคืบหน้าของรอบนี้"><i class="b-strong" style="width:' + pct + '%"></i></div>' +
       (autoAct && Snd.can() ? '<button type="button" class="chip snd" id="auto" data-act="' + autoAct + '" aria-pressed="' + (on ? 'true' : 'false') + '" aria-label="' + lab + '" title="' + lab + '">' + (on ? ICON : IC_MUTE) + '</button>' : '<span class="runbar-pad" aria-hidden="true"></span>') + '</div>' +
-      '<div class="runhead"><p class="run-title"><b>' + esc(title) + '</b><span>' + esc(where) + '</span></p><span class="count">เหลืออีก ' + left + ' ข้อ</span></div>' +
+      '<div class="runhead"><p class="run-title"><b>' + esc(title) + '</b><span>' + esc(where) + '</span></p><span class="run-side">' + cb + '<span class="count">เหลืออีก ' + left + ' ข้อ</span></span></div>' +
       '<p class="syncnote" id="sndnote"></p>';
+  }
+  /* the top of a path lesson screen that is not a question round (lesson text, new words, story, saying lines) */
+  function pathBar(pct) {
+    return '<div class="runbar"><button type="button" class="x" id="quit" data-act="p-quit" aria-label="ออกจากบทนี้" title="ออกจากบทนี้">' + IC_X + '</button>' +
+      '<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '" aria-label="ความคืบหน้าของบทนี้"><i class="b-strong" style="width:' + pct + '%"></i></div>' +
+      '<span class="runbar-pad" aria-hidden="true"></span></div>';
   }
   /* a folding group on a home screen: open when the learner left it open, else when it holds the next lesson */
   function grpOpen(key, dflt) { var o = UI.og[key]; return o === undefined ? !!dflt : o; }
@@ -1198,7 +1291,7 @@ button.tile b{color:var(--primary)}
       Snd.stop();
       var g = function (a) { return btn.getAttribute(a) || ''; };
       this.ref = { kind: g('data-sk'), c: parseInt(g('data-sc'), 10), k: parseInt(g('data-sn'), 10), text: g('data-text'), th: g('data-th') };
-      this.from = btn; this.st = 'idle'; this.res = null; this.err = ''; this.interim = ''; this.solo = false;
+      this.from = btn; this.st = 'idle'; this.res = null; this.err = ''; this.interim = ''; this.solo = false; this.credit = false;
       var one = this.ref.text.trim().indexOf(' ') < 0;
       document.body.insertAdjacentHTML('beforeend', '<div class="spk" id="spk" role="dialog" aria-modal="true" aria-labelledby="spk-title">' +
         '<div class="spk-shade" data-act="sp-close"></div><div class="spk-panel">' +
@@ -1313,6 +1406,7 @@ button.tile b{color:var(--primary)}
         if (alts.length) {
           self.res = spGrade(self.ref.text, alts);
           if (self.res.ok === self.res.total) FX.play('ok');
+          spHeard(self);
         } else self.err = err === 'aborted' ? 'no-speech' : (err || 'no-speech');
         self.draw();
       };
@@ -1428,31 +1522,41 @@ button.tile b{color:var(--primary)}
   var view = { name: 'home' };
   var S = null;   /* the running practice session */
 
+  /* screens that belong to a running path lesson; going anywhere else ends it (what was done stays saved) */
+  var PVIEWS = { run: 1, 'g-run': 1, 'p-end': 1, 'p-words': 1, 'p-say': 1 };
   function go(v) {
     Spk.close();
+    quitClose();
+    if (v.name === 'today') v = { name: 'path' };
+    if (PRUN && !PVIEWS[v.name] && !v.path) PRUN = null;
     if (view.name === 'run' && v.name !== 'run') { aiStop(); Snd.stop(); }
     if (view.name === 'g-run' && v.name !== 'g-run') Snd.stop();
     if (view.name === 'story' && v.name !== 'story') rStop();
     if (view.name === 'lvl' && v.name !== 'lvl') Snd.stop();
+    if (view.name === 'p-say' && v.name !== 'p-say') Snd.stop();
     Array.prototype.forEach.call(document.querySelectorAll('.confetti'), function (x) { if (x.parentNode) x.parentNode.removeChild(x); });
+    if (v.name === 'path' && v.u === undefined) PFOCUS = null;
     view = v;
     render();
     try { window.scrollTo(0, 0); } catch (e) {}
+    if (v.name === 'path') pathScroll(v.u !== undefined);
   }
-  /* bottom menu: marks the section in use and shows on the today tab how many words are due for review */
+  /* bottom menu: marks the section in use and shows on the path tab how many words are due for review */
   var TABBAR = document.getElementById('tabbar');
   function tabOf(v) {
-    if (v.indexOf('g-') === 0) return 'gram';
+    if (view.path || v === 'path' || v === 'me' || v === 'prefs' || v === 'level' || v === 'lvl' || v.indexOf('p-') === 0) return 'path';
+    if (v.indexOf('g-') === 0) return view.from === 'path' ? 'path' : 'gram';
     if (v === 'read' || v === 'story') return 'read';
-    if (v === 'today' || v === 'prefs' || v === 'level' || v === 'lvl') return 'today';
-    if (v === 'rev') return view.from === 'home' ? 'vocab' : 'today';
-    if ((v === 'run' || v === 'done') && S && S.kind === 'review') return 'today';
+    if (v === 'rev') return view.from === 'home' ? 'vocab' : 'path';
+    if ((v === 'run' || v === 'done') && S && (S.kind === 'review' || S.kind === 'ck')) return 'path';
     return 'vocab';
   }
+  /* a practice round or a path lesson fills the screen: no bottom menu */
+  function runLike() { var v = view.name; return v === 'run' || v === 'g-run' || v === 'lvl' || (!!PRUN && (!!PVIEWS[v] || !!view.path)); }
   function markNav() {
-    var v = view.name, run = v === 'run' || v === 'g-run' || v === 'lvl';
+    var v = view.name, run = runLike();
     var t = tabOf(v);
-    try { document.body.setAttribute('data-view', v); } catch (e) {}
+    try { document.body.setAttribute('data-view', v); if (run) document.body.setAttribute('data-run', '1'); else document.body.removeAttribute('data-run'); } catch (e) {}
     if (!TABBAR) return;
     Array.prototype.forEach.call(TABBAR.querySelectorAll('.tab'), function (b) {
       if (b.getAttribute('data-tab') === t) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
@@ -1461,14 +1565,18 @@ button.tile b{color:var(--primary)}
     if (gt) gt.hidden = !GLS.length;
     if (rt) rt.hidden = !RDS.length;
     if (run) return;
-    var due = stats().due, bd = document.getElementById('tab-due'), tb = TABBAR.querySelector('[data-tab="today"]');
+    var due = stats().due, bd = document.getElementById('tab-due'), tb = TABBAR.querySelector('[data-tab="path"]');
     if (bd) bd.textContent = due ? (due > 99 ? '99+' : String(due)) : '';
-    if (tb) { if (due) tb.setAttribute('aria-label', 'วันนี้ ถึงเวลาทบทวน ' + due + ' คำ'); else tb.removeAttribute('aria-label'); }
+    if (tb) { if (due) tb.setAttribute('aria-label', 'เรียน ถึงเวลาทบทวน ' + due + ' คำ'); else tb.removeAttribute('aria-label'); }
   }
   function render() {
     markNav();
     if (view.name.indexOf('g-') === 0) gRender();
-    else if (view.name === 'today') vToday();
+    else if (view.name === 'path') vPath();
+    else if (view.name === 'me') vMe();
+    else if (view.name === 'p-end') vPathEnd();
+    else if (view.name === 'p-words') vPathWords();
+    else if (view.name === 'p-say') vPathSay();
     else if (view.name === 'prefs') vPrefs();
     else if (view.name === 'read') vRead();
     else if (view.name === 'story') vStory();
@@ -1476,6 +1584,7 @@ button.tile b{color:var(--primary)}
     else if (view.name === 'lvl') vLvl();
     else vocabView();
     fitSheet();
+    if (QCHEER && (!runLike() || view.name === 'p-end')) cheerQuests();
   }
   function vocabView() {
     if (view.name === 'cat') vCat();
@@ -1633,7 +1742,7 @@ button.tile b{color:var(--primary)}
 
   function vRev() {
     var st = stats(), gp = gPool();
-    var h = crumb([view.from === 'home' ? { label: 'คำศัพท์', act: 'home' } : { label: 'วันนี้', act: 'today' }]) + '<header class="hello"><h1>ทบทวนคำศัพท์</h1>';
+    var h = crumb([view.from === 'home' ? { label: 'คำศัพท์', act: 'home' } : { label: 'เส้นทาง', act: 'path' }]) + '<header class="hello"><h1>ทบทวนคำศัพท์</h1>';
     if (!st.learned) h += '<p class="lede">ยังไม่มีคำที่เรียนแล้ว เริ่มเรียนชุดแรกที่แท็บคำศัพท์ก่อน แล้วกลับมาทบทวนที่นี่</p></header>';
     else {
       var n = Math.min(UI.rn, st.learned);
@@ -1679,7 +1788,8 @@ button.tile b{color:var(--primary)}
       do { bank = shuffle(toks); tries++; } while (tries < 8 && bank.join(' ') === toks.join(' '));
       S.cur.toks = toks; S.cur.tail = m ? m[2] : ''; S.cur.bank = bank; S.cur.pick = [];
     }
-    if (UI.auto && (q === 'card' || q === 'e2t' || q === 'copy' || q === 'listen' || q === 'mean')) Snd.play('w', item.n);
+    if (q === 'listen' && S.noEar) { S.cur.revealed = true; S.cur.assisted = true; }
+    if (UI.auto && (q === 'card' || q === 'e2t' || q === 'copy' || (q === 'listen' && !S.noEar) || q === 'mean')) Snd.play('w', item.n);
   }
   function startSession(o) {
     if (!o.items.length) return;
@@ -1758,7 +1868,7 @@ button.tile b{color:var(--primary)}
     var q = cur.item.q, helped = cur.assisted && cur.ok;
     var cls = helped ? 'mid' : (cur.ok ? 'ok' : 'no');
     var status = helped ? (q === 'listen' ? 'ถูก แต่เปิดดูคำก่อนตอบ ข้อนี้ไม่นับคะแนน' : 'ถูก แต่ใช้ตัวช่วย คำนี้จะถามอีกครั้งท้ายรอบ') : (cur.ok ? 'ถูกต้อง' : 'ยังไม่ถูก คำตอบที่ถูกคือ');
-    return sheet(cls, status,
+    return sheet(cls, status, praiseHtml(cur) +
       '<div class="fb-ans"><span class="fb-en">' + esc(w.w) + '</span>' + sayRound('w', w.n, 'ฟังเสียง ' + w.w) + '</div>' +
       '<p>อ่านว่า ' + rd(w.r) + ' แปลว่า <b>' + esc(w.t) + '</b></p>' +
       ((q === 'type' || q === 'mean') && !cur.ok && cur.typed ? '<p class="note">คุณพิมพ์ว่า <span' + (q === 'type' ? ' class="en"' : '') + '>' + esc(cur.typed) + '</span></p>' : '') +
@@ -1813,7 +1923,9 @@ button.tile b{color:var(--primary)}
       h += '<p class="ask">ฟังเสียง แล้วเลือกความหมายของคำที่ได้ยิน</p><div class="prompt-row">' +
         (shown ? '<div class="ruled">' + esc(w.w) + '</div>' : '') + sayBtn('w', w.n, shown ? 'ฟังเสียง' : 'กดเพื่อฟัง', shown ? '' : 'big') + '</div>' +
         '<div class="actions">' + sayBtn('ws', w.n, 'ฟังช้าๆ') +
-        (shown ? '' : '<button type="button" class="btn ghost small" id="show-word" data-act="show-word">ฟังไม่ออก ขอดูคำ</button>') + '</div>';
+        (shown ? '' : '<button type="button" class="btn ghost small" id="show-word" data-act="show-word">ฟังไม่ออก ขอดูคำ</button>' +
+          '<button type="button" class="btn ghost small" id="no-listen" data-act="no-listen">ตอนนี้ฟังไม่ได้</button>') + '</div>' +
+        (S.noEar && !cur.done ? '<p class="note">ตอนนี้ไม่ใช้เสียง ข้อฟังจะแสดงคำให้อ่านแทน ไม่นับว่าผิด</p>' : '');
       h += optsHtml(cur, false);
       if (cur.done) h += feedbackHtml(w, cur, last);
     } else if (q === 'cloze') {
@@ -1834,7 +1946,7 @@ button.tile b{color:var(--primary)}
           '<button type="button" class="btn ghost small" id="clear-order" data-act="clear-order"' + (cur.pick.length ? '' : ' disabled') + '>เริ่มเรียงใหม่</button></div>';
       } else {
         h += '<div class="build done">' + cur.pick.map(function (bi) { return '<span class="tok">' + esc(cur.bank[bi]) + '</span>'; }).join('') + '<span class="tail">' + esc(cur.tail) + '</span></div>';
-        h += sheet(cur.ok ? 'ok' : 'no', cur.ok ? 'ถูกต้อง' : 'ยังไม่ถูก ประโยคที่ถูกคือ',
+        h += sheet(cur.ok ? 'ok' : 'no', cur.ok ? 'ถูกต้อง' : 'ยังไม่ถูก ประโยคที่ถูกคือ', praiseHtml(cur) +
           '<div class="fb-ans"><span class="fb-en">' + exHtml(w) + '</span><span class="ex-say">' + sayRound('s', w.n, 'ฟังประโยค') + sayRound('ss', w.n, 'ฟังประโยคช้าๆ', 'ช้า') + '</span></div>' +
           (cur.ok ? '' : '<p class="note">ประโยคนี้จะถามอีกครั้งท้ายรอบ</p>') +
           '<p>คำว่า <b class="en">' + esc(w.w) + '</b> อ่านว่า ' + rd(w.r) + ' แปลว่า ' + esc(w.t) + '</p>', nextBtn(last), firstShow(cur));
@@ -1918,12 +2030,13 @@ button.tile b{color:var(--primary)}
     if (el) { try { el.focus(); } catch (e) {} }
   }
   function finish(ok) {
-    var cur = S.cur, n = cur.item.n, q = cur.item.q;
+    var cur = S.cur, n = cur.item.n, q = cur.item.q, first = S.first[n] === undefined;
     cur.done = true; cur.ok = ok;
-    if (S.first[n] === undefined) S.first[n] = ok && !cur.assisted;
+    if (first) S.first[n] = ok && !cur.assisted;
     var graded = q === 'e2t' || q === 't2e' || q === 'type' || q === 'listen' || q === 'cloze' || q === 'mean';
     if (graded && !cur.assisted) mark(n, ok, S.kind !== 'set');
     if (!ok || (cur.assisted && q !== 'listen')) S.queue.push({ n: n, q: q });
+    answered(ok, first && !(q === 'listen' && cur.assisted), cur, cur.assisted);
     var fx = FX.play(ok ? 'ok' : 'no'), k = (q === 't2e' || q === 'type') ? 'w' : ((q === 'cloze' || q === 'order') ? 's' : '');
     if (UI.auto && k) afterFx(fx, function () { Snd.play(k, n); }, function () { return view.name === 'run' && S && S.cur === cur; });
   }
@@ -1941,9 +2054,10 @@ button.tile b{color:var(--primary)}
     if (S.kind === 'set') setBit(S.c, S.si, MODE[S.mode].bit);
     var good = 0; S.items.forEach(function (it) { if (S.first[it.n]) good++; });
     S.cheer = S.count >= 3 && good >= Math.ceil(S.count * 0.8);
-    logAct(S.kind === 'set' ? 'v' : 'r');
+    if (S.kind !== 'ck') logAct(S.kind === 'set' ? 'v' : 'r');   /* a checkpoint is logged once, when it ends */
     saveNow();
     Sync.flushSoon();
+    if (PRUN) { pathNextPart(); return; }
     go({ name: 'done' });
   }
   function vDone() {
@@ -1965,7 +2079,7 @@ button.tile b{color:var(--primary)}
       h += '<button type="button" class="btn" id="done-next" data-act="rev-go" data-fmt="' + esc(S.fmt) + '">ทบทวนต่ออีกรอบ</button>' +
         '<button type="button" class="btn ghost" data-act="rev">เปลี่ยนแบบทบทวน</button>' +
         '<button type="button" class="btn ghost" data-act="home">กลับหน้าคำศัพท์</button>' +
-        '<button type="button" class="btn ghost" data-act="today">กลับหน้าวันนี้</button>';
+        '<button type="button" class="btn ghost" data-act="path">กลับเส้นทาง</button>';
     } else {
       h += '<button type="button" class="btn" id="done-next" data-act="test" data-c="' + S.c + '">ทดสอบอีกรอบ</button>' +
         '<button type="button" class="btn ghost" data-act="open-cat" data-c="' + S.c + '">กลับไปที่หมวดนี้</button>';
@@ -1998,7 +2112,7 @@ button.tile b{color:var(--primary)}
       startSet(sc, ss, el.getAttribute('data-mode'));
       return;
     }
-    if (act === 'rev') { go({ name: 'rev', from: view.name === 'home' || view.from === 'home' ? 'home' : 'today' }); return; }
+    if (act === 'rev') { go({ name: 'rev', from: view.name === 'home' || view.from === 'home' ? 'home' : 'path' }); return; }
     if (act === 'rev-n') { UI.rn = parseInt(el.getAttribute('data-n'), 10) || 10; saveUI(); render(); return; }
     if (act === 'rev-go') { UI.rf = el.getAttribute('data-fmt'); saveUI(); startReview(UI.rf); return; }
     if (act === 'test') { startTest(c); return; }
@@ -2024,6 +2138,7 @@ button.tile b{color:var(--primary)}
       return;
     }
     if (act === 'show-word' && !cur.done) { cur.revealed = true; cur.assisted = true; render(); return; }
+    if (act === 'no-listen' && !cur.done) { S.noEar = true; cur.revealed = true; cur.assisted = true; Snd.stop(); render(); return; }
     if (act === 'pick' && !cur.done) {
       cur.picked = parseInt(el.getAttribute('data-i'), 10);
       finish(!!cur.opts[cur.picked].ok);
@@ -2071,7 +2186,7 @@ button.tile b{color:var(--primary)}
     if (!el) return;
     var t = el.getAttribute('data-nav');
     if (t === 'gram' && GLS.length) { UI.tab = 'gram'; saveUI(); go({ name: 'g-home' }); }
-    else if (t === 'today') go({ name: 'today' });
+    else if (t === 'path') go({ name: 'path' });
     else if (t === 'read' && RDS.length) go({ name: 'read' });
     else { UI.tab = 'vocab'; saveUI(); go({ name: 'home' }); }
   });
@@ -2112,13 +2227,14 @@ button.tile b{color:var(--primary)}
     }
     if (!norm(val)) { cur.note = 'พิมพ์คำตอบก่อน แล้วกดปุ่มอีกครั้ง'; setNote(cur.note); if (input) input.focus(); return; }
     if (q === 'copy') {
+      var first = S.first[cur.item.n] === undefined;
       if (norm(val) === norm(w.w)) {
-        if (S.first[cur.item.n] === undefined) S.first[cur.item.n] = true;
-        FX.play('ok');
+        if (first) S.first[cur.item.n] = true;
+        FX.play('ok'); answered(true, first, cur);
         advance();
       } else {
-        if (S.first[cur.item.n] === undefined) S.first[cur.item.n] = false;
-        FX.play('no');
+        if (first) S.first[cur.item.n] = false;
+        FX.play('no'); answered(false, first, cur);
         cur.note = 'ยังไม่ตรง ดูตัวอักษรสีแดงด้านบนแล้วแก้ให้เหมือน';
         setNote(cur.note);
         if (input) input.focus();
@@ -2246,8 +2362,8 @@ button.tile b{color:var(--primary)}
   function gLesson() {
     var l = GL[view.id];
     if (!l) { go({ name: 'g-home' }); return; }
-    var r = gRec(l.id), nx = GLS[l.i + 1];
-    var h = gCrumb() + '<header class="top"><p class="eyebrow">ระดับ ' + esc(l.lv) + ' บทที่ ' + (l.i + 1) + '</p><h2>' + esc(l.title) + '</h2><p class="lede">' + esc(l.goal) + '</p></header>';
+    var r = gRec(l.id), nx = GLS[l.i + 1], pmode = !!(PRUN && view.path);
+    var h = (pmode ? pathBar(pathPct(0)) : (view.from === 'path' ? crumb([{ label: 'เส้นทาง', act: 'path' }]) : gCrumb())) + '<header class="top"><p class="eyebrow">ระดับ ' + esc(l.lv) + ' บทที่ ' + (l.i + 1) + '</p><h2>' + esc(l.title) + '</h2><p class="lede">' + esc(l.goal) + '</p></header>';
     h += '<section class="block"><h3>เรื่องที่ต้องรู้</h3><div class="lesson-p">' + l.p.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('') + '</div>' +
       '<table class="pattern"><tbody>' + l.t.map(function (t) { return '<tr><td>' + esc(t[0]) + '</td><td>' + esc(t[1]) + '</td></tr>'; }).join('') + '</tbody></table></section>';
     h += '<section class="block"><h3>ตัวอย่าง</h3><p class="syncnote" id="sndnote"></p><div class="exs">' + l.e.map(function (e) {
@@ -2257,7 +2373,9 @@ button.tile b{color:var(--primary)}
       return '<li class="mist"><span class="say-no"><span class="tag">ผิด</span><s>' + esc(m[0]) + '</s></span><span></span>' +
         '<span class="say-ok"><span class="tag">ถูก</span>' + esc(m[1]) + '</span>' + gSayPair(m[3], m[1]) + '<small>' + esc(m[2]) + '</small></li>';
     }).join('') + '</ul></section>';
-    h += '<section class="block"><h3>แบบฝึก</h3>' + (r ? '<p class="note">ผลดีที่สุดของบทนี้ ' + r[0] + ' จาก ' + r[1] + ' ข้อ' + (gPassed(l) ? ' ผ่านแล้ว' : ' ต้องได้ ' + Math.ceil(r[1] * GPASS) + ' ข้อจึงผ่าน') + '</p>' : '') +
+    if (pmode) h += '<section class="block"><h3>แบบฝึก</h3><p class="note">ตอบให้ถูก ' + Math.ceil(l.q.length * GPASS) + ' จาก ' + l.q.length + ' ข้อจึงผ่าน ข้อที่ผิดจะถามซ้ำท้ายรอบ</p>' +
+      '<div class="nextbar"><button type="button" class="btn wide" id="p-gstart" data-act="p-next">เริ่มแบบฝึก ' + l.q.length + ' ข้อ</button></div></section>';
+    else h += '<section class="block"><h3>แบบฝึก</h3>' + (r ? '<p class="note">ผลดีที่สุดของบทนี้ ' + r[0] + ' จาก ' + r[1] + ' ข้อ' + (gPassed(l) ? ' ผ่านแล้ว' : ' ต้องได้ ' + Math.ceil(r[1] * GPASS) + ' ข้อจึงผ่าน') + '</p>' : '') +
       '<div class="actions stack"><button type="button" class="btn" id="g-start" data-act="g-start" data-id="' + l.id + '">' + (r ? 'ทำแบบฝึกอีกครั้ง' : 'เริ่มแบบฝึก') + ' ' + l.q.length + ' ข้อ</button>' +
       (nx && gPassed(l) ? '<button type="button" class="btn ghost" data-act="g-open" data-id="' + nx.id + '">บทถัดไป ' + esc(nx.title) + '</button>' : '') + '</div></section>';
     app.innerHTML = h;
@@ -2265,9 +2383,9 @@ button.tile b{color:var(--primary)}
     var ks = []; l.e.forEach(function (e) { if (e[2]) ks.push(e[2][1]); });
     if (ks.length) Snd.warm('g', l.e[0][2][0], Math.min.apply(null, ks), Math.max.apply(null, ks));
   }
-  function gStartRun(kind, items, lessonId) {
+  function gStartRun(kind, items, lessonId, title) {
     if (!items.length) return;
-    GS = { kind: kind, lessonId: lessonId, items: items, queue: items.slice(), pos: 0, first: {}, cur: null };
+    GS = { kind: kind, lessonId: lessonId, items: items, queue: items.slice(), pos: 0, first: {}, cur: null, title: title || '' };
     var rng = {};
     items.forEach(function (q) { if (q.a) { var b = rng[q.a[0]] || (rng[q.a[0]] = [q.a[1], q.a[1]]); b[0] = Math.min(b[0], q.a[1]); b[1] = Math.max(b[1], q.a[1]); } });
     Object.keys(rng).forEach(function (c) { if (rng[c][1] - rng[c][0] < 120) Snd.warm('g', +c, rng[c][0], rng[c][1]); });
@@ -2290,15 +2408,16 @@ button.tile b{color:var(--primary)}
     return esc(en.slice(0, i)) + (fill ? '<b>' + esc(fill) + '</b>' : '<span class="gap" aria-label="ช่องว่าง"></span>') + esc(en.slice(i + 3));
   }
   function gFinish(ok) {
-    var c = GS.cur, q = c.q;
+    var c = GS.cur, q = c.q, first = GS.first[q.id] === undefined;
     c.done = true; c.ok = ok;
-    if (GS.first[q.id] === undefined) {
+    if (first) {
       GS.first[q.id] = ok;
       if (!ok) GP.x[q.id] = (GP.x[q.id] || 0) + 1;
       else if (GS.kind === 'review' && GP.x[q.id]) GP.x[q.id] = Math.max(0, GP.x[q.id] - 1);
     }
     if (!ok) GS.queue.push(q);   /* ask again at the end of the round */
     gSave();
+    answered(ok, first, c);
     render();
     var fx = FX.play(ok ? 'ok' : 'no');
     if (UI.auto && q.a) afterFx(fx, function () { Snd.playRef('g', q.a[0], q.a[1], q.say); }, function () { return view.name === 'g-run' && GS && GS.cur === c; });
@@ -2320,11 +2439,12 @@ button.tile b{color:var(--primary)}
     }
     GS.result = { right: right, total: GS.items.length };
     GS.cheer = right >= Math.ceil(GS.items.length * GPASS);
-    logAct('g');
+    if (GS.kind !== 'ck') logAct('g');
+    if (PRUN) { pathNextPart(); return; }
     go({ name: 'g-done' });
   }
   function gFeedback(q, c) {
-    var h = '<div class="fb-ans"><span class="fb-en">' + esc(q.say) + '</span>' + gSayPair(q.a, q.say) + '</div>';
+    var h = praiseHtml(c) + '<div class="fb-ans"><span class="fb-en">' + esc(q.say) + '</span>' + gSayPair(q.a, q.say) + '</div>';
     if (q.k === 'w' && !c.ok && c.typed) h += '<p class="note">คุณพิมพ์ว่า <span class="en">' + esc(c.typed) + '</span></p>';
     if (q.k === 'o' && !c.ok) h += '<p class="note">คุณเรียงว่า <span class="en">' + esc(c.pick.map(function (i) { return c.bank[i]; }).join(' ') + c.tail) + '</span></p>';
     if (q.th && q.k !== 's') h += '<p>' + esc(q.th) + '</p>';
@@ -2344,8 +2464,8 @@ button.tile b{color:var(--primary)}
   }
   function gRun() {
     var c = GS.cur, q = c.q, l = q.l, left = GS.queue.length - GS.pos - (c.done ? 1 : 0), pct = Math.round((GS.pos + (c.done ? 1 : 0)) / GS.queue.length * 100);
-    var title = GS.kind === 'review' ? 'ทบทวนไวยากรณ์' : 'แบบฝึก บทที่ ' + (l.i + 1);
-    var h = runTop('g-quit', 'g-auto', title, GS.kind === 'review' ? 'บทที่ ' + (l.i + 1) + ' ' + l.title : l.title, left, pct);
+    var title = GS.kind === 'review' ? 'ทบทวนไวยากรณ์' : (GS.kind === 'ck' ? GS.title : 'แบบฝึก บทที่ ' + (l.i + 1));
+    var h = runTop('g-quit', 'g-auto', title, GS.kind === 'lesson' ? l.title : 'บทที่ ' + (l.i + 1) + ' ' + l.title, left, pct);
     h += '<div class="card" id="card">';
     if (q.k === 'c') {
       h += '<p class="ask">เลือกคำที่ถูกต้องเติมในช่องว่าง</p><p class="sentence">' + gBlank(q.en, c.done ? q.ans : '') + '</p><p class="sentence-th">' + esc(q.th) + '</p>' +
@@ -2415,7 +2535,7 @@ button.tile b{color:var(--primary)}
     Object.keys(GP.l).forEach(function (id) { var a = rl[id]; if (!a || GP.l[id][0] > (Number(a[0]) | 0)) newer = true; });
     Object.keys(rx).forEach(function (id) { var n = Number(rx[id]) | 0; if (GQ[id] && n > (GP.x[id] || 0)) { GP.x[id] = n; changed = true; } });
     Object.keys(GP.x).forEach(function (id) { if ((GP.x[id] || 0) > (Number(rx[id]) | 0)) newer = true; });
-    if (changed) { gSaveLocal(); if (view.name === 'g-home' || view.name === 'g-lesson') render(); }
+    if (changed) { gSaveLocal(); if (view.name === 'g-home' || (view.name === 'g-lesson' && !view.path) || view.name === 'path' || view.name === 'me') render(); }
     return newer;
   }
   app.addEventListener('click', function (ev) {
@@ -2457,8 +2577,8 @@ button.tile b{color:var(--primary)}
     if (!GS.cur.done && GS.cur.opts && ev.key >= '1' && ev.key <= '4') { var b = document.getElementById('opt-' + (parseInt(ev.key, 10) - 1)); if (b) b.click(); }
   });
 
-  /* ---------------- days: what was practised each day, the streak, the plan for today ----------------
-     DAYS[day] = [review rounds, vocabulary steps, grammar rounds, stories, level checks, 1 when the three main tasks were done] */
+  /* ---------------- days: what was practised each day, and the streak ----------------
+     DAYS[day] = [review rounds, vocabulary steps, grammar rounds, stories, level checks, 1 when all three quests of the day were done] */
   var DKEY = 'vocab3000-days-v1', DAYS = {};
   function cleanDay(a) { var r = []; for (var i = 0; i < 6; i++) r.push(Math.max(0, Number(a[i]) | 0)); return r; }
   (function () {
@@ -2468,11 +2588,6 @@ button.tile b{color:var(--primary)}
   var DI = { r: 0, v: 1, g: 2, s: 3, x: 4 };
   function dayArr(t) { return DAYS[t] || [0, 0, 0, 0, 0, 0]; }
   function active(a) { return !!a && (a[0] + a[1] + a[2] + a[3] + a[4]) > 0; }
-  /* the three main tasks of a day: review what is due, learn new words up to the goal, one grammar round */
-  function planState(a) {
-    var st = stats();
-    return { rev: a[0] > 0 || st.due === 0, voc: a[1] >= UI.goal, gram: a[2] > 0 || !GLS.length };
-  }
   function saveDays() {
     var ks = Object.keys(DAYS).map(Number).sort(function (x, y) { return x - y; });
     while (ks.length > 400) delete DAYS[ks.shift()];
@@ -2481,66 +2596,31 @@ button.tile b{color:var(--primary)}
   function logAct(f) {
     var t = today(), a = dayArr(t).slice();
     a[DI[f]]++;
-    var ps = planState(a);
-    if (ps.rev && ps.voc && ps.gram) a[5] = 1;
     DAYS[t] = a;
     saveDays();
     Sync.touch('days');
+    questCheck();
   }
+  /* any practice makes a day count: something logged above, or XP earned (saying sentences earns XP and logs nothing else) */
   function streak() {
-    var t = today(), n = 0, d = active(DAYS[t]) ? t : t - 1, best = 0, run = 0, last = null;
-    while (active(DAYS[d])) { n++; d--; }
-    Object.keys(DAYS).map(Number).filter(function (k) { return active(DAYS[k]); }).sort(function (x, y) { return x - y; }).forEach(function (k) {
+    var t = today(), n = 0, d = dayOn(t) ? t : t - 1, best = 0, run = 0, last = null, ks = {};
+    while (dayOn(d)) { n++; d--; }
+    Object.keys(DAYS).concat(Object.keys(XP.d)).forEach(function (k) { if (dayOn(+k)) ks[k] = 1; });
+    Object.keys(ks).map(Number).sort(function (x, y) { return x - y; }).forEach(function (k) {
       run = last !== null && k === last + 1 ? run + 1 : 1; last = k;
       if (run > best) best = run;
     });
-    return { n: n, today: active(DAYS[t]), best: Math.max(best, n) };
+    return { n: n, today: dayOn(t), best: Math.max(best, n) };
   }
   var WD = ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'];
-  function planItem(id, done, title, sub, btn) {
-    return '<li class="' + (done ? 'done' : '') + '" id="plan-' + id + '"><span class="chk" aria-hidden="true">' + IC_OK + '</span>' +
-      '<span class="plan-main"><b>' + title + '</b><small>' + esc(sub) + '</small><span class="sr">' + (done ? 'ทำแล้ว' : 'ยังไม่ได้ทำ') + '</span></span>' + (btn || '') + '</li>';
-  }
-  function smallBtn(id, label, attrs, ghost) { return '<button type="button" class="btn small' + (ghost ? ' ghost' : '') + '" id="' + id + '" ' + attrs + '>' + label + '</button>'; }
-  function vToday() {
-    var st = stats(), t = today(), a = dayArr(t), ps = planState(a), sk = streak(), nx = resumeSet(), gnx = gNext(), rnx = rNext();
-    var all3 = ps.rev && ps.voc && ps.gram, date = '';
-    try { date = new Date().toLocaleDateString('th-TH', { weekday: 'long', day: 'numeric', month: 'long' }); } catch (e) {}
-    var h = '<header class="hello-row"><div class="hello"><h1>วันนี้</h1><p class="lede">' + esc(date) + '</p></div>' +
-      '<button type="button" class="iconbtn" id="open-prefs" data-act="prefs" aria-label="ตั้งค่า" title="ตั้งค่า">' + IC_GEAR + '</button></header>';
-    var week = '';
+  function weekHtml(t) {
+    var week = '', n = 0;
     for (var i = 6; i >= 0; i--) {
-      var d = t - i, on = active(DAYS[d]), full = !!(DAYS[d] && DAYS[d][5]), wd = new Date(d * 86400000).getUTCDay();
+      var d = t - i, on = dayOn(d), full = !!(DAYS[d] && DAYS[d][5]), wd = new Date(d * 86400000).getUTCDay();
+      if (on) n++;
       week += '<span class="day' + (on ? ' on' : '') + (full ? ' full' : '') + (i === 0 ? ' now' : '') + '"><i>' + (on ? IC_OK : '') + '</i>' + WD[wd] + '</span>';
     }
-    h += '<section class="today" aria-label="สถิติการเรียนต่อเนื่อง"><div class="streak"><span class="flame' + (sk.today ? '' : ' off') + '">' + IC_FLAME + '</span>' +
-      '<p class="streak-n">' + sk.n + '<small>วันติดต่อกัน</small></p>' +
-      '<p class="today-sub">' + (all3 ? 'วันนี้ทำครบแล้ว เก่งมาก' : (sk.today ? 'ทำต่อให้ครบ 3 อย่างด้านล่าง' : (sk.n ? 'วันนี้ยังไม่ได้เริ่ม ทำสักอย่างเพื่อให้สถิติไม่หาย' : 'เริ่มวันแรกได้เลย ทำทีละอย่างจากรายการด้านล่าง'))) + '</p></div>' +
-      '<div class="week" role="img" aria-label="7 วันล่าสุด ทำแล้ว ' + [6, 5, 4, 3, 2, 1, 0].filter(function (i2) { return active(DAYS[t - i2]); }).length + ' วัน">' + week + '</div></section>';
-    var items = [];
-    items.push(planItem('rev', ps.rev, 'ทบทวนคำศัพท์',
-      st.due ? 'ถึงเวลาทบทวน ' + fmt(st.due) + ' คำ' : (st.learned ? (a[0] ? 'ทบทวนแล้ววันนี้' : 'วันนี้ไม่มีคำที่ถึงเวลา') : 'เรียนคำแรกก่อน แล้วจะมีคำให้ทบทวน'),
-      st.learned ? smallBtn('today-rev', st.due ? 'เริ่มทบทวน' : 'ทบทวนเพิ่ม', 'data-act="today-rev"', ps.rev) : ''));
-    items.push(planItem('voc', ps.voc, 'เรียนศัพท์ใหม่',
-      'วันนี้ทำแล้ว ' + Math.min(a[1], UI.goal) + ' จาก ' + UI.goal + ' ขั้น' + (nx ? ' ต่อที่หมวด ' + catNo(nx.c) + ' ชุดที่ ' + (nx.si + 1) : ''),
-      nx ? smallBtn('today-voc', 'เรียนต่อ', 'data-act="open-set" data-c="' + nx.c + '" data-s="' + nx.si + '"', ps.voc) : ''));
-    if (GLS.length) items.push(planItem('gram', ps.gram, 'ไวยากรณ์ 1 บท',
-      gnx ? 'บทที่ ' + (gnx.i + 1) + ' ' + gnx.title : 'ผ่านครบทุกบทแล้ว ทบทวนได้เรื่อยๆ',
-      gnx ? smallBtn('today-gram', 'เรียน', 'data-act="g-open" data-id="' + gnx.id + '"', ps.gram) : smallBtn('today-gram', 'ทบทวน', 'data-act="g-review"', ps.gram)));
-    if (RDS.length) items.push(planItem('read', a[3] > 0, 'อ่าน-ฟัง 1 เรื่อง<span class="extra">เพิ่มเติม</span>',
-      rnx ? 'เรื่องที่ ' + (rnx.i + 1) + ' ' + rnx.en : 'อ่านครบทุกเรื่องแล้ว ฟังซ้ำได้',
-      smallBtn('today-read', 'อ่าน', 'data-act="r-open" data-id="' + (rnx || RDS[0]).id + '"', a[3] > 0)));
-    h += '<section class="block"><h2>สิ่งที่ต้องทำวันนี้</h2><ol class="plan">' + items.join('') + '</ol>' +
-      '<p class="note">ทำตามลำดับจากบนลงล่าง ทบทวนก่อนเรียนใหม่เสมอ เป้าศัพท์ใหม่ปรับได้ที่ปุ่มตั้งค่า</p></section>';
-    var lv = LEVEL.length ? LEVEL[LEVEL.length - 1] : null;
-    h += '<section class="block"><h2>ความก้าวหน้า</h2><div class="tiles">' +
-      '<div class="tile"><b>' + fmt(st.learned) + '</b><span>คำที่เรียนแล้ว จาก ' + fmt(ALL.length) + ' คำ</span></div>' +
-      '<div class="tile"><b>' + fmt(st.strong) + '</b><span>คำที่จำแม่นแล้ว</span></div>' +
-      (GLS.length ? '<div class="tile"><b>' + GLS.filter(gPassed).length + '/' + GLS.length + '</b><span>บทไวยากรณ์ที่ผ่าน</span></div>' : '') +
-      (RDS.length ? '<div class="tile"><b>' + rDoneCount() + '/' + RDS.length + '</b><span>เรื่องที่อ่านแล้ว</span></div>' : '') +
-      '<button type="button" class="tile" id="open-level" data-act="level"><b>' + (lv ? lvName(lv.o) : 'วัดระดับ') + '</b><span>' + (lv ? 'ระดับโดยประมาณ เมื่อ ' + dateTh(lv.t) + ' กดเพื่อวัดใหม่' : 'แบบทดสอบราว 10 นาที ดูว่าตอนนี้อยู่ระดับไหน') + '</span></button>' +
-      '<div class="tile"><b>' + sk.best + '</b><span>วันต่อเนื่องสูงสุด</span></div></div></section>';
-    app.innerHTML = h;
+    return '<div class="week" role="img" aria-label="7 วันล่าสุด เรียนแล้ว ' + n + ' วัน">' + week + '</div>';
   }
 
   /* ---------------- settings ---------------- */
@@ -2553,12 +2633,13 @@ button.tile b{color:var(--primary)}
         return '<button type="button" class="chip" id="pref-' + k + '-' + o[0] + '" data-act="pref" data-k="' + k + '" data-v="' + o[0] + '" aria-pressed="' + (cur === o[0] ? 'true' : 'false') + '">' + o[1] + '</button>';
       }).join('') + '</div>';
     }
-    var h = crumb([{ label: 'วันนี้', act: 'today' }]) + '<header class="top"><h2>ตั้งค่า</h2></header>' +
+    var h = crumb([{ label: 'ฉัน', act: 'me' }]) + '<header class="top"><h2>ตั้งค่า</h2></header>' +
       '<section class="block"><h3>เสียง</h3><div class="prefs">' +
       '<div class="pref"><p class="pref-name">อ่านออกเสียงอัตโนมัติ<small>อ่านคำหรือประโยคให้ฟังเองตอนเริ่มข้อและหลังตอบ</small></p>' + seg('auto', [[1, 'เปิด'], [0, 'ปิด']]) + '</div>' +
-      '<div class="pref"><p class="pref-name">เสียงตอนตอบถูกหรือผิด<small>เสียงติ๊งสั้นๆ เมื่อตอบถูก เสียงต่ำเมื่อตอบผิด</small></p>' + seg('fx', [[1, 'เปิด'], [0, 'ปิด']]) + '</div></div></section>' +
+      '<div class="pref"><p class="pref-name">เสียงตอนตอบถูกหรือผิด<small>เสียงติ๊งสั้นๆ เมื่อตอบถูก เสียงต่ำเมื่อตอบผิด</small></p>' + seg('fx', [[1, 'เปิด'], [0, 'ปิด']]) + '</div>' +
+      (canVib ? '<div class="pref"><p class="pref-name">สั่นเมื่อตอบ<small>เครื่องสั่นสั้นๆ เมื่อตอบถูก สั่นสองครั้งเมื่อตอบผิด</small></p>' + seg('vib', [[1, 'เปิด'], [0, 'ปิด']]) + '</div>' : '') + '</div></section>' +
       '<section class="block"><h3>การแสดงผล</h3><div class="prefs"><div class="pref"><p class="pref-name">ขนาดตัวอักษร</p>' + seg('fs', [[100, 'ปกติ'], [112, 'ใหญ่'], [125, 'ใหญ่มาก']]) + '</div></div></section>' +
-      '<section class="block"><h3>เป้าหมายรายวัน</h3><div class="prefs"><div class="pref"><p class="pref-name">ศัพท์ใหม่ต่อวัน<small>นับเป็นขั้น ศัพท์ 1 ชุดมี ' + stepCount() + ' ขั้น</small></p>' + seg('goal', [[5, 'ครึ่งชุด'], [9, '1 ชุด'], [18, '2 ชุด']]) + '</div></div></section>' +
+      '<section class="block"><h3>เป้าหมายรายวัน</h3><div class="prefs"><div class="pref"><p class="pref-name">XP ต่อวัน<small>ตอบถูกได้ 1 XP จบหนึ่งวงในเส้นทางได้อีก 10 XP วงละราว 5 นาที</small></p>' + seg('xg', [[10, '10 สบายๆ'], [20, '20 ปกติ'], [30, '30 จริงจัง'], [50, '50 เต็มที่']]) + '</div></div></section>' +
       '<section class="block"><h3>การบันทึกความคืบหน้า</h3><p class="syncnote" id="syncnote"></p></section>' +
       '<section class="block"><h3>สำรองและย้ายความคืบหน้า</h3>' +
       '<p class="note">ใช้ย้ายความคืบหน้าไปเครื่องอื่นหรือแอปอื่น กดคัดลอกรหัส แล้วเก็บไว้ในโน้ตหรือส่งให้ตัวเอง จากนั้นไปวางในหน้าตั้งค่าของอีกที่ ความคืบหน้าที่ใหม่กว่าจะไม่ถูกทับ</p>' +
@@ -2712,7 +2793,7 @@ button.tile b{color:var(--primary)}
     if (!out.entries.length && !out.gloss && !out.note) out.note = 'ยังไม่มีคำนี้ในคลังคำศัพท์';
     return out;
   }
-  function rWordSheet(o) {
+  function rWordSheet(o, links) {
     var h = '<div class="wsheet" id="wsheet" role="dialog" aria-label="ความหมายของคำ"><div class="wsheet-head"><b>' + esc(o.text) + '</b>' +
       '<button type="button" class="iconbtn" data-act="r-wclose" aria-label="ปิด">' + IC_X + '</button></div>';
     if (o.note) h += '<p class="note">' + esc(o.note) + '</p>';
@@ -2720,7 +2801,7 @@ button.tile b{color:var(--primary)}
     o.entries.slice(0, 3).forEach(function (w) {
       h += '<div class="went"><div class="went-top"><b>' + esc(w.w) + '</b><span class="pos">' + esc(posTh(w.p)) + '</span>' + sayRound('w', w.n, 'ฟังเสียง ' + w.w) + '</div>' +
         '<span class="word-read">อ่านว่า ' + rd(w.r) + '</span><span>' + esc(w.t) + '</span>' +
-        '<button type="button" class="word-go" data-act="open-set" data-c="' + w.c + '" data-s="' + w.si + '">ฝึกคำนี้ที่หมวด ' + catNo(w.c) + ' ชุดที่ ' + (w.si + 1) + '</button></div>';
+        (links ? '<button type="button" class="word-go" data-act="open-set" data-c="' + w.c + '" data-s="' + w.si + '">ฝึกคำนี้ที่หมวด ' + catNo(w.c) + ' ชุดที่ ' + (w.si + 1) + '</button>' : '') + '</div>';
     });
     return h + '</div>';
   }
@@ -2734,7 +2815,7 @@ button.tile b{color:var(--primary)}
     rCloseWord();
     var o = rLook(s, k, wi);
     for (var i = o.from; i <= o.to; i++) { var sp = app.querySelector('.tw[data-k="' + k + '"][data-w="' + i + '"]'); if (sp) sp.classList.add('on'); }
-    app.insertAdjacentHTML('beforeend', rWordSheet(o));
+    app.insertAdjacentHTML('beforeend', rWordSheet(o, !(PRUN && view.path)));
     /* the panel sits just above the bottom menu, so the menu stays usable */
     try {
       var wsh = document.getElementById('wsheet'), tbh = TABBAR && getComputedStyle(TABBAR).display !== 'none' ? TABBAR.offsetHeight : 0;
@@ -2815,7 +2896,11 @@ button.tile b{color:var(--primary)}
         return '<button type="button" class="' + cls + '" id="rq-' + qi + '-' + oi + '" data-act="r-ans" data-q="' + qi + '" data-o="' + oi + '"' + (ans ? ' disabled' : '') + '><span>' + esc(q.o[oi]) + '</span>' + mk + '</button>';
       }).join('') + '</div>' + (ans ? '<p class="rq-why">' + esc(q.why) + '</p>' : '') + '</div>';
     });
-    if (done === s.q.length) {
+    if (done === s.q.length && PRUN && view.path) {
+      h += '<div class="today rdone" id="r-result"><p class="score">' + right + '<small> จาก ' + s.q.length + ' ข้อ</small></p>' +
+        '<p class="today-sub">' + (right === s.q.length ? 'เข้าใจเรื่องนี้ครบทุกข้อ' : 'อ่านเฉลยใต้แต่ละข้อ แล้วไปต่อได้เลย') + '</p>' +
+        '<div class="actions stack"><button type="button" class="btn" id="p-story-done" data-act="p-next">ดูสรุป</button></div></div>';
+    } else if (done === s.q.length) {
       var nx = rAfter(s);
       h += '<div class="today rdone" id="r-result"><p class="score">' + right + '<small> จาก ' + s.q.length + ' ข้อ</small></p>' +
         '<p class="today-sub">' + (right === s.q.length ? 'เข้าใจเรื่องนี้ครบทุกข้อ' : 'ลองฟังอีกรอบ แล้วเปิดคำแปลประโยคที่ยังไม่แน่ใจ') + '</p><div class="actions stack">' +
@@ -2832,8 +2917,8 @@ button.tile b{color:var(--primary)}
     var s = RDI[view.id];
     if (!s) { go({ name: 'read' }); return; }
     if (!RS || RS.id !== s.id) rNewVisit(s);
-    var can = Snd.hasRef('r', 0);
-    var h = crumb([{ label: 'อ่าน-ฟัง', act: 'read' }]) +
+    var can = Snd.hasRef('r', 0), pmode = !!(PRUN && view.path);
+    var h = (pmode ? pathBar(pathPct(RS.ans.filter(function (x) { return x !== undefined; }).length / s.q.length * 100)) : crumb([{ label: 'อ่าน-ฟัง', act: 'read' }])) +
       '<header class="top"><p class="eyebrow">ระดับ ' + esc(s.lv) + ' เรื่องที่ ' + (s.i + 1) + (s.v === 'talk' ? ' บทสนทนา' : ' เรื่องสั้น') + '</p><h2 class="en">' + esc(s.en) + '</h2><p class="lede">' + esc(s.th) + '</p></header>';
     h += '<div class="rbar">' + (can ? '<button type="button" class="btn" id="r-play" data-act="r-play">' + (RS.play ? IC_STOP + 'หยุด' : IC_PLAY + 'ฟังทั้งเรื่อง') + '</button>' : '') +
       '<button type="button" class="chip pick" id="r-th" data-act="r-th" aria-pressed="' + (UI.rth ? 'true' : 'false') + '">คำแปลทุกบรรทัด</button>' +
@@ -2860,8 +2945,8 @@ button.tile b{color:var(--primary)}
     RS.logged = true;
     var r = READ[s.id];
     READ[s.id] = [Math.max(right, r ? r[0] : 0), s.q.length, nowSec()];
-    rSave(); logAct('s');
-    if (right === s.q.length) setTimeout(function () { FX.play('win'); celebrate(); }, 380);
+    rSave(); xpAdd(15); logAct('s');
+    if (right === s.q.length && !PRUN) setTimeout(function () { FX.play('win'); celebrate(); }, 380);
   }
 
   /* ---------------- level check: vocabulary size, grammar and listening by level ---------------- */
@@ -2942,7 +3027,7 @@ button.tile b{color:var(--primary)}
   }
   function vLevel() {
     var last = LEVEL.length ? LEVEL[LEVEL.length - 1] : null, res = view.res && last;
-    var h = crumb([{ label: 'วันนี้', act: 'today' }]);
+    var h = crumb([OBX ? { label: 'เส้นทาง', act: 'path' } : { label: 'ฉัน', act: 'me' }]);
     if (res) {
       h += '<header class="top"><p class="eyebrow">ผลการวัดระดับ</p><h2>ระดับโดยประมาณของคุณ</h2></header>' +
         '<section class="today" aria-label="ผลการวัดระดับ"><p class="big-lv">' + lvName(last.o) + '</p>' +
@@ -2953,10 +3038,16 @@ button.tile b{color:var(--primary)}
         }).join('') + '</div>' +
         '<p class="today-sub">ไวยากรณ์กับการฟังถึงระดับ ' + lvName(last.gl) + ' คำศัพท์ถึงระดับ ' + lvName(last.vl) + '</p></section>' +
         '<p class="note">เป็นการประมาณจากคำถามในแอปนี้ ไม่ใช่ผลสอบจริง ระดับที่ใช้ได้จริงมักเท่ากับส่วนที่อ่อนที่สุด จึงใช้ค่าที่ต่ำกว่าเป็นผลรวม วัดซ้ำเดือนละครั้งเพื่อดูว่าขยับขึ้นหรือยัง</p>';
+      /* from the first-run questions: start the path at the level the check suggests */
+      if (OBX) {
+        var sec = Math.max(0, GLV.map(function (lv) { return lv.id; }).indexOf(last.o));
+        h += '<button type="button" class="btn wide" id="p-place" data-act="p-place" data-sec="' + sec + '">เริ่มเรียนที่ระดับ ' + esc(GLV[sec] ? GLV[sec].id : 'A1') + '</button>';
+      }
     } else {
       h += '<header class="top"><h2>วัดระดับภาษาอังกฤษ</h2><p class="lede">คำถามราว 36 ข้อ ใช้เวลาประมาณ 10 นาที มีทั้งคำศัพท์ ไวยากรณ์ และการฟัง ข้อไหนไม่รู้ให้กดข้าม ผลจะได้ใกล้ความจริง</p></header>' +
         '<button type="button" class="btn wide" id="lvl-start" data-act="lvl-start">เริ่มวัดระดับ</button>' +
-        '<p class="note">ผลเป็นการประมาณจากคำถามในแอปนี้ ไม่ใช่ผลสอบจริง แนะนำให้วัดเดือนละครั้ง</p>';
+        '<p class="note">ผลเป็นการประมาณจากคำถามในแอปนี้ ไม่ใช่ผลสอบจริง แนะนำให้วัดเดือนละครั้ง</p>' +
+        (OBX ? '<button type="button" class="btn ghost wide" id="ob-zero2" data-act="ob-zero">ไม่วัดระดับ เริ่มจากศูนย์</button>' : '');
     }
     if (LEVEL.length) h += '<section class="block"><h3>ผลที่ผ่านมา</h3><ul class="hist">' + LEVEL.slice().reverse().map(function (x) {
       return '<li><span>' + esc(dateTh(x.t)) + '</span><b>' + lvName(x.o) + '</b><span>ศัพท์ราว ' + fmt(x.v) + ' คำ</span></li>';
@@ -2970,18 +3061,21 @@ button.tile b{color:var(--primary)}
     if (view.name === 'story' && !(ev.target.closest && (ev.target.closest('#wsheet') || ev.target.closest('.tw')))) rCloseWord();
     if (!el || el.disabled) return;
     var act = el.getAttribute('data-act'), s;
-    if (act === 'today') { go({ name: 'today' }); return; }
+    if (act === 'today') { go({ name: 'path' }); return; }
     if (act === 'prefs') { go({ name: 'prefs' }); return; }
     if (act === 'pref') {
       var k = el.getAttribute('data-k'), v = Number(el.getAttribute('data-v'));
       if (k === 'auto' || k === 'fx') UI[k] = !!v;
       else if (k === 'fs' && [100, 112, 125].indexOf(v) >= 0) { UI.fs = v; applyFs(); }
       else if (k === 'goal' && [5, 9, 18].indexOf(v) >= 0) UI.goal = v;
+      else if (k === 'xg' && [10, 20, 30, 50].indexOf(v) >= 0) UI.xg = v;
+      else if (k === 'vib') UI.vib = !!v;
       saveUI(); render();
       if (k === 'fx' && v) FX.play('ok');
+      if (k === 'vib' && v) vib('ok');
+      if (k === 'xg') questCheck();
       return;
     }
-    if (act === 'today-rev') { startReview(UI.rf || 'pick'); return; }
     if (act === 'bk-copy') {
       var code = backupCode(), out = document.getElementById('bk-out'), bn = document.getElementById('bk-note');
       if (out) { out.value = code; out.hidden = false; try { out.focus(); out.select(); } catch (e) {} }
@@ -3035,10 +3129,14 @@ button.tile b{color:var(--primary)}
       if (RS.ans[qi] !== undefined) return;
       RS.ans[qi] = oi; RS.pop = qi;
       FX.play(oi === s.q[qi].a ? 'ok' : 'no');
+      answered(oi === s.q[qi].a, true, null);
       rAnswered(s);
       var box = document.getElementById('rqs');
       if (box) box.innerHTML = rQsHtml(s);
       RS.pop = -1;
+      var pb = PRUN && view.path ? document.querySelector('.runbar .bar i') : null;
+      if (pb) pb.style.width = pathPct(RS.ans.filter(function (x) { return x !== undefined; }).length / s.q.length * 100) + '%';
+      if (!PRUN) cheerQuests();
       var res = document.getElementById('r-result');
       if (res && res.scrollIntoView) { try { res.scrollIntoView({ block: 'nearest' }); } catch (e) {} }
       return;
@@ -3046,7 +3144,7 @@ button.tile b{color:var(--primary)}
     if (act === 'r-again') { rNewVisit(s); var b2 = document.getElementById('rqs'); if (b2) b2.innerHTML = rQsHtml(s); return; }
   });
 
-  /* documents saved with the account besides the topic and grammar ones: days, stories read, level checks */
+  /* documents saved with the account besides the topic and grammar ones: days, stories read, level checks (and below: xp, path) */
   var EXTRA = {
     days: {
       get: function () { return { v: 1, d: DAYS }; },
@@ -3098,6 +3196,805 @@ button.tile b{color:var(--primary)}
       }
     }
   };
+
+  /* ---------------- XP, runs of right answers, daily quests ----------------
+     XP = { d: {day: XP earned}, c: {day: longest run of right answers in one path lesson}, p: {day: path lessons with every answer right},
+            s: {day: sentences said right}, b: 1 once the days practised before XP existed were estimated } */
+  var XKEY = 'vocab3000-xp-v1', XP = { d: {}, c: {}, p: {}, s: {}, b: 0 };
+  function cleanDays(m) {
+    var o = {};
+    if (m && typeof m === 'object') for (var k in m) { var n = Number(m[k]); if (/^\d{4,6}$/.test(k) && isFinite(n) && n >= 1) o[k] = Math.min(Math.floor(n), 1000000); }
+    return o;
+  }
+  (function () {
+    var x = lsGet(XKEY);
+    if (x && typeof x === 'object') { XP.d = cleanDays(x.d); XP.c = cleanDays(x.c); XP.p = cleanDays(x.p); XP.s = cleanDays(x.s); XP.b = x.b === 1 ? 1 : 0; }
+    if (XP.b) return;
+    /* once: a cautious guess for the days practised before XP existed
+       (a review round 5 XP, a words step 4, a grammar round 5, a story 15, a level check 3) */
+    Object.keys(DAYS).forEach(function (k) { var a = DAYS[k], e = a[0] * 5 + a[1] * 4 + a[2] * 5 + a[3] * 15 + a[4] * 3; if (e > 0 && !XP.d[k]) XP.d[k] = e; });
+    XP.b = 1;
+    lsSet(XKEY, XP);
+  })();
+  function xpSave() {
+    ['d', 'c', 'p', 's'].forEach(function (f) {
+      var ks = Object.keys(XP[f]).map(Number).sort(function (x, y) { return x - y; });
+      while (ks.length > 400) delete XP[f][ks.shift()];
+    });
+    lsSet(XKEY, XP);
+    Sync.touch('xp');
+  }
+  function xpDay(t) { return XP.d[t] || 0; }
+  /* n XP for today; inside a path lesson it also counts towards the lesson's total */
+  function xpAdd(n) {
+    if (!(n > 0)) return;
+    var t = today();
+    XP.d[t] = xpDay(t) + n;
+    if (PRUN) PRUN.xp += n;
+    xpSave();
+    questCheck();
+  }
+  /* a count for today: one more (no v), or the larger of the stored number and v */
+  function xpBump(f, v) {
+    var t = today(), o = XP[f][t] || 0;
+    if (v === undefined) XP[f][t] = o + 1; else if (v > o) XP[f][t] = v; else return;
+    xpSave();
+    questCheck();
+  }
+  function dayOn(d) { return active(DAYS[d]) || xpDay(d) > 0; }
+
+  var canVib = false;
+  try { canVib = typeof navigator.vibrate === 'function'; } catch (e) {}
+  function vib(kind) {
+    if (!UI.vib || !canVib) return;
+    try { navigator.vibrate(kind === 'ok' ? 12 : (kind === 'no' ? [20, 40, 20] : [30, 60, 90])); } catch (e) {}
+  }
+  /* Every graded answer: a short buzz, 1 XP when right the first time, and inside a path lesson the score and the run of
+     right answers (a chip and a word of praise at 3, 5, 10, 15 and 20; a wrong answer starts the run again without comment).
+     helped: right, but with a hint, so it neither counts as right nor breaks the run. */
+  var COMBO_AT = [3, 5, 10, 15, 20], PRAISE = ['เยี่ยม ถูกติดกัน # ข้อ', 'แม่นมาก', 'ไปได้สวย'];
+  function answered(ok, first, cur, helped) {
+    var good = ok && !helped;
+    vib(ok ? 'ok' : 'no');
+    if (first && good) xpAdd(1);
+    if (!PRUN) return;
+    if (first) { PRUN.ans++; if (good) PRUN.right++; }
+    if (!ok) { PRUN.combo = 0; return; }
+    if (!good) return;
+    PRUN.combo++;
+    if (PRUN.combo > PRUN.best) PRUN.best = PRUN.combo;
+    xpBump('c', PRUN.combo);
+    if (COMBO_AT.indexOf(PRUN.combo) >= 0) {
+      PRUN.pop = true;
+      if (cur) cur.praise = PRAISE[Math.floor(Math.random() * PRAISE.length)].replace('#', PRUN.combo);
+    }
+  }
+  function praiseHtml(cur) { return cur && cur.praise ? '<p class="praise" id="praise">' + esc(cur.praise) + '</p>' : ''; }
+  /* a sentence counts as said right when nearly every word was heard (all of a short one); once per opening of the panel */
+  function spPass(r) { return !!r && r.total > 0 && r.ok >= Math.ceil(r.total * 0.8); }
+  function spHeard(sp) {
+    var ok = spPass(sp.res);
+    if (ok && !sp.credit) { sp.credit = true; xpAdd(2); xpBump('s'); }
+    if (PRUN && PRUN.say && view.name === 'p-say') sayMark(sp.ref, ok);
+  }
+
+  /* three quests a day: the XP goal and two more, the same all day, another pair the next day */
+  var QXP = { id: 'xp', th: function () { return 'ได้ ' + UI.xg + ' XP ตามเป้าวันนี้'; }, goal: function () { return UI.xg; }, val: function (t) { return xpDay(t); } };
+  var QPOOL = [
+    { id: 'combo', th: 'ตอบถูกติดกัน 10 ข้อในบทเดียว', goal: 10, val: function (t) { return XP.c[t] || 0; } },
+    { id: 'perfect', th: 'ทำบทในเส้นทางได้เต็ม 1 บท', goal: 1, val: function (t) { return XP.p[t] || 0; } },
+    { id: 'story', th: 'อ่านหรือฟังให้จบ 1 เรื่อง', goal: 1, val: function (t) { return dayArr(t)[3]; } },
+    { id: 'due', th: 'ทบทวนคำที่ถึงเวลาให้หมด', goal: 1, val: function () { return stats().due ? 0 : 1; } },
+    { id: 'speak', th: 'พูดประโยคให้ผ่าน 5 ประโยค', goal: 5, val: function (t) { return XP.s[t] || 0; }, need: function () { return !!Spk.SR(); } }
+  ];
+  function questsFor(t) {
+    var pool = QPOOL.filter(function (q) { return !q.need || q.need(); }), pairs = [], i, j;
+    for (i = 0; i < pool.length; i++) for (j = i + 1; j < pool.length; j++) pairs.push([pool[i], pool[j]]);
+    var pr = pairs[(t % pairs.length) * 7 % pairs.length];
+    return [QXP, pr[0], pr[1]].map(function (q) {
+      var g = typeof q.goal === 'function' ? q.goal() : q.goal, v = q.val(t);
+      var sub = v >= g ? 'สำเร็จแล้ว' : (q.id === 'due' ? 'เหลืออีก ' + fmt(stats().due) + ' คำ' : Math.min(v, g) + ' จาก ' + g);
+      return { id: q.id, th: typeof q.th === 'function' ? q.th() : q.th, cur: Math.min(v, g), goal: g, done: v >= g, sub: sub };
+    });
+  }
+  var QCHEER = false;
+  /* all three quests done: the day counts as a full day (the mark the old checklist set) and a small celebration follows */
+  function questCheck() {
+    var t = today(), a = dayArr(t);
+    if (a[5] || !questsFor(t).every(function (q) { return q.done; })) return;
+    a = a.slice(); a[5] = 1; DAYS[t] = a;
+    saveDays(); Sync.touch('days');
+    QCHEER = true;
+  }
+  function cheerQuests() {
+    if (!QCHEER) return;
+    QCHEER = false;
+    var el = document.createElement('div');
+    el.className = 'toast'; el.id = 'toast'; el.setAttribute('role', 'status');
+    el.innerHTML = IC_OK + '<span>ทำภารกิจวันนี้ครบ 3 อย่างแล้ว เก่งมาก</span>';
+    document.body.appendChild(el);
+    FX.play('win'); vib('end');
+    setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 3500);
+  }
+  function questsHtml(qs) {
+    return '<ul class="quests">' + qs.map(function (q) {
+      return '<li class="quest' + (q.done ? ' done' : '') + '" id="quest-' + q.id + '"><span class="chk" aria-hidden="true">' + IC_OK + '</span>' +
+        '<span class="quest-main"><b>' + esc(q.th) + '</b><span class="bar" role="img" aria-label="' + esc(q.sub) + '"><i class="b-strong" style="width:' + Math.round(q.cur / q.goal * 100) + '%"></i></span>' +
+        '<small>' + esc(q.sub) + '</small></span></li>';
+    }).join('') + '</ul>';
+  }
+
+  /* ---------------- the path record ----------------
+     PATH = { k: {unit number: [best right, questions, time]} for checkpoints, x: {review number: day it was done},
+              t: {story id: [lines said, lines, time]} for say-alongs, s: the level the path starts at (from the level check) } */
+  var PKEY = 'vocab3000-path-v1', PATH = { k: {}, x: {}, t: {}, s: 0 };
+  function cleanTri(a) { return Array.isArray(a) && a.length >= 3 ? [Math.max(0, Number(a[0]) | 0), Math.max(0, Number(a[1]) | 0), Math.max(0, Number(a[2]) | 0)] : null; }
+  (function () {
+    var p = lsGet(PKEY), k, r;
+    if (!p || typeof p !== 'object') return;
+    if (p.k && typeof p.k === 'object') for (k in p.k) { r = cleanTri(p.k[k]); if (/^\d{1,4}$/.test(k) && r && r[1] > 0) PATH.k[k] = r; }
+    if (p.x && typeof p.x === 'object') for (k in p.x) { r = Number(p.x[k]) | 0; if (/^\d{1,5}$/.test(k) && r > 0) PATH.x[k] = r; }
+    if (p.t && typeof p.t === 'object') for (k in p.t) { r = cleanTri(p.t[k]); if (RDI[k] && r) PATH.t[k] = r; }
+    r = Number(p.s) | 0; if (r > 0 && r < 8) PATH.s = r;
+  })();
+  function pathSave() { lsSet(PKEY, PATH); Sync.touch('path'); }
+  /* both travel with account saving and the backup code; merging keeps the better result and the later date, never less */
+  EXTRA.xp = {
+    get: function () { return { v: 1, d: XP.d, c: XP.c, p: XP.p, s: XP.s, b: 1 }; },
+    has: function () { return Object.keys(XP.d).length > 0; },
+    merge: function (data) {
+      var changed = false, newer = false;
+      ['d', 'c', 'p', 's'].forEach(function (f) {
+        var r = cleanDays(data && data[f]);
+        Object.keys(r).forEach(function (k) { if (r[k] > (XP[f][k] || 0)) { XP[f][k] = r[k]; changed = true; } });
+        Object.keys(XP[f]).forEach(function (k) { if (XP[f][k] > (r[k] || 0)) newer = true; });
+      });
+      if (changed) lsSet(XKEY, XP);
+      return { changed: changed, newer: newer };
+    }
+  };
+  EXTRA.path = {
+    get: function () { return { v: 1, k: PATH.k, x: PATH.x, t: PATH.t, s: PATH.s }; },
+    has: function () { return Object.keys(PATH.k).length + Object.keys(PATH.x).length + Object.keys(PATH.t).length > 0 || PATH.s > 0; },
+    merge: function (data) {
+      var d = data && typeof data === 'object' ? data : {}, changed = false, newer = false;
+      function tri(own, rem, valid) {
+        var r = rem && typeof rem === 'object' ? rem : {};
+        Object.keys(r).forEach(function (id) {
+          var a = cleanTri(r[id]), b = own[id];
+          if (!valid(id) || !a || !a[1]) return;
+          if (!b || a[0] > b[0] || (a[0] === b[0] && a[2] > b[2])) { own[id] = a; changed = true; }
+        });
+        Object.keys(own).forEach(function (id) { var a = cleanTri(r[id]); if (!a || own[id][0] > a[0]) newer = true; });
+      }
+      tri(PATH.k, d.k, function (id) { return /^\d{1,4}$/.test(id); });
+      tri(PATH.t, d.t, function (id) { return !!RDI[id]; });
+      var rx = d.x && typeof d.x === 'object' ? d.x : {};
+      Object.keys(rx).forEach(function (id) { var v = Number(rx[id]) | 0; if (/^\d{1,5}$/.test(id) && v > (PATH.x[id] || 0)) { PATH.x[id] = v; changed = true; } });
+      Object.keys(PATH.x).forEach(function (id) { if (PATH.x[id] > (Number(rx[id]) | 0)) newer = true; });
+      var sv = Number(d.s) | 0;
+      if (sv > PATH.s && sv < 8) { PATH.s = sv; changed = true; } else if (PATH.s > sv) newer = true;
+      if (changed) lsSet(PKEY, PATH);
+      return { changed: changed, newer: newer };
+    }
+  };
+
+  /* ---------------- the learning path (เส้นทาง) ----------------
+     Built once, when first needed, from what the app already has and always in the same order. The word sets of the first 55 topics
+     (display order) are split over the grammar levels A1-B2 in proportion to their lessons. Each set comes three times, one stage
+     (three steps) at a time, spaced: after set k is introduced come stage 2 of set k-1 and stage 3 of set k-2. A level's grammar
+     lessons are spread evenly through it. Each story of the level gets its own stretch of it and sits at the first point of that
+     stretch where 95% of its words (names left out, word forms as the reader finds them) are taught or common small words, else
+     at the stretch's end; its untaught words are shown just before it, and a say-along follows it. A review comes after every six
+     nodes. Units of 12 to 18 nodes, cut before a new topic where possible, are named after their main topic and end with a checkpoint.
+     Node ids: v:<topic>.<set>.<stage>, g:<lesson>, r:<story>, t:<story>, x:<review number>, k:<unit number>.
+     Topics added later (index 55 and up) are not on the path yet; phase 4 places them in the B1 level. */
+  var PBASE = 55, CKPASS = 0.8, PM = null, PRUN = null, PFOCUS = null;
+  var PFUNC = {};
+  ('a an the and or but so if to of in on at for with from by about as than then is am are was were be been being do does did not no yes ' +
+   'i you he she it we they me him her us them my your his its our their this that these those there here what who where when why how which ' +
+   'can could will would shall should may might must have has had very too also only just now up out off over all some any many much more most one ' +
+   'because after before while until every each other another both either again still even never always often sometimes maybe please hello hi oh')
+    .split(' ').forEach(function (w) { PFUNC[w] = 1; });
+  function pm() { if (!PM) PM = pathBuild(); return PM; }
+  function pathBuild() {
+    var PN = [], PNI = {}, PU = [], PSEC = [], sets = [], taught = {}, toks = {}, xn = 0, titles = {};
+    var LV = GLV.length ? GLV : [{ id: 'A1', note: '' }];
+    function add(n) { n.i = PN.length; PN.push(n); PNI[n.id] = n; return n; }
+    heads();
+    ORD.forEach(function (c) { if (c < PBASE) CATS[c].sets.forEach(function (_, si) { sets.push({ c: c, si: si }); }); });
+    var cnt = LV.map(function (lv) { return GLS.filter(function (l) { return l.lv === lv.id; }).length; }), tot = 0, run = 0, cuts = [0];
+    cnt.forEach(function (x) { tot += x; });
+    cnt.forEach(function (x) { run += x; cuts.push(tot ? Math.round(sets.length * run / tot) : sets.length); });
+    /* set k of a level is introduced after this many word nodes of the level: 0, 1, then 3, 6, 9 ... */
+    LV.forEach(function (lv, sec) { sets.slice(cuts[sec], cuts[sec + 1]).forEach(function (s, k) { taught[s.c + '-' + s.si] = [sec, k < 2 ? k : 3 * k - 3]; }); });
+    /* where a word of a story is first taught: [level, word nodes before it]; -1 a small common word, null a name, Infinity not taught */
+    function when(tok) {
+      var low = tok.toLowerCase(), fs = forms(low), best = null, i, cap = /^[A-ZÀ-Þ]/.test(tok);
+      if ((RD.contr || {})[low]) return -1;
+      for (i = 0; i < fs.length; i++) if (PFUNC[fs[i]]) return -1;
+      if (cap && /ชื่อ/.test((RD.gl || {})[low] || '')) return null;
+      fs.forEach(function (f) {
+        (HEAD[f] || []).forEach(function (w) {
+          var t = taught[w.c + '-' + w.si];
+          if (t && (!best || t[0] < best[0] || (t[0] === best[0] && t[1] < best[1]))) best = t;
+        });
+      });
+      if (best) return best;
+      return cap ? null : Infinity;
+    }
+    RDS.forEach(function (s) {
+      var a = [];
+      s.l.forEach(function (l) { rWords(l.en).forEach(function (t) { var w = when(t); if (w !== null) a.push({ t: t, w: w }); }); });
+      toks[s.id] = a;
+    });
+    function known(w, sec, p) { return w === -1 || (w !== Infinity && (w[0] < sec || (w[0] === sec && w[1] < p))); }
+    function cover(s, sec, p) { var a = toks[s.id], k = 0; a.forEach(function (x) { if (known(x.w, sec, p)) k++; }); return a.length ? k / a.length : 1; }
+    function fresh(s, sec, p) {
+      var seen = {}, out = [];
+      toks[s.id].forEach(function (x) { var low = x.t.toLowerCase(); if (!known(x.w, sec, p) && !seen[low]) { seen[low] = 1; out.push(x.t); } });
+      return out;
+    }
+    LV.forEach(function (lv, sec) {
+      var ss = sets.slice(cuts[sec], cuts[sec + 1]), V = ss.length * 3, voc = [], at = {}, k;
+      for (k = 0; k < ss.length + 2; k++) {
+        if (k < ss.length) voc.push({ t: 'v', c: ss[k].c, si: ss[k].si, st: 0 });
+        if (k >= 1 && k - 1 < ss.length) voc.push({ t: 'v', c: ss[k - 1].c, si: ss[k - 1].si, st: 1 });
+        if (k >= 2 && k - 2 < ss.length) voc.push({ t: 'v', c: ss[k - 2].c, si: ss[k - 2].si, st: 2 });
+      }
+      function put(p, n) { (at[p] || (at[p] = [])).push(n); }
+      var gl = GLS.filter(function (l) { return l.lv === lv.id; });
+      gl.forEach(function (l, j) { put(Math.min(V, Math.floor(j * V / gl.length) + 2), { t: 'g', l: l }); });
+      var rs = RDS.filter(function (s) { return s.lv === lv.id; });
+      var slot = rs.map(function (_, j) { return Math.floor((j + 1) * V / (rs.length + 1)); });
+      rs.forEach(function (s, j) {
+        var end = j + 1 < rs.length ? slot[j + 1] - 1 : V, p = slot[j];
+        while (p < end && cover(s, sec, p) < 0.95) p++;
+        put(p, { t: 'r', r: s, nw: fresh(s, sec, p) });
+        put(p, { t: 't', r: s });
+      });
+      var stream = [], since = 0, units = [], cur = [], last = -1;
+      for (k = 0; k <= V; k++) { (at[k] || []).forEach(function (n) { stream.push(n); }); if (k < V) stream.push(voc[k]); }
+      var full = [];
+      /* a review after every six nodes, but never between a story and its say-along; a unit is never cut there either */
+      stream.forEach(function (n) { full.push(n); if (++since >= 6 && n.t !== 'r') { full.push({ t: 'x' }); since = 0; } });
+      full.forEach(function (n) {
+        var newTopic = n.t === 'v' && n.st === 0 && last >= 0 && n.c !== last;
+        if (n.t !== 't' && (cur.length >= 18 || (cur.length >= 12 && newTopic))) { units.push(cur); cur = []; }
+        cur.push(n);
+        if (n.t === 'v' && n.st === 0) last = n.c;
+      });
+      if (cur.length) { if (cur.length < 6 && units.length) units[units.length - 1] = units[units.length - 1].concat(cur); else units.push(cur); }
+      var S = { i: sec, lv: lv.id, note: lv.note || '', units: [] };
+      PSEC.push(S);
+      units.forEach(function (ns) {
+        var u = { i: PU.length, no: PU.length + 1, sec: sec, nodes: [], title: '' }, by = {}, best = -1;
+        ns.forEach(function (n) { if (n.t === 'v') by[n.c] = (by[n.c] || 0) + (n.st === 0 ? 10 : 1); });
+        Object.keys(by).forEach(function (c) { if (best < 0 || by[c] > by[best]) best = +c; });
+        var th = best >= 0 ? CATS[best].th : 'ทบทวน';
+        titles[th] = (titles[th] || 0) + 1;
+        u.title = th + (titles[th] > 1 ? ' ตอน ' + titles[th] : '');
+        ns.forEach(function (n) {
+          if (n.t === 'v') n.id = 'v:' + n.c + '.' + n.si + '.' + n.st;
+          else if (n.t === 'g') n.id = 'g:' + n.l.id;
+          else if (n.t === 'r') n.id = 'r:' + n.r.id;
+          else if (n.t === 't') n.id = 't:' + n.r.id;
+          else { n.n = ++xn; n.id = 'x:' + n.n; }
+          n.u = u.i;
+          u.nodes.push(add(n));
+        });
+        u.ck = add({ t: 'k', id: 'k:' + u.no, u: u.i, n: u.no });
+        u.nodes.push(u.ck);
+        PU.push(u); S.units.push(u);
+      });
+    });
+    return { PN: PN, PNI: PNI, PU: PU, PSEC: PSEC };
+  }
+  /* done comes from the records that already exist; the path key only adds checkpoints, reviews and say-alongs */
+  function stageBits(st) { var b = 0; MODES.forEach(function (m) { if (m.stage === st) b |= m.bit; }); return b & reqBits(); }
+  function ckPassed(n) { var r = PATH.k[n.n]; return !!(r && r[1] > 0 && r[0] >= Math.ceil(r[1] * CKPASS)); }
+  function nodeDone(n, sb) {
+    if (n.t === 'v') { var b = sb ? sb[n.st] : stageBits(n.st); return (maskOf(n.c, n.si) & b) === b; }
+    if (n.t === 'g') return gPassed(n.l);
+    if (n.t === 'r') return rDone(n.r);
+    if (n.t === 't') return !!PATH.t[n.r.id];
+    if (n.t === 'k') return ckPassed(n);
+    return !!PATH.x[n.n];
+  }
+  /* done[i] for each node; nav[i] also skips what the learner may pass by (a unit tested out, the levels before the start level,
+     say-alongs without speech recognition, a checkpoint already tried, a review while nothing is due); cur is the first node not
+     passed: the next thing to do. A review counts as done once it was done, or once the learner went past it (the node after it
+     is done or passed by), so an old review never pulls the path back. */
+  function pathScan() {
+    var M = pm(), N = M.PN, done = [], nav = [], past = false, noDue = stats().due === 0, sr = !!Spk.SR(), cur = -1, i, n;
+    var sb = [stageBits(0), stageBits(1), stageBits(2)], upass = M.PU.map(function (u) { return ckPassed(u.ck); });
+    for (i = N.length - 1; i >= 0; i--) {
+      n = N[i];
+      if (n.t === 'x') { done[i] = !!PATH.x[n.n] || past; continue; }
+      done[i] = nodeDone(n, sb);
+      if (n.t === 't' && !sr) continue;
+      past = done[i] || upass[n.u] || M.PU[n.u].sec < PATH.s || (n.t === 'k' && !!PATH.k[n.n]);
+    }
+    for (i = 0; i < N.length; i++) {
+      n = N[i];
+      nav[i] = done[i] || upass[n.u] || M.PU[n.u].sec < PATH.s || (n.t === 't' && !sr) || (n.t === 'k' && !!PATH.k[n.n]) || (n.t === 'x' && noDue);
+      if (cur < 0 && !nav[i]) cur = i;
+    }
+    if (noDue) for (i = 0; i < (cur < 0 ? N.length : cur); i++) if (N[i].t === 'x') done[i] = true;
+    return { done: done, nav: nav, cur: cur, upass: upass, sr: sr };
+  }
+  function secDone(sec, sc) { return pm().PSEC[sec].units.every(function (u) { return sc.upass[u.i]; }); }
+  /* the grammar explanation that goes with a unit: its own lesson, else the last one before it */
+  function unitGuide(u) {
+    var N = pm().PN, gl = null, i;
+    u.nodes.forEach(function (n) { if (n.t === 'g') gl = n.l; });
+    if (gl) return gl;
+    for (i = u.nodes[0].i - 1; i >= 0; i--) if (N[i].t === 'g') return N[i].l;
+    return null;
+  }
+  function hasProgress() {
+    return Object.keys(P.w).length > 0 || Object.keys(P.s).length > 0 || Object.keys(GP.l).length > 0 || Object.keys(READ).length > 0 ||
+      LEVEL.length > 0 || Object.keys(DAYS).length > 0 || EXTRA.path.has();
+  }
+  function sk(d) { return '<path d="' + d + '" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'; }
+  function svgI(inner) { return '<svg viewBox="0 0 24 24" aria-hidden="true">' + inner + '</svg>'; }
+  var TROPHY = 'M7.5 4h9v5.5a4.5 4.5 0 0 1-9 0zM7.5 6H4.5v1a3.5 3.5 0 0 0 3.3 3.5M16.5 6h3v1a3.5 3.5 0 0 1-3.3 3.5M12 14v3.5M8.5 20.5h7M9.5 17.5h5';
+  /* one icon per kind of node: words, grammar, story, speaking, review, checkpoint, and (phase 4) sounds, dialogue, fix the error, writing */
+  var PIC = {
+    v: svgI('<rect x="3" y="7" width="13" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>' + sk('M8 3.5h9.5A3.5 3.5 0 0 1 21 7v10')),
+    g: svgI('<rect x="3" y="13" width="8" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13" y="13" width="8" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="8" y="3" width="8" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>'),
+    r: svgI(sk('M12 6.5C10 5 7 4.5 3.5 5v13c3.5-.5 6.5 0 8.5 1.5 2-1.5 5-2 8.5-1.5V5C17 4.5 14 5 12 6.5zM12 6.5v13')),
+    t: IC_MIC,
+    x: svgI(sk('M19.5 10A7.5 7.5 0 0 0 6 6.3M4.5 3.5v4h4M4.5 14A7.5 7.5 0 0 0 18 17.7M19.5 20.5v-4h-4')),
+    k: svgI(sk(TROPHY)),
+    p: svgI(sk('M7 9.5a5 5 0 1 1 10 0c0 3-2.4 3.6-3.2 5.5-.6 1.5-.6 4.5-3.3 4.5A2.6 2.6 0 0 1 8 17M10.5 9.5a1.5 1.5 0 0 1 3 0')),
+    d: svgI(sk('M4 4.5h10a2 2 0 0 1 2 2V11a2 2 0 0 1-2 2H9l-3.5 3v-3H4a2 2 0 0 1-2-2V6.5a2 2 0 0 1 2-2zM18.5 8.5H20a2 2 0 0 1 2 2V15a2 2 0 0 1-2 2h-1v3l-3.5-3H12')),
+    e: svgI('<circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/>' + sk('M15.5 15.5L21 21M8.5 8.5l4 4M12.5 8.5l-4 4')),
+    w: svgI(sk('M4 20h4L19.5 8.5a2.1 2.1 0 0 0-3-3L5 17zM14.5 7.5l3 3'))
+  };
+  var IC_TROPHY_ON = svgI('<path d="M7.5 4h9v5.5a4.5 4.5 0 0 1-9 0z" fill="currentColor"/>' + sk(TROPHY));
+  var IC_ME = svgI('<circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/>' + sk('M4.5 20.5a7.5 7.5 0 0 1 15 0'));
+  var IC_FLAG = svgI(sk('M5.5 21V4M5.5 4.5h11l-2.2 4 2.2 4h-11'));
+  function nodeIcon(n, st) { if (st === 'done') return n.t === 'k' ? IC_TROPHY_ON : IC_OK; return PIC[n.t] || PIC.v; }
+  function ring(f) {
+    var c = 2 * Math.PI * 9.5, d = Math.max(0, Math.min(1, f || 0)) * c;
+    return '<svg class="ring" viewBox="0 0 24 24" aria-hidden="true"><circle class="tr" cx="12" cy="12" r="9.5"/>' +
+      (d > 0 ? '<circle class="pg" cx="12" cy="12" r="9.5" stroke-dasharray="' + d.toFixed(2) + ' ' + c.toFixed(2) + '" transform="rotate(-90 12 12)"/>' : '') + '</svg>';
+  }
+  var PTYPE = { v: 'คำศัพท์', g: 'ไวยากรณ์', r: 'อ่าน-ฟัง', t: 'ฝึกพูด', x: 'ทบทวน', k: 'ทดสอบหน่วย' };
+  function nodeTitle(n) {
+    if (n.t === 'v') return STAGES[n.st] + ' ' + CATS[n.c].th + ' ชุดที่ ' + (n.si + 1);
+    if (n.t === 'g') return 'บทที่ ' + (n.l.i + 1) + ' ' + n.l.title;
+    if (n.t === 'r') return n.r.en;
+    if (n.t === 't') return 'พูดตามเรื่อง ' + n.r.en;
+    if (n.t === 'x') return 'ทบทวนคำและข้อที่เคยผิด';
+    return 'ทดสอบหน่วยที่ ' + n.n;
+  }
+  function nodeMins(n) { return n.t === 'v' ? [4, 5, 5][n.st] : ({ g: 6, r: 5, t: 2, x: 3, k: 4 })[n.t]; }
+
+  /* ---------------- a path lesson: one node run as a few parts in a row (the steps of a stage, a lesson and its round, ...) ---------------- */
+  function revWords() { return shuffle(reviewList(10)).map(function (w) { var q = qForBox(w); if (q === 'mean' && !thAlts(w).length) q = 'e2t'; return { n: w.n, q: q }; }); }
+  function revGram() {
+    return Object.keys(GP.x).filter(function (id) { return GP.x[id] > 0 && GQ[id]; })
+      .sort(function (a, b) { return GP.x[b] - GP.x[a] || (a < b ? -1 : 1); }).slice(0, 5).map(function (id) { return GQ[id]; });
+  }
+  /* a checkpoint: 12 questions from the unit, words and grammar taken turns, one of them a listening item */
+  function ckParts(n) {
+    var u = pm().PU[n.u], words = [], seen = {}, ls = [], gq = [];
+    u.nodes.forEach(function (x) {
+      if (x.t === 'v' && !seen[x.c + '-' + x.si]) { seen[x.c + '-' + x.si] = 1; CATS[x.c].sets[x.si].forEach(function (w) { words.push(w); }); }
+      if (x.t === 'g') ls.push(x.l);
+    });
+    if (!ls.length) { var gl = unitGuide(u); if (gl) ls.push(gl); }
+    ls.forEach(function (l) { l.q.forEach(function (q) { gq.push(q); }); });
+    gq = shuffle(gq).slice(0, words.length ? 3 : 12);
+    var items = shuffle(words).slice(0, 12 - gq.length).map(function (w, i) {
+      var q = ['e2t', 't2e', 'cloze'][i % 3];
+      if (q === 'cloze' && !w.x) q = 'e2t';
+      return { n: w.n, q: q };
+    });
+    if (items.length && Snd.can()) items[items.length - 1].q = 'listen';
+    var a = items.slice(0, Math.ceil(items.length / 2)), b = items.slice(a.length), g1 = gq.slice(0, Math.ceil(gq.length / 2)), g2 = gq.slice(g1.length), parts = [];
+    if (a.length) parts.push({ k: 'ckv', items: a });
+    if (g1.length) parts.push({ k: 'ckg', items: g1 });
+    if (b.length) parts.push({ k: 'ckv', items: b });
+    if (g2.length) parts.push({ k: 'ckg', items: g2 });
+    return parts;
+  }
+  function nodeParts(n) {
+    var parts = [];
+    if (n.t === 'v') {
+      var ms = MODES.filter(function (m) { return m.stage === n.st && (reqBits() & m.bit); }), mk = maskOf(n.c, n.si);
+      var left = ms.filter(function (m) { return !(mk & m.bit); });
+      (left.length ? left : ms).forEach(function (m) { parts.push({ k: 'step', mode: m.id }); });
+    } else if (n.t === 'g') parts = [{ k: 'lesson' }, { k: 'gram' }];
+    else if (n.t === 'r') { if (storyNew(n).length) parts.push({ k: 'words' }); parts.push({ k: 'story' }); }
+    else if (n.t === 't') parts = [{ k: 'say' }];
+    else if (n.t === 'x') {
+      var rl = revWords(), gq = revGram();
+      if (rl.length) parts.push({ k: 'rev', items: rl });
+      if (gq.length) parts.push({ k: 'grev', items: gq });
+    } else if (n.t === 'k') parts = ckParts(n);
+    return parts.length ? parts : null;
+  }
+  function pathStart(n) {
+    var parts = nodeParts(n);
+    if (!parts) return false;
+    var sc = pathScan(), u = pm().PU[n.u];
+    PRUN = { n: n, parts: parts, pi: -1, t0: Date.now(), xp: 0, ans: 0, right: 0, combo: 0, best: 0, pop: false, uWas: sc.upass[u.i], sWas: secDone(u.sec, sc), say: null, end: null };
+    if (!UI.pn) { UI.pn = 1; saveUI(); }
+    pathNextPart();
+    return true;
+  }
+  function pathPct(local) {
+    var R = PRUN;
+    if (!R) return local;
+    return Math.round((Math.max(0, R.pi) + Math.max(0, Math.min(100, local)) / 100) / R.parts.length * 100);
+  }
+  function pathNextPart() {
+    var R = PRUN;
+    if (!R) return;
+    R.pi++;
+    if (R.pi >= R.parts.length) { pathEnd(); return; }
+    var p = R.parts[R.pi], n = R.n, u = pm().PU[n.u];
+    if (p.k === 'step') startSet(n.c, n.si, p.mode);
+    else if (p.k === 'rev') startSession({ kind: 'review', fmt: 'pick', title: 'ทบทวนคำศัพท์', where: 'วงทบทวนในเส้นทาง หน่วยที่ ' + u.no, items: p.items });
+    else if (p.k === 'grev') gStartRun('review', p.items, null);
+    else if (p.k === 'ckv') startSession({ kind: 'ck', title: 'ทดสอบหน่วยที่ ' + u.no, where: u.title, items: p.items });
+    else if (p.k === 'ckg') gStartRun('ck', p.items, null, 'ทดสอบหน่วยที่ ' + u.no);
+    else if (p.k === 'lesson') go({ name: 'g-lesson', id: n.l.id, path: true });
+    else if (p.k === 'gram') gStartRun('lesson', n.l.q.slice(), n.l.id);
+    else if (p.k === 'words') go({ name: 'p-words', path: true });
+    else if (p.k === 'story') { RS = null; go({ name: 'story', id: n.r.id, path: true }); }
+    else if (p.k === 'say') { R.say = { lines: sayLines(n.r), ok: {}, tried: {} }; go({ name: 'p-say', path: true }); }
+  }
+  /* the lesson is over: keep its result, add the lesson's XP (+10 finished, +5 more when every answer was right, +20 a checkpoint passed) */
+  function pathEnd() {
+    var R = PRUN, n = R.n, u = pm().PU[n.u];
+    if (n.t === 't') {
+      var said = 0, tried = 0, o = PATH.t[n.r.id];
+      R.say.lines.forEach(function (k) { if (R.say.tried[k]) tried++; if (R.say.ok[k]) said++; });
+      R.ans = tried; R.right = said;
+      if (!o || said >= o[0]) PATH.t[n.r.id] = [said, R.say.lines.length, nowSec()];
+      pathSave();
+    } else if (n.t === 'x') { PATH.x[n.n] = today(); pathSave(); }
+    else if (n.t === 'k') {
+      var o2 = PATH.k[n.n];
+      if (!o2 || R.right >= o2[0]) PATH.k[n.n] = [R.right, R.ans, nowSec()];
+      pathSave(); logAct('r');
+    }
+    var sc = pathScan(), done = sc.done[n.i], passed = n.t !== 'k' || R.right >= Math.ceil(R.ans * CKPASS);
+    var finished = n.t === 'k' || (done && (n.t !== 't' || R.right > 0) && (n.t !== 'x' || R.ans > 0));
+    var perfect = finished && passed && R.ans > 0 && R.right === R.ans;
+    if (n.t === 'k' && passed) xpAdd(20);
+    if (finished) xpAdd(10);
+    if (perfect) { xpAdd(5); xpBump('p'); }
+    var uNow = sc.upass[u.i], sNow = secDone(u.sec, sc);
+    R.end = { done: done, passed: passed, perfect: perfect, secs: Math.max(1, Math.round((Date.now() - R.t0) / 1000)), unit: uNow && !R.uWas, sec: sNow && !R.sWas, shown: false };
+    R.end.cheer = perfect || R.end.unit || R.end.sec;
+    vib('end');
+    saveNow(); Sync.flushSoon();
+    go({ name: 'p-end', path: true });
+  }
+  /* the node after this one that still waits; at the end of the path, the first one anywhere */
+  function pathNextNode(after) {
+    var sc = pathScan(), N = pm().PN, i;
+    for (i = after.i + 1; i < N.length; i++) if (!sc.nav[i]) return N[i];
+    return sc.cur >= 0 && sc.cur !== after.i ? N[sc.cur] : null;
+  }
+  function pathStartCurrent() { var sc = pathScan(); if (sc.cur < 0 || !pathStart(pm().PN[sc.cur])) go({ name: 'path' }); }
+  function quitAsk() {
+    if (document.getElementById('dlg')) return;
+    document.body.insertAdjacentHTML('beforeend', '<div class="dlg" id="dlg" role="dialog" aria-modal="true" aria-labelledby="dlg-t"><div class="dlg-shade" data-act="dlg-stay"></div>' +
+      '<div class="dlg-panel"><h3 id="dlg-t">ออกจากบทนี้ไหม</h3><p>ที่ทำไปแล้วยังเก็บไว้</p>' +
+      '<button type="button" class="btn wide" id="dlg-stay" data-act="dlg-stay">เรียนต่อ</button>' +
+      '<button type="button" class="btn ghost wide" id="dlg-leave" data-act="dlg-leave">ออกจากบทนี้</button></div></div>');
+    try { document.getElementById('dlg-stay').focus(); } catch (e) {}
+  }
+  function quitClose() { var d = document.getElementById('dlg'); if (d && d.parentNode) d.parentNode.removeChild(d); }
+  function pathLeave() { aiStop(); saveNow(); Sync.flushSoon(); PRUN = null; go({ name: 'path' }); }
+  document.addEventListener('click', function (ev) {
+    var el = ev.target.closest ? ev.target.closest('[data-act]') : null;
+    if (!el || !document.getElementById('dlg')) return;
+    var act = el.getAttribute('data-act');
+    if (act === 'dlg-stay') quitClose();
+    else if (act === 'dlg-leave') { quitClose(); pathLeave(); }
+  });
+  document.addEventListener('keydown', function (ev) {
+    if (!document.getElementById('dlg')) return;
+    if (ev.key === 'Escape') { ev.preventDefault(); quitClose(); }
+    ev.stopPropagation();
+  }, true);
+
+  /* the words of a story the path has not taught yet (and the learner has not learned elsewhere), with a meaning to show */
+  function storyNew(n) {
+    heads();
+    return (n.nw || []).map(function (tok) {
+      var fs = forms(tok.toLowerCase()), es = [], gl = '', i;
+      for (i = 0; i < fs.length; i++) if (HEAD[fs[i]]) { es = HEAD[fs[i]]; break; }
+      for (i = 0; i < fs.length && !gl; i++) gl = (RD.gl || {})[fs[i]] || '';
+      return { tok: tok, w: es[0] || null, known: es.some(function (w) { return boxOf(w.n) >= 1; }), gl: gl };
+    }).filter(function (x) { return !x.known && (x.w || x.gl); });
+  }
+  /* three to five lines of a story to say: ordinary sentences of 3 to 12 words, spread over the story */
+  function sayLines(s) {
+    var ok = [], out = [], i, want;
+    s.l.forEach(function (l, k) { var c = l.en.split(/\s+/).length; if (c >= 3 && c <= 12) ok.push(k); });
+    if (ok.length < 3) ok = s.l.map(function (_, k) { return k; });
+    want = Math.min(5, ok.length);
+    for (i = 0; i < want; i++) out.push(ok[Math.floor(i * ok.length / want)]);
+    return out;
+  }
+  function sayMark(ref, ok) {
+    var R = PRUN, s = R.n.r, k = ref.k - s.a;
+    if (R.say.lines.indexOf(k) < 0) return;
+    R.say.tried[k] = 1;
+    if (ok && !R.say.ok[k]) { R.say.ok[k] = 1; answered(true, false, null); }
+    else if (!ok) answered(false, false, null);
+    render();
+  }
+
+  /* ---------------- path screens ---------------- */
+  var POFF = [0, 44, 64, 44, 0, -44, -64, -44], OB = { step: 0 }, OBX = false;
+  function vPath() {
+    if (!UI.ob && !hasProgress()) { vOnboard(); return; }
+    var M = pm(), sc = pathScan(), t = today(), skn = streak(), xp = xpDay(t), qs = questsFor(t), qd = qs.filter(function (q) { return q.done; }).length;
+    var curN = sc.cur >= 0 ? M.PN[sc.cur] : null, fu = PFOCUS !== null && M.PU[PFOCUS] ? PFOCUS : (curN ? curN.u : M.PU.length - 1);
+    var h = '<header class="phead"><div class="phead-top"><h1>เรียน</h1>' +
+      '<button type="button" class="iconbtn" id="open-me" data-act="me" aria-label="ฉัน สถิติ ภารกิจ และตั้งค่า" title="ฉัน">' + IC_ME + '</button></div>' +
+      '<div class="pstats">' +
+      '<button type="button" class="pstat" id="p-streak" data-act="me" aria-label="เรียนติดต่อกัน ' + skn.n + ' วัน"><span class="fl' + (skn.today ? ' on' : '') + '">' + IC_FLAME + '</span>' +
+      '<span class="pstat-t"><b>' + skn.n + '</b><small>วันติดกัน</small></span></button>' +
+      '<button type="button" class="pstat" id="p-xp" data-act="me" aria-label="วันนี้ได้ ' + xp + ' XP จากเป้า ' + UI.xg + ' XP">' + ring(xp / UI.xg) +
+      '<span class="pstat-t"><b>' + xp + '/' + UI.xg + '</b><small>XP วันนี้</small></span></button>' +
+      '<button type="button" class="pstat" id="p-quests" data-act="p-quests" aria-label="ภารกิจวันนี้ ทำแล้ว ' + qd + ' จาก 3"><span class="flag">' + IC_FLAG + '</span>' +
+      '<span class="pstat-t"><b>' + qd + '/3</b><small>ภารกิจ</small></span></button></div>' +
+      '<p class="syncnote" id="sndnote"></p></header>';
+    M.PSEC.forEach(function (S) {
+      var dn = S.units.filter(function (u) { return sc.upass[u.i]; }).length, meta = S.units.length + ' หน่วย' + (dn ? ' ผ่านแล้ว ' + dn + ' หน่วย' : '');
+      var near = function (u) { return Math.abs(u.i - fu) <= 2; };
+      if (!S.units.some(near)) {
+        h += group('p' + S.lv, grpOpen('p' + S.lv, false), 'ระดับ ' + esc(S.lv) + (S.note ? ' ' + esc(S.note) : ''), meta, '', S.units.map(function (u) { return unitRow(u, sc); }).join(''));
+        return;
+      }
+      var rows = '';
+      h += '<section class="psec" id="sec-' + esc(S.lv) + '"><h2 class="psec-h">ระดับ ' + esc(S.lv) + ' <small>' + esc((S.note ? S.note + ' · ' : '') + meta) + '</small></h2>';
+      S.units.forEach(function (u) {
+        if (!near(u)) { rows += unitRow(u, sc); return; }
+        if (rows) { h += '<div class="block"><ol class="rows">' + rows + '</ol></div>'; rows = ''; }
+        h += unitHtml(u, sc, curN);
+      });
+      if (rows) h += '<div class="block"><ol class="rows">' + rows + '</ol></div>';
+      h += '</section>';
+    });
+    if (!curN) h += '<section class="today"><p class="eyebrow">เรียนครบทั้งเส้นทางแล้ว</p><h2>ครบทุกหน่วย</h2><p class="today-sub">ทบทวนทุกวัน และเลือกเรียนซ้ำได้จากแท็บด้านล่าง</p></section>';
+    app.innerHTML = h;
+    renderSndNote();
+    if (!UI.pn) pathSheet('<div class="sheet nd enter" id="sheet" role="dialog" aria-labelledby="sheet-t"><div class="sheet-body"><p class="fb-status" id="sheet-t"><span class="fb-icon">' + PIC.r + '</span>ใหม่: เส้นทางการเรียน</p>' +
+      '<p>ทำวงถัดไปได้เลย แท็บเดิมยังอยู่ครบ</p><p class="note">ทุกอย่างที่เคยทำไว้นับให้แล้ว วงที่ทำแล้วมีเครื่องหมายถูก</p></div>' +
+      '<div class="sheet-actions"><button type="button" class="btn" id="p-news-ok" data-act="p-news-ok">เข้าใจแล้ว</button></div></div>', true);
+  }
+  function unitRow(u, sc) {
+    var d = 0, all = 0;
+    u.nodes.forEach(function (n) { if (n.t === 't' && !sc.sr) return; all++; if (sc.done[n.i]) d++; });
+    return '<li><button type="button" class="row" data-act="p-unit" data-u="' + u.i + '"><span class="row-no' + (sc.upass[u.i] ? ' done' : '') + '">' + u.no + '</span>' +
+      '<span class="row-main"><b>' + esc(u.title) + '</b><small>หน่วยที่ ' + u.no + '</small></span>' +
+      '<span class="row-side">' + (sc.upass[u.i] ? 'ผ่านแล้ว' : d + '/' + all + ' วง') + '<span class="mini"><i style="width:' + (all ? d / all * 100 : 0) + '%"></i></span></span></button></li>';
+  }
+  function unitHtml(u, sc, curN) {
+    var S = pm().PSEC[u.sec], passed = sc.upass[u.i], ahead = !!curN && u.i >= curN.u, gl = unitGuide(u), j = 0;
+    var h = '<div class="ubanner" id="unit-' + u.no + '"><div class="ub-text"><p class="ub-no"><span class="lvchip">' + esc(S.lv) + '</span>หน่วยที่ ' + u.no + (passed ? ' · ผ่านแล้ว' : '') + '</p>' +
+      '<h3>' + esc(u.title) + '</h3></div><div class="ub-act">' +
+      (gl ? '<button type="button" class="ubtn" id="p-guide-' + u.no + '" data-act="p-guide" data-id="' + gl.id + '">คู่มือ</button>' : '') +
+      (ahead && !passed ? '<button type="button" class="ubtn" id="p-testout-' + u.no + '" data-act="p-testout" data-u="' + u.i + '">ทดสอบข้าม</button>' : '') + '</div></div>';
+    h += '<ol class="pnodes" aria-label="วงของหน่วยที่ ' + u.no + '">';
+    u.nodes.forEach(function (n) {
+      if (n.t === 't' && !sc.sr) return;
+      var st = sc.done[n.i] ? 'done' : (curN && n.i === curN.i ? 'cur' : (n.t === 'k' && PATH.k[n.n] ? 'tried' : ''));
+      var say = st === 'done' ? 'ทำแล้ว' : (st === 'cur' ? 'วงถัดไป' : (st === 'tried' ? 'ทำแล้วแต่ยังไม่ผ่าน' : 'ยังไม่ทำ'));
+      h += '<li class="pn' + (st === 'cur' ? ' has-bub' : '') + '" style="--x:' + POFF[j++ % POFF.length] + 'px">' + (st === 'cur' ? '<span class="pbub" aria-hidden="true">เริ่ม</span>' : '') +
+        '<button type="button" class="pnode' + (st ? ' ' + st : '') + '" data-act="p-node" data-id="' + n.id + '" aria-label="' + esc(nodeTitle(n) + ' ' + say) + '">' + nodeIcon(n, st) + '</button></li>';
+    });
+    return h + '</ol>';
+  }
+  function pathSheet(html, quiet) {
+    pathSheetClose();
+    app.insertAdjacentHTML('beforeend', html);
+    /* the panel sits just above the bottom menu, so the menu stays usable */
+    try {
+      var sh = document.getElementById('sheet'), tbh = TABBAR && getComputedStyle(TABBAR).display !== 'none' ? TABBAR.offsetHeight : 0;
+      if (sh && tbh) { sh.style.bottom = tbh + 'px'; sh.style.paddingBottom = '14px'; sh.style.maxHeight = 'calc(72vh - ' + tbh + 'px)'; }
+    } catch (e) {}
+    fitSheet();
+    if (!quiet) { var b = document.querySelector('#sheet .btn'); if (b) { try { b.focus({ preventScroll: true }); } catch (e) {} } }
+  }
+  function pathSheetClose() { var s = document.getElementById('sheet'); if (s && s.parentNode) { s.parentNode.removeChild(s); fitSheet(); } }
+  function sheetBox(icon, title, body, acts) {
+    return '<div class="sheet nd enter" id="sheet" role="dialog" aria-labelledby="sheet-t"><div class="sheet-body"><p class="fb-status" id="sheet-t"><span class="fb-icon">' + icon + '</span>' + esc(title) + '</p>' + body + '</div>' +
+      '<div class="sheet-actions">' + acts + '<button type="button" class="btn ghost" id="p-close" data-act="p-close">ปิด</button></div></div>';
+  }
+  function nodeSheet(n) {
+    var sc = pathScan(), u = pm().PU[n.u], done = sc.done[n.i], ahead = !done && sc.cur >= 0 && n.i > sc.cur, can = true, info = '';
+    if (n.t === 'v') info = '<p class="en">' + esc(CATS[n.c].sets[n.si].slice(0, 4).map(function (w) { return w.w; }).join(', ')) + ' …</p>';
+    else if (n.t === 'g') info = '<p>' + esc(n.l.goal) + '</p>';
+    else if (n.t === 'r') info = '<p>' + esc(n.r.th) + (n.r.v === 'talk' ? ' (บทสนทนา)' : '') + '</p>';
+    else if (n.t === 't') info = '<p>พูดตาม 3 ถึง 5 ประโยคจากเรื่องนี้ด้วยปุ่มไมค์</p>';
+    else if (n.t === 'x') {
+      var due = stats().due;
+      can = !!nodeParts(n);
+      info = '<p>' + (!can ? 'ยังไม่มีคำหรือข้อให้ทบทวน ทำวงก่อนหน้าก่อน' : (due ? 'คำที่ถึงเวลาทบทวน ' + fmt(due) + ' คำ และข้อไวยากรณ์ที่เคยผิด' : 'ตอนนี้ไม่มีคำที่ถึงเวลา ทบทวนเพิ่มได้')) + '</p>';
+    } else if (n.t === 'k') { var r = PATH.k[n.n]; info = '<p>12 ข้อจากหน่วยนี้ ได้ 80% ขึ้นไปถือว่าผ่าน' + (r ? ' ผลดีที่สุด ' + r[0] + ' จาก ' + r[1] + ' ข้อ' : '') + '</p>'; }
+    var body = '<p class="note">' + PTYPE[n.t] + ' · หน่วยที่ ' + u.no + ' ' + esc(u.title) + ' · ประมาณ ' + nodeMins(n) + ' นาที' + (done ? ' · ทำแล้ว' : '') + '</p>' + info +
+      (ahead ? '<p class="note">วงนี้อยู่ข้างหน้า ทำวงถัดไปของเส้นทางก่อนก็ได้ หรือทำวงนี้เลยก็ได้</p>' : '');
+    pathSheet(sheetBox(nodeIcon(n, ''), nodeTitle(n), body, can ? '<button type="button" class="btn" id="p-start" data-act="p-start" data-id="' + n.id + '">' + (done ? 'ทำอีกครั้ง' : (ahead ? 'ทำเลย' : 'เริ่ม')) + '</button>' : ''));
+  }
+  function vOnboard() {
+    var st = [
+      ['เรียนเพื่ออะไร', 'เลือกข้อที่ตรงที่สุด แอปจะใช้เลือกบทสนทนาให้เหมาะ'],
+      ['วันละกี่นาที', 'เลือกเวลาที่ทำได้จริงทุกวัน เปลี่ยนได้ทีหลังในตั้งค่า'],
+      ['เริ่มจากไหน', 'ยังไม่แน่ใจก็เริ่มจากศูนย์ได้เลย']
+    ][OB.step];
+    function opt(id, act, v, title, sub, on) {
+      return '<button type="button" class="opt' + (on ? ' is-sel' : '') + '" id="' + id + '" data-act="' + act + '" data-v="' + v + '"><span class="opt-t"><b>' + title + '</b>' + (sub ? '<small>' + sub + '</small>' : '') + '</span></button>';
+    }
+    var h = '<div class="ob"><header class="top"><p class="eyebrow">ขั้นที่ ' + (OB.step + 1) + ' จาก 3</p><h1>' + st[0] + '</h1><p class="lede">' + st[1] + '</p></header><div class="opts">';
+    if (OB.step === 0) h += [['study', 'เรียนและสอบ'], ['work', 'ทำงาน'], ['travel', 'เที่ยว'], ['general', 'ทั่วไป']].map(function (o) { return opt('ob-why-' + o[0], 'ob-why', o[0], o[1], '', UI.why === o[0]); }).join('');
+    else if (OB.step === 1) h += [[5, 10], [10, 20], [15, 30], [20, 50]].map(function (o) { return opt('ob-min-' + o[0], 'ob-min', o[1], o[0] + ' นาที', 'เป้า ' + o[1] + ' XP ต่อวัน', UI.xg === o[1]); }).join('');
+    else h += opt('ob-zero', 'ob-zero', '', 'เริ่มจากศูนย์', 'เริ่มที่หน่วยที่ 1 ' + esc(pm().PU.length ? pm().PU[0].title : ''), false) +
+      opt('ob-check', 'ob-check', '', 'พอรู้บ้าง', 'วัดระดับก่อนราว 10 นาที แล้วเริ่มที่ระดับที่เหมาะ', false);
+    h += '</div><div class="actions">' + (OB.step ? '<button type="button" class="btn ghost small" id="ob-back" data-act="ob-back">ย้อนกลับ</button>' : '') +
+      '<button type="button" class="btn ghost small" id="ob-skip" data-act="ob-skip">ข้ามไปก่อน</button></div></div>';
+    app.innerHTML = h;
+  }
+  function obDone() { UI.ob = 1; UI.pn = 1; OBX = false; saveUI(); }
+  function vMe() {
+    var st = stats(), t = today(), skn = streak(), xp = xpDay(t), qs = questsFor(t), lv = LEVEL.length ? LEVEL[LEVEL.length - 1] : null, sc = pathScan(), w7 = 0, i, date = '';
+    for (i = 0; i < 7; i++) w7 += xpDay(t - i);
+    try { date = new Date().toLocaleDateString('th-TH', { weekday: 'long', day: 'numeric', month: 'long' }); } catch (e) {}
+    var full = !!dayArr(t)[5], up = sc.upass.filter(Boolean).length;
+    var h = crumb([{ label: 'เส้นทาง', act: 'path' }]) + '<header class="hello-row"><div class="hello"><h1>ฉัน</h1><p class="lede">' + esc(date) + '</p></div>' +
+      '<button type="button" class="iconbtn" id="open-prefs" data-act="prefs" aria-label="ตั้งค่า" title="ตั้งค่า">' + IC_GEAR + '</button></header>';
+    h += '<section class="today" aria-label="สถิติการเรียนต่อเนื่อง"><div class="streak"><span class="flame' + (skn.today ? '' : ' off') + '">' + IC_FLAME + '</span>' +
+      '<p class="streak-n">' + skn.n + '<small>วันติดต่อกัน</small></p>' +
+      '<p class="today-sub">' + (full ? 'วันนี้ทำภารกิจครบแล้ว เก่งมาก' : (skn.today ? 'วันนี้ได้ ' + xp + ' XP เป้า ' + UI.xg + ' XP' : (skn.n ? 'วันนี้ยังไม่ได้เริ่ม ทำสักวงเพื่อให้สถิติไม่หาย' : 'เริ่มวันแรกได้เลย ทำวงแรกในเส้นทาง'))) + '</p></div>' +
+      weekHtml(t) + '</section>';
+    h += '<section class="block"><h2>ภารกิจวันนี้</h2>' + questsHtml(qs) + '<p class="note">ภารกิจเปลี่ยนทุกวัน ทำครบ 3 อย่างนับเป็นวันที่ทำครบ</p></section>';
+    h += '<section class="block"><h2>ความก้าวหน้า</h2><div class="tiles">' +
+      '<div class="tile" id="me-xp"><b>' + fmt(xp) + '</b><span>XP วันนี้ เป้า ' + UI.xg + ' XP</span></div>' +
+      '<div class="tile"><b>' + fmt(w7) + '</b><span>XP 7 วันล่าสุด</span></div>' +
+      '<div class="tile"><b>' + up + '/' + pm().PU.length + '</b><span>หน่วยที่ผ่านแล้ว</span></div>' +
+      '<div class="tile"><b>' + fmt(st.learned) + '</b><span>คำที่เรียนแล้ว จาก ' + fmt(ALL.length) + ' คำ</span></div>' +
+      '<div class="tile"><b>' + fmt(st.strong) + '</b><span>คำที่จำแม่นแล้ว</span></div>' +
+      (GLS.length ? '<div class="tile"><b>' + GLS.filter(gPassed).length + '/' + GLS.length + '</b><span>บทไวยากรณ์ที่ผ่าน</span></div>' : '') +
+      (RDS.length ? '<div class="tile"><b>' + rDoneCount() + '/' + RDS.length + '</b><span>เรื่องที่อ่านแล้ว</span></div>' : '') +
+      '<button type="button" class="tile" id="open-level" data-act="level"><b>' + (lv ? lvName(lv.o) : 'วัดระดับ') + '</b><span>' + (lv ? 'ระดับโดยประมาณ เมื่อ ' + dateTh(lv.t) + ' กดเพื่อวัดใหม่' : 'แบบทดสอบราว 10 นาที ดูว่าตอนนี้อยู่ระดับไหน') + '</span></button>' +
+      '<div class="tile"><b>' + skn.best + '</b><span>วันต่อเนื่องสูงสุด</span></div></div></section>';
+    app.innerHTML = h;
+  }
+  function dur(s) { return Math.floor(s / 60) + ':' + pad2(s % 60); }
+  function countUp(el, to) {
+    if (!el || !(to > 0)) return;
+    var still = false;
+    try { still = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); } catch (e) {}
+    if (still) return;
+    var t0 = Date.now(), len = Math.min(1200, 300 + to * 15);
+    el.textContent = '+0';
+    (function step() {
+      if (!document.body.contains(el)) return;
+      var f = Math.min(1, (Date.now() - t0) / len);
+      el.textContent = '+' + Math.round(to * f);
+      if (f < 1) setTimeout(step, 30);
+    })();
+  }
+  function vPathEnd() {
+    var R = PRUN, E = R && R.end;
+    if (!E) { go({ name: 'path' }); return; }
+    var n = R.n, M = pm(), u = M.PU[n.u], acc = R.ans ? Math.round(R.right / R.ans * 100) : null, nx = pathNextNode(n), head, sub = '', btns = '';
+    if (n.t === 'g' && !E.done) { head = 'ยังไม่ผ่านบทนี้'; sub = 'ต้องได้ ' + Math.ceil(n.l.q.length * GPASS) + ' จาก ' + n.l.q.length + ' ข้อ อ่านคำอธิบายอีกรอบแล้วลองใหม่ หรือทำวงอื่นไปก่อนก็ได้'; }
+    else if (n.t === 'k') { head = E.passed ? 'ผ่านหน่วยที่ ' + u.no + ' แล้ว' : 'ยังไม่ผ่านการทดสอบ'; if (!E.passed) sub = 'ได้ ' + R.right + ' จาก ' + R.ans + ' ข้อ ต้องได้ ' + Math.ceil(R.ans * CKPASS) + ' ข้อ เรียนต่อได้เลย แล้วกลับมาลองใหม่ทีหลัง'; }
+    else if (n.t === 't' && !R.right) { head = 'ไว้ฝึกพูดครั้งหน้า'; sub = 'ข้ามได้ ไม่นับว่าผิด กดไมค์ที่เรื่องไหนก็ได้เมื่อพร้อม'; }
+    else head = 'จบบทนี้แล้ว';
+    if (E.sec) sub = (sub ? sub + ' ' : '') + 'จบระดับ ' + M.PSEC[u.sec].lv + ' แล้ว';
+    if (n.t === 'g' && !E.done) btns = '<button type="button" class="btn" id="p-again" data-act="p-again">ลองอีกครั้ง</button>' +
+      (nx ? '<button type="button" class="btn ghost" id="p-next-node" data-act="p-go-next">ข้ามไปวงถัดไป</button>' : '');
+    else {
+      if (nx) btns += '<button type="button" class="btn" id="p-next-node" data-act="p-go-next">ต่อไป</button>';
+      if (n.t === 'k' && !E.passed) btns += '<button type="button" class="btn ghost" id="p-again" data-act="p-again">ลองทดสอบอีกครั้ง</button>';
+    }
+    btns += '<button type="button" class="btn' + (btns ? ' ghost' : '') + '" id="p-back" data-act="path">กลับเส้นทาง</button>';
+    var h = '<header class="top"><p class="eyebrow">' + esc(PTYPE[n.t] + ' · หน่วยที่ ' + u.no + ' ' + u.title) + '</p><h2>' + head + '</h2></header>' +
+      '<section class="today pend" aria-label="ผลของบทนี้"><p class="score"><span><span id="xp-up" data-xp="' + R.xp + '">+' + R.xp + '</span><small> XP</small></span>' +
+      (E.perfect ? '<span class="full" id="p-full">เต็ม</span>' : '') + '</p>' +
+      '<div class="pend-stats"><div><b id="p-acc">' + (acc === null ? '-' : acc + '%') + '</b><span>ความแม่น</span></div><div><b id="p-time">' + dur(E.secs) + '</b><span>เวลา</span></div>' +
+      '<div><b id="p-best">' + R.best + '</b><span>ถูกติดกันสูงสุด</span></div></div>' +
+      (sub ? '<p class="today-sub">' + esc(sub) + '</p>' : '') + '<div class="actions stack">' + btns + '</div></section>';
+    app.innerHTML = h;
+    if (!E.shown) {
+      E.shown = true;
+      countUp(document.getElementById('xp-up'), R.xp);
+      if (E.done || (n.t === 'k' && E.passed)) FX.play('win');
+      if (E.cheer) celebrate();
+    }
+    var f = document.getElementById('p-next-node') || document.getElementById('p-again') || document.getElementById('p-back');
+    if (f) { try { f.focus({ preventScroll: true }); } catch (e) {} }
+  }
+  function vPathWords() {
+    var R = PRUN;
+    if (!R || R.n.t !== 'r') { go({ name: 'path' }); return; }
+    var list = storyNew(R.n), more = list.length > 12;
+    var h = pathBar(pathPct(0)) + '<header class="top"><p class="eyebrow en">' + esc(R.n.r.en) + '</p><h2>คำใหม่ในเรื่องนี้</h2>' +
+      '<p class="lede">ดูความหมายก่อนอ่าน ระหว่างอ่านแตะคำไหนก็ได้เพื่อดูอีกครั้ง</p></header><p class="syncnote" id="sndnote"></p>' +
+      '<ul class="words" id="p-words">' + list.slice(0, 12).map(function (x) {
+        var w = x.w;
+        if (!w) return '<li class="word"><span class="word-en">' + esc(x.tok) + '</span><span class="word-th">' + esc(x.gl) + '</span></li>';
+        return '<li class="word"><span class="word-en">' + esc(x.tok.toLowerCase() === w.w.toLowerCase() ? w.w : x.tok + ' (' + w.w + ')') + ' <span class="pos">' + esc(posTh(w.p)) + '</span></span>' +
+          '<span class="word-read">' + rd(w.r) + '</span><span class="word-th">' + esc(w.t) + '</span><span class="word-side">' + sayRound('w', w.n, 'ฟังเสียง ' + w.w) + '</span></li>';
+      }).join('') + '</ul>' + (more ? '<p class="note">ยังมีคำอื่นอีก แตะดูความหมายได้ระหว่างอ่าน</p>' : '') +
+      '<div class="nextbar"><button type="button" class="btn wide" id="p-words-go" data-act="p-next">อ่านเรื่องเลย</button></div>';
+    app.innerHTML = h;
+    renderSndNote();
+  }
+  function vPathSay() {
+    var R = PRUN;
+    if (!R || !R.say) { go({ name: 'path' }); return; }
+    var s = R.n.r, L = R.say.lines, okN = L.filter(function (k) { return R.say.ok[k]; }).length, can = Snd.hasRef('r', 0);
+    var h = pathBar(pathPct(okN / L.length * 100)) + '<header class="top"><p class="eyebrow en">' + esc(s.en) + '</p><h2>พูดตามทีละประโยค</h2>' +
+      '<p class="lede">ฟังต้นแบบ แล้วกดไมค์พูดตาม ได้ยินถูกเกือบทุกคำถือว่าผ่าน พูดได้แล้ว ' + okN + ' จาก ' + L.length + ' ประโยค</p></header><p class="syncnote" id="sndnote"></p>' +
+      '<ol class="lines" id="p-say-lines">' + L.map(function (k) {
+        var l = s.l[k], ok = R.say.ok[k];
+        return '<li class="line' + (ok ? ' said' : '') + '" id="say-' + k + '"><p class="l-en">' + esc(l.en) + '</p><span class="l-side">' +
+          (can ? '<button type="button" class="listen round" data-act="p-say-play" data-k="' + k + '" aria-label="ฟังต้นแบบ" title="ฟังต้นแบบ">' + ICON + '</button>' : '') +
+          micBtn('r', 0, s.a + k, l.en, l.th) + '</span><p class="l-th">' + esc(l.th) + '</p>' + (ok ? '<span class="said-chip">' + IC_OK + 'พูดได้แล้ว</span>' : '') + '</li>';
+      }).join('') + '</ol><div class="actions stack">' +
+      '<button type="button" class="btn" id="p-say-done" data-act="p-next">ดูสรุป</button>' +
+      (okN ? '' : '<button type="button" class="btn ghost" id="p-say-skip" data-act="p-next">ตอนนี้พูดไม่ได้</button>') + '</div>';
+    app.innerHTML = h;
+    renderSndNote();
+  }
+  app.addEventListener('click', function (ev) {
+    var el = ev.target.closest ? ev.target.closest('[data-act]') : null;
+    if (view.name === 'path' && document.getElementById('sheet') && !(ev.target.closest && ev.target.closest('#sheet'))) pathSheetClose();
+    if (!el || el.disabled) return;
+    var act = el.getAttribute('data-act'), M, n, u;
+    if (act === 'path') { go({ name: 'path' }); return; }
+    if (act === 'me') { go({ name: 'me' }); return; }
+    if (act === 'p-quests') { pathSheet(sheetBox(IC_FLAG, 'ภารกิจวันนี้', questsHtml(questsFor(today())) + '<p class="note">ภารกิจเปลี่ยนทุกวัน ทำครบ 3 อย่างนับเป็นวันที่ทำครบ</p>', '')); return; }
+    if (act === 'p-close') { pathSheetClose(); return; }
+    if (act === 'p-news-ok') { UI.pn = 1; saveUI(); pathSheetClose(); return; }
+    if (act === 'p-node') { n = pm().PNI[el.getAttribute('data-id')]; if (n) nodeSheet(n); return; }
+    if (act === 'p-start') { n = pm().PNI[el.getAttribute('data-id')]; if (n) { pathSheetClose(); pathStart(n); } return; }
+    if (act === 'p-unit') { PFOCUS = Number(el.getAttribute('data-u')) | 0; go({ name: 'path', u: PFOCUS }); return; }
+    if (act === 'p-guide') { go({ name: 'g-lesson', id: el.getAttribute('data-id'), from: 'path' }); return; }
+    if (act === 'p-testout') {
+      M = pm(); u = M.PU[Number(el.getAttribute('data-u')) | 0];
+      if (u) pathSheet(sheetBox(PIC.k, 'ทดสอบข้ามหน่วยที่ ' + u.no, '<p>' + esc(u.title) + '</p><p class="note">12 ข้อจากหน่วยนี้ ถ้าได้ 80% ขึ้นไป เส้นทางจะข้ามไปหน่วยถัดไป ถ้ายังไม่ผ่านก็เรียนหน่วยนี้ตามปกติ</p>',
+        '<button type="button" class="btn" id="p-start" data-act="p-start" data-id="' + u.ck.id + '">เริ่มทดสอบ</button>'));
+      return;
+    }
+    if (act === 'p-quit') { if (PRUN) quitAsk(); return; }
+    if (act === 'p-next') { if (PRUN) pathNextPart(); return; }
+    if (act === 'p-go-next') { n = PRUN ? pathNextNode(PRUN.n) : null; if (!n || !pathStart(n)) go({ name: 'path' }); return; }
+    if (act === 'p-again') { if (PRUN && !pathStart(PRUN.n)) go({ name: 'path' }); return; }
+    if (act === 'p-say-play') { var s = PRUN && PRUN.n.r, k = Number(el.getAttribute('data-k')); if (s) Snd.playRef('r', 0, s.a + k, s.l[k].en, UI.rslow, el); return; }
+    if (act === 'ob-why') { UI.why = el.getAttribute('data-v'); saveUI(); OB.step = 1; render(); return; }
+    if (act === 'ob-min') { var xg = Number(el.getAttribute('data-v')); if ([10, 20, 30, 50].indexOf(xg) >= 0) UI.xg = xg; saveUI(); OB.step = 2; render(); return; }
+    if (act === 'ob-back') { OB.step = Math.max(0, OB.step - 1); render(); return; }
+    if (act === 'ob-skip') { obDone(); go({ name: 'path' }); return; }
+    if (act === 'ob-zero') { obDone(); pathStartCurrent(); return; }
+    if (act === 'ob-check') { OBX = true; LT = { items: ltBuild(), pos: 0, ans: [], sel: null, heard: false }; go({ name: 'lvl' }); return; }
+    if (act === 'p-place') {
+      var sv = Number(el.getAttribute('data-sec')) | 0;
+      if (sv > 0 && sv !== PATH.s) { PATH.s = sv; pathSave(); }
+      obDone(); pathStartCurrent();
+      return;
+    }
+  });
+  function pathScroll(unit) {
+    try {
+      var el = unit ? document.getElementById('unit-' + (PFOCUS + 1)) : document.querySelector('.pnode.cur');
+      if (el && el.scrollIntoView) el.scrollIntoView({ block: unit ? 'start' : 'center' });
+    } catch (e) {}
+  }
 
   /* ---------------- saving to the account (optional, private per person) ---------------- */
   var Sync = {
@@ -3159,7 +4056,7 @@ button.tile b{color:var(--primary)}
           seen[d.id] = true;
           var r = EXTRA[d.id].merge(d.data() || {});
           if (r.newer) self.dirty[d.id] = true;
-          if (r.changed && (view.name === 'today' || view.name === 'read' || view.name === 'level')) render();
+          if (r.changed && (view.name === 'path' || view.name === 'me' || view.name === 'read' || view.name === 'level')) render();
           return;
         }
         var m = /^c(\d+)$/.exec(d.id);
@@ -3184,7 +4081,7 @@ button.tile b{color:var(--primary)}
       if (changed) {
         saveLocal();
         var ae = document.activeElement, typing = ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA');
-        if (!typing && (view.name === 'home' || view.name === 'cat' || view.name === 'set' || view.name === 'rev')) render();
+        if (!typing && (view.name === 'home' || view.name === 'cat' || view.name === 'set' || view.name === 'rev' || view.name === 'path' || view.name === 'me')) render();
       }
       return seen;
     },
@@ -3256,9 +4153,10 @@ button.tile b{color:var(--primary)}
   window.addEventListener('pagehide', function () { saveNow(); if (Sync.state === 'on') Sync.flush(); });
   document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') { saveNow(); if (Sync.state === 'on') Sync.flush(); } });
 
-  view = { name: 'today' };
+  view = { name: 'path' };
   applyFs();
   render();
+  pathScroll(false);
   Sync.init();
 })();
 </script>

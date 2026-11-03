@@ -4,8 +4,8 @@
 
 แผนนี้เขียนให้ Claude Code ทำทีละขั้น เป้าหมายคือเรียนได้ทุกวันแบบไม่เบื่อนานเป็นปี และฝึกครบทุกทักษะจนถึงระดับ B2
 
-- **ขั้น 1 ฝึกพูด** (กำลังทำอยู่): ปุ่มไมค์ที่ประโยค พูดแล้วแอปบอกว่าคำไหนถูก
-- **ขั้น 2 เส้นทางแบบ Duolingo**: บทเรียนเป็นวงกลมเรียงเป็นทางเดียว กดวงถัดไปได้เลยไม่ต้องคิด มี XP เป้า XP ต่อวัน ภารกิจประจำวัน 3 อย่าง หน้าสรุปตอนจบบท และนับข้อที่ถูกติดกัน
+- **ขั้น 1 ฝึกพูด** (เสร็จแล้ว): ปุ่มไมค์ที่ประโยค พูดแล้วแอปบอกว่าคำไหนถูก
+- **ขั้น 2 เส้นทางแบบ Duolingo** (เสร็จแล้ว): บทเรียนเป็นวงกลมเรียงเป็นทางเดียว กดวงถัดไปได้เลยไม่ต้องคิด มี XP เป้า XP ต่อวัน ภารกิจประจำวัน 3 อย่าง หน้าสรุปตอนจบบท และนับข้อที่ถูกติดกัน
 - **ขั้น 3 ฝึกและสร้างนิสัย**: หน้า "ฝึก" รวมคำและข้อที่ผิดบ่อย ฟังแล้วพิมพ์ จับคู่แข่งเวลา วันพักกันสถิติหาย ต้อนรับตอนกลับมาเรียน เหรียญรางวัล ตั้งเตือนในปฏิทิน และเซฟสำรองเป็นไฟล์
 - **ขั้น 4 เนื้อหาให้ครบ**: ฝึกเสียงที่คนไทยพูดยาก บทสนทนาที่เราเล่นเป็นตัวละคร แบบฝึกหาที่ผิดในประโยค เรื่องอ่านเพิ่ม 18 เรื่อง (B1–B2) งานเขียนสั้นๆ และศัพท์งานกับเทคโนโลยี
 - **ขั้น 5 ปรับตามผู้เรียน**: ความยากพอดี (ตอบถูกราว 85%) คำที่จำได้แล้วเว้นช่วงทบทวนนานขึ้น ระดับ CEFR แยกตามทักษะ และสอบผ่านระดับพร้อมใบผ่าน
@@ -30,8 +30,8 @@
 
 | Phase | Content | Status |
 | :- | :- | :- |
-| 1 | Speaking practice (`CLAUDE.md` idea 1) | in progress (started 3 Nov 2026) |
-| 2 | Learning path, XP, daily quests, end-of-lesson screen, combo | todo |
+| 1 | Speaking practice (`CLAUDE.md` idea 1) | done (3 Nov 2026) |
+| 2 | Learning path, XP, daily quests, end-of-lesson screen, combo | done (3 Nov 2026), see "As built" under Phase 2 |
 | 3 | Practice tab, mistakes review, dictation, match race, streak protection, comeback, badges, reminders, backup file | todo |
 | 4 | Content: Thai-speaker sounds, role-play dialogues, error-correction drills, 18 stories, writing tasks, work and technology words | todo |
 | 5 | Adaptive difficulty, longer reviews for known words, skill levels, level exit tests with certificate | todo |
@@ -184,6 +184,31 @@
 - Combo chip at 3 right in a row; `navigator.vibrate` (stubbed) called, and not called with the setting off.
 - Quests are the same for a fixed day and fill in as tasks are done.
 - Screens at 390 and 320 px, light and dark, without horizontal scroll; no bobbing with reduced motion.
+
+### As built (3 Nov 2026): what differs from the plan above, and why
+
+- **Story placement.** The topic order teaches many common story words late (Common Verbs, Common Adjectives,
+  Prepositions and Pronouns sit in B1/B2), so the A1 stories reach only 73-90% coverage by the end of A1, and most A2
+  stories never reach 95% inside A2. The literal rule would stack all 12 A1 stories at the end of A1. Instead each story
+  of a level gets its own stretch (story j of n starts at (j+1)/(n+1) of the level's word nodes), and moves later inside
+  that stretch until 95% is reached, else sits at the stretch's end. Coverage at placement: A1 60-84%, A2 80-100%,
+  B1 94-97%. "คำใหม่ในเรื่องนี้" shows up to 12 untaught words (dictionary meaning or reader glossary); words the learner
+  already knows from the library tabs are left out. A later phase could move the most frequent sets earlier; node ids
+  would survive that, but unit and review numbers (stored in the path key) would shift, so plan a migration.
+- **Reviews.** A review counts as done once it was done or the learner went past it (the node after it is done). While
+  nothing is due it is skipped, and shown as done once reached. "Done when anything later is done" was too wide: reading a
+  story far ahead in the library marked every review before it as done.
+- **Checkpoints.** A tried checkpoint counts as passed by for the current node, so failing never stops the path; it shows
+  as tried (dashed) until passed. "ทดสอบข้าม" is offered on the current unit and the units ahead.
+- **Quests.** The XP goal is always one of the three; the other two are a pair from the pool, picked by the day number
+  (`(day mod pairs) * 7 mod pairs`), so they stay the same all day and change the next day.
+- **Records.** `vocab3000-xp-v1` also keeps `p` (perfect path nodes per day) and `s` (sentences said right per day), which
+  the quests need. `vocab3000-path-v1` also keeps `x` (reviews done), `t` (say-alongs) and `s` (start level from the level
+  check). The streak also counts a day with XP, so a day of only speaking keeps it.
+- **Listening.** The listening question has "ตอนนี้ฟังไม่ได้": the rest of that round shows the word to read, not scored
+  and not wrong, and the step still finishes.
+- **Old words goal.** `UI.goal` keeps its value and meaning but is no longer shown; a learner who had changed it starts
+  with the matching XP goal (5 steps → 10 XP, 18 → 30).
 
 ---
 
