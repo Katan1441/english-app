@@ -86,8 +86,10 @@ const J = JSON.stringify;
   })();
   const rec = (lv, due, right, wrong) => [lv, due, right, wrong, 1700000000];
   /* any question of a round: a choice when there is one, else move on; the listening skip when offered */
+  /* taps the first option each time: a wrong pick comes back at the end of the round (options shuffled again), so the
+     number of steps is random; the limit only stops a round that never ends */
   async function playRound(page, label) {
-    for (let i = 0; i < 80; i++) {
+    for (let i = 0; i < 400; i++) {
       const v = await viewOf(page);
       if (v === 'p-end') return true;
       if (await has(page, '#next-btn')) { await page.click('#next-btn'); continue; }
@@ -98,6 +100,7 @@ const J = JSON.stringify;
       check(false, label + ': stuck on ' + v + ' ' + (await page.evaluate(() => (document.querySelector('#card') || document.body).innerText.slice(0, 120))));
       return false;
     }
+    check(false, label + ': did not end');
     return false;
   }
 
