@@ -317,7 +317,7 @@ body[data-view]:not([data-view="home"]):not([data-view="g-home"]) .foot{display:
 
 /* bottom tab bar: the open section is inked in */
 .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);background:var(--paper);border-top:3px solid var(--ink);padding:0 max(0px,calc((100% - 640px) / 2)) env(safe-area-inset-bottom,0px)}
-.tabbar .tab{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:transparent;border:0;padding:8px 4px 10px;min-height:64px;color:var(--ink);font-family:var(--f-body);font-weight:600;font-size:.84rem}
+.tabbar .tab{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:transparent;border:0;padding:8px 2px 10px;min-height:64px;min-width:0;color:var(--ink);font-family:var(--f-body);font-weight:600;font-size:.8rem;white-space:nowrap}
 .tabbar .tab svg{width:26px;height:26px}
 .tabbar .tab[aria-current="page"]{background:var(--ink);color:var(--paper)}
 .tab-badge{position:absolute;top:4px;left:calc(50% + 6px);min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--paper);color:var(--ink);border:2px solid var(--ink);font-family:var(--f-display);font-size:.74rem;font-weight:800;line-height:18px;text-align:center;font-variant-numeric:tabular-nums}
@@ -607,6 +607,55 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
 .line.said{border-style:double;border-width:7px}
 .said-chip{grid-column:1 / -1;display:inline-flex;align-items:center;gap:6px;font-size:.84rem;font-weight:600;color:var(--ink)}
 .said-chip svg{width:18px;height:18px}
+/* practice tab: one card per kind of practice; the mistakes lists; dictation; the match race; badges; rest days */
+.pcards{display:flex;flex-direction:column;gap:14px}
+.pcard{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 14px;align-items:center;width:100%;text-align:left;background:var(--paper);color:var(--ink);border:3px solid var(--ink);border-radius:12px;padding:12px 14px;min-height:78px;box-shadow:4px 4px 0 var(--ink)}
+.pcard:active:not(:disabled){transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.pcard:disabled{opacity:.55;box-shadow:none;border-style:dashed;cursor:default}
+.pc-ic{width:50px;height:50px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center}
+.pc-ic svg{width:26px;height:26px}
+.pc-t{display:flex;flex-direction:column;min-width:0}
+.pc-t b{font-family:var(--f-display);font-weight:800;font-size:1.12rem;line-height:1.3}
+.pc-t small{font-size:.86rem;color:var(--ink-soft);line-height:1.4}
+.pc-go{display:grid;place-items:center;transform:rotate(-90deg)}
+.pc-go svg{width:24px;height:24px}
+.mrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;align-items:center;padding:12px 16px;border-bottom:1.5px solid var(--ink);min-width:0}
+.mrows li:last-child .mrow{border-bottom:0}
+.mrows{background:var(--paper);border:3px solid var(--ink);border-radius:14px;overflow:hidden}
+.mrow b{font-weight:600;line-height:1.4;overflow-wrap:anywhere}
+.mrow small{grid-column:1;font-size:.84rem;color:var(--ink-soft);overflow-wrap:anywhere}
+.mrow .mside{grid-column:2;grid-row:1 / span 2;font-size:.8rem;font-weight:600;color:var(--ink-soft);white-space:nowrap;text-align:right}
+.dt-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.dt-in{width:100%;min-height:96px;font-family:var(--f-en);font-weight:500;font-size:1.15rem;line-height:1.5;color:var(--ink);background:var(--paper);border:3px solid var(--ink);border-radius:10px;padding:10px 14px;resize:vertical}
+.dt-in:focus{outline:none;box-shadow:4px 4px 0 var(--ink)}
+.dt-in::placeholder{font-family:var(--f-body);font-size:.95rem;color:var(--ink-mute)}
+.mr-clock{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.mr-time{font-family:var(--f-display);font-weight:900;font-size:2.2rem;line-height:1;font-variant-numeric:tabular-nums}
+.mr-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.mr-col{display:flex;flex-direction:column;gap:10px;min-width:0}
+.mr{position:relative;min-height:58px;width:100%;text-align:center;background:var(--paper);color:var(--ink);border:3px solid var(--ink);border-radius:10px;padding:8px 10px;font-size:1rem;line-height:1.3;overflow-wrap:anywhere;box-shadow:3px 3px 0 var(--ink)}
+.mr.en{font-family:var(--f-en);font-weight:600}
+.mr:active:not(:disabled){transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.mr.is-sel{border-width:4px;box-shadow:5px 5px 0 var(--ink);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
+.mr.done{background:var(--ink);color:var(--paper);box-shadow:none;cursor:default}
+.mr.is-wrong{border-style:dashed;animation:shake .38s ease-in-out}
+.badges{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 10px}
+.bdg{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;min-width:0}
+.bdg-m{width:62px;height:62px;border-radius:50%;border:3px dashed var(--ink);display:grid;place-items:center;font-family:var(--f-display);font-weight:900;font-size:1.05rem;line-height:1;color:var(--ink-mute);background:var(--paper);font-variant-numeric:tabular-nums}
+.bdg.got .bdg-m{border-style:solid;background:var(--ink);color:var(--paper);box-shadow:0 0 0 3px var(--paper),0 0 0 5.5px var(--ink)}
+.bdg b{font-size:.78rem;font-weight:600;line-height:1.3}
+.bdg small{font-size:.72rem;color:var(--ink-soft);line-height:1.3}
+.bdg .mini{width:50px;height:8px}
+.toast.t-top{top:calc(14px + env(safe-area-inset-top,0px));bottom:auto}
+.toast.t-top::before,.toast.t-top::after{display:none}
+.toast .bdg-m{width:44px;height:44px;font-size:.9rem;border-style:solid;background:var(--ink);color:var(--paper);flex:none}
+.day.rest i{border:2px solid var(--ink);background-color:var(--paper);background-image:var(--hatch-up)}
+.rest-note{font-size:.88rem}
+a.btn{text-decoration:none}
+.rm-time{flex:none;width:9.5rem;min-height:50px;font-family:var(--f-display);font-weight:800;font-size:1.15rem}
+.pwb{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;background:var(--paper);border:3px solid var(--ink);border-radius:8px;padding:12px 14px;box-shadow:4px 4px 0 var(--ink)}
+.pwb b{display:block;font-family:var(--f-hand);font-weight:700;line-height:1.4}
+.pwb small{display:block;font-size:.84rem;color:var(--ink-soft)}
 @media (max-width:359px){.ex{grid-template-columns:minmax(0,1fr)}.ex .ex-say{grid-row:2}.pfull{right:12px}}
 @media (prefers-reduced-motion:reduce){.sheet.enter,.wsheet,.spk-panel,.opt.pop,.pbub,.combo.pop,.dlg-panel,.toast,.burst,.speedfx{animation:none}.speedfx{display:none}}
 
@@ -619,6 +668,7 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
 </div>
 <nav class="tabbar" id="tabbar" aria-label="เมนูหลัก">
   <button type="button" class="tab" data-nav="path" data-tab="path"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="18.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="5.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 18.5H15a3.25 3.25 0 0 0 0-6.5H9a3.25 3.25 0 0 1 0-6.5h6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>เรียน</span><span class="tab-badge" id="tab-due"></span></button>
+  <button type="button" class="tab" data-nav="prac" data-tab="prac"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>ฝึก</span></button>
   <button type="button" class="tab" data-nav="vocab" data-tab="vocab"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="13" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 3.5h9.5A3.5 3.5 0 0 1 21 7v10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>คำศัพท์</span></button>
   <button type="button" class="tab" data-nav="gram" data-tab="gram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="8" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13" y="13" width="8" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="8" y="3" width="8" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>ไวยากรณ์</span></button>
   <button type="button" class="tab" data-nav="read" data-tab="read"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.5C10 5 7 4.5 3.5 5v13c3.5-.5 6.5 0 8.5 1.5 2-1.5 5-2 8.5-1.5V5C17 4.5 14 5 12 6.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 6.5v13" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>อ่าน-ฟัง</span></button>
@@ -692,7 +742,7 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
   /* og: topic groups and grammar levels the learner opened or closed; goal: new-word steps a day (the old daily goal, kept as it was);
      xg: XP a day; vib: buzz on answers; ob: first-run questions answered or skipped; pn: the note about the new path was seen;
      why: what the learner studies for (study, work, travel, general) */
-  var UI = { auto: true, last: null, rn: 10, tab: 'vocab', og: {}, fx: true, fs: 100, goal: 9, rth: false, rslow: false, rf: 'pick', xg: 20, vib: true, ob: 0, pn: 0, why: '' };
+  var UI = { auto: true, last: null, rn: 10, tab: 'vocab', og: {}, fx: true, fs: 100, goal: 9, rth: false, rslow: false, rf: 'pick', xg: 20, vib: true, ob: 0, pn: 0, why: '', rt: '19:00', pace: 0 };
   function lsGet(k) { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) { return null; } }
   function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   function cleanRec(a) {
@@ -730,6 +780,8 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
       if (u.ob === 1) UI.ob = 1;
       if (u.pn === 1) UI.pn = 1;
       if (u.why === 'study' || u.why === 'work' || u.why === 'travel' || u.why === 'general') UI.why = u.why;
+      if (typeof u.rt === 'string' && /^([01]\d|2[0-3]):[0-5]\d$/.test(u.rt)) UI.rt = u.rt;
+      if (typeof u.pace === 'number' && u.pace > 0) UI.pace = u.pace | 0;
     }
   })();
   var saveT = null;
@@ -911,7 +963,7 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
       quitAct = 'p-quit'; pct = pathPct(pct);
       if (pn.t === 'k' || pn.t === 'x') {
         R.parts.slice(R.pi + 1).forEach(function (q) { left += q.items ? q.items.length : 0; });
-        title = nodeTitle(pn); where = pn.t === 'k' ? pm().PU[pn.u].title : 'คำที่ถึงเวลาและข้อที่เคยตอบผิด';
+        title = pn.lbl || nodeTitle(pn); where = pn.t === 'k' ? pm().PU[pn.u].title : (pn.sub || 'คำที่ถึงเวลาและข้อที่เคยตอบผิด');
       } else if (pp) {
         title = partName(pp, pn);
         where = (R.parts.length > 1 ? 'ส่วนที่ ' + (R.pi + 1) + ' จาก ' + R.parts.length + ' · ' : '') + nodeTitle(pn);
@@ -1645,6 +1697,8 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
     if (view.name === 'story' && v.name !== 'story') rStop();
     if (view.name === 'lvl' && v.name !== 'lvl') Snd.stop();
     if (view.name === 'p-say' && v.name !== 'p-say') Snd.stop();
+    if ((view.name === 'dict' && v.name !== 'dict') || (view.name === 'pr-say' && v.name !== 'pr-say')) Snd.stop();
+    if (view.name === 'match' && v.name !== 'match') { clearInterval(MRT); MRT = null; }
     Array.prototype.forEach.call(document.querySelectorAll('.speedfx'), function (x) { if (x.parentNode) x.parentNode.removeChild(x); });
     if (v.name === 'path' && v.u === undefined) PFOCUS = null;
     view = v;
@@ -1659,11 +1713,12 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
     if (v.indexOf('g-') === 0) return view.from === 'path' ? 'path' : 'gram';
     if (v === 'read' || v === 'story') return 'read';
     if (v === 'rev') return view.from === 'home' ? 'vocab' : 'path';
+    if (v === 'prac' || v === 'mist' || v === 'pr-say' || v === 'dict' || v === 'match') return 'prac';
     if ((v === 'run' || v === 'done') && S && (S.kind === 'review' || S.kind === 'ck')) return 'path';
     return 'vocab';
   }
   /* a practice round or a path lesson fills the screen: no bottom menu */
-  function runLike() { var v = view.name; return v === 'run' || v === 'g-run' || v === 'lvl' || (!!PRUN && (!!PVIEWS[v] || !!view.path)); }
+  function runLike() { var v = view.name; return v === 'run' || v === 'g-run' || v === 'lvl' || v === 'dict' || v === 'match' || (!!PRUN && (!!PVIEWS[v] || !!view.path)); }
   function markNav() {
     var v = view.name, run = runLike();
     var t = tabOf(v);
@@ -1689,13 +1744,22 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
     else if (view.name === 'p-words') vPathWords();
     else if (view.name === 'p-say') vPathSay();
     else if (view.name === 'prefs') vPrefs();
+    else if (view.name === 'prac') vPrac();
+    else if (view.name === 'mist') vMist();
+    else if (view.name === 'pr-say') vPrSay();
+    else if (view.name === 'dict') vDict();
+    else if (view.name === 'match') vMatch();
     else if (view.name === 'read') vRead();
     else if (view.name === 'story') vStory();
     else if (view.name === 'level') vLevel();
     else if (view.name === 'lvl') vLvl();
     else vocabView();
     fitSheet();
-    if (QCHEER && (!runLike() || view.name === 'p-end')) cheerQuests();
+    if (!runLike() || view.name === 'p-end') {
+      if (QCHEER) cheerQuests();
+      badgeCheck(); cheerBadges();
+      if (view.name === 'p-end' || view.name === 'path') paceCheck();
+    }
   }
   function vocabView() {
     if (view.name === 'cat') vCat();
@@ -2298,6 +2362,7 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
     var t = el.getAttribute('data-nav');
     if (t === 'gram' && GLS.length) { UI.tab = 'gram'; saveUI(); go({ name: 'g-home' }); }
     else if (t === 'path') go({ name: 'path' });
+    else if (t === 'prac') go({ name: 'prac' });
     else if (t === 'read' && RDS.length) go({ name: 'read' });
     else { UI.tab = 'vocab'; saveUI(); go({ name: 'home' }); }
   });
@@ -2711,26 +2776,35 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
     Sync.touch('days');
     questCheck();
   }
-  /* any practice makes a day count: something logged above, or XP earned (saying sentences earns XP and logs nothing else) */
+  /* any practice makes a day count: something logged above, or XP earned (saying sentences earns XP and logs nothing else).
+     Rest days (วันพัก): one is earned at every 7 practised days in a row, at most two are held; a missed day on or after STRK.s,
+     between practised days (or yesterday, while today is still open), uses one by itself and the streak goes on. Days covered
+     are kept in STRK.u, so the decision never changes later. n counts practised days only. */
   function streak() {
-    var t = today(), n = 0, d = dayOn(t) ? t : t - 1, best = 0, run = 0, last = null, ks = {};
-    while (dayOn(d)) { n++; d--; }
+    var t = today(), ks = {}, list, d, run = 0, bal = 0, best = 0, used = false;
     Object.keys(DAYS).concat(Object.keys(XP.d)).forEach(function (k) { if (dayOn(+k)) ks[k] = 1; });
-    Object.keys(ks).map(Number).sort(function (x, y) { return x - y; }).forEach(function (k) {
-      run = last !== null && k === last + 1 ? run + 1 : 1; last = k;
+    list = Object.keys(ks).map(Number).sort(function (x, y) { return x - y; });
+    for (d = list.length ? list[0] : t; d <= t; d++) {
+      if (ks[d]) { run++; if (run % 7 === 0) bal = Math.min(2, bal + 1); }
+      else if (d === t) { /* today is not over yet */ }
+      else if (STRK.u[d] && run > 0) bal = Math.max(0, bal - 1);
+      else if (run > 0 && bal > 0 && d >= STRK.s && (ks[d + 1] || d + 1 === t)) { STRK.u[d] = 1; used = true; bal--; }
+      else run = 0;
       if (run > best) best = run;
-    });
-    return { n: n, today: dayOn(t), best: Math.max(best, n) };
+    }
+    if (used) { lsSet(SKEY, STRK); Sync.touch('streak'); }
+    return { n: run, today: dayOn(t), best: best, rest: bal };
   }
   var WD = ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'];
   function weekHtml(t) {
-    var week = '', n = 0;
+    var week = '', n = 0, r = 0;
     for (var i = 6; i >= 0; i--) {
-      var d = t - i, on = dayOn(d), full = !!(DAYS[d] && DAYS[d][5]), wd = new Date(d * 86400000).getUTCDay();
+      var d = t - i, on = dayOn(d), full = !!(DAYS[d] && DAYS[d][5]), rest = !on && !!STRK.u[d], wd = new Date(d * 86400000).getUTCDay();
       if (on) n++;
-      week += '<span class="day' + (on ? ' on' : '') + (full ? ' full' : '') + (i === 0 ? ' now' : '') + '"><i>' + (on ? IC_OK : '') + '</i>' + WD[wd] + '</span>';
+      if (rest) r++;
+      week += '<span class="day' + (on ? ' on' : '') + (full ? ' full' : '') + (rest ? ' rest' : '') + (i === 0 ? ' now' : '') + '"><i>' + (on ? IC_OK : '') + '</i>' + WD[wd] + '</span>';
     }
-    return '<div class="week" role="img" aria-label="7 วันล่าสุด เรียนแล้ว ' + n + ' วัน">' + week + '</div>';
+    return '<div class="week" role="img" aria-label="7 วันล่าสุด เรียนแล้ว ' + n + ' วัน' + (r ? ' ใช้วันพัก ' + r + ' วัน' : '') + '">' + week + '</div>';
   }
 
   /* ---------------- settings ---------------- */
@@ -2750,10 +2824,17 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
       (canVib ? '<div class="pref"><p class="pref-name">สั่นเมื่อตอบ<small>เครื่องสั่นสั้นๆ เมื่อตอบถูก สั่นสองครั้งเมื่อตอบผิด</small></p>' + seg('vib', [[1, 'เปิด'], [0, 'ปิด']]) + '</div>' : '') + '</div></section>' +
       '<section class="block"><h3>การแสดงผล</h3><div class="prefs"><div class="pref"><p class="pref-name">ขนาดตัวอักษร</p>' + seg('fs', [[100, 'ปกติ'], [112, 'ใหญ่'], [125, 'ใหญ่มาก']]) + '</div></div></section>' +
       '<section class="block"><h3>เป้าหมายรายวัน</h3><div class="prefs"><div class="pref"><p class="pref-name">XP ต่อวัน<small>ตอบถูกได้ 1 XP จบหนึ่งบทในเส้นทางได้อีก 10 XP บทละราว 5 นาที</small></p>' + seg('xg', [[10, '10 สบายๆ'], [20, '20 ปกติ'], [30, '30 จริงจัง'], [50, '50 เต็มที่']]) + '</div></div></section>' +
+      '<section class="block"><h3>เตือนให้มาเรียน</h3><div class="prefs"><div class="pref"><p class="pref-name">เวลาเตือนทุกวัน<small>แอปส่งการแจ้งเตือนเองไม่ได้ ใช้ปฏิทินในมือถือช่วยเตือนแทน เลือกเวลา แล้วเพิ่มลงปฏิทิน</small></p>' +
+      '<label class="sr" for="rm-time">เวลาเตือน</label><input type="time" class="type-in rm-time" id="rm-time" value="' + esc(UI.rt) + '">' +
+      '<div class="actions stack"><a class="btn ghost" id="rm-gcal" href="' + esc(rmLink()) + '" target="_blank" rel="noopener">เพิ่มใน Google Calendar</a>' +
+      '<button type="button" class="btn ghost" id="rm-ics" data-act="rm-ics">ดาวน์โหลดไฟล์ปฏิทิน</button></div></div></div></section>' +
       '<section class="block"><h3>การบันทึกความคืบหน้า</h3><p class="syncnote" id="syncnote"></p></section>' +
       '<section class="block"><h3>สำรองและย้ายความคืบหน้า</h3>' +
       '<p class="note">ใช้ย้ายความคืบหน้าไปเครื่องอื่นหรือแอปอื่น กดคัดลอกรหัส แล้วเก็บไว้ในโน้ตหรือส่งให้ตัวเอง จากนั้นไปวางในหน้าตั้งค่าของอีกที่ ความคืบหน้าที่ใหม่กว่าจะไม่ถูกทับ</p>' +
       '<button type="button" class="btn ghost wide" id="bk-copy" data-act="bk-copy">คัดลอกรหัสสำรอง</button>' +
+      '<div class="actions"><button type="button" class="btn ghost small" id="bk-save" data-act="bk-save">บันทึกเป็นไฟล์</button>' +
+      '<button type="button" class="btn ghost small" id="bk-load" data-act="bk-load">เปิดไฟล์สำรอง</button></div>' +
+      '<input type="file" id="bk-file" accept=".txt,text/plain" hidden>' +
       '<textarea class="bk-box" id="bk-out" readonly hidden aria-label="รหัสสำรอง"></textarea>' +
       '<label class="lbl" for="bk-in">วางรหัสสำรองเพื่อนำความคืบหน้ากลับมา</label>' +
       '<textarea class="bk-box" id="bk-in" spellcheck="false" autocapitalize="off" placeholder="วางรหัสที่ขึ้นต้นด้วย EN1: ตรงนี้"></textarea>' +
@@ -3395,6 +3476,7 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
     var ok = spPass(sp.res);
     if (ok && !sp.credit) { sp.credit = true; xpAdd(2); xpBump('s'); }
     if (PRUN && PRUN.say && view.name === 'p-say') sayMark(sp.ref, ok);
+    if (ok && view.name === 'pr-say') prsMark(sp.ref);
   }
 
   /* three quests a day: the XP goal and two more, the same all day, another pair the next day */
@@ -3404,7 +3486,8 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
     { id: 'perfect', th: 'ทำบทในเส้นทางได้เต็ม 1 บท', goal: 1, val: function (t) { return XP.p[t] || 0; } },
     { id: 'story', th: 'อ่านหรือฟังให้จบ 1 เรื่อง', goal: 1, val: function (t) { return dayArr(t)[3]; } },
     { id: 'due', th: 'ทบทวนคำที่ถึงเวลาให้หมด', goal: 1, val: function () { return stats().due ? 0 : 1; } },
-    { id: 'speak', th: 'พูดประโยคให้ผ่าน 5 ประโยค', goal: 5, val: function (t) { return XP.s[t] || 0; }, need: function () { return !!Spk.SR(); } }
+    { id: 'speak', th: 'พูดประโยคให้ผ่าน 5 ประโยค', goal: 5, val: function (t) { return XP.s[t] || 0; }, need: function () { return !!Spk.SR(); } },
+    { id: 'mist', th: 'ฝึกข้อที่ผิดบ่อย 1 รอบ ในแท็บฝึก', goal: 1, val: function (t) { return PRAC.r[t] || 0; }, need: function () { return stats().learned >= 10; } }
   ];
   function questsFor(t) {
     var pool = QPOOL.filter(function (q) { return !q.need || q.need(); }), pairs = [], i, j;
@@ -3428,12 +3511,8 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
   function cheerQuests() {
     if (!QCHEER) return;
     QCHEER = false;
-    var el = document.createElement('div');
-    el.className = 'toast'; el.id = 'toast'; el.setAttribute('role', 'status');
-    el.innerHTML = IC_OK + '<span>ทำภารกิจวันนี้ครบ 3 อย่างแล้ว เก่งมาก</span>';
-    document.body.appendChild(el);
+    toast(IC_OK + '<span>ทำภารกิจวันนี้ครบ 3 อย่างแล้ว เก่งมาก</span>', '', 3500);
     FX.play('win'); vib('end');
-    setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 3500);
   }
   function questsHtml(qs) {
     return '<ul class="quests">' + qs.map(function (q) {
@@ -3497,6 +3576,161 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
       return { changed: changed, newer: newer };
     }
   };
+
+  /* ---------------- practice records, rest days and badges (phase 3) ----------------
+     PRAC = { m: best match-race time in ms, d: {day: dictation sentences right}, r: {day: mistakes rounds} }
+     STRK = { s: the first day rest days applied (gaps before it stay gaps), u: {day: 1} missed days covered by a rest day }
+     BADGE = { c: {badge id: day it was celebrated} }. Each in its own key, each travels with the backup code. */
+  var PRKEY = 'vocab3000-prac-v1', PRAC = { m: 0, d: {}, r: {} };
+  var SKEY = 'vocab3000-streak-v1', STRK = { s: 0, u: {} };
+  var BGKEY = 'vocab3000-badges-v1', BADGE = { c: {} };
+  (function () {
+    var x = lsGet(PRKEY);
+    if (x && typeof x === 'object') { PRAC.m = Math.max(0, Number(x.m) | 0); PRAC.d = cleanDays(x.d); PRAC.r = cleanDays(x.r); }
+    var y = lsGet(SKEY), k;
+    if (y && typeof y === 'object') {
+      STRK.s = Math.max(0, Number(y.s) | 0);
+      if (y.u && typeof y.u === 'object') for (k in y.u) if (/^\d{4,6}$/.test(k) && y.u[k]) STRK.u[k] = 1;
+    }
+    if (!STRK.s) { STRK.s = today(); lsSet(SKEY, STRK); }
+    var z = lsGet(BGKEY);
+    if (z && z.c && typeof z.c === 'object') for (k in z.c) { var v = Number(z.c[k]) | 0; if (/^[a-z0-9]{1,8}$/.test(k) && v > 0) BADGE.c[k] = v; }
+  })();
+  function pracSave() { lsSet(PRKEY, PRAC); Sync.touch('prac'); }
+  function pracBump(f) { var t = today(); PRAC[f][t] = (PRAC[f][t] || 0) + 1; pracSave(); questCheck(); }
+  EXTRA.prac = {
+    get: function () { return { v: 1, m: PRAC.m, d: PRAC.d, r: PRAC.r }; },
+    has: function () { return PRAC.m > 0 || Object.keys(PRAC.d).length + Object.keys(PRAC.r).length > 0; },
+    merge: function (data) {
+      var d = data && typeof data === 'object' ? data : {}, changed = false, newer = false, m = Math.max(0, Number(d.m) | 0);
+      if (m > 0 && (!PRAC.m || m < PRAC.m)) { PRAC.m = m; changed = true; } else if (PRAC.m && (!m || PRAC.m < m)) newer = true;
+      ['d', 'r'].forEach(function (f) {
+        var r = cleanDays(d[f]);
+        Object.keys(r).forEach(function (k) { if (r[k] > (PRAC[f][k] || 0)) { PRAC[f][k] = r[k]; changed = true; } });
+        Object.keys(PRAC[f]).forEach(function (k) { if (PRAC[f][k] > (r[k] || 0)) newer = true; });
+      });
+      if (changed) lsSet(PRKEY, PRAC);
+      return { changed: changed, newer: newer };
+    }
+  };
+  EXTRA.streak = {
+    get: function () { return { v: 1, s: STRK.s, u: STRK.u }; },
+    has: function () { return Object.keys(STRK.u).length > 0; },
+    merge: function (data) {
+      var d = data && typeof data === 'object' ? data : {}, changed = false, newer = false, u = d.u && typeof d.u === 'object' ? d.u : {};
+      Object.keys(u).forEach(function (k) { if (/^\d{4,6}$/.test(k) && u[k] && !STRK.u[k]) { STRK.u[k] = 1; changed = true; } });
+      Object.keys(STRK.u).forEach(function (k) { if (!u[k]) newer = true; });
+      var s = Number(d.s) | 0;
+      if (s > 0 && s < STRK.s) { STRK.s = s; changed = true; }
+      if (changed) lsSet(SKEY, STRK);
+      return { changed: changed, newer: newer };
+    }
+  };
+  EXTRA.badges = {
+    get: function () { return { v: 1, c: BADGE.c }; },
+    has: function () { return Object.keys(BADGE.c).length > 0; },
+    merge: function (data) {
+      var c = data && data.c && typeof data.c === 'object' ? data.c : {}, changed = false, newer = false;
+      Object.keys(c).forEach(function (k) {
+        var v = Number(c[k]) | 0;
+        if (!/^[a-z0-9]{1,8}$/.test(k) || v <= 0) return;
+        if (!BADGE.c[k] || v < BADGE.c[k]) { BADGE.c[k] = v; changed = true; }
+      });
+      Object.keys(BADGE.c).forEach(function (k) { if (!c[k]) newer = true; });
+      if (changed) lsSet(BGKEY, BADGE);
+      return { changed: changed, newer: newer };
+    }
+  };
+  /* the last day with practice before today (0 when there is none) */
+  function lastOn(t) { for (var d = t - 1, i = 0; i < 800; i++, d--) if (dayOn(d)) return d; return 0; }
+  /* back after three days or more and nothing done yet today: a gentle start */
+  function welcomeBack() { var t = today(), l; if (dayOn(t)) return false; l = lastOn(t); return l > 0 && t - l >= 3 && stats().learned > 0; }
+
+  /* badges: worked out from the records each time; only "already celebrated" is stored */
+  function sumDays(m) { var n = 0; for (var k in m) n += m[k]; return n; }
+  function maxDays(m) { var n = 0; for (var k in m) if (m[k] > n) n = m[k]; return n; }
+  function wordsKnown() { var n = 0; for (var k in P.w) if (W[k] && P.w[k][0] >= 3) n++; return n; }
+  function gLevelDone(lv) { var ls = GLS.filter(function (l) { return l.lv === lv; }); return { cur: ls.filter(gPassed).length, goal: ls.length }; }
+  var BADGES = [
+    { id: 'first', m: '1', th: 'บทแรก', v: function (c) { return c.node; }, g: 1 },
+    { id: 's3', m: '3', th: 'เรียนติดกัน 3 วัน', v: function (c) { return c.best; }, g: 3 },
+    { id: 's7', m: '7', th: 'เรียนติดกัน 7 วัน', v: function (c) { return c.best; }, g: 7 },
+    { id: 's30', m: '30', th: 'เรียนติดกัน 30 วัน', v: function (c) { return c.best; }, g: 30 },
+    { id: 's100', m: '100', th: 'เรียนติดกัน 100 วัน', v: function (c) { return c.best; }, g: 100 },
+    { id: 's365', m: '365', th: 'เรียนติดกัน 1 ปี', v: function (c) { return c.best; }, g: 365 },
+    { id: 'w50', m: '50', th: 'รู้ 50 คำ', v: function (c) { return c.known; }, g: 50 },
+    { id: 'w100', m: '100', th: 'รู้ 100 คำ', v: function (c) { return c.known; }, g: 100 },
+    { id: 'w250', m: '250', th: 'รู้ 250 คำ', v: function (c) { return c.known; }, g: 250 },
+    { id: 'w500', m: '500', th: 'รู้ 500 คำ', v: function (c) { return c.known; }, g: 500 },
+    { id: 'w1000', m: '1K', th: 'รู้ 1,000 คำ', v: function (c) { return c.known; }, g: 1000 },
+    { id: 'w2000', m: '2K', th: 'รู้ 2,000 คำ', v: function (c) { return c.known; }, g: 2000 },
+    { id: 'w3600', m: '3.6K', th: 'รู้ครบ 3,600 คำ', v: function (c) { return c.known; }, g: 3600 },
+    { id: 'ga1', m: 'A1', th: 'ไวยากรณ์ A1 ครบ', lv: 'A1' },
+    { id: 'ga2', m: 'A2', th: 'ไวยากรณ์ A2 ครบ', lv: 'A2' },
+    { id: 'gb1', m: 'B1', th: 'ไวยากรณ์ B1 ครบ', lv: 'B1' },
+    { id: 'gb2', m: 'B2', th: 'ไวยากรณ์ B2 ครบ', lv: 'B2' },
+    { id: 'r10', m: '10', th: 'อ่านจบ 10 เรื่อง', v: function (c) { return c.read; }, g: 10 },
+    { id: 'r30', m: '30', th: 'อ่านจบ 30 เรื่อง', v: function (c) { return c.read; }, g: 30 },
+    { id: 'p50', m: '50', th: 'พูดผ่าน 50 ประโยค', v: function (c) { return c.said; }, g: 50 },
+    { id: 'p200', m: '200', th: 'พูดผ่าน 200 ประโยค', v: function (c) { return c.said; }, g: 200 },
+    { id: 'c20', m: '20', th: 'ถูกติดกัน 20 ข้อ', v: function (c) { return c.combo; }, g: 20 },
+    { id: 'f10', m: '10', th: 'ทำบทได้เต็ม 10 บท', v: function (c) { return c.perfect; }, g: 10 },
+    { id: 'u1', m: 'U1', th: 'ผ่านหน่วยแรก', v: function (c) { return c.unit; }, g: 1 }
+  ];
+  function badgeState() {
+    var sc = pathScan(), c = { node: sc.done.some(Boolean) ? 1 : 0, best: streak().best, known: wordsKnown(), read: rDoneCount(), said: sumDays(XP.s), combo: maxDays(XP.c), perfect: sumDays(XP.p), unit: sc.upass.some(Boolean) ? 1 : 0 };
+    return BADGES.map(function (b) {
+      var cur, goal;
+      if (b.lv) { var g = gLevelDone(b.lv); cur = g.cur; goal = g.goal || 1; } else { cur = b.v(c); goal = b.g; }
+      return { b: b, cur: Math.min(cur, goal), goal: goal, got: cur >= goal && goal > 0 };
+    });
+  }
+  var BNEW = [];
+  /* newly earned badges are marked celebrated at once and shown once, in a small panel that does not block anything */
+  function badgeCheck() {
+    var t = today(), fresh = [];
+    badgeState().forEach(function (s) { if (s.got && !BADGE.c[s.b.id]) { BADGE.c[s.b.id] = t; fresh.push(s.b); } });
+    if (!fresh.length) return;
+    lsSet(BGKEY, BADGE); Sync.touch('badges');
+    BNEW = BNEW.concat(fresh);
+  }
+  var TOASTQ = [];
+  function toast(html, cls, ms) {
+    TOASTQ.push({ html: html, cls: cls || '', ms: ms || 3500 });
+    if (TOASTQ.length === 1) toastNext();
+  }
+  function toastNext() {
+    var o = TOASTQ[0];
+    if (!o) return;
+    var el = document.createElement('div');
+    el.className = 'toast' + (o.cls ? ' ' + o.cls : ''); el.id = o.cls === 't-top' ? 'bdg-pop' : 'toast'; el.setAttribute('role', 'status');
+    el.style.pointerEvents = 'none';
+    el.innerHTML = o.html;
+    document.body.appendChild(el);
+    setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); TOASTQ.shift(); toastNext(); }, o.ms);
+  }
+  function cheerBadges() {
+    if (!BNEW.length) return;
+    var list = BNEW; BNEW = [];
+    var more = list.length > 1 ? ' และอีก ' + (list.length - 1) + ' เหรียญ' : '';
+    toast('<span class="bdg-m" aria-hidden="true">' + esc(list[0].m) + '</span><span>ได้เหรียญใหม่: ' + esc(list[0].th) + more + '</span>', 't-top', 4200);
+    FX.play('win');
+  }
+  /* a big day: say once that resting is fine (never blocks) */
+  function paceCheck() {
+    var t = today();
+    if (UI.pace === t || xpDay(t) < UI.xg * 3) return;
+    UI.pace = t; saveUI();
+    toast(IC_OK + '<span>วันนี้ทำเยอะแล้ว พักบ้างก็ได้ พรุ่งนี้จะจำได้ดีกว่า</span>', '', 4200);
+  }
+  function badgesHtml() {
+    var st = badgeState(), got = st.filter(function (s) { return s.got; }).length;
+    return '<section class="block" id="me-badges"><h2>เหรียญ</h2><p class="note">ได้แล้ว ' + got + ' จาก ' + st.length + ' เหรียญ</p><ul class="badges">' + st.map(function (s) {
+      var day = BADGE.c[s.b.id];
+      return '<li class="bdg' + (s.got ? ' got' : '') + '" id="bdg-' + s.b.id + '"><span class="bdg-m" aria-hidden="true">' + esc(s.b.m) + '</span><b>' + esc(s.b.th) + '</b>' +
+        (s.got ? '<small>' + (day ? 'ได้เมื่อ ' + dateTh(day) : 'ได้แล้ว') + '</small>' : '<small>' + fmt(s.cur) + '/' + fmt(s.goal) + '</small><span class="mini" aria-hidden="true"><i style="width:' + Math.round(s.cur / s.goal * 100) + '%"></i></span>') + '</li>';
+    }).join('') + '</ul></section>';
+  }
 
   /* ---------------- the learning path (เส้นทาง) ----------------
      Built once, when first needed, from what the app already has and always in the same order. The word sets of the first 55 topics
@@ -3760,6 +3994,7 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
     } else if (n.t === 'g') parts = [{ k: 'lesson' }, { k: 'gram' }];
     else if (n.t === 'r') { if (storyNew(n).length) parts.push({ k: 'words' }); parts.push({ k: 'story' }); }
     else if (n.t === 't') parts = [{ k: 'say' }];
+    else if (n.t === 'x' && n.parts) parts = n.parts.slice();
     else if (n.t === 'x') {
       var rl = revWords(), gq = revGram();
       if (rl.length) parts.push({ k: 'rev', items: rl });
@@ -3808,7 +4043,7 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
       R.ans = tried; R.right = said;
       if (!o || said >= o[0]) PATH.t[n.r.id] = [said, R.say.lines.length, nowSec()];
       pathSave();
-    } else if (n.t === 'x') { if (!n.virt) { PATH.x[n.n] = today(); pathSave(); } }
+    } else if (n.t === 'x') { if (!n.virt) { PATH.x[n.n] = today(); pathSave(); } if (n.mist) pracBump('r'); }
     else if (n.t === 'k') {
       var o2 = PATH.k[n.n];
       if (!o2 || R.right >= o2[0]) PATH.k[n.n] = [R.right, R.ans, nowSec()];
@@ -3843,7 +4078,7 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
     try { document.getElementById('dlg-stay').focus(); } catch (e) {}
   }
   function quitClose() { var d = document.getElementById('dlg'); if (d && d.parentNode) d.parentNode.removeChild(d); }
-  function pathLeave() { aiStop(); saveNow(); Sync.flushSoon(); PRUN = null; go({ name: 'path' }); }
+  function pathLeave() { var back = PRUN && PRUN.n.from === 'prac' ? 'prac' : 'path'; aiStop(); saveNow(); Sync.flushSoon(); PRUN = null; go({ name: back }); }
   document.addEventListener('click', function (ev) {
     var el = ev.target.closest ? ev.target.closest('[data-act]') : null;
     if (!el || !document.getElementById('dlg')) return;
@@ -3885,6 +4120,284 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
     render();
   }
 
+
+  /* ---------------- the practice tab (ฝึก): review, mistakes, speaking, dictation, the match race ---------------- */
+  var IC_DUMB = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>';
+  var IC_REV = svgI(sk('M19.5 10A7.5 7.5 0 0 0 6 6.3M4.5 3.5v4h4M4.5 14A7.5 7.5 0 0 0 18 17.7M19.5 20.5v-4h-4'));
+  var IC_MISS = svgI(sk('M12 3.5l9 16H3zM12 10v4.5M12 17.5v.01'));
+  var IC_PEN = svgI(sk('M4 20h4L19.5 8.5a2.1 2.1 0 0 0-3-3L5 17zM14.5 7.5l3 3'));
+  var IC_CLOCK = svgI('<circle cx="12" cy="13" r="7.5" fill="none" stroke="currentColor" stroke-width="2"/>' + sk('M12 9v4l2.5 2M9.5 2.5h5'));
+  /* words answered wrong since they were last answered right: the latest miss first, then the lowest level */
+  function mistWords() {
+    var out = [];
+    for (var k in P.w) { var r = P.w[k]; if (W[k] && r[3] > 0 && r[3] >= r[2]) out.push(W[k]); }
+    out.sort(function (a, b) { var x = P.w[a.n], y = P.w[b.n]; return y[3] - x[3] || x[0] - y[0] || a.n - b.n; });
+    return out.slice(0, 20);
+  }
+  /* grammar questions by how often they were answered wrong */
+  function mistGram() {
+    return Object.keys(GP.x).filter(function (id) { return GP.x[id] > 0 && GQ[id]; })
+      .sort(function (a, b) { return GP.x[b] - GP.x[a] || (a < b ? -1 : 1); }).slice(0, 20).map(function (id) { return GQ[id]; });
+  }
+  /* the learned words remembered least well, when there is nothing to put right */
+  function weakWords(n) {
+    return ALL.filter(function (w) { return P.w[w.n] && P.w[w.n][0] >= 1; })
+      .sort(function (a, b) { return P.w[a.n][0] - P.w[b.n][0] || P.w[a.n][4] - P.w[b.n][4] || a.n - b.n; }).slice(0, n);
+  }
+  function revItem(w) { var q = qForBox(w); if (q === 'mean' && !thAlts(w).length) q = 'e2t'; return { n: w.n, q: q }; }
+  /* one round of ten: the missed words, then the grammar questions missed most (answers update the usual records) */
+  function mistParts() {
+    var ws = mistWords(), gs = mistGram(), parts = [];
+    if (!ws.length && !gs.length) ws = weakWords(10);
+    var ng = Math.min(gs.length, ws.length ? 4 : 10), nw = Math.min(ws.length, 10 - ng);
+    if (nw) parts.push({ k: 'rev', items: shuffle(ws.slice(0, nw)).map(revItem) });
+    if (ng) parts.push({ k: 'grev', items: shuffle(gs.slice(0, ng)) });
+    return parts;
+  }
+  /* five easy ones after a break: the best known words, as a choice of meanings */
+  function easyParts() {
+    var ws = ALL.filter(function (w) { return P.w[w.n] && P.w[w.n][0] >= 1; })
+      .sort(function (a, b) { return P.w[b.n][0] - P.w[a.n][0] || P.w[b.n][2] - P.w[a.n][2] || a.n - b.n; }).slice(0, 5);
+    return ws.length ? [{ k: 'rev', items: shuffle(ws).map(function (w) { return { n: w.n, q: 'e2t' }; }) }] : [];
+  }
+  /* a practice round runs like a review node of the path that is not on it (nothing is stored for the path) */
+  function pracStart(o) {
+    var M = pm(), sc = pathScan(), cu = sc.cur >= 0 ? M.PN[sc.cur].u : M.PU.length - 1;
+    var n = { t: 'x', id: 'x:0', n: 0, u: cu, virt: true, from: o.from || '', lbl: o.lbl, sub: o.sub, done: o.done, parts: o.parts, mist: !!o.mist };
+    if (!pathStart(n)) render();
+  }
+  function pcard(id, act, icon, title, sub, off) {
+    return '<li><button type="button" class="pcard" id="' + id + '" data-act="' + act + '"' + (off ? ' disabled' : '') + '><span class="pc-ic">' + icon + '</span>' +
+      '<span class="pc-t"><b>' + title + '</b><small>' + sub + '</small></span><span class="pc-go" aria-hidden="true">' + IC_DOWN + '</span></button></li>';
+  }
+  function vPrac() {
+    var st = stats(), mw = mistWords(), mq = mistGram(), none = !st.learned;
+    var h = '<header class="hello"><h1>ฝึก</h1><p class="lede">ฝึกเพิ่มนอกเส้นทาง ทำอันไหนก่อนก็ได้ ได้ XP เหมือนกัน</p>' +
+      (none ? '<p class="note" id="pr-none">เรียนบทแรกในแท็บเรียนก่อน แล้วคำที่เรียนจะมาให้ฝึกตรงนี้</p>' : '') + '</header>';
+    h += '<ul class="pcards">' +
+      pcard('pr-due', 'p-due', IC_REV, 'ทบทวนคำที่ถึงเวลา', st.due ? 'ถึงเวลาแล้ว ' + fmt(st.due) + ' คำ' : 'ยังไม่มีคำถึงเวลา ทบทวนคำที่ไม่ได้ดูนานแทน', none) +
+      pcard('pr-mist', 'mist', IC_MISS, 'คำและข้อที่ผิดบ่อย', mw.length || mq.length ? 'คำ ' + mw.length + ' คำ ข้อไวยากรณ์ ' + mq.length + ' ข้อ' : 'ยังไม่มีข้อที่ผิด ฝึกคำที่ยังไม่แม่นแทน', none) +
+      pcard('pr-say', 'pr-say', IC_MIC, 'ฝึกพูด', 'พูดตาม 5 ประโยค ให้แอปช่วยฟัง', false) +
+      pcard('pr-dict', 'dict', IC_PEN, 'ฟังแล้วพิมพ์', 'ฟังประโยค แล้วพิมพ์ตามที่ได้ยิน 5 ประโยค', !Snd.can()) +
+      pcard('pr-match', 'match', IC_CLOCK, 'จับคู่แข่งเวลา', PRAC.m ? 'สถิติของคุณ ' + mrTime(PRAC.m) : 'จับคู่คำกับคำแปล 3 รอบ แข่งกับเวลาของตัวเอง', st.learned < 5) +
+      '</ul>';
+    if (st.learned && st.learned < 5) h += '<p class="note">จับคู่แข่งเวลาเปิดเมื่อเรียนได้ 5 คำ</p>';
+    app.innerHTML = h;
+  }
+  function vMist() {
+    var mw = mistWords(), mq = mistGram(), none = !mw.length && !mq.length;
+    var h = crumb([{ label: 'ฝึก', act: 'prac' }]) + '<header class="top"><h2>คำและข้อที่ผิดบ่อย</h2><p class="lede">' +
+      (none ? 'ยังไม่มีข้อที่ตอบผิด รอบนี้จะฝึกคำที่ยังจำได้ไม่แม่นแทน' : 'คำที่ตอบผิดล่าสุด และข้อไวยากรณ์ที่ผิดบ่อย ฝึกทีละ 10 ข้อ ตอบถูกแล้วจะหายจากรายการ') + '</p></header>' +
+      '<div class="actions stack"><button type="button" class="btn" id="mist-go" data-act="mist-go"' + (stats().learned || mq.length ? '' : ' disabled') + '>ฝึกเฉพาะชุดนี้ 10 ข้อ</button></div>';
+    if (mw.length) h += '<section class="block"><h3>คำที่ผิด</h3><ol class="mrows" id="mist-words">' + mw.map(function (w) {
+      var r = P.w[w.n];
+      return '<li><div class="mrow" id="mw-' + w.n + '"><b class="en">' + esc(w.w) + '</b><small>' + esc(w.t) + '</small><span class="mside">' + pips(r[0]) + '<br>ผิดเมื่อ ' + dateTh(r[3]) + '</span></div></li>';
+    }).join('') + '</ol></section>';
+    if (mq.length) h += '<section class="block"><h3>ข้อไวยากรณ์ที่ผิด</h3><ol class="mrows" id="mist-gram">' + mq.map(function (q) {
+      return '<li><div class="mrow" id="mg-' + esc(q.id) + '"><b class="en">' + esc(q.say) + '</b><small>บทที่ ' + (q.l.i + 1) + ' ' + esc(q.l.title) + '</small><span class="mside">ผิด ' + GP.x[q.id] + ' ครั้ง</span></div></li>';
+    }).join('') + '</ol></section>';
+    app.innerHTML = h;
+  }
+
+  /* speaking practice: five sentences of words already learned, each with the model and the mic */
+  var PRS = null;
+  function prsLines() {
+    var ws = ALL.filter(function (w) { return P.w[w.n] && P.w[w.n][0] >= 1 && w.x; });
+    if (ws.length < 5) ws = ws.concat(CATS[ORD[0]].words.filter(function (w) { return w.x && ws.indexOf(w) < 0; }));
+    return shuffle(ws).slice(0, 5).map(function (w) { return { n: w.n, kind: 's', c: w.c, k: w.k, text: exPlain(w), th: w.xt }; });
+  }
+  function vPrSay() {
+    if (!PRS) PRS = { lines: prsLines(), ok: {} };
+    var okN = PRS.lines.filter(function (l, i) { return PRS.ok[i]; }).length;
+    var h = crumb([{ label: 'ฝึก', act: 'prac' }]) + '<header class="top"><h2>ฝึกพูด</h2><p class="lede">ฟังต้นแบบ แล้วกดไมค์พูดตาม พูดได้แล้ว ' + okN + ' จาก ' + PRS.lines.length + ' ประโยค</p></header>' +
+      (Spk.SR() ? '' : '<p class="note" id="prs-nosr">เครื่องนี้ฟังเสียงพูดไม่ได้ กดไมค์เพื่ออัดเสียงตัวเองแล้วฟังเทียบกับต้นแบบได้</p>') + '<p class="syncnote" id="sndnote"></p>' +
+      '<ol class="lines" id="pr-say-lines">' + PRS.lines.map(function (l, i) {
+        var ok = PRS.ok[i];
+        return '<li class="line' + (ok ? ' said' : '') + '" id="prs-' + i + '"><p class="l-en">' + esc(l.text) + '</p><span class="l-side">' + sayRound('s', l.n, 'ฟังต้นแบบ') +
+          micBtn('s', l.c, l.k, l.text, l.th) + '</span><p class="l-th">' + esc(l.th) + '</p>' + (ok ? '<span class="said-chip">' + IC_OK + 'พูดได้แล้ว</span>' : '') + '</li>';
+      }).join('') + '</ol><div class="actions stack"><button type="button" class="btn ghost" id="prs-new" data-act="prs-new">ชุดใหม่</button></div>';
+    app.innerHTML = h;
+    renderSndNote();
+  }
+  function prsMark(ref) {
+    if (!PRS) return;
+    PRS.lines.forEach(function (l, i) { if (ref.kind === 's' && ref.c === l.c && ref.k === l.k) PRS.ok[i] = 1; });
+    render();
+  }
+
+  /* dictation: hear a sentence, type it; compared word by word like speaking (case, punctuation and short forms do not count) */
+  var DT = null;
+  function dtItems() {
+    var ws = ALL.filter(function (w) { return P.w[w.n] && P.w[w.n][0] >= 1 && w.x && Snd.has('s', w); }), out;
+    if (ws.length < 4) ws = ws.concat(CATS[ORD[0]].words.filter(function (w) { return w.x && ws.indexOf(w) < 0; }));
+    out = shuffle(ws).slice(0, 4).map(function (w) { return { kind: 's', c: w.c, k: w.k, text: exPlain(w), th: w.xt }; });
+    var rs = RDS.filter(function (s) { return READ[s.id] && rCan(s); });
+    if (rs.length) { var s = rs[Math.floor(Math.random() * rs.length)], k = Math.floor(Math.random() * s.l.length); out.push({ kind: 'r', c: rC(s), k: rK(s, k), text: s.l[k].en, th: s.l[k].th }); }
+    else { var w2 = shuffle(ws.filter(function (w) { return out.every(function (o) { return o.text !== exPlain(w); }); }))[0]; if (w2) out.push({ kind: 's', c: w2.c, k: w2.k, text: exPlain(w2), th: w2.xt }); }
+    return out;
+  }
+  function dtPlay(slow, btn) { var it = DT && DT.items[DT.pos]; if (it) Snd.playRef(it.kind, it.c, it.k, it.text, slow, btn || null); }
+  function dtBar(pct) {
+    return '<div class="runbar"><button type="button" class="x" id="dt-quit" data-act="prac" aria-label="กลับหน้าฝึก" title="กลับหน้าฝึก">' + IC_X + '</button>' +
+      '<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '" aria-label="ความคืบหน้า"><i class="b-strong" style="width:' + pct + '%"></i></div><span class="runbar-pad" aria-hidden="true"></span></div>';
+  }
+  function vDict() {
+    if (!DT) DT = { items: dtItems(), pos: 0, typed: '', res: null, skip: false, right: 0, auto: true };
+    var it = DT.items[DT.pos], n = DT.items.length;
+    if (!it) {
+      app.innerHTML = dtBar(100) + '<header class="top"><p class="eyebrow">ฟังแล้วพิมพ์</p><h2>จบรอบนี้แล้ว</h2></header>' +
+        '<section class="today rdone" id="dt-result"><p class="score">' + DT.right + '<small> จาก ' + n + ' ประโยค</small></p><p class="today-sub">' +
+        (DT.right === n ? 'พิมพ์ถูกครบทุกประโยค' : 'ประโยคที่ยังไม่ครบ ลองฟังอีกครั้งตอนทบทวนรอบหน้า') + '</p>' +
+        '<div class="actions stack"><button type="button" class="btn" id="dt-again" data-act="dt-again">อีกรอบ</button><button type="button" class="btn ghost" id="dt-back" data-act="prac">กลับหน้าฝึก</button></div></section>';
+      if (DT.right === n && !DT.cheered) { DT.cheered = true; FX.play('win'); celebrate(); }
+      return;
+    }
+    var h = dtBar(Math.round((DT.pos + (DT.res || DT.skip ? 1 : 0)) / n * 100)) + '<div class="runhead"><div class="run-title"><b>ฟังแล้วพิมพ์</b><span>ประโยคที่ ' + (DT.pos + 1) + ' จาก ' + n + '</span></div>' +
+      (it.kind === 'r' && it.c < 0 ? '<span class="count">เสียงจากเครื่อง</span>' : '') + '</div>';
+    h += '<div class="card" id="card"><p class="ask">ฟังประโยค แล้วพิมพ์ตามที่ได้ยิน ไม่ต้องสนใจตัวพิมพ์ใหญ่และจุด</p>' +
+      '<div class="dt-tools"><button type="button" class="listen big" id="dt-play" data-act="dt-play" data-text="' + esc(it.text) + '">' + ICON + 'ฟังอีกครั้ง</button>' +
+      '<button type="button" class="listen" id="dt-slow" data-act="dt-slow">' + ICON + 'ฟังช้า</button></div>';
+    if (!DT.res && !DT.skip) {
+      h += '<label class="sr" for="dt-in">พิมพ์ประโยคที่ได้ยิน</label><textarea class="dt-in" id="dt-in" rows="3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="พิมพ์ภาษาอังกฤษที่ได้ยินตรงนี้">' + esc(DT.typed) + '</textarea>' +
+        '<div class="actions"><button type="button" class="btn" id="dt-check" data-act="dt-check">ตรวจ</button><button type="button" class="btn ghost small" id="dt-skip" data-act="dt-skip">ตอนนี้ฟังไม่ได้</button></div></div>';
+    } else {
+      h += '</div>';
+      var r = DT.res, ok = !!r && r.ok === r.total;
+      var body = DT.skip ? '<p class="spk-target en" id="dt-diff">' + esc(it.text) + '</p>' :
+        '<p class="spk-target en" id="dt-diff">' + r.words.map(function (x) { return '<span class="' + (x.ok ? 'ok' : 'miss') + '">' + esc(x.d) + '</span>'; }).join(' ') + '</p>' +
+        (ok ? '' : '<p class="note">คุณพิมพ์ว่า <span class="en">' + esc(DT.typed) + '</span></p>');
+      body += sayHtml(esc(it.th), '');
+      h += sheet(DT.skip ? 'mid' : (ok ? 'ok' : 'no'), DT.skip ? 'ข้ามข้อนี้ ไม่นับว่าผิด' : (ok ? 'ถูกต้อง' : 'ได้ ' + r.ok + ' จาก ' + r.total + ' คำ คำที่ขีดฆ่ายังไม่ตรง'), body,
+        '<button type="button" class="btn wide" id="dt-next" data-act="dt-next">' + (DT.pos + 1 >= n ? 'ดูสรุป' : 'ข้อต่อไป') + '</button>', !DT.shown);
+      DT.shown = true;
+    }
+    app.innerHTML = h;
+    var inp = document.getElementById('dt-in');
+    if (inp) { inp.addEventListener('input', function () { DT.typed = inp.value; }); }
+    if (DT.auto && !DT.res && !DT.skip) { DT.auto = false; if (UI.auto) setTimeout(function () { if (view.name === 'dict') dtPlay(false); }, 250); }
+  }
+  function dtCheck() {
+    var it = DT.items[DT.pos], inp = document.getElementById('dt-in');
+    if (inp) DT.typed = inp.value;
+    if (!DT.typed.trim()) { if (inp) { try { inp.focus(); } catch (e) {} } return; }
+    DT.res = spGrade(it.text, [DT.typed]);
+    var ok = DT.res.ok === DT.res.total;
+    answered(ok, true, null);
+    if (ok) { DT.right++; pracBump('d'); }
+    FX.play(ok ? 'ok' : 'no');
+    DT.shown = false;
+    render();
+  }
+
+  /* the match race: three rounds of five words and their meanings, against one's own best time (2 seconds for a wrong pair) */
+  var MR = null, MRT = null;
+  function mrTime(ms) { var s = ms / 1000; return Math.floor(s / 60) + ':' + pad2(Math.floor(s % 60)) + '.' + Math.floor((ms % 1000) / 100); }
+  function mrNew() {
+    var ws = shuffle(ALL.filter(function (w) { return P.w[w.n] && P.w[w.n][0] >= 1; })), rounds = [], seen;
+    for (var r = 0; r < 3; r++) {
+      var pick = [], th = {};
+      seen = rounds.reduce(function (a, x) { return a.concat(x); }, []);
+      ws.concat(ws).some(function (w) { if (pick.length < 5 && pick.indexOf(w) < 0 && !th[thAsk(w)] && (seen.indexOf(w) < 0 || ws.length < 15)) { pick.push(w); th[thAsk(w)] = 1; } return pick.length >= 5; });
+      rounds.push(pick);
+    }
+    return { rounds: rounds, ri: 0, right: shuffle([0, 1, 2, 3, 4]), sel: -1, done: {}, miss: {}, bad: -1, wrong: 0, t0: Date.now(), pen: 0, fin: false, time: 0, prev: PRAC.m, best: false, xp: 0 };
+  }
+  function mrTick() {
+    clearInterval(MRT);
+    MRT = setInterval(function () {
+      var el = document.getElementById('mr-time');
+      if (view.name !== 'match' || !MR || MR.fin || !el) { clearInterval(MRT); MRT = null; return; }
+      el.textContent = mrTime(Date.now() - MR.t0 + MR.pen);
+    }, 100);
+  }
+  function vMatch() {
+    if (!MR) MR = mrNew();
+    var R = MR, words = R.rounds[R.ri] || [];
+    if (R.fin) {
+      app.innerHTML = dtBar(100) + '<header class="top"><p class="eyebrow">จับคู่แข่งเวลา</p><h2>' + (R.best ? 'ทำลายสถิติตัวเอง' : (R.prev ? 'จบแล้ว' : 'สถิติแรกของคุณ')) + '</h2></header>' +
+        '<section class="today rdone" id="mr-result"><p class="score" id="mr-final">' + mrTime(R.time) + '</p><p class="today-sub">' +
+        (R.best ? 'เร็วกว่าสถิติเดิม ' + mrTime(R.prev) : (R.prev ? 'สถิติของคุณ ' + mrTime(PRAC.m) : 'ครั้งหน้าลองทำให้เร็วกว่านี้')) + (R.wrong ? ' จับคู่ผิด ' + R.wrong + ' ครั้ง' : ' ไม่ผิดเลย') + '</p>' +
+        '<div class="actions stack"><button type="button" class="btn" id="mr-again" data-act="mr-again">แข่งอีกครั้ง</button><button type="button" class="btn ghost" id="mr-back" data-act="prac">กลับหน้าฝึก</button></div></section>';
+      return;
+    }
+    var h = dtBar(Math.round((R.ri * 5 + Object.keys(R.done).length) / 15 * 100)) +
+      '<div class="mr-clock"><div class="run-title"><b>จับคู่แข่งเวลา</b><span>รอบที่ ' + (R.ri + 1) + ' จาก 3 แตะคำ แล้วแตะคำแปลของมัน</span></div>' +
+      '<span class="mr-time" id="mr-time" aria-live="off">' + mrTime(Date.now() - R.t0 + R.pen) + '</span></div>' +
+      (PRAC.m ? '<p class="note">สถิติของคุณ ' + mrTime(PRAC.m) + ' จับคู่ผิดเพิ่ม 2 วินาที</p>' : '<p class="note">จับคู่ผิดเพิ่ม 2 วินาที</p>') +
+      '<div class="mr-grid"><div class="mr-col">' + words.map(function (w, i) {
+        var d = R.done[i];
+        return '<button type="button" class="mr en' + (d ? ' done' : (R.sel === i ? ' is-sel' : '')) + '" id="mr-e-' + i + '" data-act="mr-e" data-i="' + i + '" data-n="' + w.n + '"' + (d ? ' disabled' : '') + ' aria-pressed="' + (R.sel === i ? 'true' : 'false') + '">' + esc(w.w) + '</button>';
+      }).join('') + '</div><div class="mr-col">' + R.right.map(function (j) {
+        var w = words[j], d = R.done[j];
+        return '<button type="button" class="mr' + (d ? ' done' : (R.bad === j ? ' is-wrong' : '')) + '" id="mr-t-' + j + '" data-act="mr-t" data-j="' + j + '" data-n="' + w.n + '"' + (d ? ' disabled' : '') + '>' + esc(thAsk(w)) + '</button>';
+      }).join('') + '</div></div>';
+    app.innerHTML = h;
+    mrTick();
+  }
+  function mrPick(side, i) {
+    var R = MR;
+    if (!R || R.fin) return;
+    R.bad = -1;
+    if (side === 'e') { R.sel = R.done[i] ? -1 : i; render(); return; }
+    if (R.sel < 0 || R.done[i]) return;
+    if (R.sel === i) {
+      R.done[i] = 1;
+      var first = !R.miss[i];
+      if (first) { xpAdd(1); R.xp++; }
+      vib('ok'); FX.play('ok');
+      R.sel = -1;
+      if (Object.keys(R.done).length >= 5) {
+        if (R.ri >= 2) { mrFinish(); return; }
+        render();
+        setTimeout(function () { if (MR === R && view.name === 'match') { R.ri++; R.done = {}; R.miss = {}; R.right = shuffle([0, 1, 2, 3, 4]); render(); } }, 350);
+        return;
+      }
+    } else {
+      R.miss[R.sel] = 1; R.wrong++; R.pen += 2000; R.bad = i;
+      vib('no'); FX.play('no');
+    }
+    render();
+  }
+  function mrFinish() {
+    var R = MR;
+    R.fin = true; R.time = Date.now() - R.t0 + R.pen;
+    clearInterval(MRT); MRT = null;
+    R.best = R.prev > 0 && R.time < R.prev;
+    if (!PRAC.m || R.time < PRAC.m) { PRAC.m = R.time; pracSave(); }
+    if (R.best || !R.prev) { FX.play('win'); celebrate(); }
+    render();
+  }
+
+  /* reminders: the phone's calendar is the cue (there is no push server); a Google Calendar link or an .ics file, every day */
+  function rmParts() {
+    var m = /^(\d\d):(\d\d)$/.exec(UI.rt || '19:00') || [0, '19', '00'], d = new Date(), y = d.getFullYear(), mo = pad2(d.getMonth() + 1), da = pad2(d.getDate());
+    var end = new Date(d.getFullYear(), d.getMonth(), d.getDate(), +m[1], +m[2] + 15);
+    return { start: '' + y + mo + da + 'T' + m[1] + m[2] + '00', end: '' + end.getFullYear() + pad2(end.getMonth() + 1) + pad2(end.getDate()) + 'T' + pad2(end.getHours()) + pad2(end.getMinutes()) + '00' };
+  }
+  function rmLink() {
+    var p = rmParts(), tz = '';
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+    return 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent('ฝึกภาษาอังกฤษ') +
+      '&details=' + encodeURIComponent('เปิดแอปฝึกภาษาอังกฤษ ทำวันละบทก็พอ ' + location.href.split('#')[0]) +
+      '&dates=' + p.start + '/' + p.end + '&recur=' + encodeURIComponent('RRULE:FREQ=DAILY') + (tz ? '&ctz=' + encodeURIComponent(tz) : '');
+  }
+  function rmIcs() {
+    var p = rmParts(), now = new Date(), stamp = now.getUTCFullYear() + pad2(now.getUTCMonth() + 1) + pad2(now.getUTCDate()) + 'T' + pad2(now.getUTCHours()) + pad2(now.getUTCMinutes()) + pad2(now.getUTCSeconds()) + 'Z';
+    return ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//english-app//TH', 'CALSCALE:GREGORIAN', 'BEGIN:VEVENT', 'UID:english-daily-' + now.getTime() + '@english-app', 'DTSTAMP:' + stamp,
+      'DTSTART:' + p.start, 'DTEND:' + p.end, 'RRULE:FREQ=DAILY', 'SUMMARY:ฝึกภาษาอังกฤษ', 'DESCRIPTION:เปิดแอปฝึกภาษาอังกฤษ ทำวันละบทก็พอ',
+      'BEGIN:VALARM', 'TRIGGER:PT0M', 'ACTION:DISPLAY', 'DESCRIPTION:ถึงเวลาฝึกภาษาอังกฤษ', 'END:VALARM', 'END:VEVENT', 'END:VCALENDAR'].join('\r\n') + '\r\n';
+  }
+  /* a file to keep: works in the browser and in the installed app */
+  function saveFile(name, text, type) {
+    try {
+      var b = new Blob([text], { type: type || 'text/plain;charset=utf-8' }), u = URL.createObjectURL(b), a = document.createElement('a');
+      a.href = u; a.download = name; a.style.display = 'none'; document.body.appendChild(a); a.click();
+      setTimeout(function () { URL.revokeObjectURL(u); if (a.parentNode) a.parentNode.removeChild(a); }, 1500);
+      return true;
+    } catch (e) { return false; }
+  }
+  function ymd() { var d = new Date(); return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate()); }
+
   /* ---------------- path screens ---------------- */
   var POFF = [0, 44, 64, 44, 0, -44, -64, -44], OB = { step: 0 }, OBX = false;
   function vPath() {
@@ -3902,8 +4415,10 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
       '<button type="button" class="pstat" id="p-quests" data-act="p-quests" aria-label="ภารกิจวันนี้ ทำแล้ว ' + qd + ' จาก 3"><span class="flag">' + IC_FLAG + '</span>' +
       '<span class="pstat-t"><b>' + qd + '/3</b><small>ภารกิจ</small></span></button></div>' +
       '<p class="syncnote" id="sndnote"></p></header>';
-    var due = stats().due;
-    if (due && !(curN && curN.t === 'x')) h += '<section class="pdue" id="p-due-box"><p><b>ถึงเวลาทบทวน ' + fmt(due) + ' คำ</b><small>ทบทวนตอนนี้จะจำได้นานขึ้น ราว ' + (due > 10 ? 3 : 2) + ' นาที</small></p>' +
+    var due = stats().due, wb = welcomeBack();
+    if (wb) h += '<section class="pwb" id="p-wb-box"><p><b>ยินดีต้อนรับกลับ เริ่มเบาๆ 5 ข้อ</b><small>ไม่ต้องรีบ ทำทีละนิดก็พอ</small></p>' +
+      '<button type="button" class="btn small" id="p-wb" data-act="p-wb">เริ่ม</button></section>';
+    else if (due && !(curN && curN.t === 'x')) h += '<section class="pdue" id="p-due-box"><p><b>ถึงเวลาทบทวน ' + fmt(due) + ' คำ</b><small>ทบทวนตอนนี้จะจำได้นานขึ้น ราว ' + (due > 10 ? 3 : 2) + ' นาที</small></p>' +
       '<button type="button" class="btn small" id="p-due" data-act="p-due">ทบทวน</button></section>';
     M.PSEC.forEach(function (S) {
       var dn = S.units.filter(function (u) { return sc.upass[u.i]; }).length, meta = S.units.length + ' หน่วย' + (dn ? ' ผ่านแล้ว ' + dn + ' หน่วย' : '');
@@ -4051,7 +4566,7 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
     h += '<section class="today" aria-label="สถิติการเรียนต่อเนื่อง"><div class="streak"><span class="flame' + (skn.today ? '' : ' off') + '">' + IC_FLAME + '</span>' +
       '<p class="streak-n">' + skn.n + '<small>วันติดต่อกัน</small></p>' +
       '<p class="today-sub">' + (full ? 'วันนี้ทำภารกิจครบแล้ว เก่งมาก' : (skn.today ? 'วันนี้ได้ ' + xp + ' XP เป้า ' + UI.xg + ' XP' : (skn.n ? 'วันนี้ยังไม่ได้เริ่ม ทำสักบทเพื่อให้สถิติไม่หาย' : 'เริ่มวันแรกได้เลย ทำบทแรกในเส้นทาง'))) + '</p></div>' +
-      weekHtml(t) + '</section>';
+      weekHtml(t) + '<p class="rest-note" id="me-rest">' + (skn.rest ? 'มีวันพัก ' + skn.rest + ' วัน ถ้าพลาดหนึ่งวัน แอปใช้ให้เองและสถิติไม่หาย' : 'เรียน 7 วันติดกันได้วันพัก 1 วัน เก็บได้สูงสุด 2 วัน') + '</p></section>';
     h += '<section class="block"><h2>ภารกิจวันนี้</h2>' + questsHtml(qs) + '<p class="note">ภารกิจเปลี่ยนทุกวัน ทำครบ 3 อย่างนับเป็นวันที่ทำครบ</p></section>';
     h += '<section class="block"><h2>ความก้าวหน้า</h2><div class="tiles">' +
       '<div class="tile" id="me-xp"><b>' + fmt(xp) + '</b><span>XP วันนี้ เป้า ' + UI.xg + ' XP</span></div>' +
@@ -4063,6 +4578,7 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
       (RDS.length ? '<div class="tile"><b>' + rDoneCount() + '/' + RDS.length + '</b><span>เรื่องที่อ่านแล้ว</span></div>' : '') +
       '<button type="button" class="tile" id="open-level" data-act="level"><b>' + (lv ? lvName(lv.o) : 'วัดระดับ') + '</b><span>' + (lv ? 'ระดับโดยประมาณ เมื่อ ' + dateTh(lv.t) + ' กดเพื่อวัดใหม่' : 'แบบทดสอบราว 10 นาที ดูว่าตอนนี้อยู่ระดับไหน') + '</span></button>' +
       '<div class="tile"><b>' + skn.best + '</b><span>วันต่อเนื่องสูงสุด</span></div></div></section>';
+    h += badgesHtml();
     app.innerHTML = h;
   }
   function dur(s) { return Math.floor(s / 60) + ':' + pad2(s % 60); }
@@ -4084,7 +4600,7 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
     var R = PRUN, E = R && R.end;
     if (!E) { go({ name: 'path' }); return; }
     var n = R.n, M = pm(), u = M.PU[n.u], acc = R.ans ? Math.round(R.right / R.ans * 100) : null, nx = pathNextNode(n), head, sub = '', btns = '';
-    if (n.virt) head = 'ทบทวนเสร็จแล้ว';
+    if (n.virt) head = n.done || 'ทบทวนเสร็จแล้ว';
     else if (n.t === 'g' && !E.done) { head = 'ยังไม่ผ่านบทนี้'; sub = 'ต้องได้ ' + Math.ceil(n.l.q.length * GPASS) + ' จาก ' + n.l.q.length + ' ข้อ อ่านคำอธิบายอีกรอบแล้วลองใหม่ หรือทำบทอื่นไปก่อนก็ได้'; }
     else if (n.t === 'k') { head = E.passed ? 'ผ่านหน่วยที่ ' + u.no + ' แล้ว' : 'ยังไม่ผ่านการทดสอบ'; if (!E.passed) sub = 'ได้ ' + R.right + ' จาก ' + R.ans + ' ข้อ ต้องได้ ' + Math.ceil(R.ans * CKPASS) + ' ข้อ เรียนต่อได้เลย แล้วกลับมาลองใหม่ทีหลัง'; }
     else if (n.t === 't' && !R.right) { head = 'ไว้ฝึกพูดครั้งหน้า'; sub = 'ข้ามได้ ไม่นับว่าผิด กดไมค์ที่เรื่องไหนก็ได้เมื่อพร้อม'; }
@@ -4096,8 +4612,8 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
       if (nx) btns += '<p class="pend-next" id="p-next-what">บทต่อไป: ' + esc(nodeTitle(nx)) + '</p><button type="button" class="btn" id="p-next-node" data-act="p-go-next">เรียนบทต่อไป</button>';
       if (n.t === 'k' && !E.passed) btns += '<button type="button" class="btn ghost" id="p-again" data-act="p-again">ลองทดสอบอีกครั้ง</button>';
     }
-    btns += '<button type="button" class="btn' + (btns ? ' ghost' : '') + '" id="p-back" data-act="path">กลับเส้นทาง</button>';
-    var h = '<header class="top"><p class="eyebrow">' + esc(n.virt ? 'ทบทวนคำที่ถึงเวลา' : PTYPE[n.t] + ' · หน่วยที่ ' + u.no + ' ' + u.title) + '</p><h2>' + head + '</h2></header>' +
+    btns += '<button type="button" class="btn' + (btns ? ' ghost' : '') + '" id="p-back" data-act="' + (n.from === 'prac' ? 'prac">กลับหน้าฝึก' : 'path">กลับเส้นทาง') + '</button>';
+    var h = '<header class="top"><p class="eyebrow">' + esc(n.virt ? (n.lbl || 'ทบทวนคำที่ถึงเวลา') : PTYPE[n.t] + ' · หน่วยที่ ' + u.no + ' ' + u.title) + '</p><h2>' + head + '</h2></header>' +
       '<section class="pend" aria-label="ผลของบทนี้"><div class="pend-fx"><span class="burst">' + BURST +
       '<p class="score burst-t"><span id="xp-up" data-xp="' + R.xp + '">+' + R.xp + '</span><small>XP</small></p></span>' +
       (E.perfect ? '<span class="pfull" id="p-full">เต็ม</span>' : '') + '</div>' +
@@ -4154,10 +4670,34 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
     var act = el.getAttribute('data-act'), M, n, u;
     if (act === 'path') { go({ name: 'path' }); return; }
     if (act === 'me') { go({ name: 'me' }); return; }
+    if (act === 'prac') { go({ name: 'prac' }); return; }
+    if (act === 'mist') { go({ name: 'mist' }); return; }
+    if (act === 'mist-go') { pracStart({ from: 'prac', lbl: 'ฝึกข้อที่ผิดบ่อย', sub: 'คำและข้อที่ผิดบ่อย', done: 'ฝึกข้อที่ผิดบ่อยเสร็จแล้ว', parts: mistParts(), mist: true }); return; }
+    if (act === 'p-wb') { pracStart({ lbl: 'เริ่มเบาๆ 5 ข้อ', sub: 'คำที่จำได้ดี', done: 'ยินดีต้อนรับกลับ', parts: easyParts() }); return; }
+    if (act === 'pr-say') { PRS = null; go({ name: 'pr-say' }); return; }
+    if (act === 'prs-new') { PRS = null; render(); return; }
+    if (act === 'dict') { DT = null; go({ name: 'dict' }); return; }
+    if (act === 'dt-play') { dtPlay(false, el); return; }
+    if (act === 'dt-slow') { dtPlay(true, el); return; }
+    if (act === 'dt-check') { if (DT) dtCheck(); return; }
+    if (act === 'dt-skip') { if (DT) { DT.skip = true; DT.shown = false; render(); } return; }
+    if (act === 'dt-next') { if (DT) { DT.pos++; DT.typed = ''; DT.res = null; DT.skip = false; DT.auto = true; DT.shown = false; render(); try { window.scrollTo(0, 0); } catch (e) {} } return; }
+    if (act === 'dt-again') { DT = null; render(); return; }
+    if (act === 'match') { MR = null; go({ name: 'match' }); return; }
+    if (act === 'mr-e') { mrPick('e', Number(el.getAttribute('data-i')) | 0); return; }
+    if (act === 'mr-t') { mrPick('t', Number(el.getAttribute('data-j')) | 0); return; }
+    if (act === 'mr-again') { MR = null; render(); return; }
+    if (act === 'rm-ics') { saveFile('english-reminder.ics', rmIcs(), 'text/calendar;charset=utf-8'); return; }
+    if (act === 'bk-save') {
+      var okf = saveFile('english-backup-' + ymd() + '.txt', backupCode() + '\n'), bnf = document.getElementById('bk-note');
+      if (bnf) bnf.textContent = okf ? 'บันทึกไฟล์สำรองแล้ว เก็บไว้ในโฟลเดอร์ดาวน์โหลด' : 'บันทึกไฟล์ไม่ได้ ใช้ปุ่มคัดลอกรหัสแทน';
+      return;
+    }
+    if (act === 'bk-load') { var fi = document.getElementById('bk-file'); if (fi) fi.click(); return; }
     if (act === 'p-due') {
       M = pm(); var s0 = pathScan(), cu = s0.cur >= 0 ? M.PN[s0.cur].u : M.PU.length - 1;
       pathSheetClose();
-      if (!pathStart({ t: 'x', id: 'x:0', n: 0, u: cu, virt: true })) render();
+      if (!pathStart({ t: 'x', id: 'x:0', n: 0, u: cu, virt: true, from: view.name === 'prac' ? 'prac' : '' })) render();
       return;
     }
     if (act === 'p-quests') { pathSheet(sheetBox(IC_FLAG, 'ภารกิจวันนี้', questsHtml(questsFor(today())) + '<p class="note">ภารกิจเปลี่ยนทุกวัน ทำครบ 3 อย่างนับเป็นวันที่ทำครบ</p>', '')); return; }
@@ -4189,6 +4729,24 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
       if (sv > 0 && sv !== PATH.s) { PATH.s = sv; pathSave(); }
       obDone(); pathStartCurrent();
       return;
+    }
+  });
+  app.addEventListener('change', function (ev) {
+    var t = ev.target;
+    if (!t) return;
+    if (t.id === 'rm-time') {
+      if (/^([01]\d|2[0-3]):[0-5]\d$/.test(t.value)) { UI.rt = t.value; saveUI(); var a = document.getElementById('rm-gcal'); if (a) a.href = rmLink(); }
+      return;
+    }
+    if (t.id === 'bk-file' && t.files && t.files[0]) {
+      var rd = new FileReader(), bn = document.getElementById('bk-note');
+      rd.onload = function () {
+        var msg = restoreCode(String(rd.result || '')), b2 = document.getElementById('bk-note');
+        if (b2) b2.textContent = msg || ('นำความคืบหน้าจากไฟล์กลับมาแล้ว ตอนนี้เรียนศัพท์แล้ว ' + fmt(stats().learned) + ' คำ ผ่านไวยากรณ์ ' + GLS.filter(gPassed).length + ' บท อ่านแล้ว ' + rDoneCount() + ' เรื่อง');
+        t.value = '';
+      };
+      rd.onerror = function () { if (bn) bn.textContent = 'เปิดไฟล์ไม่ได้ ลองเลือกไฟล์อีกครั้ง'; };
+      rd.readAsText(t.files[0]);
     }
   });
   function pathScroll(unit) {

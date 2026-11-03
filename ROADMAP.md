@@ -7,7 +7,7 @@
 - **ขั้น 1 ฝึกพูด** (เสร็จแล้ว): ปุ่มไมค์ที่ประโยค พูดแล้วแอปบอกว่าคำไหนถูก
 - **ขั้น 2 เส้นทางแบบ Duolingo** (เสร็จแล้ว): บทเรียนเป็นวงกลมเรียงเป็นทางเดียว กดวงถัดไปได้เลยไม่ต้องคิด มี XP เป้า XP ต่อวัน ภารกิจประจำวัน 3 อย่าง หน้าสรุปตอนจบบท และนับข้อที่ถูกติดกัน
 - **หน้าตาแบบมังงะขาวดำ** (เสร็จแล้ว): เส้นหมึก ลายสกรีนโทน วง ○ เมื่อตอบถูก กากบาท ✕ เมื่อตอบผิด ตัวละครพูดในกรอบคำพูด
-- **ขั้น 3 ฝึกและสร้างนิสัย**: หน้า "ฝึก" รวมคำและข้อที่ผิดบ่อย ฟังแล้วพิมพ์ จับคู่แข่งเวลา วันพักกันสถิติหาย ต้อนรับตอนกลับมาเรียน เหรียญรางวัล ตั้งเตือนในปฏิทิน และเซฟสำรองเป็นไฟล์
+- **ขั้น 3 ฝึกและสร้างนิสัย** (เสร็จแล้ว): หน้า "ฝึก" รวมคำและข้อที่ผิดบ่อย ฟังแล้วพิมพ์ จับคู่แข่งเวลา วันพักกันสถิติหาย ต้อนรับตอนกลับมาเรียน เหรียญรางวัล ตั้งเตือนในปฏิทิน และเซฟสำรองเป็นไฟล์
 - **ขั้น 4 เนื้อหาให้ครบ** (ทำแล้วบางส่วน: เรื่องอ่านใหม่ 18 เรื่อง): ฝึกเสียงที่คนไทยพูดยาก บทสนทนาที่เราเล่นเป็นตัวละคร แบบฝึกหาที่ผิดในประโยค เรื่องอ่านเพิ่ม 18 เรื่อง (B1–B2) งานเขียนสั้นๆ และศัพท์งานกับเทคโนโลยี
 - **ขั้น 5 ปรับตามผู้เรียน**: ความยากพอดี (ตอบถูกราว 85%) คำที่จำได้แล้วเว้นช่วงทบทวนนานขึ้น ระดับ CEFR แยกตามทักษะ และสอบผ่านระดับพร้อมใบผ่าน
 
@@ -35,7 +35,7 @@
 | 1 | Speaking practice (`CLAUDE.md` idea 1) | done (3 Nov 2026) |
 | 2 | Learning path, XP, daily quests, end-of-lesson screen, combo | done (3 Nov 2026), see "As built" under Phase 2 |
 | M | Black-and-white manga look (`design/manga/README.md`), before phase 3 | done (3 Nov 2026): see the Design section of `CLAUDE.md` |
-| 3 | Practice tab, mistakes review, dictation, match race, streak protection, comeback, badges, reminders, backup file | todo |
+| 3 | Practice tab, mistakes review, dictation, match race, streak protection, comeback, badges, reminders, backup file | done (3 Nov 2026), see "As built" under Phase 3 |
 | 4 | Content: Thai-speaker sounds, role-play dialogues, error-correction drills, 18 stories, writing tasks, work and technology words | partly done (3 Nov 2026): 4.4 stories done; 4.1, 4.2, 4.3, 4.5, 4.6 left |
 | 5 | Adaptive difficulty, longer reviews for known words, skill levels, level exit tests with certificate | todo |
 | 6 | Optional: more vocabulary (B2–C1) | later |
@@ -247,6 +247,27 @@
 - **Tests**: mistakes ranking on seeded records; dictation diff with contractions; match race best time saved; a missed day
   covered by a rest day keeps the streak; welcome-back appears after 3 idle days; badge earned once and celebrated once;
   backup file round trip; reminder link and `.ics` text contain a daily rule.
+
+### As built (3 Nov 2026): what differs from the plan above, and why
+
+- **Records.** Besides `vocab3000-streak-v1` and `vocab3000-badges-v1`, a third key `vocab3000-prac-v1` keeps the race's
+  best time and per-day counts of dictation sentences and mistakes rounds (the new quest needs them). All three have
+  `EXTRA` entries and travel in the backup code; `src/tests/t5.js` restores a code with them and an old one without.
+- **Mistakes round.** Ten items: the missed words first, at most four grammar questions; with nothing missed it uses the
+  weakest learned words, so the card always works. It runs as a review node that is not on the path, so the end screen,
+  XP and combo work as in a lesson; it returns to the ฝึก tab. A new quest "ฝึกข้อที่ผิดบ่อย 1 รอบ" joins the pool once 10
+  words are learned (a stable condition, so the day's quests do not change mid-day for anything else).
+- **Dictation** uses learned words' example sentences (recorded clips) and one line of a story already read; it changes no
+  word records (it trains listening and spelling of sentences). A sentence right gives 1 XP.
+- **Match race.** A wrong pair adds 2 seconds, so tapping at random does not pay; a pair matched first time gives 1 XP
+  (the usual "right first time" rule). Word records are not changed by the race.
+- **Rest days.** One is earned at every 7th practised day of a run, two at most. Only a single missed day is covered
+  (between practised days, or yesterday while today is still open), and only from the day the feature arrived, so old gaps
+  are not rewritten. The streak number counts practised days; covered days are hatched in the week strip.
+- **Badges.** 24, computed from the records. The celebration is a small panel at the top that never blocks a tap, and
+  several new badges at once are announced together (an existing learner may earn many on the first day).
+- **Welcome back** is a card on the path (instead of the words-due card that day) leading to five meaning questions on
+  the best known words. **Pace** is a short note once a day at three times the XP goal.
 
 ---
 

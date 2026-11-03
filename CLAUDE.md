@@ -39,6 +39,18 @@ who is learning English from below A1. Everything the learner sees is in Thai; E
   +20 per checkpoint passed, +2 per sentence said right (once per opening of the speaking panel). Daily XP goal
   10/20/30/50 (`UI.xg`). Three quests a day (`questsFor(day)`: the XP goal plus a pair picked from the day number);
   all three done → `DAYS[t][5] = 1` and a toast.
+- **ฝึก (practice tab, phase 3)**, `data-tab="prac"`, view `prac`: five cards. `#pr-due` (due review, the same round as
+  `#p-due`), `#pr-mist` → view `mist`: words answered wrong since last right (`mistWords`: latest miss first, then lowest
+  level) and grammar questions by misses (`mistGram`), top 20 each, `#mist-go` runs 10 of them as a practice round (missed
+  words, at most 4 grammar questions; the weakest words when nothing was missed); `#pr-say` → `pr-say`: five example
+  sentences with mic buttons; `#pr-dict` → `dict`: dictation of five sentences (learned words' examples, one story line),
+  checked with `spGrade` (case, punctuation and short forms do not count), `#dt-skip` "ตอนนี้ฟังไม่ได้"; `#pr-match` →
+  `match`: three rounds of five English–Thai pairs against one's best time, +2 s per wrong pair. A practice round is a
+  virtual review node (`pracStart`, `virt`, `from: 'prac'`, its own `parts`); its end screen and leaving it go back to the
+  tab. Also phase 3: rest days (`streak()`, `STRK`), the welcome back card after 3 idle days (`#p-wb`, five easy items),
+  the pace note once a day at 3x the goal (`paceCheck`, `UI.pace`), 24 badges (`BADGES`, computed; a non-blocking panel
+  `#bdg-pop` when new; grid on ฉัน, `#bdg-<id>`), the calendar reminder in settings (`#rm-time`, `#rm-gcal`, `#rm-ics`,
+  `UI.rt`) and the backup as a file (`#bk-save`, `#bk-load` / `#bk-file`).
 - **คำศัพท์**: 3,600 words in 55 topics (group A basics first, then 36 topics from the Oxford 3000 PDF, group C last),
   sets of 10, nine practice steps per set, spaced review, search, Thai readings with the stressed syllable marked.
 - **ไวยากรณ์**: 64 lessons (A1 18, A2 18, B1 16, B2 12), each with explanation, patterns, examples with sound,
@@ -84,6 +96,7 @@ node src/tests/gt2.js /tmp/app /tmp/app/gshots   # grammar: all 64 lessons
 node src/tests/t3.js /tmp/app /tmp/app/shots3    # path tab and me screen, answer panel, settings, reading, level check, backup
 node src/tests/sp.js /tmp/app /tmp/app/spshots   # speaking: mic buttons, word marking, errors, recording, layout
 node src/tests/t4.js /tmp/app /tmp/app/pshots    # path: first run, nodes, XP, combo, quests, checkpoints, backup, layout
+node src/tests/t5.js /tmp/app /tmp/app/p3shots   # practice tab, mistakes, dictation, match race, rest days, badges, reminder, backup file
 node src/tests/pwatest.js .                      # app from a sub-path, service worker, all sound offline
 node src/tests/stories.js                        # stories data: complete, clips exist, length per level, 5% word rule
 ```
@@ -104,7 +117,9 @@ in light and dark: no horizontal scroll (the tests check this too).
   `vocab3000-xp-v1` (`{d: {day: XP}, c: {day: best run}, p: {day: perfect path nodes}, s: {day: sentences said right},
   b: 1}`; `b` marks the one-time estimate of past days from the days record),
   `vocab3000-path-v1` (`{k: {unitNo: [best, total, time]}, x: {reviewNo: day}, t: {storyId: [said, lines, time]}, s: start
-  level index}`). Days are `Math.floor((local ms) / 86400000)`.
+  level index}`), `vocab3000-prac-v1` (`{m: best match-race ms, d: {day: dictation sentences right}, r: {day: mistakes
+  rounds}}`), `vocab3000-streak-v1` (`{s: first day rest days applied, u: {day: 1} days covered by a rest day}`),
+  `vocab3000-badges-v1` (`{c: {badgeId: day celebrated}}`). Days are `Math.floor((local ms) / 86400000)`.
 - **Path node ids are stable**: `v:<topic>.<set>.<stage>`, `g:<lessonId>`, `r:<storyId>`, `t:<storyId>`, `x:<n>`,
   `k:<unitNo>`. Done comes from existing records (step bits, `gPassed`, `rDone`) plus the path key; never write fake
   progress to mark a node done. Changing `pathBuild` changes unit numbers and review numbers that the path key stores, so
@@ -114,8 +129,9 @@ in light and dark: no horizontal scroll (the tests check this too).
   list get a glossary entry (`gl`), irregular forms an `irr` entry; `src/tests/stories.js` checks length and the 5% rule.
 - Word numbers `n`, topic indexes and step bits are fixed: topics 37-55 were appended after the first 36, and the display
   order (`ORD`) differs from the data order. Add new words or topics only at the end.
-- The backup code (`EN1:` + base64 JSON of the documents `cNN`, `gram`, `days`, `read`, `level`, `xp`, `path`) must keep
-  working, also for old codes without the last two; restoring merges and never lowers progress (`Sync.merge`, `EXTRA`).
+- The backup code (`EN1:` + base64 JSON of the documents `cNN`, `gram`, `days`, `read`, `level`, `xp`, `path`, `prac`,
+  `streak`, `badges`) must keep working, also for old codes without the later ones; restoring merges and never lowers
+  progress (`Sync.merge`, `EXTRA`; the race keeps the shorter time). The same code can be saved and opened as a file.
 - `Sync` (account saving) and `AI` (sentence check by Claude) only exist inside claude.ai; on GitHub Pages they stay off
   and the app saves locally and offers the self-check. Keep both paths working.
 
@@ -163,6 +179,7 @@ uses this look.
    grammar examples and word cards: the learner says the sentence, show what was heard word by word (right words green,
    missed ones marked), let them retry, and play their own recording next to the model clip. Optional, never blocks
    progress, explain in Thai when the browser has no recognition. Log a speaking round in today's activity if it helps.
-2. A list of the learner's most-missed words and grammar questions, with a one-tap review of just those.
+2. A list of the learner's most-missed words and grammar questions, with a one-tap review of just those — done in
+   phase 3 (the ฝึก tab).
 3. More stories (B1/B2) — done in phase 4 (r31–r48, phone voice).
-4. Save the backup code to a file and load it from a file (downloads work in the installed app).
+4. Save the backup code to a file and load it from a file (downloads work in the installed app) — done in phase 3.
