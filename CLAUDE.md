@@ -12,7 +12,7 @@ who is learning English from below A1. Everything the learner sees is in Thai; E
 ## What is in the app
 
 - **เรียน (the path)**, the landing tab (`data-tab="path"`, view `path`): one learning path built at runtime from the
-  existing content (`pathBuild`, no new lesson data), 1,484 nodes in 82 units over the levels A1–B2. Header: streak,
+  existing content (`pathBuild`, no new lesson data), 1,520 nodes in 82 units over the levels A1–B2. Header: streak,
   today's XP against the goal (ring), quests button, and `#open-me` for the **ฉัน** screen (view `me`: streak card with the
   7-day strip, quests, progress tiles, `#open-level`, `#open-prefs`). Only the current unit and two on each side are drawn;
   other units are rows (`data-act="p-unit"`). Every circle has a short label (`.pn-l`); tapping one opens a sheet (what it
@@ -41,8 +41,12 @@ who is learning English from below A1. Everything the learner sees is in Thai; E
   sets of 10, nine practice steps per set, spaced review, search, Thai readings with the stressed syllable marked.
 - **ไวยากรณ์**: 64 lessons (A1 18, A2 18, B1 16, B2 12), each with explanation, patterns, examples with sound,
   common Thai mistakes and 10 questions (pass = 8).
-- **อ่าน-ฟัง**: 30 graded stories/dialogues (A1 12, A2 12, B1 6) with a clip per line, play-all with line highlight,
-  tap any word for its meaning (dictionary + word forms + glossary), 3 questions each.
+- **อ่าน-ฟัง**: 48 graded stories/dialogues (A1 12, A2 12, B1 12, B2 12), play-all with line highlight, tap any word for
+  its meaning (dictionary + word forms + glossary), 3 questions each. r1–r30 have a recorded clip per line (`s.a` = first
+  clip in the `rd1` pack); r31–r48 (added in phase 4) have no `a` and are read by the phone's voice, marked "เสียงจากเครื่อง"
+  (`rRec`, `rC`, `rK`, `rCan`: clip file -1 makes `Snd.playRef` use `Snd.native`). The cast: Ploy (Chiang Mai, marketing),
+  Ton (Khon Kaen, engineering, car-parts factory, boss Khun Nok), Anna (exchange student from England), Khun Mint (Ploy's
+  mentor); the later stories follow them from the internship to first jobs and Ploy's scholarship.
 - Answer panel slides up from the bottom after each answer; short answer sounds (oscillators) and confetti;
   settings (auto voice, answer sounds, vibration, text size, XP goal), backup code, offline sound download. The listening
   question has "ตอนนี้ฟังไม่ได้" (`#no-listen`): the rest of that round shows the word, not scored, not wrong.
@@ -79,6 +83,7 @@ node src/tests/t3.js /tmp/app /tmp/app/shots3    # path tab and me screen, answe
 node src/tests/sp.js /tmp/app /tmp/app/spshots   # speaking: mic buttons, word marking, errors, recording, layout
 node src/tests/t4.js /tmp/app /tmp/app/pshots    # path: first run, nodes, XP, combo, quests, checkpoints, backup, layout
 node src/tests/pwatest.js .                      # app from a sub-path, service worker, all sound offline
+node src/tests/stories.js                        # stories data: complete, clips exist, length per level, 5% word rule
 ```
 
 Chromium is expected at `/opt/pw-browsers/chromium`, or set `CHROMIUM` to a browser path (on Windows also pass
@@ -102,6 +107,9 @@ in light and dark: no horizontal scroll (the tests check this too).
   `k:<unitNo>`. Done comes from existing records (step bits, `gPassed`, `rDone`) plus the path key; never write fake
   progress to mark a node done. Changing `pathBuild` changes unit numbers and review numbers that the path key stores, so
   add new kinds of nodes inside the existing units (phase 4) rather than re-cutting them, and topics 56+ go into B1.
+  Stories after the first 30 (`PRBASE`) are slotted into the existing units this way (flag `ex`); added content behind the
+  learner never becomes the current node. A new story goes at the end of `read.json` without `a`; words outside the app's
+  list get a glossary entry (`gl`), irregular forms an `irr` entry; `src/tests/stories.js` checks length and the 5% rule.
 - Word numbers `n`, topic indexes and step bits are fixed: topics 37-55 were appended after the first 36, and the display
   order (`ORD`) differs from the data order. Add new words or topics only at the end.
 - The backup code (`EN1:` + base64 JSON of the documents `cNN`, `gram`, `days`, `read`, `level`, `xp`, `path`) must keep
@@ -135,5 +143,5 @@ then two dark blocks). Thai copy: short, plain, no emoji.
    missed ones marked), let them retry, and play their own recording next to the model clip. Optional, never blocks
    progress, explain in Thai when the browser has no recognition. Log a speaking round in today's activity if it helps.
 2. A list of the learner's most-missed words and grammar questions, with a one-tap review of just those.
-3. More stories (B1/B2). Without the voice models, mark them as using the phone's voice.
+3. More stories (B1/B2) — done in phase 4 (r31–r48, phone voice).
 4. Save the backup code to a file and load it from a file (downloads work in the installed app).

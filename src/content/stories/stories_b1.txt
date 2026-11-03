@@ -82,3 +82,110 @@ s: Sometimes a few minutes of your time can mean a lot to someone else. | บา
 q: คุณลุงมีปัญหาอะไร | หลงทาง*; ทำกระเป๋าหาย; ไม่สบาย | an old man who looked lost แปลว่า คุณลุงที่ดูเหมือนหลงทาง
 q: คุณลุงจะไปหาใคร | ลูกสาว*; หมอ; เพื่อนเก่า | he was visiting his daughter for the first time
 q: ข้อคิดของเรื่องนี้คืออะไร | เวลาไม่กี่นาทีของเราอาจมีความหมายมากกับคนอื่น*; อย่าคุยกับคนแปลกหน้า; ต้องไปเรียนให้ตรงเวลาเสมอ | Sometimes a few minutes of your time can mean a lot to someone else.
+
+# r31 | B1 | f1 | My Internship Begins | เริ่มฝึกงาน
+s: In June, I started my internship in the marketing department of a company that sells healthy snacks. | เดือนมิถุนายน ฉันเริ่มฝึกงานที่แผนกการตลาดของบริษัทที่ขายขนมเพื่อสุขภาพ
+s: The office was in a tall building in the city center, and I had to take two trains to get there. | สำนักงานอยู่ในตึกสูงกลางเมือง และฉันต้องนั่งรถไฟฟ้าสองต่อกว่าจะไปถึง
+s: On the first morning, my mentor, Khun Mint, introduced me to everyone in the team. | เช้าวันแรก คุณมิ้นท์ พี่เลี้ยงของฉัน พาฉันไปแนะนำตัวกับทุกคนในทีม
+s: She told me that my main job would be to help with the company's social media. | เธอบอกว่างานหลักของฉันคือช่วยดูแลโซเชียลมีเดียของบริษัท
+s: Every day, I wrote short posts, answered customers' questions, and collected data about the posts that people liked. | ทุกวันฉันเขียนโพสต์สั้นๆ ตอบคำถามลูกค้า และเก็บข้อมูลว่าคนชอบโพสต์ไหน
+s: Some messages came from other countries, so I often had to reply in English. | ข้อความบางส่วนมาจากต่างประเทศ ฉันจึงต้องตอบเป็นภาษาอังกฤษบ่อยๆ
+s: At first, I spent a long time on every message because I wanted it to be perfect. | ตอนแรกฉันใช้เวลานานมากกับทุกข้อความ เพราะอยากให้มันสมบูรณ์แบบ
+s: Khun Mint noticed this and gave me some useful advice. | คุณมิ้นท์สังเกตเห็น และให้คำแนะนำที่มีประโยชน์กับฉัน
+s: "Keep it short and friendly," she said. "Customers want a quick answer, not a perfect one." | "เขียนสั้นๆ และเป็นกันเอง" เธอบอก "ลูกค้าอยากได้คำตอบที่เร็ว ไม่ใช่คำตอบที่สมบูรณ์แบบ"
+s: She also showed me how to save common answers, so that I could use them again. | เธอยังสอนวิธีบันทึกคำตอบที่ใช้บ่อย เพื่อให้ฉันนำกลับมาใช้ได้อีก
+s: After a few weeks, I could answer most messages in less than five minutes. | ผ่านไปไม่กี่สัปดาห์ ฉันก็ตอบข้อความส่วนใหญ่ได้ในเวลาไม่ถึงห้านาที
+s: One of my posts was shared more than a thousand times, and the whole team was happy. | โพสต์หนึ่งของฉันถูกแชร์มากกว่าหนึ่งพันครั้ง และทั้งทีมก็ดีใจ
+s: I still have a lot to learn, but now I go to work with a smile. | ฉันยังต้องเรียนรู้อีกมาก แต่ตอนนี้ฉันไปทำงานด้วยรอยยิ้ม
+q: พลอยฝึกงานที่บริษัทแบบไหน | บริษัทที่ขายขนมเพื่อสุขภาพ*; บริษัทผลิตชิ้นส่วนรถยนต์; ร้านกาแฟ | a company that sells healthy snacks แปลว่า บริษัทที่ขายขนมเพื่อสุขภาพ
+q: คุณมิ้นท์แนะนำอะไร | เขียนสั้นๆ และเป็นกันเอง*; เขียนให้ยาวและละเอียด; ไม่ต้องตอบลูกค้าต่างชาติ | Keep it short and friendly. แปลว่า เขียนสั้นๆ และเป็นกันเอง
+q: เกิดอะไรขึ้นกับโพสต์หนึ่งของพลอย | ถูกแชร์มากกว่าหนึ่งพันครั้ง*; ถูกลบทิ้ง; มีคนบ่นเยอะ | One of my posts was shared more than a thousand times.
+
+# r32 | B1 | talk | Practicing a Presentation | ซ้อมนำเสนองาน
+who: A=Anna|แอนนา|f2 ; B=Ploy|พลอย|f1
+s: B: Anna, can I practice my presentation with you? I have to give it in English on Friday. | แอนนา ฉันขอซ้อมนำเสนองานกับเธอหน่อยได้ไหม ฉันต้องนำเสนอเป็นภาษาอังกฤษวันศุกร์นี้
+s: A: Of course. What's it about? | ได้สิ เรื่องอะไรเหรอ
+s: B: It's about the results of our social media plan in July. I'm so nervous that I can't sleep. | เรื่องผลของแผนโซเชียลมีเดียของเราในเดือนกรกฎาคม ฉันประหม่าจนนอนไม่หลับเลย
+s: A: That's normal. Just start, and I'll give you some advice at the end. | เป็นเรื่องปกตินะ เริ่มเลย แล้วฉันจะให้คำแนะนำตอนจบ
+s: B: Good morning, everyone. Today I'd like to show you how our posts performed last month. | สวัสดีตอนเช้าทุกคน วันนี้ดิฉันอยากให้ทุกคนดูว่าโพสต์ของเราเมื่อเดือนที่แล้วได้ผลอย่างไร
+s: A: That was a good start. But you were reading from your notes all the time. | เริ่มได้ดีนะ แต่เธออ่านจากโน้ตตลอดเวลาเลย
+s: B: I know. I'm afraid that I'll forget the words if I don't. | รู้แล้ว ฉันกลัวว่าถ้าไม่อ่านจะลืมคำพูด
+s: A: Try writing only a few key words on each slide. Then look at the audience and explain the ideas in your own words. | ลองเขียนแค่คำสำคัญไม่กี่คำในแต่ละสไลด์ แล้วมองผู้ฟังและอธิบายด้วยคำพูดของตัวเอง
+s: B: And what if someone asks a question that I can't answer? | แล้วถ้ามีคนถามคำถามที่ฉันตอบไม่ได้ล่ะ
+s: A: You can say, "That's a good question. Let me check and get back to you." Nobody expects you to know everything. | เธอพูดได้ว่า "เป็นคำถามที่ดีค่ะ ขอตรวจสอบก่อนแล้วจะแจ้งกลับนะคะ" ไม่มีใครคาดหวังให้เธอรู้ทุกอย่างหรอก
+s: B: That's really useful. Can I try again from the beginning? | มีประโยชน์มากเลย ฉันขอลองใหม่ตั้งแต่ต้นได้ไหม
+s: A: Sure. And speak a little more slowly. You speak fast when you're nervous. | ได้เลย แล้วพูดช้าลงอีกนิดนะ เวลาเธอประหม่าเธอจะพูดเร็ว
+q: พลอยต้องนำเสนอเรื่องอะไร | ผลของแผนโซเชียลมีเดีย*; สินค้าใหม่ของบริษัท; การไปเรียนต่อต่างประเทศ | It's about the results of our social media plan in July.
+q: แอนนาบอกว่าพลอยควรแก้เรื่องอะไร | อ่านจากโน้ตตลอดเวลา*; พูดเบาเกินไป; มาสาย | you were reading from your notes all the time แปลว่า เธออ่านจากโน้ตตลอดเวลา
+q: ถ้าตอบคำถามไม่ได้ แอนนาแนะนำให้ทำอย่างไร | บอกว่าจะตรวจสอบแล้วแจ้งกลับ*; เดาคำตอบไปก่อน; ไม่ต้องตอบ | Let me check and get back to you. แปลว่า ขอตรวจสอบก่อนแล้วจะแจ้งกลับ
+
+# r33 | B1 | m1 | My Final Project | โปรเจกต์ปีสุดท้าย
+s: In my last year at university, every engineering student had to do a final project. | ในปีสุดท้ายที่มหาวิทยาลัย นักศึกษาวิศวกรรมทุกคนต้องทำโปรเจกต์จบ
+s: My partner and I wanted to solve a real problem, not just write a report. | ผมกับคู่ของผมอยากแก้ปัญหาจริง ไม่ใช่แค่เขียนรายงาน
+s: We noticed that the lights and air conditioners in our building were often on in empty rooms. | เราสังเกตว่าไฟและแอร์ในตึกคณะของเรามักเปิดทิ้งไว้ในห้องที่ไม่มีคน
+s: So we decided to build a cheap system that turns them off when nobody is there. | เราจึงตัดสินใจสร้างระบบราคาถูกที่ปิดไฟและแอร์เมื่อไม่มีใครอยู่
+s: We used small sensors that can tell if a person is moving in the room. | เราใช้เซนเซอร์เล็กๆ ที่บอกได้ว่ามีคนเคลื่อนไหวอยู่ในห้องหรือไม่
+s: The first version didn't work well. It turned off the lights while students were sitting quietly and reading! | รุ่นแรกใช้ได้ไม่ค่อยดี มันปิดไฟตอนที่นักศึกษากำลังนั่งอ่านหนังสือเงียบๆ
+s: Everyone laughed, but we were embarrassed. | ทุกคนหัวเราะ แต่พวกเราอายมาก
+s: We changed the program so that it waited fifteen minutes before it turned anything off. | เราแก้โปรแกรมให้รอสิบห้านาทีก่อนจะปิดอะไรก็ตาม
+s: Then we tested the system in three classrooms for a whole month. | จากนั้นเราทดสอบระบบในห้องเรียนสามห้องตลอดหนึ่งเดือน
+s: The results were better than we expected: those rooms used about twenty percent less electricity. | ผลออกมาดีกว่าที่เราคาดไว้ ห้องเหล่านั้นใช้ไฟฟ้าน้อยลงประมาณยี่สิบเปอร์เซ็นต์
+s: Our teacher was so impressed that she asked the university to use our system in more rooms. | อาจารย์ประทับใจมากจนขอให้มหาวิทยาลัยนำระบบของเราไปใช้ในห้องอื่นๆ อีก
+s: The project taught me that failing is part of the process, as long as you learn from it. | โปรเจกต์นี้สอนผมว่าความล้มเหลวเป็นส่วนหนึ่งของกระบวนการ ตราบใดที่เราเรียนรู้จากมัน
+q: ต้นกับคู่ของเขาอยากแก้ปัญหาอะไร | ไฟและแอร์เปิดทิ้งในห้องที่ไม่มีคน*; ห้องสมุดเสียงดัง; อาหารในโรงอาหารแพง | the lights and air conditioners in our building were often on in empty rooms
+q: ระบบรุ่นแรกมีปัญหาอะไร | ปิดไฟตอนที่มีคนนั่งอ่านหนังสือเงียบๆ*; ราคาแพงเกินไป; ไม่ยอมปิดไฟเลย | It turned off the lights while students were sitting quietly and reading!
+q: ห้องที่ทดสอบใช้ไฟฟ้าลดลงเท่าไร | ประมาณ 20%*; ประมาณ 50%; ไม่ลดลงเลย | about twenty percent less electricity แปลว่า ใช้ไฟฟ้าน้อยลงประมาณยี่สิบเปอร์เซ็นต์
+
+# r34 | B1 | talk | Anna's Last Week | สัปดาห์สุดท้ายของแอนนา
+who: A=Ploy|พลอย|f1 ; B=Anna|แอนนา|f2
+s: A: I can't believe you're leaving on Sunday. The year went so fast. | ไม่อยากเชื่อเลยว่าเธอจะกลับวันอาทิตย์นี้แล้ว หนึ่งปีผ่านไปเร็วมาก
+s: B: I know. I've already started packing, but I don't want to go. | ใช่ ฉันเริ่มเก็บของแล้ว แต่ไม่อยากกลับเลย
+s: A: What will you miss most about Thailand? | เธอจะคิดถึงอะไรในเมืองไทยมากที่สุด
+s: B: The food, of course! And the people. Everyone has been so kind to me. | อาหารสิ แน่นอนอยู่แล้ว แล้วก็ผู้คน ทุกคนใจดีกับฉันมาก
+s: A: Your Thai has improved a lot too. You ordered food without any help yesterday. | ภาษาไทยของเธอก็พัฒนาขึ้นเยอะนะ เมื่อวานเธอสั่งอาหารเองโดยไม่ต้องมีคนช่วยเลย
+s: B: Only because I practiced with you every week. You were a great teacher. | ก็เพราะฉันฝึกกับเธอทุกสัปดาห์นั่นแหละ เธอเป็นครูที่ดีมาก
+s: A: So were you. When we met, I was too shy to say a single word in English. | เธอก็เหมือนกัน ตอนที่เราเจอกัน ฉันอายจนไม่กล้าพูดภาษาอังกฤษสักคำ
+s: B: And now you give presentations at work! Promise me that you won't stop practicing. | แล้วตอนนี้เธอนำเสนองานที่ที่ทำงานได้แล้ว สัญญากับฉันนะว่าจะไม่เลิกฝึก
+s: A: I promise. Can we still talk online every week? | สัญญา เรายังคุยออนไลน์กันทุกสัปดาห์ได้อยู่ใช่ไหม
+s: B: Definitely. Sunday evening for you is Sunday morning for me. | แน่นอน วันอาทิตย์ตอนเย็นของเธอ เป็นวันอาทิตย์ตอนเช้าของฉัน
+s: A: And if I get the scholarship, maybe I'll visit you in England on my way to Australia. | แล้วถ้าฉันได้ทุน บางทีฉันอาจแวะไปหาเธอที่อังกฤษระหว่างทางไปออสเตรเลีย
+s: B: That would be amazing. I'll show you around London, but don't expect the weather to be nice! | คงดีมากเลย ฉันจะพาเที่ยวลอนดอน แต่อย่าหวังว่าอากาศจะดีนะ
+s: A: Then I'll bring an umbrella. Have a safe flight, Anna. | งั้นฉันจะพกร่มไปด้วย เดินทางปลอดภัยนะแอนนา
+q: แอนนาจะกลับเมื่อไร | วันอาทิตย์นี้*; เดือนหน้า; ปีหน้า | you're leaving on Sunday แปลว่า เธอจะกลับวันอาทิตย์
+q: แอนนาจะคิดถึงอะไรมากที่สุด | อาหารและผู้คน*; อากาศร้อน; รถติด | The food, of course! And the people.
+q: ทั้งสองคนตกลงกันว่าจะทำอะไร | คุยออนไลน์กันทุกสัปดาห์*; เขียนจดหมายทุกเดือน; ไปเที่ยวด้วยกันทุกปี | Can we still talk online every week? Definitely.
+
+# r35 | B1 | f1 | A Big Mistake | ความผิดพลาดครั้งใหญ่
+s: Near the end of my internship, I made a mistake that I still remember clearly. | ใกล้จบการฝึกงาน ฉันทำผิดพลาดครั้งหนึ่งที่ยังจำได้ชัดเจนจนถึงทุกวันนี้
+s: Khun Mint asked me to send a price list to one of our customers. | คุณมิ้นท์ให้ฉันส่งรายการราคาให้ลูกค้ารายหนึ่ง
+s: I was in a hurry, so I attached the wrong file. | ฉันรีบมาก เลยแนบไฟล์ผิด
+s: Instead of the price list, I sent our plans for next year's products. | แทนที่จะเป็นรายการราคา ฉันกลับส่งแผนสินค้าของปีหน้าไป
+s: When I realized what had happened, my hands started shaking. | พอรู้ตัวว่าเกิดอะไรขึ้น มือฉันก็เริ่มสั่น
+s: My first idea was to hide it and hope that nobody would notice. | ความคิดแรกของฉันคือปิดเรื่องนี้ไว้ แล้วหวังว่าจะไม่มีใครสังเกต
+s: But I knew that was wrong, so I went straight to Khun Mint and told her everything. | แต่ฉันรู้ว่านั่นไม่ถูก จึงตรงไปหาคุณมิ้นท์แล้วเล่าทุกอย่างให้เธอฟัง
+s: To my surprise, she didn't get angry. | ฉันแปลกใจที่เธอไม่โกรธเลย
+s: She called the customer immediately, explained the situation, and asked him to delete the email. | เธอโทรหาลูกค้าทันที อธิบายสถานการณ์ และขอให้เขาลบอีเมลนั้น
+s: Luckily, he hadn't opened it yet, and he was very understanding. | โชคดีที่เขายังไม่ได้เปิดอ่าน และเขาก็เข้าใจเป็นอย่างดี
+s: Afterwards, Khun Mint said, "Everyone makes mistakes. What matters is that you told me quickly." | หลังจากนั้นคุณมิ้นท์บอกว่า "ทุกคนทำผิดพลาดได้ สิ่งสำคัญคือเธอบอกฉันเร็ว"
+s: Since then, I always check the file twice before I click "send." | ตั้งแต่นั้นมา ฉันตรวจไฟล์สองรอบเสมอก่อนจะกด "ส่ง"
+s: I also learned that being honest is always better than trying to look perfect. | ฉันยังได้เรียนรู้ว่า การซื่อสัตย์ดีกว่าการพยายามทำให้ตัวเองดูสมบูรณ์แบบเสมอ
+q: พลอยทำผิดพลาดอะไร | แนบไฟล์ผิดส่งให้ลูกค้า*; ลืมไปประชุม; ทำคอมพิวเตอร์เสีย | I attached the wrong file. แปลว่า ฉันแนบไฟล์ผิด
+q: หลังรู้ตัว พลอยทำอย่างไร | ไปบอกคุณมิ้นท์ทุกอย่างทันที*; ปิดเรื่องไว้ไม่บอกใคร; เลิกฝึกงาน | I went straight to Khun Mint and told her everything.
+q: ตอนนี้พลอยทำอะไรก่อนกดส่ง | ตรวจไฟล์สองรอบ*; ถามคุณมิ้นท์ทุกครั้ง; ส่งให้ตัวเองก่อน | I always check the file twice before I click "send."
+
+# r36 | B1 | m1 | Graduation Day | วันรับปริญญา
+s: Last month, Ploy and I finally graduated from university. | เดือนที่แล้ว ผมกับพลอยเรียนจบมหาวิทยาลัยกันในที่สุด
+s: My whole family came from Khon Kaen by bus. It was their first trip to Bangkok. | ครอบครัวของผมทั้งบ้านนั่งรถบัสมาจากขอนแก่น เป็นครั้งแรกที่พวกเขามากรุงเทพฯ
+s: My father wore his best shirt, and my mother brought a big bag of sticky rice and grilled chicken for everyone. | พ่อใส่เสื้อตัวที่ดีที่สุด ส่วนแม่หิ้วข้าวเหนียวกับไก่ย่างมาถุงใหญ่เพื่อแบ่งให้ทุกคน
+s: The ceremony was long and very hot, but nobody complained. | พิธีนานและร้อนมาก แต่ไม่มีใครบ่นเลย
+s: When I walked across the stage, I could hear my little brother shouting my name. | ตอนที่ผมเดินขึ้นเวที ผมได้ยินน้องชายตะโกนเรียกชื่อผม
+s: Afterwards, we took hundreds of photos in front of the university. | หลังจากนั้นเราถ่ายรูปกันเป็นร้อยรูปหน้ามหาวิทยาลัย
+s: My sister, who is a nurse, said that she was proud of me, because I was the first person in our family to finish university. | พี่สาวที่เป็นพยาบาลบอกว่าภูมิใจในตัวผม เพราะผมเป็นคนแรกในครอบครัวที่เรียนจบมหาวิทยาลัย
+s: My father didn't say much, but I could see tears in his eyes. | พ่อไม่ได้พูดอะไรมาก แต่ผมเห็นว่าพ่อน้ำตาคลอ
+s: In the evening, Ploy's family and mine had dinner together at a small restaurant. | ตอนเย็น ครอบครัวของพลอยกับครอบครัวของผมไปกินข้าวด้วยกันที่ร้านอาหารเล็กๆ
+s: Our parents talked as if they had known each other for years. | พ่อแม่ของเราคุยกันราวกับรู้จักกันมาหลายปี
+s: Next week, I will start my first job as an engineer at the car parts company where I did my internship. | สัปดาห์หน้าผมจะเริ่มงานแรกในตำแหน่งวิศวกร ที่บริษัทผลิตชิ้นส่วนรถยนต์ที่ผมเคยฝึกงาน
+s: I am excited and a little scared, but I know that my family is behind me. | ผมตื่นเต้นและกลัวนิดหน่อย แต่ผมรู้ว่าครอบครัวอยู่เคียงข้างผมเสมอ
+q: ครอบครัวของต้นเดินทางมากรุงเทพฯ อย่างไร | นั่งรถบัส*; นั่งเครื่องบิน; ขับรถมาเอง | My whole family came from Khon Kaen by bus.
+q: ทำไมพี่สาวของต้นภูมิใจ | ต้นเป็นคนแรกในครอบครัวที่เรียนจบมหาวิทยาลัย*; ต้นได้รางวัลเรียนดี; ต้นได้งานที่ต่างประเทศ | I was the first person in our family to finish university
+q: สัปดาห์หน้าต้นจะทำอะไร | เริ่มงานแรกเป็นวิศวกร*; กลับไปอยู่ขอนแก่น; เรียนต่อปริญญาโท | Next week, I will start my first job as an engineer

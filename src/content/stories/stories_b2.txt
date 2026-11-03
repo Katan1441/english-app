@@ -1,0 +1,256 @@
+# r37 | B2 | f1 | Looking for My First Job | หางานแรก
+s: After graduation, I thought that finding a job would be easy. I was wrong. | หลังเรียนจบ ฉันคิดว่าการหางานคงไม่ยาก ฉันคิดผิด
+s: In the first month, I applied for more than twenty positions and heard back from only two companies. | ในเดือนแรก ฉันสมัครงานไปมากกว่ายี่สิบตำแหน่ง แต่มีบริษัทติดต่อกลับมาแค่สองแห่ง
+s: Both of them rejected me after the first interview, and I started to lose confidence. | ทั้งสองแห่งปฏิเสธฉันหลังการสัมภาษณ์รอบแรก และฉันเริ่มหมดความมั่นใจ
+s: One evening, I showed my CV to Khun Mint, my mentor from the internship, and asked for her honest opinion. | เย็นวันหนึ่ง ฉันเอาประวัติย่อไปให้คุณมิ้นท์ พี่เลี้ยงสมัยฝึกงานดู และขอความเห็นตรงๆ จากเธอ
+s: She read it carefully and said, "This tells me what you did, but not what you achieved." | เธออ่านอย่างละเอียดแล้วบอกว่า "อันนี้บอกว่าเธอทำอะไร แต่ไม่ได้บอกว่าเธอทำอะไรสำเร็จบ้าง"
+s: She explained that employers want to see results, not just a list of duties. | เธออธิบายว่านายจ้างอยากเห็นผลงาน ไม่ใช่แค่รายการหน้าที่
+s: For example, instead of writing "I wrote posts for social media," I should say that my posts increased the number of followers by thirty percent. | ตัวอย่างเช่น แทนที่จะเขียนว่า "เขียนโพสต์ลงโซเชียลมีเดีย" ฉันควรบอกว่าโพสต์ของฉันทำให้จำนวนผู้ติดตามเพิ่มขึ้นสามสิบเปอร์เซ็นต์
+s: She also told me to change my CV for each job, so that it matched what the company was looking for. | เธอยังบอกให้ฉันปรับประวัติย่อสำหรับงานแต่ละตำแหน่ง ให้ตรงกับสิ่งที่บริษัทกำลังมองหา
+s: I had been sending the same CV to every company, which was probably why so few of them replied. | ที่ผ่านมาฉันส่งประวัติย่อฉบับเดียวกันให้ทุกบริษัท ซึ่งอาจเป็นเหตุผลที่มีคนตอบกลับน้อยมาก
+s: That weekend, I rewrote my CV and practiced answering common interview questions with Ton. | สุดสัปดาห์นั้น ฉันเขียนประวัติย่อใหม่ และซ้อมตอบคำถามสัมภาษณ์ที่เจอบ่อยกับต้น
+s: He pretended to be a strict manager, which made me laugh, but it really helped. | เขาแกล้งทำเป็นผู้จัดการที่เข้มงวด ซึ่งทำให้ฉันหัวเราะ แต่ก็ช่วยได้จริงๆ
+s: I also stopped applying for every job that I saw, and I focused on companies that I truly wanted to work for. | ฉันยังเลิกสมัครทุกงานที่เห็น และหันมาเน้นบริษัทที่ฉันอยากทำงานด้วยจริงๆ
+s: Two weeks later, an international company that makes skin care products invited me to an interview for a marketing position. | สองสัปดาห์ต่อมา บริษัทข้ามชาติที่ผลิตผลิตภัณฑ์ดูแลผิวเชิญฉันไปสัมภาษณ์ตำแหน่งงานการตลาด
+s: This time, I felt ready. | คราวนี้ฉันรู้สึกพร้อม
+s: Looking back, I am glad that those first companies said no. If they hadn't, I would never have improved my CV or learned how to present myself. | มองย้อนกลับไป ฉันดีใจที่บริษัทแรกๆ ปฏิเสธฉัน ถ้าไม่เป็นอย่างนั้น ฉันคงไม่ได้ปรับปรุงประวัติย่อ หรือได้เรียนรู้วิธีนำเสนอตัวเอง
+q: ในเดือนแรกเกิดอะไรขึ้น | สมัครงานมากกว่า 20 ที่ แต่ตอบกลับแค่ 2 ที่*; ได้งานทันที; ไม่ได้สมัครงานเลย | I applied for more than twenty positions and heard back from only two companies.
+q: คุณมิ้นท์บอกว่าประวัติย่อของพลอยขาดอะไร | ผลงานที่ทำสำเร็จ*; รูปถ่าย; ที่อยู่ | This tells me what you did, but not what you achieved.
+q: ทำไมพลอยดีใจที่บริษัทแรกๆ ปฏิเสธ | เพราะทำให้ได้ปรับปรุงตัวเอง*; เพราะยังไม่อยากทำงาน; เพราะเงินเดือนน้อย | If they hadn't, I would never have improved my CV ใช้ If + had + V3 พูดถึงสิ่งที่ไม่ได้เกิดขึ้นในอดีต
+
+# r38 | B2 | talk | The Interview | สัมภาษณ์งาน
+who: A=Interviewer|ผู้สัมภาษณ์|f3 ; B=Ploy|พลอย|f1
+s: A: Thank you for coming, Ploy. Could you start by telling me why you're interested in this position? | ขอบคุณที่มานะคะคุณพลอย ช่วยเริ่มจากเล่าว่าทำไมถึงสนใจตำแหน่งนี้ได้ไหมคะ
+s: B: Of course. I've used your products for years, and I admire the way that your brand talks to young customers. | ได้ค่ะ ดิฉันใช้ผลิตภัณฑ์ของบริษัทมาหลายปี และชื่นชมวิธีที่แบรนด์สื่อสารกับลูกค้าวัยรุ่นค่ะ
+s: B: During my internship, I managed social media for a snack company, and I'd love to use that experience here. | ระหว่างฝึกงาน ดิฉันดูแลโซเชียลมีเดียให้บริษัทขนม และอยากนำประสบการณ์นั้นมาใช้ที่นี่ค่ะ
+s: A: Can you tell me about a result that you're proud of? | เล่าถึงผลงานที่คุณภูมิใจให้ฟังหน่อยได้ไหมคะ
+s: B: Yes. I suggested shorter videos with real customers instead of models. Within two months, our followers increased by thirty percent. | ได้ค่ะ ดิฉันเสนอให้ทำวิดีโอสั้นลงโดยใช้ลูกค้าจริงแทนนางแบบ ภายในสองเดือนผู้ติดตามเพิ่มขึ้นสามสิบเปอร์เซ็นต์ค่ะ
+s: A: That's impressive. Now, what would you say is your biggest weakness? | น่าประทับใจค่ะ แล้วคุณคิดว่าจุดอ่อนที่สุดของคุณคืออะไรคะ
+s: B: I used to spend too long trying to make everything perfect. My mentor taught me to focus on what matters most, and I've become much faster. | ดิฉันเคยใช้เวลานานเกินไปเพื่อทำทุกอย่างให้สมบูรณ์แบบ พี่เลี้ยงสอนให้ดิฉันเน้นสิ่งที่สำคัญที่สุด และตอนนี้ดิฉันทำงานเร็วขึ้นมากค่ะ
+s: A: Our team works with offices in Singapore and Australia, so most meetings are in English. How do you feel about that? | ทีมของเราทำงานกับสำนักงานที่สิงคโปร์และออสเตรเลีย การประชุมส่วนใหญ่จึงเป็นภาษาอังกฤษ คุณรู้สึกอย่างไรกับเรื่องนี้คะ
+s: B: I'm comfortable with it. My English isn't perfect, but I've given presentations in English, and I'm still taking an online course to improve. | ดิฉันโอเคค่ะ ภาษาอังกฤษของดิฉันยังไม่สมบูรณ์แบบ แต่ดิฉันเคยนำเสนองานเป็นภาษาอังกฤษ และยังเรียนคอร์สออนไลน์อยู่เพื่อพัฒนาตัวเองค่ะ
+s: A: Good. Where do you see yourself in five years? | ดีค่ะ แล้วอีกห้าปีข้างหน้าคุณเห็นตัวเองเป็นอย่างไรคะ
+s: B: I hope I'll be leading a small team. I'd also like to do a master's degree at some point. | ดิฉันหวังว่าจะได้เป็นหัวหน้าทีมเล็กๆ และอยากเรียนปริญญาโทสักวันหนึ่งค่ะ
+s: A: Do you have any questions for me? | คุณมีคำถามอะไรจะถามดิฉันไหมคะ
+s: B: Yes. What does a typical day look like for someone in this role? | มีค่ะ คนที่ทำงานตำแหน่งนี้แต่ละวันทำอะไรบ้างคะ
+s: A: That's a good question. Mornings are usually meetings, and afternoons are for planning and creating content. We'll let you know our decision by Friday. | เป็นคำถามที่ดีค่ะ ช่วงเช้ามักเป็นการประชุม ช่วงบ่ายใช้วางแผนและสร้างคอนเทนต์ เราจะแจ้งผลให้ทราบภายในวันศุกร์นะคะ
+s: B: Thank you for your time. I look forward to hearing from you. | ขอบคุณที่สละเวลาค่ะ ดิฉันหวังว่าจะได้รับข่าวจากคุณนะคะ
+s: A: It was nice to meet you, Ploy. Have a good afternoon. | ยินดีที่ได้รู้จักนะคะคุณพลอย ขอให้เป็นบ่ายที่ดีค่ะ
+q: พลอยยกผลงานอะไรมาเล่า | ทำวิดีโอสั้นกับลูกค้าจริงจนผู้ติดตามเพิ่ม 30%*; ขายสินค้าได้หนึ่งล้านชิ้น; ได้รางวัลพนักงานดีเด่น | Within two months, our followers increased by thirty percent.
+q: พลอยตอบเรื่องจุดอ่อนว่าอย่างไร | เคยใช้เวลานานเกินไปเพื่อให้ทุกอย่างสมบูรณ์แบบ*; มาทำงานสายบ่อย; พูดภาษาอังกฤษไม่ได้เลย | I used to spend too long trying to make everything perfect.
+q: บริษัทจะแจ้งผลเมื่อไร | ภายในวันศุกร์*; วันนี้เลย; เดือนหน้า | We'll let you know our decision by Friday.
+
+# r39 | B2 | m1 | My First Weeks as an Engineer | สัปดาห์แรกของการเป็นวิศวกร
+s: My first weeks as an engineer were very different from my internship. | สัปดาห์แรกๆ ของการเป็นวิศวกรต่างจากตอนฝึกงานมาก
+s: As an intern, I could always ask someone else to make the final decision. Now people were asking me. | ตอนเป็นนักศึกษาฝึกงาน ผมให้คนอื่นตัดสินใจขั้นสุดท้ายได้เสมอ แต่ตอนนี้คนอื่นกลับมาถามผม
+s: On the first day, everyone had to attend a safety training course, even the managers. | วันแรก ทุกคนต้องเข้าอบรมความปลอดภัย แม้แต่ผู้จัดการ
+s: We learned how to use protective equipment and what to do if there was a fire or a chemical leak. | เราเรียนวิธีใช้อุปกรณ์ป้องกัน และสิ่งที่ต้องทำหากเกิดไฟไหม้หรือสารเคมีรั่วไหล
+s: The trainer told us about a worker who had lost two fingers because he had removed a safety cover to save time. | ผู้ฝึกสอนเล่าเรื่องคนงานคนหนึ่งที่เสียนิ้วไปสองนิ้ว เพราะเขาถอดฝาครอบป้องกันออกเพื่อประหยัดเวลา
+s: Nobody in the room said a word, and I understood why the rules were so strict. | ไม่มีใครในห้องพูดอะไรสักคำ และผมก็เข้าใจว่าทำไมกฎถึงเข้มงวดขนาดนั้น
+s: Khun Nok, who had been my boss during the internship, is now my manager. | คุณนก ซึ่งเคยเป็นหัวหน้าตอนผมฝึกงาน ตอนนี้เป็นผู้จัดการของผม
+s: She gave me a small but important task: to find out why one production line was producing more broken parts than the others. | เธอมอบงานเล็กแต่สำคัญให้ผม คือหาสาเหตุว่าทำไมสายการผลิตสายหนึ่งถึงผลิตชิ้นส่วนเสียมากกว่าสายอื่น
+s: For several days, I watched the machines, talked to the workers, and collected data on every shift. | หลายวันติดต่อกัน ผมเฝ้าดูเครื่องจักร คุยกับคนงาน และเก็บข้อมูลทุกกะ
+s: The workers were friendly, but at first they seemed worried that I was looking for someone to blame. | คนงานเป็นมิตร แต่ตอนแรกดูกังวลว่าผมกำลังหาคนที่ทำผิด
+s: I explained that I was trying to fix the process, not to find mistakes in their work. | ผมอธิบายว่าผมพยายามแก้ที่กระบวนการ ไม่ได้หาข้อผิดพลาดในงานของพวกเขา
+s: After that, they started to share useful information with me. | หลังจากนั้นพวกเขาก็เริ่มบอกข้อมูลที่มีประโยชน์กับผม
+s: One older worker told me that the problem got worse in the afternoon, when the factory was hottest. | คนงานอาวุโสคนหนึ่งบอกผมว่า ปัญหาแย่ลงในตอนบ่ายซึ่งเป็นช่วงที่โรงงานร้อนที่สุด
+s: That simple comment gave me an idea that I would never have found in the reports. | คำพูดง่ายๆ นั้นทำให้ผมได้ไอเดียที่ผมคงหาไม่เจอในรายงาน
+s: I am still learning something new every day, and I've realized that the most useful information often comes from the people who do the work. | ผมยังได้เรียนรู้สิ่งใหม่ทุกวัน และได้รู้ว่าข้อมูลที่มีประโยชน์ที่สุดมักมาจากคนที่ลงมือทำงานจริง
+q: ทำไมกฎความปลอดภัยถึงเข้มงวด | เคยมีคนงานเสียนิ้วเพราะถอดฝาครอบป้องกัน*; ผู้จัดการไม่ชอบคนงาน; โรงงานเพิ่งเปิดใหม่ | a worker who had lost two fingers because he had removed a safety cover
+q: คุณนกให้ต้นทำงานอะไร | หาสาเหตุที่สายการผลิตหนึ่งมีชิ้นส่วนเสียมาก*; อบรมพนักงานใหม่; ซ่อมเครื่องปรับอากาศ | to find out why one production line was producing more broken parts than the others
+q: คนงานอาวุโสบอกข้อมูลอะไร | ปัญหาแย่ลงตอนบ่ายที่โรงงานร้อนที่สุด*; เครื่องจักรเก่ามาก; ไม่มีปัญหาอะไรเลย | the problem got worse in the afternoon, when the factory was hottest
+
+# r40 | B2 | f1 | My First Apartment | ห้องเช่าแรกของฉัน
+s: When I got the job at the skin care company, I decided it was time to leave the dorm and rent my own apartment. | พอได้งานที่บริษัทผลิตภัณฑ์ดูแลผิว ฉันตัดสินใจว่าถึงเวลาย้ายออกจากหอแล้วเช่าห้องของตัวเอง
+s: I wanted somewhere close to a train station, because the traffic in Bangkok can be terrible. | ฉันอยากได้ที่ใกล้สถานีรถไฟฟ้า เพราะรถในกรุงเทพฯ ติดได้หนักมาก
+s: I looked at seven places in two weekends. | ฉันไปดูมาเจ็ดที่ภายในสองสุดสัปดาห์
+s: Some looked great in the photos, but they were dark and noisy in real life. | บางที่ดูดีมากในรูป แต่ของจริงทั้งมืดและเสียงดัง
+s: One had a beautiful view, but the owner wanted three months' rent as a deposit, which I couldn't afford. | ที่หนึ่งวิวสวยมาก แต่เจ้าของขอเงินประกันเท่าค่าเช่าสามเดือน ซึ่งฉันจ่ายไม่ไหว
+s: Finally, I found a small apartment on the eighth floor, only five minutes' walk from the station. | ในที่สุดฉันก็เจอห้องเล็กๆ ชั้นแปด เดินจากสถานีแค่ห้านาที
+s: The rent was a little higher than I had planned, but I decided it was worth paying for the time that I would save. | ค่าเช่าแพงกว่าที่วางแผนไว้นิดหน่อย แต่ฉันตัดสินใจว่าคุ้มที่จะจ่าย เพราะจะประหยัดเวลาได้มาก
+s: Before I signed anything, Ton reminded me to read the contract carefully. | ก่อนเซ็นอะไร ต้นเตือนให้ฉันอ่านสัญญาให้ละเอียด
+s: I'm glad that he did, because it said that I would lose my deposit if I moved out within a year. | ดีที่เขาเตือน เพราะในสัญญาเขียนว่าฉันจะไม่ได้เงินประกันคืนถ้าย้ายออกภายในหนึ่งปี
+s: I also took photos of every wall and piece of furniture, so that the owner couldn't blame me later for damage that was already there. | ฉันยังถ่ายรูปผนังและเฟอร์นิเจอร์ทุกชิ้นไว้ด้วย เพื่อที่เจ้าของจะได้โทษฉันไม่ได้ภายหลังสำหรับความเสียหายที่มีอยู่ก่อนแล้ว
+s: Moving day was exhausting. | วันย้ายเหนื่อยมาก
+s: Ton and his friend helped me carry boxes, and we ate pizza on the floor because I didn't have a table yet. | ต้นกับเพื่อนช่วยฉันขนกล่อง และเรากินพิซซ่ากันบนพื้นเพราะฉันยังไม่มีโต๊ะ
+s: Living alone has been harder than I expected. | การอยู่คนเดียวยากกว่าที่ฉันคิดไว้
+s: Nobody reminds me to buy food or pay the electricity bill, and in the first month I forgot both. | ไม่มีใครเตือนให้ฉันซื้อของกินหรือจ่ายค่าไฟ และเดือนแรกฉันลืมทั้งสองอย่างเลย
+s: But I love having my own space, where I can cook, read, and practice English without disturbing anyone. | แต่ฉันชอบที่มีพื้นที่เป็นของตัวเอง ได้ทำอาหาร อ่านหนังสือ และฝึกภาษาอังกฤษโดยไม่รบกวนใคร
+s: Every evening, when I look out at the lights of the city, I feel that my adult life has really started. | ทุกเย็นที่มองออกไปเห็นแสงไฟของเมือง ฉันรู้สึกว่าชีวิตผู้ใหญ่ของฉันได้เริ่มขึ้นแล้วจริงๆ
+q: ทำไมพลอยอยากได้ที่พักใกล้สถานีรถไฟฟ้า | เพราะรถในกรุงเทพฯ ติดมาก*; เพราะค่าเช่าถูก; เพราะใกล้บ้านต้น | because the traffic in Bangkok can be terrible
+q: สัญญาเช่าเขียนไว้ว่าอย่างไร | ย้ายออกภายในหนึ่งปีจะไม่ได้เงินประกันคืน*; ห้ามทำอาหารในห้อง; ต้องจ่ายค่าเช่าล่วงหน้าหนึ่งปี | I would lose my deposit if I moved out within a year
+q: เดือนแรกพลอยลืมอะไร | ซื้อของกินและจ่ายค่าไฟ*; ล็อกประตู; ไปทำงาน | Nobody reminds me to buy food or pay the electricity bill, and in the first month I forgot both.
+
+# r41 | B2 | talk | An Unhappy Customer | ลูกค้าที่ไม่พอใจ
+who: A=Customer|ลูกค้า|m2 ; B=Ploy|พลอย|f1
+s: B: Good morning, this is Ploy from the marketing team. I understand that you wanted to speak to someone about your order. | สวัสดีค่ะ ดิฉันพลอยจากทีมการตลาดค่ะ ทราบว่าคุณต้องการคุยกับเจ้าหน้าที่เรื่องคำสั่งซื้อใช่ไหมคะ
+s: A: Yes. I ordered two hundred bottles of your new sun cream for my shop, and they arrived a week late. | ใช่ครับ ผมสั่งครีมกันแดดรุ่นใหม่ของคุณสองร้อยขวดไปขายที่ร้าน แต่ของมาช้าไปหนึ่งสัปดาห์
+s: A: On top of that, about thirty bottles were broken. My customers have been asking for this product for days. | แถมยังแตกไปประมาณสามสิบขวด ลูกค้าของผมถามหาสินค้านี้มาหลายวันแล้ว
+s: B: I'm really sorry about that, and thank you for calling us. I can imagine how annoying it must be. | ต้องขอโทษจริงๆ ค่ะ และขอบคุณที่โทรมาแจ้งนะคะ ดิฉันพอนึกออกว่าคุณคงหงุดหงิดมาก
+s: B: Could you tell me your order number, so that I can check what happened? | รบกวนแจ้งหมายเลขคำสั่งซื้อได้ไหมคะ ดิฉันจะได้ตรวจสอบว่าเกิดอะไรขึ้น
+s: A: Yes, it's 40729. | ได้ครับ หมายเลข 40729
+s: B: Thank you. I can see that the delivery company had a problem with one of its trucks, but we should have told you about the delay. | ขอบคุณค่ะ ดิฉันเห็นว่าบริษัทขนส่งมีปัญหากับรถบรรทุกคันหนึ่ง แต่เราควรแจ้งคุณเรื่องความล่าช้านี้ค่ะ
+s: B: Here's what I can do. We'll send thirty new bottles today by express delivery, at no extra cost. | ดิฉันช่วยได้แบบนี้ค่ะ วันนี้เราจะส่งขวดใหม่สามสิบขวดแบบด่วนให้ โดยไม่มีค่าใช้จ่ายเพิ่มค่ะ
+s: B: We'd also like to give you a ten percent discount on your next order. | และเราขอมอบส่วนลดสิบเปอร์เซ็นต์สำหรับคำสั่งซื้อครั้งถัดไปด้วยค่ะ
+s: B: We're also talking to the delivery company to make sure that this doesn't happen again. | เรากำลังคุยกับบริษัทขนส่งด้วย เพื่อให้แน่ใจว่าเรื่องแบบนี้จะไม่เกิดขึ้นอีกค่ะ
+s: A: Well, that's better. When will the new bottles arrive? | อืม แบบนี้ค่อยดีขึ้นหน่อย ขวดใหม่จะมาถึงเมื่อไรครับ
+s: B: They should be with you by tomorrow afternoon. I'll email you the tracking number within an hour. | น่าจะถึงภายในบ่ายพรุ่งนี้ค่ะ ดิฉันจะส่งเลขพัสดุให้ทางอีเมลภายในหนึ่งชั่วโมงค่ะ
+s: A: OK. I appreciate your help. The last time I complained, nobody called me back. | โอเค ขอบคุณที่ช่วยนะครับ ครั้งก่อนที่ผมร้องเรียน ไม่มีใครโทรกลับมาเลย
+s: A: To be honest, I was thinking about buying from another company. | พูดตรงๆ ผมกำลังคิดจะไปซื้อกับบริษัทอื่นแล้ว
+s: B: I'm sorry to hear that. If anything else goes wrong, please call me directly. Here's my number. | เสียใจที่ได้ยินอย่างนั้นค่ะ ถ้ามีอะไรผิดพลาดอีก โทรหาดิฉันโดยตรงได้เลยนะคะ นี่เบอร์ของดิฉันค่ะ
+s: A: Thank you, Ploy. You've been very helpful. I'll order again next month. | ขอบคุณครับคุณพลอย คุณช่วยได้มากเลย เดือนหน้าผมจะสั่งอีกนะครับ
+s: B: You're welcome. Thank you for your patience, and I hope your customers enjoy the sun cream. | ยินดีค่ะ ขอบคุณที่อดทนรอนะคะ และหวังว่าลูกค้าของคุณจะชอบครีมกันแดดค่ะ
+q: ลูกค้าไม่พอใจเรื่องอะไร | ของมาช้าและขวดแตก*; สินค้าแพงเกินไป; พนักงานพูดไม่สุภาพ | they arrived a week late. On top of that, about thirty bottles were broken.
+q: พลอยเสนอทางแก้อย่างไร | ส่งขวดใหม่แบบด่วนฟรีและให้ส่วนลด 10%*; คืนเงินทั้งหมด; ให้ลูกค้ามารับของเอง | We'll send thirty new bottles today ... a ten percent discount on your next order.
+q: ประโยค we should have told you about the delay หมายความว่าอย่างไร | เราควรแจ้งเรื่องความล่าช้า แต่ไม่ได้แจ้ง*; เราแจ้งไปแล้ว; เราจะไม่แจ้งอีก | should have + V3 ใช้บอกว่าควรทำในอดีต แต่ไม่ได้ทำ
+
+# r42 | B2 | m1 | Finding the Cause | หาต้นเหตุ
+s: Do you remember the production line that kept making broken parts? I finally found the cause, and it wasn't what anyone had expected. | จำสายการผลิตที่ผลิตชิ้นส่วนเสียไม่หยุดได้ไหม ในที่สุดผมก็เจอต้นเหตุ และมันไม่ใช่สิ่งที่ใครคาดคิดไว้เลย
+s: Everyone had assumed that the machine was too old and needed to be replaced, which would have cost millions of baht. | ทุกคนคิดไปเองว่าเครื่องจักรเก่าเกินไปและต้องเปลี่ยนใหม่ ซึ่งจะต้องเสียเงินหลายล้านบาท
+s: But after the worker's comment about the hot afternoons, I started recording the temperature next to the machine every hour. | แต่หลังจากที่คนงานพูดถึงช่วงบ่ายที่ร้อน ผมก็เริ่มจดอุณหภูมิข้างเครื่องจักรทุกชั่วโมง
+s: When I compared the temperature with the number of broken parts, the pattern was clear. | พอเอาอุณหภูมิมาเทียบกับจำนวนชิ้นส่วนเสีย รูปแบบก็ชัดเจนมาก
+s: Whenever it rose above thirty-five degrees, the plastic became slightly softer, and the parts came out the wrong size. | ทุกครั้งที่อุณหภูมิสูงเกินสามสิบห้าองศา พลาสติกจะนิ่มลงเล็กน้อย และชิ้นส่วนที่ออกมามีขนาดผิด
+s: The fan that was supposed to cool that area had been broken for months, but nobody had reported it. | พัดลมที่ควรจะช่วยระบายความร้อนบริเวณนั้นเสียมาหลายเดือน แต่ไม่มีใครแจ้ง
+s: I presented my results to Khun Nok and two engineers from our Japanese partner company. | ผมนำเสนอผลให้คุณนกและวิศวกรสองคนจากบริษัทคู่ค้าญี่ปุ่นฟัง
+s: I was nervous about explaining technical details in English, so I used simple charts instead of long sentences. | ผมกังวลเรื่องการอธิบายรายละเอียดทางเทคนิคเป็นภาษาอังกฤษ จึงใช้แผนภูมิง่ายๆ แทนประโยคยาวๆ
+s: One of the Japanese engineers asked a question that I didn't understand at first, so I politely asked him to repeat it. | วิศวกรญี่ปุ่นคนหนึ่งถามคำถามที่ตอนแรกผมไม่เข้าใจ ผมจึงขอให้เขาพูดซ้ำอย่างสุภาพ
+s: The second time, he spoke more slowly, and I was able to answer it. | ครั้งที่สองเขาพูดช้าลง และผมก็ตอบได้
+s: They agreed to try my solution: repair the fan and add a small cooling system, which cost less than fifty thousand baht. | พวกเขาตกลงลองวิธีแก้ของผม คือซ่อมพัดลมและติดระบบทำความเย็นขนาดเล็ก ซึ่งใช้เงินไม่ถึงห้าหมื่นบาท
+s: A month later, the number of broken parts had fallen by more than eighty percent. | หนึ่งเดือนต่อมา จำนวนชิ้นส่วนเสียลดลงมากกว่าแปดสิบเปอร์เซ็นต์
+s: Khun Nok asked me to share what I had learned with the other teams. | คุณนกขอให้ผมเล่าสิ่งที่ได้เรียนรู้ให้ทีมอื่นฟัง
+s: I also made sure that the older worker got credit for his idea, because without him, I would still be reading reports. | ผมยังทำให้แน่ใจว่าคนงานอาวุโสคนนั้นได้รับเครดิตสำหรับไอเดียของเขา เพราะถ้าไม่มีเขา ผมคงยังนั่งอ่านรายงานอยู่
+s: The lesson for me was simple: before you spend a lot of money, make sure that you understand the real problem. | บทเรียนสำหรับผมนั้นง่ายมาก ก่อนจะใช้เงินจำนวนมาก ต้องแน่ใจก่อนว่าเข้าใจปัญหาที่แท้จริง
+q: ตอนแรกทุกคนคิดว่าปัญหาเกิดจากอะไร | เครื่องจักรเก่าเกินไป*; คนงานทำงานไม่ดี; พลาสติกคุณภาพต่ำ | Everyone had assumed that the machine was too old and needed to be replaced
+q: ต้นเหตุที่แท้จริงคืออะไร | อุณหภูมิสูงเพราะพัดลมเสีย*; ไฟฟ้าดับบ่อย; คนงานไม่พอ | The fan that was supposed to cool that area had been broken for months
+q: ต้นทำอย่างไรตอนไม่เข้าใจคำถามภาษาอังกฤษ | ขอให้พูดซ้ำอย่างสุภาพ*; เดาคำตอบไปเลย; ให้คุณนกตอบแทน | I politely asked him to repeat it.
+
+# r43 | B2 | f1 | Working from Home | ทำงานที่บ้าน
+s: Last year, my company started allowing us to work from home two days a week. | ปีที่แล้ว บริษัทของฉันเริ่มให้ทำงานที่บ้านได้สัปดาห์ละสองวัน
+s: At first, I thought it would be perfect. No traffic, no crowded trains, and I could wear comfortable clothes all day. | ตอนแรกฉันคิดว่ามันจะดีมาก ไม่ต้องเจอรถติด ไม่ต้องเบียดรถไฟฟ้า แถมใส่เสื้อผ้าสบายๆ ได้ทั้งวัน
+s: However, after a few weeks, I noticed some problems that I hadn't expected. | แต่ผ่านไปไม่กี่สัปดาห์ ฉันก็สังเกตเห็นปัญหาบางอย่างที่ไม่ได้คาดไว้
+s: Because my bed was only two meters away, it was hard to stop working at a normal time. | เพราะเตียงอยู่ห่างไปแค่สองเมตร จึงยากที่จะเลิกงานตามเวลาปกติ
+s: I often answered emails until ten or eleven at night, and I felt tired all the time. | ฉันมักตอบอีเมลจนถึงสี่ห้าทุ่ม และรู้สึกเหนื่อยตลอดเวลา
+s: I also missed the small conversations with my colleagues, like chatting while we waited for the coffee machine. | ฉันยังคิดถึงการคุยเล่นเล็กๆ น้อยๆ กับเพื่อนร่วมงาน อย่างตอนยืนคุยกันระหว่างรอเครื่องชงกาแฟ
+s: Video calls are useful for meetings, but they can't replace laughing together in the same room. | วิดีโอคอลมีประโยชน์สำหรับการประชุม แต่แทนการหัวเราะด้วยกันในห้องเดียวกันไม่ได้
+s: Some days, I realized that I hadn't spoken to anyone at all until the evening. | บางวันฉันรู้ตัวว่าไม่ได้คุยกับใครเลยจนถึงตอนเย็น
+s: So I made some rules for myself. | ฉันจึงตั้งกฎให้ตัวเองไว้บางข้อ
+s: I start and finish at the same time as I would in the office, and I turn off work notifications at six o'clock. | ฉันเริ่มและเลิกงานเวลาเดียวกับตอนทำงานที่ออฟฟิศ และปิดการแจ้งเตือนเรื่องงานตอนหกโมงเย็น
+s: I set up a small desk by the window, so that I don't work in bed anymore. | ฉันจัดโต๊ะเล็กๆ ไว้ข้างหน้าต่าง จะได้ไม่ทำงานบนเตียงอีก
+s: At lunchtime, I go out for a short walk, even when it's hot. | ตอนพักเที่ยง ฉันออกไปเดินเล่นสั้นๆ แม้อากาศจะร้อน
+s: I've also started calling a colleague for ten minutes every morning, just to talk about our plans for the day. | ฉันยังเริ่มโทรหาเพื่อนร่วมงานคนหนึ่งสิบนาทีทุกเช้า แค่คุยเรื่องแผนงานของวันนั้น
+s: These changes have made a big difference to how I feel. | การเปลี่ยนแปลงเหล่านี้ทำให้ฉันรู้สึกต่างไปมาก
+s: I get more done on my home days now, and I have time to cook and read in the evenings. | ตอนนี้วันที่ทำงานที่บ้านฉันทำงานได้มากขึ้น และมีเวลาทำอาหารกับอ่านหนังสือตอนเย็น
+s: Working from home isn't better or worse than working in an office. It just needs a different kind of discipline. | การทำงานที่บ้านไม่ได้ดีหรือแย่กว่าการทำงานที่ออฟฟิศ มันแค่ต้องใช้วินัยคนละแบบ
+q: บริษัทให้ทำงานที่บ้านได้กี่วันต่อสัปดาห์ | 2 วัน*; 5 วัน; 1 วัน | two days a week แปลว่า สัปดาห์ละสองวัน
+q: ปัญหาที่พลอยเจอคืออะไร | เลิกงานไม่เป็นเวลาและเหงา*; อินเทอร์เน็ตช้า; ค่าไฟแพง | it was hard to stop working at a normal time ... I also missed the small conversations with my colleagues
+q: พลอยตั้งกฎอะไรให้ตัวเอง | ปิดการแจ้งเตือนเรื่องงานตอนหกโมงเย็น*; ทำงานบนเตียงทุกวัน; ไม่ประชุมออนไลน์อีก | I turn off work notifications at six o'clock.
+
+# r44 | B2 | talk | Asking for a Raise | ขอขึ้นเงินเดือน
+who: A=Ton|ต้น|m1 ; B=Ploy|พลอย|f1
+s: A: Ploy, can I ask your advice? I want to ask Khun Nok for a raise, but I have no idea how to start. | พลอย ขอคำแนะนำหน่อยได้ไหม ผมอยากขอขึ้นเงินเดือนกับคุณนก แต่ไม่รู้จะเริ่มยังไงเลย
+s: B: Sure. First, why do you think you deserve one? Give me two or three reasons. | ได้สิ ก่อนอื่น ทำไมเธอคิดว่าเธอควรได้ขึ้นเงินเดือน บอกเหตุผลมาสักสองสามข้อ
+s: A: Well, I've been there for a year and a half, and my responsibilities have grown a lot. I'm training two new engineers now. | ก็ผมทำงานมาปีครึ่งแล้ว และความรับผิดชอบก็เพิ่มขึ้นมาก ตอนนี้ผมสอนงานวิศวกรใหม่อยู่สองคน
+s: B: That's a good point. What else? | นั่นเป็นเหตุผลที่ดี มีอะไรอีก
+s: A: The cooling system that I suggested saved the company a lot of money. The broken parts fell by eighty percent. | ระบบทำความเย็นที่ผมเสนอช่วยให้บริษัทประหยัดเงินไปมาก ชิ้นส่วนเสียลดลงแปดสิบเปอร์เซ็นต์
+s: B: Then that's what you should talk about. Managers care about results, not about how hard you work or how late you stay. | งั้นนั่นแหละที่เธอควรพูดถึง ผู้จัดการสนใจผลงาน ไม่ใช่ว่าเธอทำงานหนักแค่ไหนหรืออยู่ดึกแค่ไหน
+s: A: Should I tell her how much I want? | ผมควรบอกเธอไหมว่าอยากได้เท่าไร
+s: B: Yes, but first check what other engineers with your experience usually earn. If you ask for a realistic number, she's more likely to take you seriously. | ควรสิ แต่ตรวจดูก่อนว่าวิศวกรที่มีประสบการณ์เท่าเธอมักได้เงินเดือนเท่าไร ถ้าขอตัวเลขที่สมเหตุสมผล เธอก็มีแนวโน้มจะรับฟังอย่างจริงจังมากขึ้น
+s: A: And what if she says no? I'd feel terrible. | แล้วถ้าเธอปฏิเสธล่ะ ผมคงรู้สึกแย่มาก
+s: B: Then ask her what you would need to achieve to get a raise in six months. That way, you'll have a clear goal. | ก็ถามเธอว่าต้องทำผลงานอะไรถึงจะได้ขึ้นเงินเดือนในอีกหกเดือน แบบนั้นเธอจะได้มีเป้าหมายที่ชัดเจน
+s: A: That's smart. When is the best time to ask? | ฉลาดดี แล้วควรขอตอนไหนดีที่สุด
+s: B: Not on a busy Monday morning! Ask for a short meeting, and tell her what it's about, so that she has time to prepare. | อย่าขอตอนเช้าวันจันทร์ที่ยุ่งๆ นะ ขอนัดคุยสั้นๆ แล้วบอกเธอว่าจะคุยเรื่องอะไร เธอจะได้มีเวลาเตรียมตัว
+s: A: OK, that makes sense. I'm still a bit nervous, though. | โอเค เข้าใจแล้ว แต่ผมก็ยังประหม่าอยู่ดี
+s: B: That's normal. Practice with me tonight. I'll be Khun Nok, and you can try your arguments. | เป็นเรื่องปกติ คืนนี้มาซ้อมกับฉันสิ ฉันจะเป็นคุณนก แล้วเธอก็ลองพูดเหตุผลของเธอดู
+s: A: Deal. But please don't be as strict as I was when I pretended to be your interviewer! | ตกลง แต่อย่าเข้มงวดเหมือนตอนที่ผมแกล้งเป็นคนสัมภาษณ์เธอนะ
+s: B: No promises. The real Khun Nok might be even stricter! | ไม่สัญญานะ คุณนกตัวจริงอาจจะเข้มงวดกว่านี้อีก
+q: ต้นอยากขออะไรจากคุณนก | ขอขึ้นเงินเดือน*; ขอลางาน; ขอย้ายแผนก | I want to ask Khun Nok for a raise
+q: พลอยบอกว่าผู้จัดการสนใจอะไร | ผลงาน*; ทำงานดึกแค่ไหน; อายุงาน | Managers care about results, not about how hard you work or how late you stay.
+q: ถ้าคุณนกปฏิเสธ พลอยแนะนำให้ทำอย่างไร | ถามว่าต้องทำผลงานอะไรเพื่อจะได้ขึ้นในอีก 6 เดือน*; ลาออกทันที; ไม่ต้องพูดอะไรอีก | ask her what you would need to achieve to get a raise in six months
+
+# r45 | B2 | f1 | Anna's Visit | แอนนามาเยี่ยม
+s: Three years after she had gone back to England, Anna came to visit Thailand again. | สามปีหลังจากกลับอังกฤษ แอนนาก็กลับมาเที่ยวเมืองไทยอีกครั้ง
+s: We had talked online almost every week, but when I saw her at the airport, I cried. | เราคุยกันออนไลน์แทบทุกสัปดาห์ แต่พอเห็นเธอที่สนามบิน ฉันก็ร้องไห้ออกมา
+s: Her Thai had improved so much that the taxi driver asked if she had lived here for years. | ภาษาไทยของเธอพัฒนาขึ้นมากจนคนขับแท็กซี่ถามว่าเธออยู่ที่นี่มาหลายปีแล้วหรือ
+s: She had been taking classes in London and watching Thai TV shows every night. | เธอเรียนภาษาไทยที่ลอนดอน และดูละครไทยทุกคืน
+s: When she ordered food at a street stall, the owner was so surprised that he gave her an extra spring roll for free. | ตอนที่เธอสั่งอาหารที่แผงข้างทาง เจ้าของร้านแปลกใจมากจนแถมปอเปี๊ยะให้อีกชิ้น
+s: Since I had saved some days off, we traveled together for a week. | เพราะฉันเก็บวันลาไว้ เราจึงไปเที่ยวด้วยกันหนึ่งสัปดาห์
+s: We took the night train to Chiang Mai, where my parents welcomed her as if she were their second daughter. | เรานั่งรถไฟกลางคืนไปเชียงใหม่ ที่นั่นพ่อแม่ของฉันต้อนรับเธอราวกับเป็นลูกสาวคนที่สอง
+s: My mother taught her how to make khao soi, and Anna taught my father some English words, which he still uses to greet tourists at his shop. | แม่สอนเธอทำข้าวซอย ส่วนแอนนาสอนคำภาษาอังกฤษให้พ่อ ซึ่งพ่อยังใช้ทักทายนักท่องเที่ยวที่ร้านจนถึงทุกวันนี้
+s: One evening, we sat by the river and talked about how much our lives had changed. | เย็นวันหนึ่ง เรานั่งริมแม่น้ำและคุยกันว่าชีวิตเราเปลี่ยนไปมากแค่ไหน
+s: Anna now works as a teacher, helping students from other countries who are learning English. | ตอนนี้แอนนาทำงานเป็นครู ช่วยนักเรียนจากต่างประเทศที่กำลังเรียนภาษาอังกฤษ
+s: She said that remembering how hard it was for her to learn Thai makes her a more patient teacher. | เธอบอกว่าการนึกถึงตอนที่ตัวเองเรียนภาษาไทยอย่างยากลำบาก ทำให้เธอเป็นครูที่อดทนมากขึ้น
+s: I told her that I use English every day at work now, in meetings with colleagues from three different countries. | ฉันเล่าให้เธอฟังว่าตอนนี้ฉันใช้ภาษาอังกฤษในที่ทำงานทุกวัน ในการประชุมกับเพื่อนร่วมงานจากสามประเทศ
+s: "Do you remember when you were too shy to say hello?" she asked, laughing. | "จำได้ไหมตอนที่เธออายจนไม่กล้าพูดคำว่าสวัสดี" เธอถามพลางหัวเราะ
+s: I did remember, and I realized that neither of us would have improved so much without the other. | ฉันจำได้ และรู้ตัวว่าถ้าไม่มีกันและกัน เราทั้งคู่คงไม่ได้พัฒนามากขนาดนี้
+s: On her last night, we promised to meet again next year, this time in London. | คืนสุดท้ายของเธอ เราสัญญากันว่าจะเจอกันอีกปีหน้า คราวนี้ที่ลอนดอน
+q: ทำไมคนขับแท็กซี่ถามว่าแอนนาอยู่เมืองไทยมาหลายปีหรือ | เพราะภาษาไทยของเธอดีขึ้นมาก*; เพราะเธอรู้จักทาง; เพราะเธอใส่ชุดไทย | Her Thai had improved so much that the taxi driver asked if she had lived here for years.
+q: ที่เชียงใหม่ แม่ของพลอยสอนอะไรแอนนา | ทำข้าวซอย*; พูดภาษาเหนือ; ทอผ้า | My mother taught her how to make khao soi
+q: ตอนนี้แอนนาทำงานอะไร | ครูสอนภาษาอังกฤษให้นักเรียนต่างชาติ*; มัคคุเทศก์; พยาบาล | Anna now works as a teacher, helping students from other countries who are learning English.
+
+# r46 | B2 | m1 | Thinking About Money | คิดเรื่องเงิน
+s: When I started earning a real salary, I felt rich for the first time in my life. | ตอนเริ่มได้เงินเดือนจริงๆ ผมรู้สึกรวยเป็นครั้งแรกในชีวิต
+s: That feeling didn't last long. | ความรู้สึกนั้นอยู่ได้ไม่นาน
+s: After paying the rent, sending money to my parents, and eating out with friends, I was surprised how little was left. | หลังจ่ายค่าเช่า ส่งเงินให้พ่อแม่ และออกไปกินข้าวกับเพื่อน ผมก็แปลกใจที่เงินเหลือน้อยมาก
+s: I remembered Ploy's advice from university: save first, then spend. | ผมนึกถึงคำแนะนำของพลอยตอนเรียนมหาวิทยาลัย เก็บก่อนแล้วค่อยใช้
+s: So I set up an automatic payment that moves fifteen percent of my salary into a savings account on payday. | ผมจึงตั้งโอนเงินอัตโนมัติ ให้โอนเงินสิบห้าเปอร์เซ็นต์ของเงินเดือนเข้าบัญชีออมทรัพย์ในวันเงินเดือนออก
+s: Because the money disappears before I see it, I don't miss it. | เพราะเงินหายไปก่อนที่ผมจะเห็น ผมจึงไม่รู้สึกเสียดาย
+s: I also stopped ordering delivery food every night, which saved me more than I had expected. | ผมยังเลิกสั่งอาหารเดลิเวอรีทุกคืน ซึ่งช่วยประหยัดได้มากกว่าที่คิดไว้
+s: My colleagues often talk about investing, and some of them buy shares that they have seen online. | เพื่อนร่วมงานมักคุยกันเรื่องการลงทุน บางคนซื้อหุ้นที่เห็นในอินเทอร์เน็ต
+s: One of them lost half of his savings last year, because he had followed advice from a stranger on social media. | คนหนึ่งเสียเงินเก็บไปครึ่งหนึ่งเมื่อปีที่แล้ว เพราะทำตามคำแนะนำของคนแปลกหน้าในโซเชียลมีเดีย
+s: That made me careful. | เรื่องนั้นทำให้ผมระมัดระวัง
+s: I decided that, before I invested anything, I would save enough money to live for six months without a salary. | ผมตัดสินใจว่า ก่อนจะลงทุนอะไร ผมจะเก็บเงินให้พอใช้ชีวิตได้หกเดือนโดยไม่มีเงินเดือน
+s: It took me almost two years, but it was worth it. | ใช้เวลาเกือบสองปี แต่ก็คุ้มค่า
+s: There were times when I wanted to spend it on a new motorbike, but I didn't. | มีหลายครั้งที่ผมอยากเอาเงินไปซื้อมอเตอร์ไซค์คันใหม่ แต่ผมก็ไม่ได้ซื้อ
+s: Last month, my father needed an operation, and I was able to pay for it without borrowing any money. | เดือนที่แล้วพ่อต้องผ่าตัด และผมจ่ายค่าผ่าตัดได้โดยไม่ต้องยืมเงินใคร
+s: My mother kept saying that she didn't know what they would have done without me. | แม่พูดซ้ำๆ ว่าไม่รู้ว่าถ้าไม่มีผม พวกเขาจะทำยังไง
+s: Now I'm slowly learning about investing, by reading books and asking people who understand it well. | ตอนนี้ผมค่อยๆ ศึกษาเรื่องการลงทุน ด้วยการอ่านหนังสือและถามคนที่เข้าใจเรื่องนี้ดี
+s: I'm not trying to get rich quickly. I just want to feel safe, and to be able to help my family when they need me. | ผมไม่ได้พยายามจะรวยเร็ว ผมแค่อยากรู้สึกมั่นคง และช่วยครอบครัวได้เวลาที่พวกเขาต้องการ
+q: ต้นใช้วิธีอะไรเก็บเงิน | ตั้งโอนเงิน 15% อัตโนมัติในวันเงินเดือนออก*; เก็บเงินสดไว้ใต้เตียง; ให้แม่เก็บไว้ให้ | an automatic payment that moves fifteen percent of my salary into a savings account on payday
+q: ทำไมต้นระมัดระวังเรื่องการลงทุน | เพื่อนร่วมงานเสียเงินเพราะเชื่อคนแปลกหน้าในโซเชียล*; ธนาคารปิด; พ่อห้ามลงทุน | One of them lost half of his savings ... because he had followed advice from a stranger on social media.
+q: เงินที่เก็บไว้ช่วยต้นได้อย่างไร | จ่ายค่าผ่าตัดของพ่อได้โดยไม่ต้องยืมเงิน*; ซื้อมอเตอร์ไซค์คันใหม่; ไปเที่ยวญี่ปุ่น | my father needed an operation, and I was able to pay for it without borrowing any money.
+
+# r47 | B2 | talk | A Trip to Japan | เดินทางไปญี่ปุ่น
+who: A=Khun Nok|คุณนก|f3 ; B=Ton|ต้น|m1
+s: A: Ton, I'd like you to come with me to our partner's factory in Osaka next month. | ต้น เดือนหน้าฉันอยากให้เธอไปโรงงานของบริษัทคู่ค้าที่โอซากากับฉัน
+s: B: Really? That's great news! What exactly will we be doing there? | จริงเหรอครับ ข่าวดีมากเลย เราจะไปทำอะไรกันที่นั่นบ้างครับ
+s: A: They're putting in a new cooling system that is based on yours, and they want you to explain how it works. | พวกเขากำลังติดตั้งระบบทำความเย็นใหม่ที่ทำตามแบบของเธอ และอยากให้เธออธิบายว่ามันทำงานอย่างไร
+s: B: In English, I guess. Will there be someone to translate? | คงเป็นภาษาอังกฤษใช่ไหมครับ จะมีคนช่วยแปลไหมครับ
+s: A: For the formal meetings, yes. But in the factory, you'll need to speak with the engineers directly. | สำหรับการประชุมแบบทางการมี แต่ในโรงงาน เธอต้องคุยกับวิศวกรเองโดยตรง
+s: B: I'll prepare some simple slides with lots of pictures. That helped a lot last time. | ผมจะเตรียมสไลด์ง่ายๆ ที่มีรูปเยอะๆ ครั้งก่อนวิธีนี้ช่วยได้มากครับ
+s: A: Yes, your charts were very clear. The Japanese engineers mentioned them in their report. | ใช่ แผนภูมิของเธอชัดเจนมาก วิศวกรญี่ปุ่นยังพูดถึงในรายงานของพวกเขาเลย
+s: A: There are also a few things that you should know about business culture there. | มีอีกสองสามเรื่องที่เธอควรรู้เกี่ยวกับวัฒนธรรมการทำงานที่นั่น
+s: A: Be on time, or better, a little early. Being late is considered very rude. | ไปให้ตรงเวลา หรือดีกว่านั้นคือไปก่อนเวลานิดหน่อย การมาสายถือว่าไม่สุภาพมาก
+s: B: What about business cards? I've heard that there's a special way to give them. | แล้วนามบัตรล่ะครับ ผมได้ยินว่ามีวิธียื่นแบบพิเศษ
+s: A: Yes. Hold your card with both hands, and when you receive one, take a moment to read it. Don't put it in your pocket right away. | ใช่ ถือนามบัตรด้วยสองมือ และเมื่อรับนามบัตรมา ให้ใช้เวลาอ่านสักครู่ อย่าเก็บใส่กระเป๋าทันที
+s: B: That's similar to how we show respect in Thailand. | คล้ายกับวิธีแสดงความเคารพของเราที่เมืองไทยเลยครับ
+s: A: It is. And if someone says, "That might be difficult," it often means no. They just don't want to say it directly. | ใช่ และถ้ามีคนพูดว่า "อาจจะยากหน่อย" มักแปลว่าไม่ เขาแค่ไม่อยากพูดตรงๆ
+s: B: That's useful to know. I would have thought that they meant "maybe," and I would have waited for an answer. | ดีที่รู้ครับ ถ้าไม่รู้ ผมคงคิดว่าเขาหมายถึง "อาจจะ" แล้วก็นั่งรอคำตอบ
+s: A: Most people would. Oh, and bring warm clothes. It'll be much colder than Bangkok. | คนส่วนใหญ่ก็คิดแบบนั้น อ้อ แล้วเอาเสื้อผ้ากันหนาวไปด้วยนะ ที่นั่นจะหนาวกว่ากรุงเทพฯ มาก
+s: B: I've never seen snow in my life. Do you think I'll see some? | ผมไม่เคยเห็นหิมะเลยในชีวิตครับ คิดว่าจะได้เห็นไหมครับ
+s: A: Maybe, if we're lucky. But remember, we're going there to work! | อาจจะนะ ถ้าโชคดี แต่อย่าลืมว่าเราไปทำงานนะ
+q: ต้นจะไปญี่ปุ่นเพื่อทำอะไร | อธิบายระบบทำความเย็นที่เขาออกแบบ*; ไปเที่ยวพักผ่อน; ไปเรียนภาษาญี่ปุ่น | they want you to explain how it works
+q: คุณนกแนะนำเรื่องนามบัตรว่าอย่างไร | ถือด้วยสองมือและอ่านก่อนเก็บ*; วางไว้บนโต๊ะเฉยๆ; ไม่ต้องใช้นามบัตร | Hold your card with both hands ... take a moment to read it.
+q: ถ้ามีคนพูดว่า That might be difficult มักหมายความว่าอะไร | ไม่*; ได้แน่นอน; ขอเวลาคิดหนึ่งวัน | it often means no. They just don't want to say it directly.
+
+# r48 | B2 | f1 | Looking Back | มองย้อนกลับไป
+s: Today I received an email that I had been waiting for since my first year at university. | วันนี้ฉันได้รับอีเมลฉบับหนึ่งที่รอคอยมาตั้งแต่ปีหนึ่ง
+s: I have been accepted into a master's program in marketing in Melbourne, with a scholarship that pays for most of my studies. | ฉันได้รับคัดเลือกให้เรียนปริญญาโทด้านการตลาดที่เมลเบิร์น พร้อมทุนที่ครอบคลุมค่าเรียนเกือบทั้งหมด
+s: I read it five times before I believed it, and then I called my parents, Ton, and Anna, in that order. | ฉันอ่านห้ารอบกว่าจะเชื่อ แล้วก็โทรหาพ่อแม่ ต้น และแอนนา ตามลำดับ
+s: Tonight, I can't sleep, so I've been looking at the notebook where I wrote my goals when I was twenty. | คืนนี้ฉันนอนไม่หลับ เลยนั่งดูสมุดที่จดเป้าหมายไว้ตอนอายุยี่สิบ
+s: On the first page, it says, "Speak English with a foreigner for five minutes." | หน้าแรกเขียนว่า "พูดภาษาอังกฤษกับชาวต่างชาติให้ได้ห้านาที"
+s: It seems so small now, but at that time it felt impossible. | ตอนนี้มันดูเล็กมาก แต่ตอนนั้นมันดูเป็นไปไม่ได้เลย
+s: I was so shy that I would hide when a tourist asked for directions. | ฉันขี้อายมากจนต้องหลบทุกครั้งที่นักท่องเที่ยวมาถามทาง
+s: What changed? Not my talent. I wasn't especially good at languages. | อะไรที่เปลี่ยนไป ไม่ใช่พรสวรรค์ ฉันไม่ได้เก่งภาษาเป็นพิเศษ
+s: What changed was that I practiced a little every day, even on days when I didn't feel like it. | สิ่งที่เปลี่ยนคือฉันฝึกทีละนิดทุกวัน แม้ในวันที่ไม่อยากทำ
+s: Ten new words, one short story, a few sentences said out loud. | คำใหม่สิบคำ เรื่องสั้นหนึ่งเรื่อง กับประโยคไม่กี่ประโยคที่พูดออกเสียง
+s: None of it seemed important on its own, but after a few years, it added up to a new life. | ไม่มีอะไรดูสำคัญเลยเมื่อมองทีละอย่าง แต่ผ่านไปไม่กี่ปี มันรวมกันกลายเป็นชีวิตใหม่
+s: I also learned that mistakes are not the end of the world. | ฉันยังได้เรียนรู้ว่าความผิดพลาดไม่ใช่จุดจบของโลก
+s: I sent the wrong file to a customer, I failed interviews, and I said many silly things in English. | ฉันเคยส่งไฟล์ผิดให้ลูกค้า สอบสัมภาษณ์ไม่ผ่าน และพูดอะไรเปิ่นๆ เป็นภาษาอังกฤษมาเยอะ
+s: Each time, I learned something, and each time, people were kinder than I had feared. | ทุกครั้งฉันได้เรียนรู้บางอย่าง และทุกครั้งผู้คนก็ใจดีกว่าที่ฉันกลัวไว้
+s: Next February, I will be sitting in a classroom on the other side of the world. | เดือนกุมภาพันธ์ปีหน้า ฉันจะนั่งอยู่ในห้องเรียนอีกซีกโลกหนึ่ง
+s: I'm sure that I'll make new mistakes there, and I'm sure that I'll be scared sometimes. | ฉันมั่นใจว่าจะทำผิดพลาดเรื่องใหม่ๆ ที่นั่น และมั่นใจว่าบางครั้งก็จะกลัว
+s: But if you are reading this and you feel the way I felt at twenty, I want to tell you one thing: keep going. | แต่ถ้าคุณกำลังอ่านเรื่องนี้ และรู้สึกแบบที่ฉันเคยรู้สึกตอนอายุยี่สิบ ฉันอยากบอกคุณอย่างหนึ่ง เรียนต่อไปเถอะ
+s: Small steps every day will take you further than you can imagine. | ก้าวเล็กๆ ทุกวันจะพาคุณไปได้ไกลกว่าที่คุณคิด
+q: พลอยได้รับข่าวอะไร | ได้เรียนปริญญาโทที่เมลเบิร์นพร้อมทุน*; ได้เลื่อนตำแหน่ง; ได้งานใหม่ที่ญี่ปุ่น | I have been accepted into a master's program in marketing in Melbourne, with a scholarship
+q: เป้าหมายแรกในสมุดของพลอยคืออะไร | พูดภาษาอังกฤษกับชาวต่างชาติให้ได้ 5 นาที*; ไปเที่ยวออสเตรเลีย; อ่านหนังสือ 100 เล่ม | Speak English with a foreigner for five minutes.
+q: พลอยบอกว่าอะไรทำให้เธอเปลี่ยนไป | ฝึกทีละนิดทุกวัน*; เกิดมาเก่งภาษา; ย้ายไปอยู่ต่างประเทศ | What changed was that I practiced a little every day

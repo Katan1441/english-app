@@ -502,15 +502,18 @@ const DAY = Math.floor((Date.now() - new Date().getTimezoneOffset() * 60000) / 8
   }
   const units = await page.evaluate(() => document.querySelectorAll('[data-act="p-unit"]').length + document.querySelectorAll('.ubanner').length);
   const cnt = (t) => order.filter((id) => id.indexOf(t + ':') === 0).length;
-  check(cnt('v') === 1080 && cnt('g') === 64 && cnt('r') === 30 && cnt('t') === 30 && cnt('k') === units && units >= 70 && units <= 100, 'path: 1080 word nodes, 64 lessons, 30 stories, 30 say-alongs, a checkpoint per unit (' + units + ' units), ' + order.length + ' nodes');
+  check(cnt('v') === 1080 && cnt('g') === 64 && cnt('r') === 48 && cnt('t') === 48 && cnt('k') === units && units === 82, 'path: 1080 word nodes, 64 lessons, 48 stories, 48 say-alongs, a checkpoint per unit (' + units + ' units), ' + order.length + ' nodes');
   check(order.length >= 1400 && order.length <= 1600, 'about 1,500 nodes: ' + order.length);
   const gOrder = order.filter((id) => id[0] === 'g').map((id) => +id.slice(3));
   check(gOrder.every((x, i) => x === i + 1), 'lessons in their order');
   const rOrder = order.filter((id) => id[0] === 'r').map((id) => +id.slice(3));
-  check(rOrder.every((x, i) => x === i + 1), 'stories in their order');
+  check(rOrder.filter((x) => x <= 30).every((x, i) => x === i + 1) && rOrder.filter((x) => x > 30).every((x, i) => x === i + 31), 'stories in their order (the first 30, then the ones added later among them)');
+  const lvOf = await page.evaluate(() => { const o = {}; window.__R__.stories.forEach((s) => { o[s.id] = s.lv; }); return o; });
+  check(order.filter((id) => id[0] === 'r').every((id) => !!lvOf[id.slice(2)]), 'every story on the path exists');
   check(order.every((id, i) => id[0] !== 't' || order[i - 1] === 'r:' + id.slice(2)), 'each say-along right after its story');
   const pos = {}; order.forEach((id, i) => { pos[id] = i; });
   check(order.filter((id) => id[0] === 'v' && id.slice(-2) === '.0').every((id) => pos[id.slice(0, -1) + '1'] > pos[id] && pos[id.slice(0, -1) + '2'] > pos[id.slice(0, -1) + '1']), 'each set: stage 1, then 2, then 3');
+  check(pos['r:r31'] > pos['g:l37'] && pos['r:r36'] < pos['g:l53'] && pos['r:r37'] > pos['g:l53'] && pos['r:r48'] < pos['k:82'], 'new B1 stories in the B1 part of the path, new B2 stories in the B2 part');
   await ctx.close();
 
   await b.close(); server.close();

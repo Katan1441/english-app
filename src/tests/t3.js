@@ -168,7 +168,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   /* 3. reading and listening */
   ({ ctx, page } = await open({ touch: true, flags: { __noSpeech: true } }));
   await page.click('.tab[data-tab="read"]');
-  check((await page.$$('.rows .row')).length === 30 && (await page.$$('section.block h2')).length === 3, 'reading list: 30 stories in 3 levels');
+  check((await page.$$('.rows .row')).length === 48 && (await page.$$('section.block h2')).length === 4, 'reading list: 48 stories in 4 levels');
   check(await overflow(page) <= 0, 'reading list overflow');
   await page.screenshot({ path: path.join(shots, 't-read.png'), fullPage: true });
   await page.click('#r-resume');
@@ -225,7 +225,28 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   check(await has(page, '#wsheet .went') || /ไม่มีคำนี้/.test(await txt(page, '#wsheet')), 'any word gives an answer');
   await page.click('.tab[data-tab="path"]'); await page.click('#open-me');
   const tiles = await page.evaluate(() => Array.from(document.querySelectorAll('.tile b')).map((b) => b.textContent));
-  check(tiles.indexOf('1/30') >= 0, 'me: stories read counted ' + tiles.join(' | '));
+  check(tiles.indexOf('1/48') >= 0, 'me: stories read counted ' + tiles.join(' | '));
+  await ctx.close();
+
+  /* 3b. a story without recorded clips is read by the phone's voice, and says so */
+  ({ ctx, page } = await open({}));
+  await page.click('#ob-skip'); await page.click('.tab[data-tab="read"]');
+  check(/เสียงจากเครื่อง/.test(await txt(page, '.row[data-id="r37"]')) && !/เสียงจากเครื่อง/.test(await txt(page, '.row[data-id="r1"]')), 'reading list marks the phone-voice stories');
+  await page.evaluate(() => document.querySelectorAll('details.group').forEach((d) => { d.open = true; }));
+  await page.click('.row[data-id="r37"]');
+  check(/Looking for My First Job/.test(await txt(page, '#app h2')) && /เสียงจากเครื่อง/.test(await txt(page, '.eyebrow')) && await has(page, '#r-voice'), 'story 37 opened, marked as read by the phone');
+  const au37 = await page.evaluate(() => ({ starts: window.__au.starts, tts: window.__au.tts }));
+  await page.click('.line:nth-child(2) .listen'); await sleep(300);
+  const tts = await page.evaluate(() => ({ starts: window.__au.starts, tts: window.__au.tts, last: window.__au.last, line: document.querySelector('#line-1 .mic').getAttribute('data-text'), sc: document.querySelector('#line-1 .mic').getAttribute('data-sc') }));
+  check(tts.tts === au37.tts + 1 && tts.starts === au37.starts && tts.last === tts.line && tts.sc === '-1', 'a line plays with the phone voice, no clip ' + JSON.stringify(tts));
+  check(await overflow(page) <= 0, 'phone-voice story overflow');
+  await page.screenshot({ path: path.join(shots, 't-story-phone.png') });
+  await ctx.close();
+  ({ ctx, page } = await open({ flags: { __noSpeech: true } }));
+  await page.click('#ob-skip'); await page.click('.tab[data-tab="read"]');
+  await page.evaluate(() => document.querySelectorAll('details.group').forEach((d) => { d.open = true; }));
+  await page.click('.row[data-id="r37"]');
+  check(!(await has(page, '.line .listen:not(.mic)')) && !(await has(page, '#r-play')) && /ไม่มีเสียงอ่าน/.test(await txt(page, '#r-voice')), 'no phone voice: no listen buttons, the story says it can only be read');
   await ctx.close();
 
   /* 4. level check */

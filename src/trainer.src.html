@@ -2734,6 +2734,12 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
     if (r && typeof r === 'object') for (var id in r) { var x = r[id]; if (RDI[id] && Array.isArray(x) && x.length >= 3) READ[id] = [x[0] | 0, x[1] | 0, x[2] | 0]; }
   })();
   function rSave() { lsSet(RKEY, READ); Sync.touch('read'); }
+  /* line k of a story is clip s.a + k of the story pack; stories added later have no clips (no s.a) and are read by the
+     phone's voice: clip file -1 makes Snd.playRef use it */
+  function rRec(s) { return typeof s.a === 'number'; }
+  function rC(s) { return rRec(s) ? 0 : -1; }
+  function rK(s, k) { return (rRec(s) ? s.a : 0) + k; }
+  function rCan(s) { return rRec(s) ? Snd.hasRef('r', 0) : nativeOK; }
   function rDone(s) { return !!READ[s.id]; }
   function rDoneCount() { return RDS.filter(rDone).length; }
   function rNext() { for (var i = 0; i < RDS.length; i++) if (!rDone(RDS[i])) return RDS[i]; return null; }
@@ -2861,7 +2867,7 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
     if (!RS || RS.id !== s.id) return;
     if (k >= s.l.length) { rStop(); return; }
     RS.play = true; rMark(k); rBtn();
-    Snd.playRef('r', 0, s.a + k, s.l[k].en, UI.rslow, null, function (ok) {
+    Snd.playRef('r', rC(s), rK(s, k), s.l[k].en, UI.rslow, null, function (ok) {
       if (!RS || RS.id !== s.id || !RS.play) return;
       if (!ok) { rStop(); return; }
       RS.t = setTimeout(function () { rPlay(s, k + 1); }, 450);
@@ -2882,7 +2888,7 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
       h += group(key, grpOpen(key, nx ? nx.lv === lv : false), 'ระดับ ' + lv, ls.length + ' เรื่อง' + (d ? ' อ่านแล้ว ' + d + ' เรื่อง' : ''), '', ls.map(function (s) {
         var r = READ[s.id];
         return '<li><button type="button" class="row" data-act="r-open" data-id="' + s.id + '"><span class="row-no' + (r ? ' done' : '') + '">' + (s.i + 1) + '</span>' +
-          '<span class="row-main"><b class="en">' + esc(s.en) + '</b><small>' + esc(s.th) + (s.v === 'talk' ? ' (บทสนทนา)' : '') + '</small></span>' +
+          '<span class="row-main"><b class="en">' + esc(s.en) + '</b><small>' + esc(s.th) + (s.v === 'talk' ? ' (บทสนทนา)' : '') + (rRec(s) ? '' : ' · เสียงจากเครื่อง') + '</small></span>' +
           '<span class="row-side">' + (r ? 'ได้ ' + r[0] + '/' + r[1] : 'ยังไม่อ่าน') + '</span></button></li>';
       }).join(''));
     });
@@ -2923,26 +2929,27 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
     var s = RDI[view.id];
     if (!s) { go({ name: 'read' }); return; }
     if (!RS || RS.id !== s.id) rNewVisit(s);
-    var can = Snd.hasRef('r', 0), pmode = !!(PRUN && view.path);
+    var can = rCan(s), pmode = !!(PRUN && view.path);
     var h = (pmode ? pathBar(pathPct(RS.ans.filter(function (x) { return x !== undefined; }).length / s.q.length * 100)) : crumb([{ label: 'อ่าน-ฟัง', act: 'read' }])) +
-      '<header class="top"><p class="eyebrow">ระดับ ' + esc(s.lv) + ' เรื่องที่ ' + (s.i + 1) + (s.v === 'talk' ? ' บทสนทนา' : ' เรื่องสั้น') + '</p><h2 class="en">' + esc(s.en) + '</h2><p class="lede">' + esc(s.th) + '</p></header>';
+      '<header class="top"><p class="eyebrow">ระดับ ' + esc(s.lv) + ' เรื่องที่ ' + (s.i + 1) + (s.v === 'talk' ? ' บทสนทนา' : ' เรื่องสั้น') + (rRec(s) ? '' : ' · เสียงจากเครื่อง') + '</p><h2 class="en">' + esc(s.en) + '</h2><p class="lede">' + esc(s.th) + '</p></header>';
     h += '<div class="rbar">' + (can ? '<button type="button" class="btn" id="r-play" data-act="r-play">' + (RS.play ? IC_STOP + 'หยุด' : IC_PLAY + 'ฟังทั้งเรื่อง') + '</button>' : '') +
       '<button type="button" class="chip pick" id="r-th" data-act="r-th" aria-pressed="' + (UI.rth ? 'true' : 'false') + '">คำแปลทุกบรรทัด</button>' +
       (can ? '<button type="button" class="chip pick" id="r-slow" data-act="r-slow" aria-pressed="' + (UI.rslow ? 'true' : 'false') + '">ฟังช้า</button>' : '') + '</div>' +
+      (rRec(s) ? '' : '<p class="note" id="r-voice">' + (nativeOK ? 'เรื่องนี้ยังไม่มีเสียงอัด ใช้เสียงอ่านของเครื่องแทน' : 'เรื่องนี้ใช้เสียงอ่านของเครื่อง แต่เครื่องนี้ไม่มีเสียงอ่าน อ่านอย่างเดียวได้') + '</p>') +
       '<p class="syncnote" id="sndnote"></p><p class="note">แตะคำไหนก็ได้เพื่อดูความหมาย กดลำโพงเพื่อฟังทีละประโยค กดไมค์เพื่อพูดตามแล้วให้แอปช่วยตรวจ</p>';
     h += '<ol class="lines">' + s.l.map(function (l, k) {
       var show = UI.rth || RS.open[k];
       return '<li class="line' + (RS.k === k ? ' cur' : '') + '" id="line-' + k + '">' +
         (l.sp ? '<span class="who' + (l.sp === 'B' ? ' b' : '') + '">' + esc(s.who[l.sp].en) + '</span>' : '') +
         '<p class="l-en">' + rLineHtml(s, k) + '</p><span class="l-side">' +
-        (can ? '<button type="button" class="listen round" data-act="r-line" data-k="' + k + '" aria-label="ฟังประโยคนี้" title="ฟังประโยคนี้">' + ICON + '</button>' : '') + micBtn('r', 0, s.a + k, l.en, l.th) +
+        (can ? '<button type="button" class="listen round" data-act="r-line" data-k="' + k + '" aria-label="ฟังประโยคนี้" title="ฟังประโยคนี้">' + ICON + '</button>' : '') + micBtn('r', rC(s), rK(s, k), l.en, l.th) +
         (UI.rth ? '' : '<button type="button" class="l-tr" data-act="r-tr" data-k="' + k + '" aria-expanded="' + (show ? 'true' : 'false') + '">' + (show ? 'ซ่อนคำแปล' : 'แปล') + '</button>') + '</span>' +
         (show ? '<p class="l-th">' + esc(l.th) + '</p>' : '') + '</li>';
     }).join('') + '</ol>';
     h += '<section class="block" id="rqs">' + rQsHtml(s) + '</section>';
     app.innerHTML = h;
     renderSndNote();
-    if (can) Snd.warm('r', 0, s.a, s.a + s.l.length - 1);
+    if (can && rRec(s)) Snd.warm('r', 0, s.a, s.a + s.l.length - 1);
   }
   function rAnswered(s) {
     var n = 0, right = 0;
@@ -3122,7 +3129,7 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
     if (act === 'r-line') {
       var lk = Number(el.getAttribute('data-k'));
       rStop(); rMark(lk);
-      Snd.playRef('r', 0, s.a + lk, s.l[lk].en, UI.rslow, el, function () { if (RS && !RS.play && RS.k === lk) rMark(-1); });
+      Snd.playRef('r', rC(s), rK(s, lk), s.l[lk].en, UI.rslow, el, function () { if (RS && !RS.play && RS.k === lk) rMark(-1); });
       return;
     }
     if (act === 'r-th') { UI.rth = !UI.rth; saveUI(); render(); return; }
@@ -3394,8 +3401,10 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
      at the stretch's end; its untaught words are shown just before it, and a say-along follows it. A review comes after every six
      nodes. Units of 12 to 18 nodes, cut before a new topic where possible, are named after their main topic and end with a checkpoint.
      Node ids: v:<topic>.<set>.<stage>, g:<lesson>, r:<story>, t:<story>, x:<review number>, k:<unit number>.
-     Topics added later (index 55 and up) are not on the path yet; phase 4 places them in the B1 level. */
-  var PBASE = 55, CKPASS = 0.8, PM = null, PRUN = null, PFOCUS = null;
+     Content added later is slotted into the units already cut, so unit and review numbers (kept in the path key) never move:
+     stories after the first 30 sit between the level's first stories (or evenly where it has none), each with its say-along,
+     and never pull the path back once the learner is past them. Topics added later (index 55 and up) are not on the path yet. */
+  var PBASE = 55, PRBASE = 30, CKPASS = 0.8, PM = null, PRUN = null, PFOCUS = null;
   var PFUNC = {};
   ('a an the and or but so if to of in on at for with from by about as than then is am are was were be been being do does did not no yes ' +
    'i you he she it we they me him her us them my your his its our their this that these those there here what who where when why how which ' +
@@ -3451,7 +3460,7 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
       function put(p, n) { (at[p] || (at[p] = [])).push(n); }
       var gl = GLS.filter(function (l) { return l.lv === lv.id; });
       gl.forEach(function (l, j) { put(Math.min(V, Math.floor(j * V / gl.length) + 2), { t: 'g', l: l }); });
-      var rs = RDS.filter(function (s) { return s.lv === lv.id; });
+      var rs = RDS.filter(function (s) { return s.lv === lv.id && s.i < PRBASE; });
       var slot = rs.map(function (_, j) { return Math.floor((j + 1) * V / (rs.length + 1)); });
       rs.forEach(function (s, j) {
         var end = j + 1 < rs.length ? slot[j + 1] - 1 : V, p = slot[j];
@@ -3493,7 +3502,20 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
         u.nodes.push(u.ck);
         PU.push(u); S.units.push(u);
       });
+      /* stories added later: halfway between the first stories' places (evenly when there are none), then later inside
+         their stretch until 95% of their words are taught; put before the word node at that point, inside its unit */
+      var rx = RDS.filter(function (s) { return s.lv === lv.id && s.i >= PRBASE; });
+      var xs = rx.map(function (_, j) { return Math.min(V, Math.floor(((j + 1) / (rx.length + 1) + (rs.length ? 0.5 / (rs.length + 1) : 0)) * V)); });
+      rx.forEach(function (s, j) {
+        var end = j + 1 < rx.length ? xs[j + 1] - 1 : V, p = xs[j];
+        while (p < end && cover(s, sec, p) < 0.95) p++;
+        var before = p < V ? voc[p] : null, u = before ? PU[before.u] : S.units[S.units.length - 1];
+        var r = { t: 'r', r: s, nw: fresh(s, sec, p), ex: true, id: 'r:' + s.id, u: u.i }, t = { t: 't', r: s, ex: true, id: 't:' + s.id, u: u.i };
+        u.nodes.splice(before ? u.nodes.indexOf(before) : u.nodes.length - 1, 0, r, t);
+      });
     });
+    PN.length = 0;
+    PU.forEach(function (u) { u.nodes.forEach(function (n) { n.i = PN.length; PN.push(n); PNI[n.id] = n; }); });
     return { PN: PN, PNI: PNI, PU: PU, PSEC: PSEC };
   }
   /* done comes from the records that already exist; the path key only adds checkpoints, reviews and say-alongs */
@@ -3512,18 +3534,19 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
      passed: the next thing to do. A review counts as done once it was done, or once the learner went past it (the node after it
      is done or passed by), so an old review never pulls the path back. */
   function pathScan() {
-    var M = pm(), N = M.PN, done = [], nav = [], past = false, noDue = stats().due === 0, sr = !!Spk.SR(), cur = -1, i, n;
+    var M = pm(), N = M.PN, done = [], nav = [], behind = [], past = false, noDue = stats().due === 0, sr = !!Spk.SR(), cur = -1, i, n;
     var sb = [stageBits(0), stageBits(1), stageBits(2)], upass = M.PU.map(function (u) { return ckPassed(u.ck); });
     for (i = N.length - 1; i >= 0; i--) {
       n = N[i];
       if (n.t === 'x') { done[i] = !!PATH.x[n.n] || past; continue; }
       done[i] = nodeDone(n, sb);
+      if (n.ex) { behind[i] = past; continue; }
       if (n.t === 't' && !sr) continue;
       past = done[i] || upass[n.u] || M.PU[n.u].sec < PATH.s || (n.t === 'k' && !!PATH.k[n.n]);
     }
     for (i = 0; i < N.length; i++) {
       n = N[i];
-      nav[i] = done[i] || upass[n.u] || M.PU[n.u].sec < PATH.s || (n.t === 't' && !sr) || (n.t === 'k' && !!PATH.k[n.n]) || (n.t === 'x' && noDue);
+      nav[i] = done[i] || upass[n.u] || M.PU[n.u].sec < PATH.s || (n.t === 't' && !sr) || (n.t === 'k' && !!PATH.k[n.n]) || (n.t === 'x' && noDue) || !!behind[i];
       if (cur < 0 && !nav[i]) cur = i;
     }
     if (noDue) for (i = 0; i < (cur < 0 ? N.length : cur); i++) if (N[i].t === 'x') done[i] = true;
@@ -3748,7 +3771,7 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
     return out;
   }
   function sayMark(ref, ok) {
-    var R = PRUN, s = R.n.r, k = ref.k - s.a;
+    var R = PRUN, s = R.n.r, k = ref.k - rK(s, 0);
     if (R.say.lines.indexOf(k) < 0) return;
     R.say.tried[k] = 1;
     if (ok && !R.say.ok[k]) { R.say.ok[k] = 1; answered(true, false, null); }
@@ -3970,14 +3993,14 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
   function vPathSay() {
     var R = PRUN;
     if (!R || !R.say) { go({ name: 'path' }); return; }
-    var s = R.n.r, L = R.say.lines, okN = L.filter(function (k) { return R.say.ok[k]; }).length, can = Snd.hasRef('r', 0);
+    var s = R.n.r, L = R.say.lines, okN = L.filter(function (k) { return R.say.ok[k]; }).length, can = rCan(s);
     var h = pathBar(pathPct(okN / L.length * 100)) + '<header class="top"><p class="eyebrow en">' + esc(s.en) + '</p><h2>พูดตามทีละประโยค</h2>' +
       '<p class="lede">ฟังต้นแบบ แล้วกดไมค์พูดตาม ได้ยินถูกเกือบทุกคำถือว่าผ่าน พูดได้แล้ว ' + okN + ' จาก ' + L.length + ' ประโยค</p></header><p class="syncnote" id="sndnote"></p>' +
       '<ol class="lines" id="p-say-lines">' + L.map(function (k) {
         var l = s.l[k], ok = R.say.ok[k];
         return '<li class="line' + (ok ? ' said' : '') + '" id="say-' + k + '"><p class="l-en">' + esc(l.en) + '</p><span class="l-side">' +
           (can ? '<button type="button" class="listen round" data-act="p-say-play" data-k="' + k + '" aria-label="ฟังต้นแบบ" title="ฟังต้นแบบ">' + ICON + '</button>' : '') +
-          micBtn('r', 0, s.a + k, l.en, l.th) + '</span><p class="l-th">' + esc(l.th) + '</p>' + (ok ? '<span class="said-chip">' + IC_OK + 'พูดได้แล้ว</span>' : '') + '</li>';
+          micBtn('r', rC(s), rK(s, k), l.en, l.th) + '</span><p class="l-th">' + esc(l.th) + '</p>' + (ok ? '<span class="said-chip">' + IC_OK + 'พูดได้แล้ว</span>' : '') + '</li>';
       }).join('') + '</ol><div class="actions stack">' +
       '<button type="button" class="btn" id="p-say-done" data-act="p-next">ดูสรุป</button>' +
       (okN ? '' : '<button type="button" class="btn ghost" id="p-say-skip" data-act="p-next">ตอนนี้พูดไม่ได้</button>') + '</div>';
@@ -4014,7 +4037,7 @@ body[data-view="path"] .page{padding-bottom:calc(180px + env(safe-area-inset-bot
     if (act === 'p-next') { if (PRUN) pathNextPart(); return; }
     if (act === 'p-go-next') { n = PRUN ? pathNextNode(PRUN.n) : null; if (!n || !pathStart(n)) go({ name: 'path' }); return; }
     if (act === 'p-again') { if (PRUN && !pathStart(PRUN.n)) go({ name: 'path' }); return; }
-    if (act === 'p-say-play') { var s = PRUN && PRUN.n.r, k = Number(el.getAttribute('data-k')); if (s) Snd.playRef('r', 0, s.a + k, s.l[k].en, UI.rslow, el); return; }
+    if (act === 'p-say-play') { var s = PRUN && PRUN.n.r, k = Number(el.getAttribute('data-k')); if (s) Snd.playRef('r', rC(s), rK(s, k), s.l[k].en, UI.rslow, el); return; }
     if (act === 'ob-why') { UI.why = el.getAttribute('data-v'); saveUI(); OB.step = 1; render(); return; }
     if (act === 'ob-min') { var xg = Number(el.getAttribute('data-v')); if ([10, 20, 30, 50].indexOf(xg) >= 0) UI.xg = xg; saveUI(); OB.step = 2; render(); return; }
     if (act === 'ob-back') { OB.step = Math.max(0, OB.step - 1); render(); return; }

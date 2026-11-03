@@ -7,7 +7,7 @@
 - **ขั้น 1 ฝึกพูด** (เสร็จแล้ว): ปุ่มไมค์ที่ประโยค พูดแล้วแอปบอกว่าคำไหนถูก
 - **ขั้น 2 เส้นทางแบบ Duolingo** (เสร็จแล้ว): บทเรียนเป็นวงกลมเรียงเป็นทางเดียว กดวงถัดไปได้เลยไม่ต้องคิด มี XP เป้า XP ต่อวัน ภารกิจประจำวัน 3 อย่าง หน้าสรุปตอนจบบท และนับข้อที่ถูกติดกัน
 - **ขั้น 3 ฝึกและสร้างนิสัย**: หน้า "ฝึก" รวมคำและข้อที่ผิดบ่อย ฟังแล้วพิมพ์ จับคู่แข่งเวลา วันพักกันสถิติหาย ต้อนรับตอนกลับมาเรียน เหรียญรางวัล ตั้งเตือนในปฏิทิน และเซฟสำรองเป็นไฟล์
-- **ขั้น 4 เนื้อหาให้ครบ**: ฝึกเสียงที่คนไทยพูดยาก บทสนทนาที่เราเล่นเป็นตัวละคร แบบฝึกหาที่ผิดในประโยค เรื่องอ่านเพิ่ม 18 เรื่อง (B1–B2) งานเขียนสั้นๆ และศัพท์งานกับเทคโนโลยี
+- **ขั้น 4 เนื้อหาให้ครบ** (ทำแล้วบางส่วน: เรื่องอ่านใหม่ 18 เรื่อง): ฝึกเสียงที่คนไทยพูดยาก บทสนทนาที่เราเล่นเป็นตัวละคร แบบฝึกหาที่ผิดในประโยค เรื่องอ่านเพิ่ม 18 เรื่อง (B1–B2) งานเขียนสั้นๆ และศัพท์งานกับเทคโนโลยี
 - **ขั้น 5 ปรับตามผู้เรียน**: ความยากพอดี (ตอบถูกราว 85%) คำที่จำได้แล้วเว้นช่วงทบทวนนานขึ้น ระดับ CEFR แยกตามทักษะ และสอบผ่านระดับพร้อมใบผ่าน
 
 วิธีสั่ง: เปิด Claude Code แบบ **Cloud** เลือก english-app แล้วพิมพ์ `อ่าน ROADMAP.md แล้วทำขั้นที่ 2` (ขั้นต่อไปก็เปลี่ยนเลขตามนั้น) ทำทีละขั้นเท่านั้น อย่าเปิดสองงานพร้อมกัน เพราะทุกขั้นแก้ไฟล์เดียวกัน
@@ -33,7 +33,7 @@
 | 1 | Speaking practice (`CLAUDE.md` idea 1) | done (3 Nov 2026) |
 | 2 | Learning path, XP, daily quests, end-of-lesson screen, combo | done (3 Nov 2026), see "As built" under Phase 2 |
 | 3 | Practice tab, mistakes review, dictation, match race, streak protection, comeback, badges, reminders, backup file | todo |
-| 4 | Content: Thai-speaker sounds, role-play dialogues, error-correction drills, 18 stories, writing tasks, work and technology words | todo |
+| 4 | Content: Thai-speaker sounds, role-play dialogues, error-correction drills, 18 stories, writing tasks, work and technology words | partly done (3 Nov 2026): 4.4 stories done; 4.1, 4.2, 4.3, 4.5, 4.6 left |
 | 5 | Adaptive difficulty, longer reviews for known words, skill levels, level exit tests with certificate | todo |
 | 6 | Optional: more vocabulary (B2–C1) | later |
 
@@ -302,6 +302,19 @@
   lesson of each new type can be completed end to end with recognition stubbed; stories meet the coverage rule (test computes
   it); new topics play phone voice and do not shift existing topic indexes or progress.
 
+### As built so far (3 Nov 2026)
+
+- **4.4 done.** r31–r36 (B1, 166–207 words) and r37–r48 (B2, 261–296 words), 6 dialogues among them, each with Thai lines,
+  3 questions and glossary entries for the words outside the app's list (before the glossary at most 3.4% of a story's
+  words were outside; after it none). Storyline: Ploy's internship and presentation, Ton's final project, Anna going home,
+  graduation, the job hunt and interview, Ton's first weeks and the broken-parts problem, a first flat, an unhappy customer,
+  working from home, asking for a raise, Anna's visit, saving money, a trip to Japan, and Ploy's scholarship to Melbourne.
+  Phone voice, marked "เสียงจากเครื่อง". On the path they are slotted into the existing units (B1 units 56–67, B2 units
+  71–81), halfway between the first stories where a level has some; no existing node changed unit, order or number, and
+  a story added behind the learner is passed by instead of becoming the next thing to do. Checked by `src/tests/stories.js`.
+- **Left for later sessions:** 4.1 sounds for Thai speakers, 4.2 role-play dialogues, 4.3 error-correction drills,
+  4.5 writing, 4.6 work and technology words.
+
 ---
 
 ## Phase 5: adapt to the learner
@@ -335,7 +348,7 @@
 | Vocabulary | 3,600 words, 9 steps, spaced review, search | 2 path pacing; 3 mistakes, match race; 4.6 work words; 5.2 longer intervals; 6 B2–C1 |
 | Grammar | 64 lessons A1–B2 with Thai mistakes | 2 review nodes; 3 missed questions; 4.3 error drills |
 | Listening | clips for words, sentences, grammar, stories | 3 dictation; 4.2 dialogues; 4.4 stories |
-| Reading | 30 stories with tap-to-translate | 4.4 18 stories; 2 coverage-based placement |
+| Reading | 48 stories with tap-to-translate (18 read by the phone's voice) | 2 coverage-based placement; 4.4 done |
 | Speaking | Phase 1 | 2 say-along nodes; 4.1 sounds; 4.2 dialogues |
 | Pronunciation | stressed syllable marked in readings | 4.1 sounds for Thai speakers |
 | Writing | copy, type, order, own sentence | 3 dictation; 4.5 guided messages |
