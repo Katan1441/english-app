@@ -502,8 +502,9 @@ const DAY = Math.floor((Date.now() - new Date().getTimezoneOffset() * 60000) / 8
   }
   const units = await page.evaluate(() => document.querySelectorAll('[data-act="p-unit"]').length + document.querySelectorAll('.ubanner').length);
   const cnt = (t) => order.filter((id) => id.indexOf(t + ':') === 0).length;
-  check(cnt('v') === 1080 && cnt('g') === 64 && cnt('r') === 48 && cnt('t') === 48 && cnt('k') === units && units === 82, 'path: 1080 word nodes, 64 lessons, 48 stories, 48 say-alongs, a checkpoint per unit (' + units + ' units), ' + order.length + ' nodes');
-  check(order.length >= 1400 && order.length <= 1600, 'about 1,500 nodes: ' + order.length);
+  check(cnt('v') === 1125 && cnt('g') === 64 && cnt('r') === 48 && cnt('t') === 48 && cnt('k') === units && units === 82, 'path: 1125 word nodes (45 of them the work words), 64 lessons, 48 stories, 48 say-alongs, a checkpoint per unit (' + units + ' units), ' + order.length + ' nodes');
+  check(cnt('p') === 14 && cnt('d') === 16 && cnt('e') === 10 && cnt('w') === 27, 'phase 4: 14 sound lessons, 16 dialogues, 10 drills, 27 writing tasks');
+  check(order.length === 1632, 'about 1,600 nodes: ' + order.length);
   const gOrder = order.filter((id) => id[0] === 'g').map((id) => +id.slice(3));
   check(gOrder.every((x, i) => x === i + 1), 'lessons in their order');
   const rOrder = order.filter((id) => id[0] === 'r').map((id) => +id.slice(3));

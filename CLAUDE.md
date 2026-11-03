@@ -12,7 +12,7 @@ who is learning English from below A1. Everything the learner sees is in Thai; E
 ## What is in the app
 
 - **เรียน (the path)**, the landing tab (`data-tab="path"`, view `path`): one learning path built at runtime from the
-  existing content (`pathBuild`, no new lesson data), 1,520 nodes in 82 units over the levels A1–B2. Header: streak,
+  existing content (`pathBuild`), 1,632 nodes in 82 units over the levels A1–B2. Header: streak,
   today's XP against the goal (ring), quests button, and `#open-me` for the **ฉัน** screen (view `me`: streak card with the
   7-day strip, quests, progress tiles, `#open-level`, `#open-prefs`). Only the current unit and two on each side are drawn;
   other units are rows (`data-act="p-unit"`). Every circle has a short label (`.pn-l`); tapping one opens a sheet (what it
@@ -51,7 +51,19 @@ who is learning English from below A1. Everything the learner sees is in Thai; E
   the pace note once a day at 3x the goal (`paceCheck`, `UI.pace`), 24 badges (`BADGES`, computed; a non-blocking panel
   `#bdg-pop` when new; grid on ฉัน, `#bdg-<id>`), the calendar reminder in settings (`#rm-time`, `#rm-gcal`, `#rm-ics`,
   `UI.rt`) and the backup as a file (`#bk-save`, `#bk-load` / `#bk-file`).
-- **คำศัพท์**: 3,600 words in 55 topics (group A basics first, then 36 topics from the Oxford 3000 PDF, group C last),
+- **Phase 4 lessons** (data in `src/data/sounds.json`, `talk.json`, `drills.json`, `write.json`, built into
+  `window.__P4__`), each a path node placed into the existing units by `p4Place` and listed on the ฝึก tab (`#pr-snd`,
+  `#pr-talk`, `#pr-fix`, `#pr-write` → view `lib`, rows `#lib-<id>`, a lesson started there returns to the tab):
+  **ฝึกเสียง** `p:<s1-s14>` (view `p-snd`: how to make the sound, minimal pairs by the phone's voice `#sn-o-0/1` with
+  "ตอนนี้ฟังไม่ได้" `#sn-skip`, lines to say with the speaking panel); **บทสนทนา** `d:<d1-d16>` (view `p-talk`: the
+  learner plays Ploy or Ton, the other role is read by the phone, hints `#tk-hint-btn`, said or typed `#tk-in`/`#tk-check`,
+  passes at 70% of the content words, `tkGrade`; `#tk-skip`); **หาที่ผิด** `e:<e1-e10>` (view `p-fix`: tap the wrong word
+  `#fx-w-i`, two wrong taps show it, pick the fix `#fx-o-0` is right; "_" joins words into one tap target; misses kept in
+  `LES.x` join the mistakes list); **เขียน** `w:<w1-w27>` (view `p-write`: brief, word bank, model, self-check list
+  `#wr-c-i`, at least 3 sentences for `#wr-done`; Claude's check `#wr-ai` only inside claude.ai). Results in
+  `vocab3000-lessons-v1`; a lesson is done once it has a record.
+- **คำศัพท์**: 3,750 words in 62 topics (group A basics first, then 36 topics from the Oxford 3000 PDF, group C, and group
+  W: 150 work and technology words in topics 55–61 added in phase 4, read by the phone's voice, "เสียงจากเครื่อง"),
   sets of 10, nine practice steps per set, spaced review, search, Thai readings with the stressed syllable marked.
 - **ไวยากรณ์**: 64 lessons (A1 18, A2 18, B1 16, B2 12), each with explanation, patterns, examples with sound,
   common Thai mistakes and 10 questions (pass = 8).
@@ -76,6 +88,7 @@ who is learning English from below A1. Everything the learner sees is in Thai; E
 
 - `src/trainer.src.html` — the whole app in one file: CSS, markup slots and JavaScript (≈4,200 lines).
 - `src/data/vocab.js` (topics and words), `src/data/gram.json` (grammar), `src/data/read.json` (stories and word tables),
+  `src/data/sounds.json`, `talk.json`, `drills.json`, `write.json` (phase 4 lessons),
   `src/data/audio-index.json` (frame counts of every clip in every sound file, file names).
 - `src/build.py` → writes `index.html` (page + data + app head) and `sw.js` (from `src/sw.template.js` with a new version).
 - `audio/*.mp3` — sound packs: `wNN` words and `sNN` example sentences per topic (`r2` = re-recorded), `ga1…gb2` grammar,
@@ -97,6 +110,7 @@ node src/tests/t3.js /tmp/app /tmp/app/shots3    # path tab and me screen, answe
 node src/tests/sp.js /tmp/app /tmp/app/spshots   # speaking: mic buttons, word marking, errors, recording, layout
 node src/tests/t4.js /tmp/app /tmp/app/pshots    # path: first run, nodes, XP, combo, quests, checkpoints, backup, layout
 node src/tests/t5.js /tmp/app /tmp/app/p3shots   # practice tab, mistakes, dictation, match race, rest days, badges, reminder, backup file
+node src/tests/t6.js /tmp/app /tmp/app/p4shots   # phase 4 data, sounds, dialogues, drills, writing, work words, placement, backup
 node src/tests/pwatest.js .                      # app from a sub-path, service worker, all sound offline
 node src/tests/stories.js                        # stories data: complete, clips exist, length per level, 5% word rule
 ```
@@ -119,18 +133,20 @@ in light and dark: no horizontal scroll (the tests check this too).
   `vocab3000-path-v1` (`{k: {unitNo: [best, total, time]}, x: {reviewNo: day}, t: {storyId: [said, lines, time]}, s: start
   level index}`), `vocab3000-prac-v1` (`{m: best match-race ms, d: {day: dictation sentences right}, r: {day: mistakes
   rounds}}`), `vocab3000-streak-v1` (`{s: first day rest days applied, u: {day: 1} days covered by a rest day}`),
-  `vocab3000-badges-v1` (`{c: {badgeId: day celebrated}}`). Days are `Math.floor((local ms) / 86400000)`.
+  `vocab3000-badges-v1` (`{c: {badgeId: day celebrated}}`), `vocab3000-lessons-v1` (`{p|d|e|w: {id: [best, total, time]},
+  x: {drillItemId: misses}}`). Days are `Math.floor((local ms) / 86400000)`.
 - **Path node ids are stable**: `v:<topic>.<set>.<stage>`, `g:<lessonId>`, `r:<storyId>`, `t:<storyId>`, `x:<n>`,
-  `k:<unitNo>`. Done comes from existing records (step bits, `gPassed`, `rDone`) plus the path key; never write fake
+  `k:<unitNo>`, `p:<soundId>`, `d:<dialogueId>`, `e:<drillId>`, `w:<writingId>`. Done comes from existing records (step bits, `gPassed`, `rDone`) plus the path key; never write fake
   progress to mark a node done. Changing `pathBuild` changes unit numbers and review numbers that the path key stores, so
   add new kinds of nodes inside the existing units (phase 4) rather than re-cutting them, and topics 56+ go into B1.
   Stories after the first 30 (`PRBASE`) are slotted into the existing units this way (flag `ex`); added content behind the
   learner never becomes the current node. A new story goes at the end of `read.json` without `a`; words outside the app's
   list get a glossary entry (`gl`), irregular forms an `irr` entry; `src/tests/stories.js` checks length and the 5% rule.
+  Phase 4 lessons and the work words (topics 55+, sets spread over B1) are slotted in the same way by `p4Place`, all `ex`.
 - Word numbers `n`, topic indexes and step bits are fixed: topics 37-55 were appended after the first 36, and the display
   order (`ORD`) differs from the data order. Add new words or topics only at the end.
 - The backup code (`EN1:` + base64 JSON of the documents `cNN`, `gram`, `days`, `read`, `level`, `xp`, `path`, `prac`,
-  `streak`, `badges`) must keep working, also for old codes without the later ones; restoring merges and never lowers
+  `streak`, `badges`, `lessons`) must keep working, also for old codes without the later ones; restoring merges and never lowers
   progress (`Sync.merge`, `EXTRA`; the race keeps the shorter time). The same code can be saved and opened as a file.
 - `Sync` (account saving) and `AI` (sentence check by Claude) only exist inside claude.ai; on GitHub Pages they stay off
   and the app saves locally and offers the self-check. Keep both paths working.

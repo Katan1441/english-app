@@ -106,7 +106,7 @@ const J = JSON.stringify;
   check((await page.$$('#tabbar .tab:not([hidden])')).length === 5 && await has(page, '.tab[data-tab="prac"]'), 'menu: five tabs with ฝึก');
   await page.click('.tab[data-tab="prac"]');
   check((await viewOf(page)) === 'prac' && await has(page, '.tab[data-tab="prac"][aria-current="page"]'), 'practice tab opens and is marked');
-  check((await ids(page, '.pcard')).join() === 'pr-due,pr-mist,pr-say,pr-dict,pr-match', 'five practice cards: ' + (await ids(page, '.pcard')).join());
+  check((await ids(page, '.pcard')).join() === 'pr-due,pr-mist,pr-say,pr-dict,pr-match,pr-snd,pr-talk,pr-fix,pr-write', 'nine practice cards (four lesson lists from phase 4): ' + (await ids(page, '.pcard')).join());
   check(await has(page, '#pr-due:disabled') && await has(page, '#pr-mist:disabled') && await has(page, '#pr-match:disabled') && !(await has(page, '#pr-say:disabled')) && await has(page, '#pr-none'), 'nothing learned: review, mistakes and the race wait, with a note');
   await ctx.close();
 

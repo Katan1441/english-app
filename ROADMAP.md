@@ -8,7 +8,7 @@
 - **ขั้น 2 เส้นทางแบบ Duolingo** (เสร็จแล้ว): บทเรียนเป็นวงกลมเรียงเป็นทางเดียว กดวงถัดไปได้เลยไม่ต้องคิด มี XP เป้า XP ต่อวัน ภารกิจประจำวัน 3 อย่าง หน้าสรุปตอนจบบท และนับข้อที่ถูกติดกัน
 - **หน้าตาแบบมังงะขาวดำ** (เสร็จแล้ว): เส้นหมึก ลายสกรีนโทน วง ○ เมื่อตอบถูก กากบาท ✕ เมื่อตอบผิด ตัวละครพูดในกรอบคำพูด
 - **ขั้น 3 ฝึกและสร้างนิสัย** (เสร็จแล้ว): หน้า "ฝึก" รวมคำและข้อที่ผิดบ่อย ฟังแล้วพิมพ์ จับคู่แข่งเวลา วันพักกันสถิติหาย ต้อนรับตอนกลับมาเรียน เหรียญรางวัล ตั้งเตือนในปฏิทิน และเซฟสำรองเป็นไฟล์
-- **ขั้น 4 เนื้อหาให้ครบ** (ทำแล้วบางส่วน: เรื่องอ่านใหม่ 18 เรื่อง): ฝึกเสียงที่คนไทยพูดยาก บทสนทนาที่เราเล่นเป็นตัวละคร แบบฝึกหาที่ผิดในประโยค เรื่องอ่านเพิ่ม 18 เรื่อง (B1–B2) งานเขียนสั้นๆ และศัพท์งานกับเทคโนโลยี
+- **ขั้น 4 เนื้อหาให้ครบ** (เสร็จแล้ว): ฝึกเสียงที่คนไทยพูดยาก บทสนทนาที่เราเล่นเป็นตัวละคร แบบฝึกหาที่ผิดในประโยค เรื่องอ่านเพิ่ม 18 เรื่อง (B1–B2) งานเขียนสั้นๆ และศัพท์งานกับเทคโนโลยี
 - **ขั้น 5 ปรับตามผู้เรียน**: ความยากพอดี (ตอบถูกราว 85%) คำที่จำได้แล้วเว้นช่วงทบทวนนานขึ้น ระดับ CEFR แยกตามทักษะ และสอบผ่านระดับพร้อมใบผ่าน
 
 วิธีสั่ง: เปิด Claude Code แบบ **Cloud** เลือก english-app แล้วพิมพ์ `อ่าน ROADMAP.md แล้วทำขั้นที่ 2` (ขั้นต่อไปก็เปลี่ยนเลขตามนั้น) ทำทีละขั้นเท่านั้น อย่าเปิดสองงานพร้อมกัน เพราะทุกขั้นแก้ไฟล์เดียวกัน
@@ -36,7 +36,7 @@
 | 2 | Learning path, XP, daily quests, end-of-lesson screen, combo | done (3 Nov 2026), see "As built" under Phase 2 |
 | M | Black-and-white manga look (`design/manga/README.md`), before phase 3 | done (3 Nov 2026): see the Design section of `CLAUDE.md` |
 | 3 | Practice tab, mistakes review, dictation, match race, streak protection, comeback, badges, reminders, backup file | done (3 Nov 2026), see "As built" under Phase 3 |
-| 4 | Content: Thai-speaker sounds, role-play dialogues, error-correction drills, 18 stories, writing tasks, work and technology words | partly done (3 Nov 2026): 4.4 stories done; 4.1, 4.2, 4.3, 4.5, 4.6 left |
+| 4 | Content: Thai-speaker sounds, role-play dialogues, error-correction drills, 18 stories, writing tasks, work and technology words | done (3 Nov 2026), see "As built" under Phase 4 |
 | 5 | Adaptive difficulty, longer reviews for known words, skill levels, level exit tests with certificate | todo |
 | 6 | Optional: more vocabulary (B2–C1) | later |
 
@@ -326,7 +326,7 @@
   lesson of each new type can be completed end to end with recognition stubbed; stories meet the coverage rule (test computes
   it); new topics play phone voice and do not shift existing topic indexes or progress.
 
-### As built so far (3 Nov 2026)
+### As built (3 Nov 2026)
 
 - **4.4 done.** r31–r36 (B1, 166–207 words) and r37–r48 (B2, 261–296 words), 6 dialogues among them, each with Thai lines,
   3 questions and glossary entries for the words outside the app's list (before the glossary at most 3.4% of a story's
@@ -336,8 +336,31 @@
   Phone voice, marked "เสียงจากเครื่อง". On the path they are slotted into the existing units (B1 units 56–67, B2 units
   71–81), halfway between the first stories where a level has some; no existing node changed unit, order or number, and
   a story added behind the learner is passed by instead of becoming the next thing to do. Checked by `src/tests/stories.js`.
-- **Left for later sessions:** 4.1 sounds for Thai speakers, 4.2 role-play dialogues, 4.3 error-correction drills,
-  4.5 writing, 4.6 work and technology words.
+- **Placement.** Everything new is added into the units already cut (`p4Place`, flag `ex`), so no existing node changed
+  unit, order or number (checked against the previous build: 112 nodes added, none moved); the path has 1,632 nodes.
+  Lessons the learner is already past are passed by, and every kind is also on the ฝึก tab as a list.
+- **4.1 done.** 14 lessons in `src/data/sounds.json`: how to make the sound (Thai), example words, 5–6 minimal pairs heard
+  with the phone's voice (normal and slow, "ตอนนี้ฟังไม่ได้" skips), and lines to say with the speaking panel (its guess is
+  shown as a hint next to the model and one's own recording). Lesson 14 asks which syllable is stressed. Without the phone's
+  voice the listening part is left out. Placed in every second unit from the 2nd unit of A1 (1–6), A2 (7–11) and B1 (12–14).
+- **4.2 done.** 16 dialogues in `src/data/talk.json` (A1 4, A2 6, B1 6: "buy a train ticket" was added to reach 16). The
+  learner plays Ploy or Ton; the other role is the cast or a person on the spot, read by the phone. Hints: first letters,
+  then the whole line. A line passes when 70% of its content words match (small function words do not count, short forms
+  are expanded); said through the mic or typed; skippable. Placed in the odd units from the start of A1, A2 and B1; the
+  first-run goal (`UI.why`, tags per dialogue) puts matching dialogues first within a level.
+- **4.3 done.** 10 types of 10 sentences in `src/data/drills.json`, most common first. Tap the wrong word (two wrong taps
+  show it), pick the fix, read why. When the error is two words or a word too many, the sentence joins them with "_" into
+  one tap target, and the fix replaces that chunk. Each drill sits right after its main grammar lesson. Misses are kept per
+  sentence and join the mistakes list and its round.
+- **4.5 done as a subset.** 27 tasks in `src/data/write.json` (A2 10, B1 10, B2 7) at the end of every second unit from A2,
+  not every unit (58 tasks would mostly repeat). Each has a Thai brief, a word bank (tap to insert), a model answer and three
+  self-check points; at least three sentences finish it, every point ticked counts as full. Claude's check is offered only
+  inside claude.ai.
+- **4.6 done.** 150 words in 7 topics appended at indexes 55–61 (group W, shown last on the คำศัพท์ tab), in the usual line
+  format with readings and examples, empty entries in `audio-index.json`, phone voice. Their 15 sets are spread over the 20
+  B1 units, each set's three stages inside one unit.
+- **Records.** One new key `vocab3000-lessons-v1` (`p`, `d`, `e`, `w` results and `x` drill misses) with an `EXTRA` entry;
+  `src/tests/t6.js` validates the data, runs one lesson of each kind and restores a backup code with and without it.
 
 ---
 
@@ -369,7 +392,7 @@
 
 | Skill | In the app now | Added by |
 | :- | :- | :- |
-| Vocabulary | 3,600 words, 9 steps, spaced review, search | 2 path pacing; 3 mistakes, match race; 4.6 work words; 5.2 longer intervals; 6 B2–C1 |
+| Vocabulary | 3,750 words (150 work and technology words), 9 steps, spaced review, search, mistakes, match race | 5.2 longer intervals; 6 B2–C1 |
 | Grammar | 64 lessons A1–B2 with Thai mistakes | 2 review nodes; 3 missed questions; 4.3 error drills |
 | Listening | clips for words, sentences, grammar, stories | 3 dictation; 4.2 dialogues; 4.4 stories |
 | Reading | 48 stories with tap-to-translate (18 read by the phone's voice) | 2 coverage-based placement; 4.4 done |

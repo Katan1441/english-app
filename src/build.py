@@ -12,6 +12,12 @@ def read(*p):
         return f.read()
 
 
+def p4():
+    # the phase 4 lessons in one object: sounds, role-play dialogues, find-the-error drills, writing tasks
+    d = {k: json.loads(read('data', k + '.json')) for k in ('sounds', 'talk', 'drills', 'write')}
+    return json.dumps(d, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+
+
 def page():
     html = read('trainer.src.html')
     vocab = read('data', 'vocab.js')
@@ -23,6 +29,7 @@ def page():
         ('/*__AUDIO__*/null', json.dumps(audio, separators=(',', ':'))),
         ('/*__GRAM__*/null', read('data', 'gram.json').replace('</', '<\\/')),
         ('/*__READ__*/null', read('data', 'read.json').replace('</', '<\\/')),
+        ('/*__P4__*/null', p4()),
     ]
     for marker, text in parts:
         assert html.count(marker) == 1, 'marker missing: ' + marker

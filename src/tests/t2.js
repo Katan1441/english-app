@@ -194,12 +194,12 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   /* ---- 1. phone, light: whole first set, nine steps ---- */
   let { ctx, page } = await open({ touch: true });
   const D = await data(page);
-  check(D.length === 3600 && D.every((e) => e.x && e.xt && /\{.+\}/.test(e.x)), 'data: 3600 entries with examples');
+  check(D.length === 3750 && D.every((e) => e.x && e.xt && /\{.+\}/.test(e.x)), 'data: 3750 entries with examples (3600 and 150 work words)');
   const FIRST = await page.evaluate(() => window.__VOCAB__.findIndex((cd) => cd[3] === 'A'));
   check(FIRST === 36, 'data: basic words are topics 37 and up in the data, first one ' + FIRST);
-  check((await page.$$('.rows .row')).length === 55, 'home: 55 topics');
-  check((await page.$$('section.block h2')).length >= 3 && await page.evaluate(() => document.querySelector('.rows .row').getAttribute('data-c')) === String(FIRST), 'home: three groups, basic words listed first');
-  check(await page.evaluate(() => document.querySelector('.rows .row[data-c="0"] .row-no').textContent) === '15' && /ฝึกศัพท์ 3,600 คำ/.test(await txt(page, 'h1')), 'home: PDF topic 1 shown as topic 15, title counts 3,600 words');
+  check((await page.$$('.rows .row')).length === 62, 'home: 62 topics');
+  check((await page.$$('section.block h2')).length >= 4 && await page.evaluate(() => document.querySelector('.rows .row').getAttribute('data-c')) === String(FIRST), 'home: three groups, basic words listed first');
+  check(await page.evaluate(() => document.querySelector('.rows .row[data-c="0"] .row-no').textContent) === '15' && /ฝึกศัพท์ 3,750 คำ/.test(await txt(page, 'h1')), 'home: PDF topic 1 shown as topic 15, title counts 3,750 words');
   check(!(await has(page, '#review')), 'home: no review button before learning');
   check(await overflow(page) <= 0, 'home overflow');
   await page.click('#resume');
