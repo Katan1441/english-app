@@ -62,6 +62,18 @@ who is learning English from below A1. Everything the learner sees is in Thai; E
   `LES.x` join the mistakes list); **เขียน** `w:<w1-w27>` (view `p-write`: brief, word bank, model, self-check list
   `#wr-c-i`, at least 3 sentences for `#wr-done`; Claude's check `#wr-ai` only inside claude.ai). Results in
   `vocab3000-lessons-v1`; a lesson is done once it has a record.
+- **Adapting (phase 5)**: the share right of the last 5 lessons of each node type is kept (`ADAPT`, `adaptAcc`, at least 3
+  lessons). At 95% or more a word lesson not done yet offers "ข้ามไปเร็วขึ้น" (`#p-fast`, on its sheet and on the end screen
+  for the next one): 6 questions of that set and stage, 5 right marks the stage's step bits (`fastEnd`). Under 70% the end
+  screen offers "ทบทวนก่อนไปต่อ" (`#p-easy`) and word lessons put the choice steps before typing (`CHOICE`). A word at
+  memory level 5 answered right comes back after twice the days since it was last right, 15 to 180 (`mark`); ฉัน counts
+  "จำได้นาน (เกิน 30 วัน)" (`#me-long`). ฉัน also shows a CEFR level per skill (`skillLevels`, `#me-skills`, `.sk-lv`: a level
+  counts at 60% of that skill's lessons in it, the levels before the start level count) with a "เป้าหมาย B2" bar (`#me-b2`),
+  and the exit tests (`#exit-A1` … `#exit-B2`): 30 items of the level (words, listening, grammar choices, a story with its
+  questions, 3 lines to say when the phone can listen; a line it could not hear is left out), run as a lesson outside the
+  path (`exitStart`, `from: 'me'`), 75% passes; the best result is kept; view `cert` shows the certificate, `#cert-save`
+  saves it as a PNG drawn on a canvas. Path lessons (not reviews, practice rounds or say-alongs) add to `ADAPT` in `pathEnd`
+  after their own record is kept.
 - **คำศัพท์**: 3,750 words in 62 topics (group A basics first, then 36 topics from the Oxford 3000 PDF, group C, and group
   W: 150 work and technology words in topics 55–61 added in phase 4, read by the phone's voice, "เสียงจากเครื่อง"),
   sets of 10, nine practice steps per set, spaced review, search, Thai readings with the stressed syllable marked.
@@ -111,6 +123,7 @@ node src/tests/sp.js /tmp/app /tmp/app/spshots   # speaking: mic buttons, word m
 node src/tests/t4.js /tmp/app /tmp/app/pshots    # path: first run, nodes, XP, combo, quests, checkpoints, backup, layout
 node src/tests/t5.js /tmp/app /tmp/app/p3shots   # practice tab, mistakes, dictation, match race, rest days, badges, reminder, backup file
 node src/tests/t6.js /tmp/app /tmp/app/p4shots   # phase 4 data, sounds, dialogues, drills, writing, work words, placement, backup
+node src/tests/t7.js /tmp/app /tmp/app/p5shots   # phase 5: intervals, test-out, choice first, skill levels, exit test, certificate
 node src/tests/pwatest.js .                      # app from a sub-path, service worker, all sound offline
 node src/tests/stories.js                        # stories data: complete, clips exist, length per level, 5% word rule
 ```
@@ -134,7 +147,9 @@ in light and dark: no horizontal scroll (the tests check this too).
   level index}`), `vocab3000-prac-v1` (`{m: best match-race ms, d: {day: dictation sentences right}, r: {day: mistakes
   rounds}}`), `vocab3000-streak-v1` (`{s: first day rest days applied, u: {day: 1} days covered by a rest day}`),
   `vocab3000-badges-v1` (`{c: {badgeId: day celebrated}}`), `vocab3000-lessons-v1` (`{p|d|e|w: {id: [best, total, time]},
-  x: {drillItemId: misses}}`). Days are `Math.floor((local ms) / 86400000)`.
+  x: {drillItemId: misses}}`), `vocab3000-adapt-v1` (`{h: {nodeType: [[right, asked], … the last 5]}}`), `vocab3000-exit-v1`
+  (`{A1: [right, asked, time in s, then right and asked for words, grammar, listening, reading, speaking]}`). Days are
+  `Math.floor((local ms) / 86400000)`. The word record keeps its format; only the next due day of a level-5 word changed.
 - **Path node ids are stable**: `v:<topic>.<set>.<stage>`, `g:<lessonId>`, `r:<storyId>`, `t:<storyId>`, `x:<n>`,
   `k:<unitNo>`, `p:<soundId>`, `d:<dialogueId>`, `e:<drillId>`, `w:<writingId>`. Done comes from existing records (step bits, `gPassed`, `rDone`) plus the path key; never write fake
   progress to mark a node done. Changing `pathBuild` changes unit numbers and review numbers that the path key stores, so
@@ -146,7 +161,7 @@ in light and dark: no horizontal scroll (the tests check this too).
 - Word numbers `n`, topic indexes and step bits are fixed: topics 37-55 were appended after the first 36, and the display
   order (`ORD`) differs from the data order. Add new words or topics only at the end.
 - The backup code (`EN1:` + base64 JSON of the documents `cNN`, `gram`, `days`, `read`, `level`, `xp`, `path`, `prac`,
-  `streak`, `badges`, `lessons`) must keep working, also for old codes without the later ones; restoring merges and never lowers
+  `streak`, `badges`, `lessons`, `adapt`, `exit`) must keep working, also for old codes without the later ones; restoring merges and never lowers
   progress (`Sync.merge`, `EXTRA`; the race keeps the shorter time). The same code can be saved and opened as a file.
 - `Sync` (account saving) and `AI` (sentence check by Claude) only exist inside claude.ai; on GitHub Pages they stay off
   and the app saves locally and offers the self-check. Keep both paths working.

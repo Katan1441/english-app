@@ -9,7 +9,7 @@
 - **หน้าตาแบบมังงะขาวดำ** (เสร็จแล้ว): เส้นหมึก ลายสกรีนโทน วง ○ เมื่อตอบถูก กากบาท ✕ เมื่อตอบผิด ตัวละครพูดในกรอบคำพูด
 - **ขั้น 3 ฝึกและสร้างนิสัย** (เสร็จแล้ว): หน้า "ฝึก" รวมคำและข้อที่ผิดบ่อย ฟังแล้วพิมพ์ จับคู่แข่งเวลา วันพักกันสถิติหาย ต้อนรับตอนกลับมาเรียน เหรียญรางวัล ตั้งเตือนในปฏิทิน และเซฟสำรองเป็นไฟล์
 - **ขั้น 4 เนื้อหาให้ครบ** (เสร็จแล้ว): ฝึกเสียงที่คนไทยพูดยาก บทสนทนาที่เราเล่นเป็นตัวละคร แบบฝึกหาที่ผิดในประโยค เรื่องอ่านเพิ่ม 18 เรื่อง (B1–B2) งานเขียนสั้นๆ และศัพท์งานกับเทคโนโลยี
-- **ขั้น 5 ปรับตามผู้เรียน**: ความยากพอดี (ตอบถูกราว 85%) คำที่จำได้แล้วเว้นช่วงทบทวนนานขึ้น ระดับ CEFR แยกตามทักษะ และสอบผ่านระดับพร้อมใบผ่าน
+- **ขั้น 5 ปรับตามผู้เรียน** (เสร็จแล้ว): ความยากพอดี (ตอบถูกราว 85%) คำที่จำได้แล้วเว้นช่วงทบทวนนานขึ้น ระดับ CEFR แยกตามทักษะ และสอบผ่านระดับพร้อมใบผ่าน
 
 วิธีสั่ง: เปิด Claude Code แบบ **Cloud** เลือก english-app แล้วพิมพ์ `อ่าน ROADMAP.md แล้วทำขั้นที่ 2` (ขั้นต่อไปก็เปลี่ยนเลขตามนั้น) ทำทีละขั้นเท่านั้น อย่าเปิดสองงานพร้อมกัน เพราะทุกขั้นแก้ไฟล์เดียวกัน
 
@@ -37,7 +37,7 @@
 | M | Black-and-white manga look (`design/manga/README.md`), before phase 3 | done (3 Nov 2026): see the Design section of `CLAUDE.md` |
 | 3 | Practice tab, mistakes review, dictation, match race, streak protection, comeback, badges, reminders, backup file | done (3 Nov 2026), see "As built" under Phase 3 |
 | 4 | Content: Thai-speaker sounds, role-play dialogues, error-correction drills, 18 stories, writing tasks, work and technology words | done (3 Nov 2026), see "As built" under Phase 4 |
-| 5 | Adaptive difficulty, longer reviews for known words, skill levels, level exit tests with certificate | todo |
+| 5 | Adaptive difficulty, longer reviews for known words, skill levels, level exit tests with certificate | done (3 Nov 2026), see "As built" under Phase 5 |
 | 6 | Optional: more vocabulary (B2–C1) | later |
 
 ## Learner and target
@@ -380,6 +380,28 @@
 - **Tests**: test-out sets bits only when passed; interval formula and clamp; skill estimate on seeded records; certificate
   PNG created; backup round trip includes `exit`.
 
+### As built (3 Nov 2026)
+
+- **5.1.** `vocab3000-adapt-v1` keeps right and asked for the last 5 lessons of each node type (path lessons, not reviews,
+  practice rounds or say-alongs); a judgement needs at least 3. At 95% or more, a word lesson that is not done offers "ข้ามไปเร็วขึ้น"
+  on its sheet, and the end screen of a word lesson offers it for the next one: 6 questions on that set (meaning choices for
+  the first stage, typing for the second, gap fills for the third); 5 right sets the stage's step bits, fewer changes
+  nothing. Under 70% the end screen offers "ทบทวนก่อนไปต่อ" (a review round) and word lessons put the choice steps first.
+  All of it is an offer.
+- **5.2.** As planned. "จำได้นาน (เกิน 30 วัน)" on the ฉัน screen counts words whose current gap (next due day minus last
+  right day) is over 30 days.
+- **5.3.** Each skill is read from the path: words (word lessons), grammar (grammar lessons and drills), listening (the
+  first stage of each word set, which holds the listening step, sound lessons and stories), reading (stories), speaking
+  (say-alongs, dialogues and sound lessons). A level counts when 60% of the skill's lessons in it are done, and every
+  level before it too; levels before the start level from the level check count, as do units tested out. The "เป้าหมาย B2"
+  bar is the average share done of all five skills.
+- **5.4.** 30 items: 9 words (meaning choices both ways), 5 listening items, 10 grammar choice questions, a story of the
+  level (one not read yet when possible) with its 3 questions, and 3 of its lines to say; without speech recognition the
+  words fill the gap, without sound the listening items too, and a line the phone could not hear is left out, not wrong. It runs like a lesson outside the path, from the ฉัน screen;
+  the best result per level is kept and never lowered. Passing (75%) opens the certificate screen with the date and the
+  part scores, and "บันทึกรูป" saves a PNG drawn on a canvas in the page's ink and paper. `vocab3000-level-v1` is untouched.
+  Checked by `src/tests/t7.js`.
+
 ## Phase 6: optional, later
 
 - More vocabulary for B2–C1 (the Oxford 5000 adds about 2,000 words to the Oxford 3000). It needs the official list: ask the
@@ -392,7 +414,7 @@
 
 | Skill | In the app now | Added by |
 | :- | :- | :- |
-| Vocabulary | 3,750 words (150 work and technology words), 9 steps, spaced review, search, mistakes, match race | 5.2 longer intervals; 6 B2–C1 |
+| Vocabulary | 3,750 words (150 work and technology words), 9 steps, spaced review with longer gaps for well-known words, search, mistakes, match race | 6 B2–C1 (later) |
 | Grammar | 64 lessons A1–B2 with Thai mistakes | 2 review nodes; 3 missed questions; 4.3 error drills |
 | Listening | clips for words, sentences, grammar, stories | 3 dictation; 4.2 dialogues; 4.4 stories |
 | Reading | 48 stories with tap-to-translate (18 read by the phone's voice) | 2 coverage-based placement; 4.4 done |
@@ -400,5 +422,5 @@
 | Pronunciation | stressed syllable marked in readings | 4.1 sounds for Thai speakers |
 | Writing | copy, type, order, own sentence | 3 dictation; 4.5 guided messages |
 | Real-life use | some dialogues among the stories | 4.2 role-play |
-| Assessment | level check | 2 checkpoints; 5.3 skill levels; 5.4 exit tests |
+| Assessment | level check, checkpoints, skill levels, exit tests with a certificate | done |
 | Habit and motivation | streak, 7-day strip, daily checklist, confetti | 2 XP, quests, combo; 3 rest days, comeback, badges, reminders |

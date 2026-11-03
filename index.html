@@ -702,6 +702,25 @@ a.btn{text-decoration:none}
 .lib-row{display:grid;grid-template-columns:2.6rem minmax(0,1fr) auto;gap:2px 12px;align-items:center;width:100%;text-align:left;background:transparent;color:var(--ink);border:0;border-bottom:1.5px solid var(--ink);padding:12px 16px;min-height:64px}
 .rows li:last-child .lib-row{border-bottom:0}
 .lib-row:active{background:var(--tone-1)}
+/* phase 5: skill levels on the me screen, the exit-test certificate */
+.skills{display:flex;flex-direction:column;gap:12px}
+.skill{display:grid;grid-template-columns:5.6rem auto minmax(0,1fr);gap:10px;align-items:center;font-weight:600;min-width:0}
+.skill .bar{height:12px}
+.sk-lv{justify-self:start;white-space:nowrap}
+.goal-b2{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:4px}
+.goal-b2 b{font-family:var(--f-display);font-weight:800;font-size:1.1rem}
+.goal-bar{height:18px}
+.cert{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;border:4px solid var(--ink);box-shadow:8px 8px 0 var(--ink);padding:16px 14px 20px;background:var(--paper);min-width:0}
+.cert-k{font-family:var(--f-display);font-weight:800;letter-spacing:.04em}
+.cert .pend-fx{margin-inline:0;width:100%;min-height:210px}
+.cert .burst{width:190px;height:190px}
+.cert-lv{font-size:3.4rem;line-height:1}
+.cert-tbl{width:100%;display:grid;border:3px solid var(--ink)}
+.cert-tbl div{padding:8px 2px;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:0}
+.cert-tbl div+div{border-left:2px solid var(--ink)}
+.cert-tbl b{font-family:var(--f-display);font-weight:800;font-size:1.05rem;font-variant-numeric:tabular-nums}
+.cert-tbl span{font-size:.68rem;color:var(--ink-soft);line-height:1.3;overflow-wrap:anywhere}
+.p5-offer{display:flex;flex-direction:column;gap:8px}
 @media (max-width:359px){.ex{grid-template-columns:minmax(0,1fr)}.ex .ex-say{grid-row:2}.pfull{right:12px}.pair-opts{grid-template-columns:minmax(0,1fr)}}
 @media (prefers-reduced-motion:reduce){.sheet.enter,.wsheet,.spk-panel,.opt.pop,.pbub,.combo.pop,.dlg-panel,.toast,.burst,.speedfx{animation:none}.speedfx{display:none}}
 
@@ -852,10 +871,11 @@ a.btn{text-decoration:none}
       if (early && r[0] >= 1 && r[1] > t) { /* keep the schedule */ }
       else if (r[0] === 0) { r[0] = 1; r[2] = t; r[1] = t + 1; }
       else if (r[2] !== t && r[3] !== t) {
-        var was5 = r[0] === 5;
+        /* a word at the top level comes back after twice the time since it was last right, 15 to 180 days */
+        var was5 = r[0] === 5, gap = t - r[2];
         if (!was5) r[0]++;
         r[2] = t;
-        r[1] = t + (was5 ? 30 : IV[r[0]]);
+        r[1] = t + (was5 ? Math.max(15, Math.min(180, 2 * gap)) : IV[r[0]]);
       } else if (r[1] <= t) { r[1] = t + 1; }
     } else {
       if (r[0] > 1 && r[3] !== t) r[0]--;
@@ -1765,7 +1785,7 @@ a.btn{text-decoration:none}
   /* bottom menu: marks the section in use and shows on the path tab how many words are due for review */
   var TABBAR = document.getElementById('tabbar');
   function tabOf(v) {
-    if (view.path || v === 'path' || v === 'me' || v === 'prefs' || v === 'level' || v === 'lvl' || v.indexOf('p-') === 0) return 'path';
+    if (view.path || v === 'path' || v === 'me' || v === 'cert' || v === 'prefs' || v === 'level' || v === 'lvl' || v.indexOf('p-') === 0) return 'path';
     if (v.indexOf('g-') === 0) return view.from === 'path' ? 'path' : 'gram';
     if (v === 'read' || v === 'story') return 'read';
     if (v === 'rev') return view.from === 'home' ? 'vocab' : 'path';
@@ -1804,6 +1824,7 @@ a.btn{text-decoration:none}
     else if (view.name === 'p-fix') vFix();
     else if (view.name === 'p-write') vWrite();
     else if (view.name === 'lib') vLib();
+    else if (view.name === 'cert') vCert();
     else if (view.name === 'prefs') vPrefs();
     else if (view.name === 'prac') vPrac();
     else if (view.name === 'mist') vMist();
@@ -3741,7 +3762,7 @@ a.btn{text-decoration:none}
     { id: 'u1', m: 'U1', th: 'ผ่านหน่วยแรก', v: function (c) { return c.unit; }, g: 1 }
   ];
   function badgeState() {
-    var sc = pathScan(), c = { node: sc.done.some(Boolean) ? 1 : 0, best: streak().best, known: wordsKnown(), read: rDoneCount(), said: sumDays(XP.s), combo: maxDays(XP.c), perfect: sumDays(XP.p), unit: sc.upass.some(Boolean) ? 1 : 0 };
+    var sc = pathScan(), N = pm().PN, c = { node: N.some(function (n, i) { return sc.done[i] && n.t !== 'x'; }) ? 1 : 0, best: streak().best, known: wordsKnown(), read: rDoneCount(), said: sumDays(XP.s), combo: maxDays(XP.c), perfect: sumDays(XP.p), unit: sc.upass.some(Boolean) ? 1 : 0 };
     return BADGES.map(function (b) {
       var cur, goal;
       if (b.lv) { var g = gLevelDone(b.lv); cur = g.cur; goal = g.goal || 1; } else { cur = b.v(c); goal = b.g; }
@@ -4059,7 +4080,8 @@ a.btn{text-decoration:none}
   function nodeParts(n) {
     var parts = [];
     if (n.t === 'v') {
-      var ms = MODES.filter(function (m) { return m.stage === n.st && (reqBits() & m.bit); }), mk = maskOf(n.c, n.si);
+      var ms = MODES.filter(function (m) { return m.stage === n.st && (reqBits() & m.bit); }), mk = maskOf(n.c, n.si), acc = adaptAcc('v');
+      if (acc !== null && acc < 0.7) ms = ms.filter(function (m) { return CHOICE[m.id]; }).concat(ms.filter(function (m) { return !CHOICE[m.id]; }));
       var left = ms.filter(function (m) { return !(mk & m.bit); });
       (left.length ? left : ms).forEach(function (m) { parts.push({ k: 'step', mode: m.id }); });
     } else if (n.t === 'g') parts = [{ k: 'lesson' }, { k: 'gram' }];
@@ -4098,6 +4120,7 @@ a.btn{text-decoration:none}
     R.pi++;
     if (R.pi >= R.parts.length) { pathEnd(); return; }
     var p = R.parts[R.pi], n = R.n, u = pm().PU[n.u];
+    (R.snap || (R.snap = []))[R.pi] = [R.right, R.ans];
     if (p.k === 'step') startSet(n.c, n.si, p.mode);
     else if (p.k === 'rev') startSession({ kind: 'review', fmt: 'pick', title: 'ทบทวนคำศัพท์', where: 'ทบทวนในเส้นทาง', items: p.items });
     else if (p.k === 'grev') gStartRun('review', p.items, null);
@@ -4107,7 +4130,7 @@ a.btn{text-decoration:none}
     else if (p.k === 'gram') gStartRun('lesson', n.l.q.slice(), n.l.id);
     else if (p.k === 'words') go({ name: 'p-words', path: true });
     else if (p.k === 'story') { RS = null; go({ name: 'story', id: n.r.id, path: true }); }
-    else if (p.k === 'say') { R.say = { lines: sayLines(n.r), ok: {}, tried: {} }; go({ name: 'p-say', path: true }); }
+    else if (p.k === 'say') { R.say = { lines: n.exit ? sayLines(n.r).slice(0, 3) : sayLines(n.r), ok: {}, tried: {} }; go({ name: 'p-say', path: true }); }
     else if (p.k === 'snd-learn' || p.k === 'snd-pairs' || p.k === 'snd-say') { R.sn = { pos: 0, ans: {}, auto: -1 }; go({ name: 'p-snd', path: true }); }
     else if (p.k === 'talk') { R.tk = tkNew(n.d); go({ name: 'p-talk', path: true }); }
     else if (p.k === 'fix') { R.fx = { pos: 0, tap: -1, bad: {}, pick: -1, res: null, order: null, miss: false, shown: false }; go({ name: 'p-fix', path: true }); }
@@ -4122,7 +4145,12 @@ a.btn{text-decoration:none}
       R.ans = tried; R.right = said;
       if (!o || said >= o[0]) PATH.t[n.r.id] = [said, R.say.lines.length, nowSec()];
       pathSave();
-    } else if (n.t === 'x') { if (!n.virt) { PATH.x[n.n] = today(); pathSave(); } if (n.mist) pracBump('r'); }
+    } else if (n.t === 'x') {
+      if (!n.virt) { PATH.x[n.n] = today(); pathSave(); }
+      if (n.mist) pracBump('r');
+      if (n.fast) fastEnd(n, R);
+      if (n.exit) exitEnd(n, R);
+    }
     else if (n.t === 'p' || n.t === 'd' || n.t === 'e' || n.t === 'w') {
       var lk = p4Key(n), lo = LES[n.t][lk];
       if (!lo || R.right >= lo[0]) { LES[n.t][lk] = [R.right, R.ans, nowSec()]; lesSave(); }
@@ -4133,6 +4161,8 @@ a.btn{text-decoration:none}
       if (!o2 || R.right >= o2[0]) PATH.k[n.n] = [R.right, R.ans, nowSec()];
       pathSave(); logAct('r');
     }
+    /* how well the learner does, per kind of lesson on the path (not reviews, practice rounds or say-alongs) */
+    if (!n.virt && n.t !== 't' && n.t !== 'x') adaptPush(n.t, R.right, R.ans);
     var sc = pathScan(), done = sc.done[n.i], passed = n.t !== 'k' || R.right >= Math.ceil(R.ans * CKPASS);
     var finished = n.t === 'k' || (done && (n.t !== 't' || R.right > 0) && (n.t !== 'x' || R.ans > 0));
     var perfect = finished && passed && R.ans > 0 && R.right === R.ans;
@@ -4141,7 +4171,7 @@ a.btn{text-decoration:none}
     if (perfect) { xpAdd(5); xpBump('p'); }
     var uNow = sc.upass[u.i], sNow = secDone(u.sec, sc);
     R.end = { done: done, passed: passed, perfect: perfect, secs: Math.max(1, Math.round((Date.now() - R.t0) / 1000)), unit: uNow && !R.uWas, sec: sNow && !R.sWas, shown: false };
-    R.end.cheer = perfect || R.end.unit || R.end.sec;
+    R.end.cheer = perfect || R.end.unit || R.end.sec || !!n.exitPass;
     vib('end');
     saveNow(); Sync.flushSoon();
     go({ name: 'p-end', path: true });
@@ -4162,7 +4192,7 @@ a.btn{text-decoration:none}
     try { document.getElementById('dlg-stay').focus(); } catch (e) {}
   }
   function quitClose() { var d = document.getElementById('dlg'); if (d && d.parentNode) d.parentNode.removeChild(d); }
-  function pathLeave() { var back = PRUN && PRUN.n.from === 'prac' ? 'prac' : 'path'; aiStop(); saveNow(); Sync.flushSoon(); PRUN = null; go({ name: back }); }
+  function pathLeave() { var back = PRUN && (PRUN.n.from === 'prac' || PRUN.n.from === 'me') ? PRUN.n.from : 'path'; aiStop(); saveNow(); Sync.flushSoon(); PRUN = null; go({ name: back }); }
   document.addEventListener('click', function (ev) {
     var el = ev.target.closest ? ev.target.closest('[data-act]') : null;
     if (!el || !document.getElementById('dlg')) return;
@@ -4248,7 +4278,7 @@ a.btn{text-decoration:none}
   /* a practice round runs like a review node of the path that is not on it (nothing is stored for the path) */
   function pracStart(o) {
     var M = pm(), sc = pathScan(), cu = sc.cur >= 0 ? M.PN[sc.cur].u : M.PU.length - 1;
-    var n = { t: 'x', id: 'x:0', n: 0, u: cu, virt: true, from: o.from || '', lbl: o.lbl, sub: o.sub, done: o.done, parts: o.parts, mist: !!o.mist };
+    var n = nodeCopy({ t: 'x', id: 'x:0', n: 0, u: cu, virt: true }, o);
     if (!pathStart(n)) render();
   }
   function pcard(id, act, icon, title, sub, off) {
@@ -4801,6 +4831,205 @@ a.btn{text-decoration:none}
     return Object.keys(LES.x).filter(function (id) { return LES.x[id] > 0 && DRQ[id]; }).sort(function (a, b) { return LES.x[b] - LES.x[a] || (a < b ? -1 : 1); }).slice(0, 20);
   }
 
+
+  /* ---------------- phase 5: adapt to the learner ----------------
+     ADAPT = { h: {node type: [[right, asked] of its last 5 lessons]} }: about 85% right is the aim; at 95% a short test-out of the
+     next word lesson is offered (passing sets its step bits), below 70% a review is offered and choice steps come before typing.
+     EXIT = { A1: [right, asked, time (s), words right, asked, grammar right, asked, listening right, asked, reading right, asked,
+     speaking right, asked], ... }: the best result of each level's exit test; 75% passes and opens the certificate. */
+  var ADKEY = 'vocab3000-adapt-v1', ADAPT = { h: {} }, EXKEY = 'vocab3000-exit-v1', EXIT = {}, EXLV = ['A1', 'A2', 'B1', 'B2'];
+  function cleanNums(a, n) {
+    if (!Array.isArray(a) || a.length < n) return null;
+    var o = [];
+    for (var i = 0; i < a.length && i < 13; i++) { var x = Number(a[i]); if (!isFinite(x) || x < 0) return null; o.push(Math.floor(x)); }
+    return o;
+  }
+  function cleanHist(a) { return Array.isArray(a) ? a.map(function (p) { return cleanNums(p, 2); }).filter(function (p) { return p && p[1] > 0 && p[0] <= p[1]; }).slice(-5) : []; }
+  (function () {
+    var x = lsGet(ADKEY), y = lsGet(EXKEY), k;
+    if (x && x.h && typeof x.h === 'object') for (k in x.h) { if (/^[a-z]$/.test(k)) { var h = cleanHist(x.h[k]); if (h.length) ADAPT.h[k] = h; } }
+    if (y && typeof y === 'object') for (k in y) { var r = cleanNums(y[k], 3); if (EXLV.indexOf(k) >= 0 && r && r[1] > 0 && r[0] <= r[1]) EXIT[k] = r; }
+  })();
+  function adaptPush(t, right, asked) {
+    if (!(asked > 0)) return;
+    var a = ADAPT.h[t] || (ADAPT.h[t] = []);
+    a.push([Math.min(right, asked), asked]);
+    while (a.length > 5) a.shift();
+    lsSet(ADKEY, ADAPT); Sync.touch('adapt');
+  }
+  /* the share answered right over the last lessons of a type; null until there are three */
+  function adaptAcc(t) { var a = ADAPT.h[t] || [], r = 0, n = 0; a.forEach(function (x) { r += x[0]; n += x[1]; }); return a.length >= 3 && n ? r / n : null; }
+  EXTRA.adapt = {
+    get: function () { return { v: 1, h: ADAPT.h }; },
+    has: function () { return Object.keys(ADAPT.h).length > 0; },
+    merge: function (data) {
+      var h = data && data.h && typeof data.h === 'object' ? data.h : {}, changed = false, newer = false;
+      Object.keys(h).forEach(function (k) { var a = /^[a-z]$/.test(k) ? cleanHist(h[k]) : []; if (a.length > (ADAPT.h[k] || []).length) { ADAPT.h[k] = a; changed = true; } });
+      Object.keys(ADAPT.h).forEach(function (k) { if (ADAPT.h[k].length > cleanHist(h[k]).length) newer = true; });
+      if (changed) lsSet(ADKEY, ADAPT);
+      return { changed: changed, newer: newer };
+    }
+  };
+  function exitBetter(a, b) { return !b || a[0] / a[1] > b[0] / b[1] || (a[0] / a[1] === b[0] / b[1] && a[2] > b[2]); }
+  EXTRA.exit = {
+    get: function () { return { v: 1, e: EXIT }; },
+    has: function () { return Object.keys(EXIT).length > 0; },
+    merge: function (data) {
+      var e = data && data.e && typeof data.e === 'object' ? data.e : {}, changed = false, newer = false;
+      Object.keys(e).forEach(function (k) { var a = cleanNums(e[k], 3); if (EXLV.indexOf(k) >= 0 && a && a[1] > 0 && a[0] <= a[1] && exitBetter(a, EXIT[k])) { EXIT[k] = a; changed = true; } });
+      Object.keys(EXIT).forEach(function (k) { var a = cleanNums(e[k], 3); if (!a || !a[1] || exitBetter(EXIT[k], a)) newer = true; });
+      if (changed) lsSet(EXKEY, EXIT);
+      return { changed: changed, newer: newer };
+    }
+  };
+  var CHOICE = { card: 1, e2t: 1, listen: 1, t2e: 1, cloze: 1 };
+  /* a word lesson the learner may test out of: not done yet, while the last word lessons were nearly all right */
+  function fastOk(n) { var a = adaptAcc('v'); return !!n && n.t === 'v' && a !== null && a >= 0.95 && !nodeDone(n); }
+  function fastItems(n) {
+    return shuffle(CATS[n.c].sets[n.si]).slice(0, 6).map(function (w) { return { n: w.n, q: n.st === 0 ? 'e2t' : (n.st === 1 ? 'type' : (w.x ? 'cloze' : 't2e')) }; });
+  }
+  function fastStart(target, from) {
+    pracStart({ lbl: 'ทดสอบข้ามบท', sub: nodeTitle(target), parts: [{ k: 'ckv', items: fastItems(target) }], fast: target.id, from: from || '' });
+  }
+  /* passing (5 of 6) is real evidence: the steps of that stage are marked done */
+  function fastEnd(n, R) {
+    var tg = pm().PNI[n.fast];
+    if (tg && R.ans >= 6 && R.right >= 5) {
+      MODES.forEach(function (m) { if (m.stage === tg.st && (reqBits() & m.bit)) setBit(tg.c, tg.si, m.bit); });
+      saveNow();
+      n.done = 'ผ่าน ข้ามบทนี้ได้แล้ว';
+    } else n.done = 'ยังไม่ผ่าน ทำบทเต็มได้เลย';
+  }
+  /* words that will not come back for over a month */
+  function longKnown() { var n = 0; for (var k in P.w) { var r = P.w[k]; if (W[k] && r[0] === 5 && r[1] - r[2] > 30) n++; } return n; }
+
+  /* skill levels from what was done on the path: a level counts once 60% of that skill's lessons in it are done (or passed by
+     with a test-out or the level check), and every level before it too */
+  var SKILLS = [
+    { id: 'words', th: 'คำศัพท์', f: function (n) { return n.t === 'v'; } },
+    { id: 'gram', th: 'ไวยากรณ์', f: function (n) { return n.t === 'g' || n.t === 'e'; } },
+    { id: 'listen', th: 'การฟัง', f: function (n) { return (n.t === 'v' && n.st === 0) || n.t === 'p' || n.t === 'r'; } },
+    { id: 'read', th: 'การอ่าน', f: function (n) { return n.t === 'r'; } },
+    { id: 'speak', th: 'การพูด', f: function (n) { return n.t === 't' || n.t === 'd' || n.t === 'p'; } }
+  ];
+  function skillLevels() {
+    var M = pm(), sc = pathScan();
+    return SKILLS.map(function (sk) {
+      var per = M.PSEC.map(function () { return [0, 0]; }), all = 0, got = 0, lv = -1, i;
+      M.PN.forEach(function (n) {
+        if (!sk.f(n) || (n.t === 't' && !sc.sr)) return;
+        var sec = M.PU[n.u].sec, ok = sc.done[n.i] || sc.upass[n.u] || sec < PATH.s;
+        per[sec][1]++; all++;
+        if (ok) { per[sec][0]++; got++; }
+      });
+      for (i = 0; i < per.length; i++) { if (!per[i][1]) continue; if (per[i][0] / per[i][1] >= 0.6) lv = i; else break; }
+      return { sk: sk, lv: lv, name: lv >= 0 ? M.PSEC[lv].lv : 'ก่อน A1', frac: all ? got / all : 0 };
+    });
+  }
+  function skillsHtml() {
+    var sl = skillLevels(), avg = 0;
+    sl.forEach(function (s) { avg += s.frac; });
+    avg = sl.length ? avg / sl.length : 0;
+    return '<section class="block" id="me-skills"><h2>ระดับแต่ละทักษะ</h2><p class="note">ประมาณจากบทที่ทำแล้ว ระดับไหนทำได้ 60% ขึ้นไปนับว่าถึงระดับนั้น</p><ul class="skills">' +
+      sl.map(function (s) {
+        return '<li class="skill" id="sk-' + s.sk.id + '"><span class="sk-n">' + s.sk.th + '</span><span class="lvchip sk-lv">' + esc(s.name) + '</span>' +
+          '<span class="bar" role="img" aria-label="ทำไปแล้ว ' + Math.round(s.frac * 100) + '% ของทั้งหมดถึง B2"><i class="b-strong" style="width:' + Math.round(s.frac * 100) + '%"></i></span></li>';
+      }).join('') + '</ul><p class="goal-b2" id="me-b2"><b>เป้าหมาย B2</b><span>ทำไปแล้ว ' + Math.round(avg * 100) + '%</span></p>' +
+      '<span class="bar goal-bar" role="img" aria-label="เป้าหมาย B2 ทำไปแล้ว ' + Math.round(avg * 100) + '%"><i class="b-learn" style="width:' + Math.round(avg * 100) + '%"></i></span></section>';
+  }
+
+  /* exit tests: 30 items of a level (words, listening, grammar, a short reading, 3 lines to say when the phone can listen) */
+  function exitParts(lv) {
+    var M = pm(), sec = M.PSEC.filter(function (S) { return S.lv === lv; })[0], words = [], seen = {}, gq = [];
+    if (!sec) return null;
+    sec.units.forEach(function (u) { u.nodes.forEach(function (n) { if (n.t === 'v' && n.c < PBASE && !seen[n.c + '-' + n.si]) { seen[n.c + '-' + n.si] = 1; CATS[n.c].sets[n.si].forEach(function (w) { words.push(w); }); } }); });
+    words = shuffle(words);
+    GLS.forEach(function (l) { if (l.lv === lv) l.q.forEach(function (q) { if ((q.k === 'c' || q.k === 's') && q.opts) gq.push(q); }); });
+    var rs = RDS.filter(function (s) { return s.lv === lv; }), unread = rs.filter(function (s) { return !READ[s.id]; });
+    var story = shuffle(unread.length ? unread : rs)[0] || null, sr = !!Spk.SR() && !!story, nl = Snd.can() ? 5 : 0;
+    var nw = 30 - 10 - nl - (story ? 3 : 0) - (sr ? 3 : 0), parts = [];
+    parts.push({ k: 'ckv', part: 'w', items: words.slice(0, nw).map(function (w, i) { return { n: w.n, q: i % 2 ? 't2e' : 'e2t' }; }) });
+    if (nl) parts.push({ k: 'ckv', part: 'l', items: words.slice(nw, nw + nl).map(function (w) { return { n: w.n, q: 'listen' }; }) });
+    parts.push({ k: 'ckg', part: 'g', items: shuffle(gq).slice(0, 10) });
+    if (story) parts.push({ k: 'story', part: 'r' });
+    if (sr) parts.push({ k: 'say', part: 's' });
+    return { parts: parts, story: story };
+  }
+  function exitStart(lv) {
+    var ep = exitParts(lv);
+    if (!ep) return;
+    pracStart({ lbl: 'สอบผ่านระดับ ' + lv, sub: 'ข้อสอบ 30 ข้อ', parts: ep.parts, exit: lv, r: ep.story, from: 'me' });
+  }
+  function exitEnd(n, R) {
+    var parts = n.parts, snap = R.snap || [], tot = { w: [0, 0], l: [0, 0], g: [0, 0], r: [0, 0], s: [0, 0] }, i;
+    for (i = 0; i < parts.length; i++) {
+      var key = parts[i].part, a = snap[i] || [0, 0], b = i + 1 < parts.length && snap[i + 1] ? snap[i + 1] : [R.right, R.ans];
+      /* speaking counts the lines the phone heard and marked; a line it could not hear is left out, not wrong */
+      if (key === 's') { var said = 0, tried = 0; (R.say ? R.say.lines : []).forEach(function (k) { if (R.say.tried[k]) tried++; if (R.say.ok[k]) said++; }); tot.s = [said, tried]; }
+      else if (tot[key]) { tot[key][0] += b[0] - a[0]; tot[key][1] += b[1] - a[1]; }
+    }
+    var right = 0, asked = 0;
+    Object.keys(tot).forEach(function (k) { right += tot[k][0]; asked += tot[k][1]; });
+    var rec = [right, asked, nowSec(), tot.w[0], tot.w[1], tot.g[0], tot.g[1], tot.l[0], tot.l[1], tot.r[0], tot.r[1], tot.s[0], tot.s[1]];
+    if (asked > 0 && exitBetter(rec, EXIT[n.exit])) { EXIT[n.exit] = rec; lsSet(EXKEY, EXIT); Sync.touch('exit'); }
+    n.exitPass = asked > 0 && right / asked >= 0.75; n.exitRec = rec;
+    n.done = n.exitPass ? 'ผ่านระดับ ' + n.exit + ' แล้ว' : 'ยังไม่ผ่านระดับ ' + n.exit;
+  }
+  function exitHtml() {
+    return '<section class="block" id="me-exit"><h2>สอบผ่านระดับ</h2><p class="note">ระดับละ 30 ข้อ ราว 15 นาที ได้ 75% ขึ้นไปได้ใบผ่านระดับ สอบซ้ำได้ทุกเมื่อ คะแนนที่ดีที่สุดจะถูกเก็บไว้</p><div class="block"><ol class="rows">' +
+      EXLV.map(function (lv) {
+        var r = EXIT[lv], pass = !!r && r[0] / r[1] >= 0.75;
+        return '<li><button type="button" class="row" id="exit-' + lv + '" data-act="exit" data-lv="' + lv + '"><span class="row-no' + (pass ? ' done' : '') + '">' + lv + '</span>' +
+          '<span class="row-main"><b>ระดับ ' + lv + '</b><small>' + (r ? 'ดีที่สุด ' + Math.round(r[0] / r[1] * 100) + '%' + (pass ? ' ผ่านแล้ว' : '') : 'ยังไม่สอบ') + '</small></span>' +
+          '<span class="row-side">' + (pass ? 'ดูใบผ่าน' : 'เริ่มสอบ') + '</span></button></li>';
+      }).join('') + '</ol></div></section>';
+  }
+  var CERTP = [['คำศัพท์', 3], ['ไวยากรณ์', 5], ['การฟัง', 7], ['การอ่าน', 9], ['การพูด', 11]];
+  function certDate(r) { try { return new Date(r[2] * 1000).toLocaleDateString('th-TH', { day: 'numeric', month: 'long', year: 'numeric' }); } catch (e) { return ''; } }
+  function vCert() {
+    var lv = view.lv, r = EXIT[lv];
+    if (!r || r[0] / r[1] < 0.75) { go({ name: 'me' }); return; }
+    var pct = Math.round(r[0] / r[1] * 100);
+    app.innerHTML = crumb([{ label: 'ฉัน', act: 'me' }]) + '<section class="cert" id="cert"><p class="cert-k">ใบผ่านระดับภาษาอังกฤษ</p>' +
+      '<div class="pend-fx cert-fx"><span class="burst">' + BURST + '<b class="burst-t cert-lv">' + esc(lv) + '</b></span></div>' +
+      '<h2 id="cert-h">ผ่านระดับ ' + esc(lv) + '</h2><p class="lede">ได้ ' + pct + '% เมื่อ ' + esc(certDate(r)) + '</p>' +
+      '<div class="cert-tbl" style="grid-template-columns:repeat(' + CERTP.filter(function (p) { return r[p[1] + 1] > 0; }).length + ',minmax(0,1fr))">' + CERTP.filter(function (p) { return r[p[1] + 1] > 0; }).map(function (p) { return '<div><b>' + r[p[1]] + '/' + r[p[1] + 1] + '</b><span>' + p[0] + '</span></div>'; }).join('') + '</div></section>' +
+      '<div class="actions stack"><button type="button" class="btn" id="cert-save" data-act="cert-save" data-lv="' + esc(lv) + '">บันทึกรูป</button>' +
+      '<button type="button" class="btn ghost" id="cert-again" data-act="exit-go" data-lv="' + esc(lv) + '">สอบอีกครั้ง</button></div>';
+  }
+  /* the certificate as a picture, drawn in the page's own ink and paper */
+  function certPng(lv) {
+    var r = EXIT[lv], c = document.createElement('canvas'), W = 1080, H = 1350, x = c.getContext('2d'), i;
+    if (!r || !x) return '';
+    var cs = getComputedStyle(document.documentElement), paper = cs.getPropertyValue('--paper').trim(), ink = cs.getPropertyValue('--ink').trim(), pct = Math.round(r[0] / r[1] * 100);
+    c.width = W; c.height = H;
+    x.fillStyle = paper; x.fillRect(0, 0, W, H);
+    /* speed lines only in the band around the burst, so no text sits on them */
+    x.save(); x.beginPath(); x.rect(52, 190, W - 104, 610); x.clip(); x.translate(W / 2, 470); x.fillStyle = ink;
+    for (i = 0; i < 90; i++) { x.rotate(Math.PI * 2 / 90); x.fillRect(250, -2.5, 760, 5); }
+    x.restore();
+    x.beginPath();
+    for (i = 0; i < 24; i++) { var a = i * Math.PI / 12 - Math.PI / 2, rad = i % 2 ? 200 : 270; x.lineTo(W / 2 + Math.cos(a) * rad, 470 + Math.sin(a) * rad); }
+    x.closePath(); x.fillStyle = paper; x.fill(); x.lineWidth = 10; x.strokeStyle = ink; x.lineJoin = 'round'; x.stroke();
+    x.lineWidth = 16; x.strokeRect(36, 36, W - 72, H - 72);
+    x.fillStyle = ink; x.textAlign = 'center'; x.textBaseline = 'middle';
+    x.font = '900 190px Kanit, sans-serif'; x.fillText(lv, W / 2, 480);
+    x.font = '800 54px Kanit, sans-serif'; x.fillText('ใบผ่านระดับภาษาอังกฤษ', W / 2, 120);
+    x.font = '900 104px Kanit, sans-serif'; x.fillText('ผ่านระดับ ' + lv, W / 2, 920);
+    x.font = '600 50px Anuphan, sans-serif'; x.fillText('ได้ ' + pct + '% · ' + certDate(r), W / 2, 1030);
+    x.font = '600 40px Anuphan, sans-serif';
+    var sc = CERTP.filter(function (p) { return r[p[1] + 1] > 0; }).map(function (p) { return p[0] + ' ' + r[p[1]] + '/' + r[p[1] + 1]; });
+    x.fillText(sc.slice(0, 3).join('   '), W / 2, 1110);
+    if (sc.length > 3) x.fillText(sc.slice(3).join('   '), W / 2, 1165);
+    x.font = '600 34px Anuphan, sans-serif'; x.fillText('ฝึกภาษาอังกฤษ', W / 2, 1250);
+    try { return c.toDataURL('image/png'); } catch (e) { return ''; }
+  }
+  function certSave(lv) {
+    var u = certPng(lv);
+    if (!u) return false;
+    try { var a = document.createElement('a'); a.href = u; a.download = 'english-certificate-' + lv + '.png'; a.style.display = 'none'; document.body.appendChild(a); a.click(); setTimeout(function () { if (a.parentNode) a.parentNode.removeChild(a); }, 1500); return true; } catch (e) { return false; }
+  }
+
   /* ---------------- path screens ---------------- */
   var POFF = [0, 44, 64, 44, 0, -44, -64, -44], OB = { step: 0 }, OBX = false;
   function vPath() {
@@ -4943,7 +5172,9 @@ a.btn{text-decoration:none}
     if (n.t === 'v' && n.c >= PBASE) more += '<p class="note">คำหมวดนี้ใช้เสียงอ่านของเครื่อง (เสียงจากเครื่อง)</p>';
     var body = '<p class="note">' + esc(sub) + ' · ราว ' + nodeMins(n) + ' นาที' + (done ? ' · ทำแล้ว' : '') + '</p><p>' + does + '</p>' + more +
       (ahead ? '<p class="note">บทนี้อยู่ข้างหน้า จะทำเลยก็ได้</p>' : '');
-    pathSheet(sheetBox(nodeIcon(n, ''), nodeTitle(n), body, can ? '<button type="button" class="btn" id="p-start" data-act="p-start" data-id="' + n.id + '">' + (done ? 'ทำอีกครั้ง' : (ahead ? 'ทำเลย' : 'เริ่ม')) + '</button>' : ''));
+    var fastB = fastOk(n) ? '<button type="button" class="btn ghost" id="p-fast" data-act="p-fast" data-id="' + n.id + '">ข้ามไปเร็วขึ้น ทดสอบ 6 ข้อ</button>' : '';
+    if (fastB) body += '<p class="note">5 บทล่าสุดตอบถูกเกือบทุกข้อ ทดสอบสั้นๆ ผ่านแล้วข้ามบทนี้ได้</p>';
+    pathSheet(sheetBox(nodeIcon(n, ''), nodeTitle(n), body, (can ? '<button type="button" class="btn" id="p-start" data-act="p-start" data-id="' + n.id + '">' + (done ? 'ทำอีกครั้ง' : (ahead ? 'ทำเลย' : 'เริ่ม')) + '</button>' : '') + fastB));
   }
   function vOnboard() {
     var st = [
@@ -4982,11 +5213,12 @@ a.btn{text-decoration:none}
       '<div class="tile"><b>' + up + '/' + pm().PU.length + '</b><span>หน่วยที่ผ่านแล้ว</span></div>' +
       '<div class="tile"><b>' + fmt(st.learned) + '</b><span>คำที่เรียนแล้ว จาก ' + fmt(ALL.length) + ' คำ</span></div>' +
       '<div class="tile"><b>' + fmt(st.strong) + '</b><span>คำที่จำแม่นแล้ว</span></div>' +
+      '<div class="tile" id="me-long"><b>' + fmt(longKnown()) + '</b><span>จำได้นาน (เกิน 30 วัน)</span></div>' +
       (GLS.length ? '<div class="tile"><b>' + GLS.filter(gPassed).length + '/' + GLS.length + '</b><span>บทไวยากรณ์ที่ผ่าน</span></div>' : '') +
       (RDS.length ? '<div class="tile"><b>' + rDoneCount() + '/' + RDS.length + '</b><span>เรื่องที่อ่านแล้ว</span></div>' : '') +
       '<button type="button" class="tile" id="open-level" data-act="level"><b>' + (lv ? lvName(lv.o) : 'วัดระดับ') + '</b><span>' + (lv ? 'ระดับโดยประมาณ เมื่อ ' + dateTh(lv.t) + ' กดเพื่อวัดใหม่' : 'แบบทดสอบราว 10 นาที ดูว่าตอนนี้อยู่ระดับไหน') + '</span></button>' +
       '<div class="tile"><b>' + skn.best + '</b><span>วันต่อเนื่องสูงสุด</span></div></div></section>';
-    h += badgesHtml();
+    h += skillsHtml() + exitHtml() + badgesHtml();
     app.innerHTML = h;
   }
   function dur(s) { return Math.floor(s / 60) + ':' + pad2(s % 60); }
@@ -5014,13 +5246,19 @@ a.btn{text-decoration:none}
     else if (n.t === 't' && !R.right) { head = 'ไว้ฝึกพูดครั้งหน้า'; sub = 'ข้ามได้ ไม่นับว่าผิด กดไมค์ที่เรื่องไหนก็ได้เมื่อพร้อม'; }
     else head = 'จบบทนี้แล้ว';
     if (E.sec) sub = (sub ? sub + ' ' : '') + 'จบระดับ ' + M.PSEC[u.sec].lv + ' แล้ว';
+    if (n.exit && n.exitRec) sub = 'ได้ ' + n.exitRec[0] + ' จาก ' + n.exitRec[1] + ' ข้อ (' + Math.round(n.exitRec[0] / Math.max(1, n.exitRec[1]) * 100) + '%)' + (n.exitPass ? '' : ' ต้องได้ 75% ขึ้นไป สอบใหม่ได้ทุกเมื่อ');
     if (n.t === 'g' && !E.done) btns = '<button type="button" class="btn" id="p-again" data-act="p-again">ลองอีกครั้ง</button>' +
       (nx ? '<button type="button" class="btn ghost" id="p-next-node" data-act="p-go-next">ข้ามไปบทถัดไป</button>' : '');
     else {
       if (nx) btns += '<p class="pend-next" id="p-next-what">บทต่อไป: ' + esc(nodeTitle(nx)) + '</p><button type="button" class="btn" id="p-next-node" data-act="p-go-next">เรียนบทต่อไป</button>';
       if (n.t === 'k' && !E.passed) btns += '<button type="button" class="btn ghost" id="p-again" data-act="p-again">ลองทดสอบอีกครั้ง</button>';
     }
-    btns += '<button type="button" class="btn' + (btns ? ' ghost' : '') + '" id="p-back" data-act="' + (n.from === 'prac' ? 'prac">กลับหน้าฝึก' : 'path">กลับเส้นทาง') + '</button>';
+    if (n.exit) btns = n.exitPass ? '<button type="button" class="btn" id="p-cert" data-act="cert" data-lv="' + esc(n.exit) + '">ดูใบผ่านระดับ</button>' : '<button type="button" class="btn" id="p-exit-again" data-act="exit-go" data-lv="' + esc(n.exit) + '">สอบอีกครั้ง</button>';
+    /* about 85% right is the aim: nearly all right offers a test-out of the next word lesson, under 70% a short review */
+    var accT = n.virt ? null : adaptAcc(n.t);
+    if (accT !== null && accT >= 0.95 && n.t === 'v' && nx && fastOk(nx)) btns += '<div class="p5-offer"><p class="note">5 บทล่าสุดตอบถูกเกือบทุกข้อ ลองทดสอบ 6 ข้อ ถ้าผ่านจะข้ามบทถัดไปได้เลย</p><button type="button" class="btn ghost" id="p-fast" data-act="p-fast" data-id="' + nx.id + '">ข้ามไปเร็วขึ้น</button></div>';
+    else if (accT !== null && accT < 0.7) btns += '<div class="p5-offer"><p class="note">5 บทล่าสุดตอบถูกไม่ถึง 70% ทบทวนสั้นๆ ก่อนจะช่วยให้จำได้ดีขึ้น</p><button type="button" class="btn ghost" id="p-easy" data-act="p-easy">ทบทวนก่อนไปต่อ</button></div>';
+    btns += '<button type="button" class="btn' + (btns ? ' ghost' : '') + '" id="p-back" data-act="' + (n.from === 'prac' ? 'prac">กลับหน้าฝึก' : (n.from === 'me' ? 'me">กลับหน้าฉัน' : 'path">กลับเส้นทาง')) + '</button>';
     var h = '<header class="top"><p class="eyebrow">' + esc(n.virt ? (n.lbl || 'ทบทวนคำที่ถึงเวลา') : PTYPE[n.t] + ' · หน่วยที่ ' + u.no + ' ' + u.title) + '</p><h2>' + head + '</h2></header>' +
       '<section class="pend" aria-label="ผลของบทนี้"><div class="pend-fx"><span class="burst">' + BURST +
       '<p class="score burst-t"><span id="xp-up" data-xp="' + R.xp + '">+' + R.xp + '</span><small>XP</small></p></span>' +
@@ -5079,6 +5317,12 @@ a.btn{text-decoration:none}
     if (act === 'path') { go({ name: 'path' }); return; }
     if (act === 'me') { go({ name: 'me' }); return; }
     if (act === 'prac') { go({ name: 'prac' }); return; }
+    if (act === 'p-fast') { n = pm().PNI[el.getAttribute('data-id')]; pathSheetClose(); if (n && fastOk(n)) fastStart(n); return; }
+    if (act === 'p-easy') { M = pm(); var es = pathScan(); pathStart({ t: 'x', id: 'x:0', n: 0, u: es.cur >= 0 ? M.PN[es.cur].u : M.PU.length - 1, virt: true, lbl: 'ทบทวนก่อนไปต่อ' }) || render(); return; }
+    if (act === 'exit') { var xl = el.getAttribute('data-lv'), xr = EXIT[xl]; if (xr && xr[0] / xr[1] >= 0.75) go({ name: 'cert', lv: xl }); else exitStart(xl); return; }
+    if (act === 'exit-go') { exitStart(el.getAttribute('data-lv')); return; }
+    if (act === 'cert') { go({ name: 'cert', lv: el.getAttribute('data-lv') }); return; }
+    if (act === 'cert-save') { certSave(el.getAttribute('data-lv')); return; }
     if (act === 'lib') { go({ name: 'lib', k: el.getAttribute('data-k') }); return; }
     if (act === 'lib-go') { n = pm().PNI[el.getAttribute('data-id')]; if (n && !pathStart(nodeCopy(n, { from: 'prac' }))) render(); return; }
     if (act === 'sn-say') { var stt = el.getAttribute('data-t') || '', again = el.getAttribute('data-again') === '1'; p4Say(stt, again, el); el.setAttribute('data-again', again ? '0' : '1'); return; }
