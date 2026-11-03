@@ -16,7 +16,8 @@
 
 ## How to use this file (for Claude Code)
 
-1. Do **one phase per session**, in order. Read `CLAUDE.md` first, then the phase below. Fetch `main` before you start; another
+1. Do the phases **in order, one at a time**; one session may do several in a row when the owner asks. Read `CLAUDE.md`
+   first, then the phase below. Fetch `main` before you start; another
    phase may have landed.
 2. Open with 3–5 short Thai lines to the owner saying what you will build, then build it without waiting for approval.
 3. Finish with the **Definition of done** below, merge into `main`, push `main`, and update the **Status** table here and
@@ -32,6 +33,7 @@
 | :- | :- | :- |
 | 1 | Speaking practice (`CLAUDE.md` idea 1) | done (3 Nov 2026) |
 | 2 | Learning path, XP, daily quests, end-of-lesson screen, combo | done (3 Nov 2026), see "As built" under Phase 2 |
+| M | Black-and-white manga look (`design/manga/README.md`), before phase 3 | todo |
 | 3 | Practice tab, mistakes review, dictation, match race, streak protection, comeback, badges, reminders, backup file | todo |
 | 4 | Content: Thai-speaker sounds, role-play dialogues, error-correction drills, 18 stories, writing tasks, work and technology words | partly done (3 Nov 2026): 4.4 stories done; 4.1, 4.2, 4.3, 4.5, 4.6 left |
 | 5 | Adaptive difficulty, longer reviews for known words, skill levels, level exit tests with certificate | todo |
