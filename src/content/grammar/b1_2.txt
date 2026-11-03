@@ -1,0 +1,239 @@
+# l45 | B1 | -ing หรือ to: enjoy doing, want to do
+goal: เลือกได้ว่ากริยาตัวที่สองต้องเป็น -ing หรือ to + กริยา
+p: กริยาบางคำต้องตามด้วยกริยา -ing เช่น enjoy, finish, mind, avoid, keep, practice, suggest เช่น I enjoy cooking.
+p: กริยาบางคำต้องตามด้วย to + กริยา เช่น want, need, decide, hope, plan, learn, promise, agree, would like เช่น I decided to stay.
+p: หลังคำบุพบท เช่น in, at, of, about, for, before, after, without ใช้กริยา -ing เสมอ เช่น I'm good at swimming. / Thank you for helping me. ส่วน like, love, start ใช้ได้ทั้งสองแบบ
+t: enjoy / finish / avoid / keep + -ing | I enjoy reading.
+t: want / decide / hope / plan + to + กริยา | She wants to travel.
+t: บุพบท + -ing | I'm interested in learning English.
+t: like / love / start + -ing หรือ to | It started raining. / It started to rain.
+e: I enjoy listening to music. | ฉันชอบฟังเพลง
+e: She finished cleaning the kitchen. | เธอทำความสะอาดห้องครัวเสร็จแล้ว
+e: We decided to stay at home. | เราตัดสินใจอยู่บ้าน
+e: I hope to see you soon. | ฉันหวังว่าจะได้เจอคุณเร็วๆ นี้
+e: He is good at playing the guitar. | เขาเล่นกีตาร์เก่ง
+e: Thank you for helping me. | ขอบคุณที่ช่วยฉัน
+e: Would you mind closing the door? | ช่วยปิดประตูหน่อยได้ไหม
+m: I enjoy to swim. | I enjoy swimming. | enjoy ตามด้วย -ing
+m: She decided going home. | She decided to go home. | decide ตามด้วย to + กริยา
+m: Thank you for help me. | Thank you for helping me. | หลังบุพบท for ใช้ -ing
+q c | I enjoy ___ to music. | ฉันชอบฟังเพลง | listening*; to listen; listen | enjoy ตามด้วย -ing
+q c | We decided ___ at home. | เราตัดสินใจอยู่บ้าน | to stay*; staying; stay | decide ตามด้วย to + กริยา
+q c | He is good at ___ the guitar. | เขาเล่นกีตาร์เก่ง | playing*; play; to play | หลังบุพบท at ใช้ -ing
+q c | I want ___ a new language. | ฉันอยากเรียนภาษาใหม่ | to learn*; learning; learn | want ตามด้วย to + กริยา
+q c | Have you finished ___ your homework? | คุณทำการบ้านเสร็จหรือยัง | doing*; to do; do | finish ตามด้วย -ing
+q s | ขอบคุณเพื่อนที่ช่วย | Thank you for helping me.*; Thank you for help me.; Thank you to help me. | หลังบุพบท for ใช้ -ing
+q s | เลือกประโยคที่ถูก | She hopes to visit Japan next year.*; She hopes visiting Japan next year.; She hopes visit Japan next year. | hope ตามด้วย to + กริยา
+q o | ฉันหวังว่าจะได้เจอคุณเร็วๆ นี้ | I hope to see you soon. | hope + to + กริยา
+q w | Would you mind ___ the window? (open) | ช่วยเปิดหน้าต่างหน่อยได้ไหม | opening | mind ตามด้วย -ing
+q w | I'm planning ___ visit my aunt this weekend. | สุดสัปดาห์นี้ฉันวางแผนจะไปเยี่ยมป้า | to | plan ตามด้วย to + กริยา
+
+# l46 | B1 | อาจจะ และ ต้อง...แน่ๆ: might, may, must, can't
+goal: บอกได้ว่าเรื่องไหนอาจจะจริง น่าจะจริงแน่ หรือเป็นไปไม่ได้
+p: might หรือ may + กริยา แปลว่า อาจจะ (ไม่แน่ใจ) เช่น It might rain later. / She may be at home. ปฏิเสธคือ might not และ may not
+p: must + กริยา ใช้เดาอย่างมั่นใจว่าจริงแน่ๆ จากหลักฐาน เช่น He has three cars. He must be rich. ส่วน can't แปลว่า ไม่มีทางเป็นจริง เช่น That can't be true.
+p: หลัง might, may, must, can't ใช้กริยารูปปกติ ไม่มี to และระวังว่า mustn't แปลว่า ห้าม ไม่ได้แปลว่า ไม่น่าจะ
+t: might / may + กริยา (อาจจะ) | I might go to the party.
+t: might not / may not | She might not come.
+t: must be (ต้อง...แน่ๆ) | You must be tired.
+t: can't be (ไม่มีทาง) | It can't be him.
+e: It might rain this afternoon. | บ่ายนี้ฝนอาจจะตก
+e: I may be late tonight. | คืนนี้ฉันอาจจะกลับดึก
+e: She might not come to the party. | เธออาจจะไม่มางานปาร์ตี้
+e: You worked all day. You must be tired. | คุณทำงานมาทั้งวัน คุณต้องเหนื่อยแน่ๆ
+e: He has a big house and three cars. He must be rich. | เขามีบ้านหลังใหญ่และรถสามคัน เขาต้องรวยแน่ๆ
+e: That can't be true. | นั่นไม่มีทางเป็นเรื่องจริง
+e: The shop can't be closed. It's only ten o'clock. | ร้านไม่น่าจะปิด เพิ่งสิบโมงเอง
+m: It might rains later. | It might rain later. | หลัง might ใช้กริยารูปปกติ
+m: She must to be tired. | She must be tired. | หลัง must ไม่มี to
+m: That mustn't be true. | That can't be true. | ไม่มีทางเป็นจริง ใช้ can't ไม่ใช่ mustn't
+q c | Take an umbrella. It ___ rain later. | เอาร่มไปด้วย ฝนอาจจะตก | might*; must; can't | ไม่แน่ใจ ใช้ might
+q c | You walked ten kilometers. You ___ be tired. | คุณเดินมาสิบกิโลเมตร คุณต้องเหนื่อยแน่ๆ | must*; might not; can't | มั่นใจจากหลักฐาน ใช้ must
+q c | That ___ be Tom. He is in Japan now. | นั่นไม่น่าจะใช่ทอม ตอนนี้เขาอยู่ญี่ปุ่น | can't*; must; might | ไม่มีทางเป็นจริง ใช้ can't
+q c | She may not ___ to the meeting. | เธออาจจะไม่มาประชุม | come*; comes; to come | หลัง may not ใช้กริยารูปปกติ
+q c | I ___ go to the beach this weekend, but I'm not sure. | สุดสัปดาห์นี้ฉันอาจจะไปทะเล แต่ยังไม่แน่ใจ | might*; must; can't | ไม่แน่ใจ ใช้ might
+q s | บอกว่าเพื่อนต้องหิวแน่ๆ เพราะไม่ได้กินอะไรทั้งวัน | You haven't eaten all day. You must be hungry.*; You haven't eaten all day. You must hungry.; You haven't eaten all day. You might to be hungry. | must + be + คุณศัพท์
+q s | เลือกประโยคที่ถูก | It might snow tomorrow.*; It might snows tomorrow.; It might to snow tomorrow. | หลัง might ใช้กริยารูปปกติ
+q o | นั่นไม่มีทางเป็นเรื่องจริง | That can't be true. | ไม่มีทาง ใช้ can't
+q w | He has three cars. He ___ be rich. | เขามีรถสามคัน เขาต้องรวยแน่ๆ | must | มั่นใจจากหลักฐาน ใช้ must
+q w | Ask Mali. She ___ know the answer. | ลองถามมะลิดู เธออาจจะรู้คำตอบ | might/may | ไม่แน่ใจ ใช้ might หรือ may
+
+# l47 | B1 | เล่าว่าใครพูดอะไร: said, told, asked
+goal: เล่าคำพูดและคำขอของคนอื่นได้
+p: Reported speech ใช้เล่าว่าคนอื่นพูดอะไร มักถอยกริยาเป็นอดีตหนึ่งขั้น เช่น "I am tired." กลายเป็น She said (that) she was tired. และ "I will help." กลายเป็น He said he would help.
+p: said ไม่มีผู้ฟังตามหลัง (She said that ...) ส่วน told ต้องมีผู้ฟังตามหลังเสมอ (She told me that ...) และต้องเปลี่ยนสรรพนามให้ตรงกับผู้เล่า เช่น I กลายเป็น he หรือ she
+p: เล่าคำสั่งหรือคำขอใช้ told หรือ asked + คน + to + กริยา เช่น The teacher told us to be quiet. / She asked me to help her. ถ้าเป็นปฏิเสธใช้ not to
+t: am / is → was, are → were | He said he was busy.
+t: will → would, can → could | She said she could swim.
+t: said (that) ... / told + คน + (that) ... | He told me that he was sick.
+t: told / asked + คน + to + กริยา | She asked me to wait.
+e: She said that she was tired. | เธอบอกว่าเธอเหนื่อย
+e: He told me that he lived in Bangkok. | เขาบอกฉันว่าเขาอาศัยอยู่ในกรุงเทพฯ
+e: Tom said he would call me later. | ทอมบอกว่าเขาจะโทรหาฉันทีหลัง
+e: She said she could speak three languages. | เธอบอกว่าเธอพูดได้สามภาษา
+e: The teacher told us to open our books. | ครูบอกให้เราเปิดหนังสือ
+e: My mother asked me to buy some milk. | แม่ขอให้ฉันไปซื้อนม
+e: They told me not to worry. | พวกเขาบอกฉันว่าไม่ต้องกังวล
+m: She said me that she was tired. | She told me that she was tired. | มีผู้ฟังตามหลังใช้ told
+m: He told that he was busy. | He said that he was busy. | ไม่มีผู้ฟังตามหลังใช้ said
+m: She asked me help her. | She asked me to help her. | asked + คน + to + กริยา
+q c | She ___ that she was hungry. | เธอบอกว่าเธอหิว | said*; told; say | ไม่มีผู้ฟังตามหลังใช้ said
+q c | He ___ me that he was sick. | เขาบอกฉันว่าเขาป่วย | told*; said; talked | มีผู้ฟัง me ตามหลังใช้ told
+q c | Yesterday Tom said he ___ call me, but he didn't. | เมื่อวานทอมบอกว่าจะโทรหาฉัน แต่ก็ไม่ได้โทร | would*; will; can | เล่าคำพูดในอดีต will เปลี่ยนเป็น would
+q c | The teacher told us ___ quiet. | ครูบอกให้เราเงียบ | to be*; be; being | told + คน + to + กริยา
+q c | She said she ___ speak three languages. | เธอบอกว่าเธอพูดได้สามภาษา | could*; can to; cans | เล่าคำพูด can เปลี่ยนเป็น could
+q s | เล่าว่าแม่ขอให้ไปซื้อนม | My mother asked me to buy some milk.*; My mother asked me buy some milk.; My mother said me to buy some milk. | asked + คน + to + กริยา
+q s | เล่าว่าเพื่อนบอกว่าเขาเหนื่อย | He said that he was tired.*; He told that he was tired.; He said me that he was tired. | ไม่มีผู้ฟังตามหลังใช้ said
+q o | เขาบอกฉันว่าเขาอาศัยอยู่ในกรุงเทพฯ | He told me that he lived in Bangkok. | told + คน + that
+q w | They told me not ___ worry. | พวกเขาบอกฉันว่าไม่ต้องกังวล | to | told + คน + not to + กริยา
+q w | She ___ me to wait outside. (ask) | เธอขอให้ฉันรอข้างนอก | asked | ขอร้องใช้ asked + คน + to
+
+# l48 | B1 | ถามอย่างสุภาพ: Do you know where ...?
+goal: ถามคำถามแบบสุภาพหรือถามอ้อมๆ ได้
+p: คำถามอ้อม คือคำถามที่อยู่ในอีกประโยคหนึ่ง เช่น Do you know ...? Can you tell me ...? I wonder ... ใช้ถามคนที่ไม่รู้จักได้สุภาพกว่าถามตรงๆ
+p: ในคำถามอ้อม ลำดับคำเหมือนประโยคบอกเล่า คือ คำถาม + ประธาน + กริยา และไม่ใช้ do, does, did เช่น Where is the bank? กลายเป็น Do you know where the bank is?
+p: ถ้าเป็นคำถามที่ตอบ yes หรือ no ใช้ if หรือ whether เช่น Is he at home? กลายเป็น Do you know if he is at home?
+t: Do you know + where / what / when + ประธาน + กริยา? | Do you know where she lives?
+t: Can you tell me + ...? | Can you tell me what time it is?
+t: ... if / whether + ประธาน + กริยา | I don't know if he is coming.
+t: I wonder + ... | I wonder why she left.
+e: Do you know where the station is? | คุณรู้ไหมว่าสถานีอยู่ที่ไหน
+e: Can you tell me what time the shop opens? | ช่วยบอกหน่อยได้ไหมว่าร้านเปิดกี่โมง
+e: Do you know if Tom is at home? | คุณรู้ไหมว่าทอมอยู่บ้านหรือเปล่า
+e: I don't know where she lives. | ฉันไม่รู้ว่าเธออาศัยอยู่ที่ไหน
+e: Could you tell me how much this costs? | ช่วยบอกหน่อยได้ไหมว่าอันนี้ราคาเท่าไร
+e: I wonder why he didn't come. | ฉันสงสัยว่าทำไมเขาถึงไม่มา
+e: Do you remember what her name is? | คุณจำได้ไหมว่าเธอชื่ออะไร
+m: Do you know where is the station? | Do you know where the station is? | คำถามอ้อม ประธานมาก่อนกริยา
+m: Can you tell me what time does it open? | Can you tell me what time it opens? | คำถามอ้อมไม่ใช้ does
+m: Do you know is he at home? | Do you know if he is at home? | คำถามที่ตอบ yes หรือ no ใช้ if
+q c | Do you know where the bank ___? | คุณรู้ไหมว่าธนาคารอยู่ที่ไหน | is*; are; does | คำถามอ้อม ประธานมาก่อนกริยา
+q c | Can you tell me what time it ___? | ช่วยบอกหน่อยได้ไหมว่าตอนนี้กี่โมง | is*; does; do | คำถามอ้อม ประธาน it มาก่อนกริยา is
+q c | I don't know ___ he is coming. | ฉันไม่รู้ว่าเขาจะมาหรือเปล่า | if*; what; where | คำถามที่ตอบ yes หรือ no ใช้ if
+q c | Do you know where ___? | คุณรู้ไหมว่าเธออาศัยอยู่ที่ไหน | she lives*; does she live; lives she | คำถามอ้อม ประธานมาก่อนกริยา และไม่ใช้ does
+q c | Could you tell me how much ___? | ช่วยบอกหน่อยได้ไหมว่าอันนี้ราคาเท่าไร | this costs*; does this cost; costs this | คำถามอ้อมไม่ใช้ does
+q s | ถามทางไปสถานีอย่างสุภาพ | Excuse me, do you know where the station is?*; Excuse me, do you know where is the station?; Excuse me, do you know where does the station? | คำถามอ้อม ประธานมาก่อนกริยา
+q s | เลือกประโยคที่ถูก | I wonder why he didn't come.*; I wonder why didn't he come.; I wonder why he not came. | หลัง I wonder ใช้ลำดับคำแบบประโยคบอกเล่า
+q o | คุณรู้ไหมว่าทอมอยู่บ้านหรือเปล่า | Do you know if Tom is at home? | คำถามที่ตอบ yes หรือ no ใช้ if
+q w | Do you remember what her name ___? | คุณจำได้ไหมว่าเธอชื่ออะไร | is | ประธาน her name มาก่อนกริยา is
+q w | Can you tell me ___ the museum opens? | ช่วยบอกหน่อยได้ไหมว่าพิพิธภัณฑ์เปิดเมื่อไร | when/what time | ถามเวลาใช้ when หรือ what time
+
+# l49 | B1 | ถามย้ำ: ..., isn't it?
+goal: ถามย้ำให้อีกฝ่ายยืนยันด้วยคำถามสั้นท้ายประโยค
+p: Question tag คือคำถามสั้นๆ ท้ายประโยค แปลว่า ใช่ไหม ถ้าประโยคหลักเป็นบอกเล่า ท้ายเป็นปฏิเสธ เช่น It's hot, isn't it? ถ้าประโยคหลักเป็นปฏิเสธ ท้ายเป็นบอกเล่า เช่น You don't like coffee, do you?
+p: ใช้กริยาช่วยตัวเดียวกับประโยคหลัก เช่น is, are, can, will, have ถ้าไม่มีกริยาช่วยใช้ do, does, did และใช้สรรพนามแทนประธาน เช่น Tom lives here, doesn't he?
+p: รูปพิเศษที่ต้องจำ: I am ... ใช้ aren't I? และ Let's ... ใช้ shall we?
+t: บอกเล่า, ปฏิเสธ? | It's cold, isn't it?
+t: ปฏิเสธ, บอกเล่า? | You can't swim, can you?
+t: กริยาธรรมดา → do / does / did | She works here, doesn't she?
+t: Let's ..., shall we? | Let's go, shall we?
+e: It's very hot today, isn't it? | วันนี้ร้อนมาก ใช่ไหม
+e: You are a student, aren't you? | คุณเป็นนักเรียนใช่ไหม
+e: She can speak English, can't she? | เธอพูดภาษาอังกฤษได้ใช่ไหม
+e: You don't eat meat, do you? | คุณไม่กินเนื้อสัตว์ใช่ไหม
+e: Tom lives near here, doesn't he? | ทอมอาศัยอยู่แถวนี้ใช่ไหม
+e: You went to the party, didn't you? | คุณไปงานปาร์ตี้มาใช่ไหม
+e: Let's eat out tonight, shall we? | คืนนี้ไปกินข้าวนอกบ้านกันดีไหม
+m: It's hot, is it? | It's hot, isn't it? | ประโยคบอกเล่า ท้ายต้องเป็นปฏิเสธ
+m: She works here, isn't she? | She works here, doesn't she? | กริยาธรรมดากับ she ใช้ doesn't
+m: You went there, don't you? | You went there, didn't you? | อดีตใช้ did
+q c | It's cold today, ___ it? | วันนี้หนาว ใช่ไหม | isn't*; is; doesn't | บอกเล่า ท้ายเป็นปฏิเสธ
+q c | You don't like fish, ___ you? | คุณไม่ชอบปลาใช่ไหม | do*; don't; are | ปฏิเสธ ท้ายเป็นบอกเล่า
+q c | She can drive, ___ she? | เธอขับรถได้ใช่ไหม | can't*; can; doesn't | ใช้กริยาช่วย can เหมือนประโยคหลัก
+q c | Tom lives near here, ___ he? | ทอมอาศัยอยู่แถวนี้ใช่ไหม | doesn't*; isn't; don't | กริยาธรรมดากับ he ใช้ doesn't
+q c | You saw the movie, ___ you? | คุณดูหนังเรื่องนั้นแล้วใช่ไหม | didn't*; don't; weren't | อดีตใช้ didn't
+q s | ชวนเพื่อนไปกินข้าวนอกบ้าน | Let's eat out tonight, shall we?*; Let's eat out tonight, don't we?; Let's eat out tonight, isn't it? | Let's ใช้ shall we
+q s | เลือกประโยคที่ถูก | You are tired, aren't you?*; You are tired, are you?; You are tired, don't you? | บอกเล่า are ท้ายเป็น aren't
+q o | คุณเป็นนักเรียนใช่ไหม | You are a student, aren't you? | บอกเล่า ท้ายเป็นปฏิเสธ
+q w | They have finished, ___ they? | พวกเขาทำเสร็จแล้วใช่ไหม | haven't | ใช้กริยาช่วย have และกลับเป็นปฏิเสธ
+q w | He won't be late, ___ he? | เขาจะไม่มาสายใช่ไหม | will | ประโยคหลักปฏิเสธด้วย won't ท้ายจึงเป็น will
+
+# l50 | B1 | รู้สึก หรือ ทำให้รู้สึก: bored หรือ boring
+goal: เลือกคุณศัพท์ที่ลงท้าย -ed กับ -ing ได้ถูก
+p: คุณศัพท์ -ed บอกความรู้สึกของคน เช่น I'm bored. แปลว่า ฉันเบื่อ ส่วน -ing บอกลักษณะของสิ่งที่ทำให้รู้สึกแบบนั้น เช่น The movie is boring. แปลว่า หนังน่าเบื่อ
+p: คู่ที่ใช้บ่อย: bored / boring, interested / interesting, excited / exciting, tired / tiring, surprised / surprising, worried / worrying, confused / confusing
+p: ถ้าพูดว่า I'm boring จะแปลว่า ฉันเป็นคนน่าเบื่อ ความหมายเปลี่ยนไปเลย จึงต้องระวัง
+t: คน + -ed (รู้สึก) | I'm interested in art.
+t: สิ่ง + -ing (ทำให้รู้สึก) | Art is interesting.
+t: tired / tiring | The trip was tiring.
+t: excited / exciting | The game was exciting.
+e: I'm bored. Let's go out. | ฉันเบื่อ ออกไปข้างนอกกันเถอะ
+e: This book is really interesting. | หนังสือเล่มนี้น่าสนใจมาก
+e: Are you interested in history? | คุณสนใจประวัติศาสตร์ไหม
+e: The long trip was very tiring. | การเดินทางไกลเหนื่อยมาก
+e: I was surprised to see her there. | ฉันประหลาดใจที่เห็นเธอที่นั่น
+e: The news was surprising. | ข่าวนั้นน่าประหลาดใจ
+e: The kids are excited about the trip. | เด็กๆ ตื่นเต้นกับการไปเที่ยว
+m: I'm interesting in music. | I'm interested in music. | ความรู้สึกของคนใช้ -ed
+m: The movie was bored. | The movie was boring. | สิ่งที่ทำให้รู้สึกใช้ -ing
+m: The lesson was confused. | The lesson was confusing. | บทเรียนทำให้สับสน ใช้ -ing
+q c | I'm ___ in learning Japanese. | ฉันสนใจเรียนภาษาญี่ปุ่น | interested*; interesting; interest | ความรู้สึกของคนใช้ -ed
+q c | The movie was very ___, and I almost fell asleep. | หนังน่าเบื่อมาก ฉันเกือบหลับ | boring*; bored; bore | สิ่งที่ทำให้รู้สึกใช้ -ing
+q c | We were ___ to hear the news. | เราประหลาดใจที่ได้ยินข่าวนี้ | surprised*; surprising; surprise | ความรู้สึกของคนใช้ -ed
+q c | It was a long and ___ day. | มันเป็นวันที่ยาวนานและเหนื่อย | tiring*; tired; tire | วันที่ทำให้เหนื่อยใช้ -ing
+q c | The children are ___ about the holiday. | เด็กๆ ตื่นเต้นกับวันหยุด | excited*; exciting; excite | ความรู้สึกของคนใช้ -ed
+q s | บอกว่าตัวเองรู้สึกเบื่อ | I'm bored.*; I'm boring.; I bored. | ความรู้สึกของคนใช้ -ed
+q s | เลือกประโยคที่ถูก | This map is confusing.*; This map is confused.; This map confusing. | สิ่งที่ทำให้สับสนใช้ -ing
+q o | คุณสนใจประวัติศาสตร์ไหม | Are you interested in history? | ความรู้สึกของคนใช้ -ed
+q w | The game was really ___. (excite) | เกมนั้นน่าตื่นเต้นมาก | exciting | สิ่งที่ทำให้ตื่นเต้นใช้ -ing
+q w | I was ___ after the long walk. (tire) | ฉันเหนื่อยหลังจากเดินมาไกล | tired | ความรู้สึกของคนใช้ -ed
+
+# l51 | B1 | ถึงแม้ว่า และ เว้นแต่: although, however, unless, in case
+goal: เชื่อมความคิดที่ขัดกัน และบอกเงื่อนไขด้วย unless และ in case
+p: although หรือ even though + ประโยค แปลว่า ถึงแม้ว่า เช่น Although it was raining, we went out. และไม่ต้องใช้ but ซ้ำในประโยคเดียวกัน
+p: however แปลว่า อย่างไรก็ตาม ใช้ขึ้นประโยคใหม่และตามด้วยจุลภาค เช่น It was raining. However, we went out.
+p: unless แปลว่า ถ้าไม่ หรือ เว้นแต่ เช่น I won't go unless you come with me. ส่วน in case แปลว่า เผื่อว่า เช่น Take an umbrella in case it rains. หลังทั้งสองคำใช้ present simple เมื่อพูดถึงอนาคต
+t: although / even though + ประโยค | Although he was tired, he kept working.
+t: ประโยค. However, ... | It's cheap. However, it's not good.
+t: unless = if ... not | I'll be there unless I'm sick.
+t: in case = เผื่อ | Bring a coat in case it gets cold.
+e: Although it was raining, we went to the beach. | ถึงแม้ฝนจะตก เราก็ไปทะเล
+e: Even though she was tired, she finished her work. | ถึงแม้จะเหนื่อย เธอก็ทำงานเสร็จ
+e: The hotel was cheap. However, it was very clean. | โรงแรมราคาถูก อย่างไรก็ตามมันสะอาดมาก
+e: I won't go unless you come with me. | ฉันจะไม่ไปถ้าคุณไม่ไปด้วย
+e: You will miss the bus unless you hurry. | คุณจะตกรถเมล์ถ้าไม่รีบ
+e: Take an umbrella in case it rains. | เอาร่มไปด้วยเผื่อฝนตก
+e: I'll write it down in case I forget. | ฉันจะจดไว้เผื่อลืม
+m: Although it was late, but we went out. | Although it was late, we went out. | although ไม่ใช้ but ซ้ำ
+m: Unless you don't hurry, you'll be late. | Unless you hurry, you'll be late. | unless มีความหมายปฏิเสธอยู่แล้ว
+m: Take a coat in case it will be cold. | Take a coat in case it is cold. | หลัง in case ใช้ present simple
+q c | ___ it was raining, we went out. | ถึงแม้ฝนจะตก เราก็ออกไปข้างนอก | Although*; However; Unless | ถึงแม้ว่า ใช้ although
+q c | The food was cheap. ___, it was delicious. | อาหารราคาถูก อย่างไรก็ตามก็อร่อยมาก | However*; Although; Unless | ขึ้นประโยคใหม่ใช้ However
+q c | I won't go ___ you come with me. | ฉันจะไม่ไปถ้าคุณไม่ไปด้วย | unless*; although; in case | ถ้าไม่ ใช้ unless
+q c | Take some water ___ you get thirsty. | เอาน้ำไปด้วยเผื่อหิวน้ำ | in case*; unless; although | เผื่อว่า ใช้ in case
+q c | Even ___ he was sick, he went to work. | ถึงแม้จะป่วย เขาก็ไปทำงาน | though*; if; so | even though แปลว่า ถึงแม้ว่า
+q s | เลือกประโยคที่ถูก | Although she was tired, she finished her work.*; Although she was tired, but she finished her work.; However she was tired, she finished her work. | although ไม่ใช้ but ซ้ำ
+q s | เตือนว่าถ้าไม่รีบจะตกรถเมล์ | You will miss the bus unless you hurry.*; You will miss the bus unless you don't hurry.; You miss the bus unless you will hurry. | unless มีความหมายว่า ถ้าไม่ อยู่แล้ว
+q o | ฉันจะจดไว้เผื่อลืม | I will write it down in case I forget. | in case แปลว่า เผื่อ
+q w | ___ it was late, he kept working. | ถึงแม้จะดึกแล้ว เขาก็ยังทำงานต่อ | Although/Though/Even though | ถึงแม้ว่า ใช้ although
+q w | You can't come in ___ you have a ticket. | คุณเข้าไม่ได้ถ้าไม่มีตั๋ว | unless | ถ้าไม่ ใช้ unless
+
+# l52 | B1 | คำบุพบทที่มาคู่กัน: good at, afraid of, wait for
+goal: ใช้คำบุพบทที่มาคู่กับคุณศัพท์และกริยาได้ถูก
+p: คุณศัพท์หลายคำต้องมีบุพบทเฉพาะตามหลัง ต้องจำเป็นคู่ เช่น good at, bad at, interested in, afraid of, proud of, tired of, famous for, different from, married to
+p: กริยาหลายคำก็เช่นกัน เช่น wait for, look for (หา), listen to, talk to, depend on, agree with, belong to, think about, worry about, pay for
+p: ถ้าตามด้วยกริยาให้ใช้ -ing เช่น I'm tired of waiting. / She is good at cooking.
+t: good at / bad at | He is good at math.
+t: interested in / afraid of / proud of | She is afraid of dogs.
+t: wait for / look for / listen to | I'm looking for my keys.
+t: depend on / agree with / worry about | It depends on the weather.
+e: She is very good at drawing. | เธอวาดรูปเก่งมาก
+e: I'm afraid of the dark. | ฉันกลัวความมืด
+e: We are proud of you. | เราภูมิใจในตัวคุณ
+e: I'm looking for my phone. | ฉันกำลังหาโทรศัพท์อยู่
+e: Please wait for me here. | กรุณารอฉันตรงนี้
+e: It depends on the price. | มันขึ้นอยู่กับราคา
+e: I agree with you. | ฉันเห็นด้วยกับคุณ
+m: I'm good in English. | I'm good at English. | เก่ง... ใช้ good at
+m: I'm waiting you. | I'm waiting for you. | รอใคร ต้องมี for ก่อนคน
+m: It depends of the weather. | It depends on the weather. | depend ใช้คู่กับ on
+q c | He is good ___ playing football. | เขาเล่นฟุตบอลเก่ง | at*; in; on | เก่ง... ใช้ good at
+q c | She is afraid ___ spiders. | เธอกลัวแมงมุม | of*; from; with | กลัว... ใช้ afraid of
+q c | I'm looking ___ my glasses. | ฉันกำลังหาแว่นตาอยู่ | for*; at; to | หา ใช้ look for
+q c | We are waiting ___ the bus. | เรากำลังรอรถเมล์ | for*; to; at | รอ ใช้ wait for
+q c | It depends ___ the weather. | มันขึ้นอยู่กับสภาพอากาศ | on*; of; from | ขึ้นอยู่กับ ใช้ depend on
+q s | บอกว่าสนใจดนตรี | I'm interested in music.*; I'm interested on music.; I'm interesting in music. | สนใจ... ใช้ interested in
+q s | เลือกประโยคที่ถูก | I agree with you.*; I agree you.; I agree to you about it. | เห็นด้วยกับคน ใช้ agree with
+q o | เราภูมิใจในตัวคุณ | We are proud of you. | ภูมิใจใน... ใช้ proud of
+q w | Please listen ___ me. | กรุณาฟังฉันพูด | to | ฟัง... ใช้ listen to
+q w | I'm tired ___ waiting. | ฉันเบื่อการรอแล้ว | of | เบื่อ... ใช้ tired of

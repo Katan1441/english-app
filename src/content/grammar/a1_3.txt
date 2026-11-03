@@ -1,0 +1,176 @@
+# l13 | A1 | อยู่ตรงไหน in, on, under, next to
+goal: บอกได้ว่าคนหรือสิ่งของอยู่ตรงไหน
+p: in แปลว่า ข้างใน เช่น in the box, in Bangkok
+p: on แปลว่า บน (วางแตะพื้นผิว) เช่น on the table และใช้กับชั้นของตึก เช่น on the third floor
+p: under แปลว่า ใต้, next to แปลว่า ข้างๆ, between ... and ... แปลว่า ระหว่าง, in front of แปลว่า ข้างหน้า, behind แปลว่า ข้างหลัง
+p: ใช้ต่อจาก is หรือ are ได้เลย เช่น The cat is under the table. (แมวอยู่ใต้โต๊ะ)
+t: in | The keys are in my bag. แปลว่า กุญแจอยู่ในกระเป๋าของฉัน
+t: on | Your phone is on the table. แปลว่า โทรศัพท์ของคุณอยู่บนโต๊ะ
+t: under | The cat is under the bed. แปลว่า แมวอยู่ใต้เตียง
+t: next to | The bank is next to the hospital. แปลว่า ธนาคารอยู่ข้างโรงพยาบาล
+t: between | I sit between Tom and Mali. แปลว่า ฉันนั่งระหว่างทอมกับมะลิ
+e: My room is on the third floor. | ห้องของฉันอยู่ชั้นสาม
+e: The shop is in front of the school. | ร้านอยู่หน้าโรงเรียน
+e: There is a tree behind the house. | มีต้นไม้อยู่หลังบ้าน
+e: Put your shoes under the bed. | วางรองเท้าไว้ใต้เตียง
+e: The post office is between the bank and the market. | ที่ทำการไปรษณีย์อยู่ระหว่างธนาคารกับตลาด
+e: She lives in Bangkok. | เธออาศัยอยู่ในกรุงเทพฯ
+m: The book is in the table. | The book is on the table. | วางอยู่บนพื้นผิว ใช้ on
+m: The bank is next the school. | The bank is next to the school. | next ต้องมี to ตามหลัง
+q c | Your phone is ___ the table. | โทรศัพท์ของคุณอยู่บนโต๊ะ | on*; in; under | วางบนพื้นผิว ใช้ on
+q c | The keys are ___ my bag. | กุญแจอยู่ในกระเป๋าของฉัน | in*; on; at | ข้างใน ใช้ in
+q c | The cat is ___ the bed. | แมวอยู่ใต้เตียง | under*; on; between | ใต้ คือ under
+q c | The bank is next ___ the hospital. | ธนาคารอยู่ข้างโรงพยาบาล | to*; at; of | ข้างๆ คือ next to
+q c | I sit ___ Tom and Mali. | ฉันนั่งระหว่างทอมกับมะลิ | between*; next; under | ระหว่าง A กับ B คือ between A and B
+q s | เลือกประโยคที่ถูก (ร้านอยู่หน้าโรงเรียน) | The shop is in front of the school.*; The shop is front the school.; The shop is in the front school. | ข้างหน้า คือ in front of
+q o | มีต้นไม้อยู่หลังบ้าน | There is a tree behind the house. |
+q o | ห้องของฉันอยู่ชั้นสาม | My room is on the third floor. |
+q w | Put your shoes ___ the bed. | วางรองเท้าไว้ใต้เตียง | under | ใต้ คือ under
+q w | She lives ___ Bangkok. | เธออาศัยอยู่ในกรุงเทพฯ | in | อยู่ในเมือง ใช้ in
+
+# l14 | A1 | เวลา at, on, in
+goal: บอกเวลา วัน เดือน และใช้ at, on, in กับเวลาได้ถูก
+p: at ใช้กับเวลาที่เป็นจุด เช่น at 7 o'clock, at noon (เที่ยงวัน), at night (ตอนกลางคืน)
+p: on ใช้กับวันและวันที่ เช่น on Monday, on May 5, on my birthday
+p: in ใช้กับช่วงที่ยาวกว่า เช่น in the morning, in the evening, in May, in 2026
+p: บอกเวลา: It's seven o'clock. (เจ็ดโมงตรง), It's seven thirty. (เจ็ดโมงครึ่ง) ถามว่า What time is it?
+t: at + เวลา | at nine o'clock แปลว่า ตอนเก้าโมง
+t: on + วัน | on Monday แปลว่า วันจันทร์
+t: in + ช่วงของวัน เดือน ปี | in the evening, in June
+t: บอกเวลา | It's six thirty. แปลว่า หกโมงครึ่ง
+e: The class starts at nine o'clock. | ชั้นเรียนเริ่มตอนเก้าโมง
+e: I play football on Saturdays. | ฉันเล่นฟุตบอลทุกวันเสาร์
+e: My birthday is in February. | วันเกิดของฉันอยู่ในเดือนกุมภาพันธ์
+e: I drink coffee in the morning. | ฉันดื่มกาแฟตอนเช้า
+e: What time is it? It's ten fifteen. | กี่โมงแล้ว สิบโมงสิบห้านาที
+e: We don't work at night. | พวกเราไม่ทำงานตอนกลางคืน
+m: in Monday | on Monday | วันในสัปดาห์ใช้ on
+m: at the morning | in the morning | ช่วงเช้า ใช้ in the morning
+m: in night | at night | ตอนกลางคืน ใช้ at night
+q c | The class starts ___ nine o'clock. | ชั้นเรียนเริ่มตอนเก้าโมง | at*; on; in | เวลาที่เป็นจุด ใช้ at
+q c | I play football ___ Saturdays. | ฉันเล่นฟุตบอลทุกวันเสาร์ | on*; in; at | วันในสัปดาห์ ใช้ on
+q c | My birthday is ___ February. | วันเกิดของฉันอยู่ในเดือนกุมภาพันธ์ | in*; on; at | เดือน ใช้ in
+q c | I drink coffee ___ the morning. | ฉันดื่มกาแฟตอนเช้า | in*; on; at | ช่วงเช้า ใช้ in the morning
+q c | We don't work ___ night. | พวกเราไม่ทำงานตอนกลางคืน | at*; in; on | ตอนกลางคืน ใช้ at night
+q s | ถามว่า "กี่โมงแล้ว" | What time is it?*; What time it is?; How time is it? | กี่โมง คือ What time is it?
+q o | ร้านปิดตอนสิบโมง | The shop closes at ten. |
+q o | สอบของฉันอยู่วันศุกร์ | My exam is on Friday. |
+q w | See you ___ Monday. | เจอกันวันจันทร์ | on | วันในสัปดาห์ ใช้ on
+q w | It's seven ___. (7:30) | เจ็ดโมงครึ่ง | thirty | ครึ่ง คือ thirty (30 นาที)
+
+# l15 | A1 | ทำบ่อยแค่ไหน always, usually, never
+goal: บอกว่าทำสิ่งต่างๆ บ่อยแค่ไหน
+p: คำบอกความถี่ เรียงจากบ่อยที่สุด: always (เสมอ), usually (ปกติ), often (บ่อย), sometimes (บางครั้ง), never (ไม่เคยเลย)
+p: วางไว้หน้าคำกริยา เช่น I always eat breakfast. แต่ถ้าประโยคมี am, is, are ให้วางไว้หลัง เช่น She is always late.
+p: never มีความหมายปฏิเสธอยู่แล้ว ไม่ต้องใส่ don't เช่น I never drink alcohol.
+p: ถามว่าบ่อยแค่ไหน ใช้ How often ...? เช่น How often do you exercise?
+t: วางหน้ากริยา | I usually walk to school. แปลว่า ปกติฉันเดินไปโรงเรียน
+t: วางหลัง am / is / are | He is never late. แปลว่า เขาไม่เคยมาสายเลย
+t: ถาม | How often do you exercise? แปลว่า คุณออกกำลังกายบ่อยแค่ไหน
+e: I always drink water in the morning. | ฉันดื่มน้ำตอนเช้าเสมอ
+e: She usually goes to bed at eleven. | ปกติเธอเข้านอนตอนห้าทุ่ม
+e: We sometimes eat out on Fridays. | บางครั้งพวกเราไปกินข้าวนอกบ้านวันศุกร์
+e: He is always busy. | เขายุ่งเสมอ
+e: I never eat breakfast. | ฉันไม่เคยกินอาหารเช้าเลย
+e: How often do you call your parents? | คุณโทรหาพ่อแม่บ่อยแค่ไหน
+m: I eat always rice. | I always eat rice. | คำบอกความถี่วางหน้ากริยา
+m: She always is late. | She is always late. | ถ้ามี is ให้วางหลัง is
+m: I don't never smoke. | I never smoke. | never ปฏิเสธอยู่แล้ว ไม่ต้องมี don't
+q c | I ___ eat breakfast. (เสมอ) | ฉันกินอาหารเช้าเสมอ | always*; never; sometimes | เสมอ คือ always
+q c | She ___ goes to bed at eleven. (ปกติ) | ปกติเธอเข้านอนตอนห้าทุ่ม | usually*; never; always | ปกติ คือ usually
+q c | How ___ do you exercise? | คุณออกกำลังกายบ่อยแค่ไหน | often*; much; many | บ่อยแค่ไหน คือ How often
+q c | I ___ drink alcohol. (ไม่เคยเลย) | ฉันไม่ดื่มแอลกอฮอล์เลย | never*; always; don't never | never ปฏิเสธอยู่แล้ว
+q s | เลือกประโยคที่ถูก | He is never late.*; He never is late.; He is late never. | มี is ให้วาง never หลัง is
+q s | เลือกประโยคที่ถูก | I usually walk to school.*; I walk usually to school.; I usually walks to school. | usually วางหน้ากริยา และ I ใช้กริยารูปเดิม
+q o | บางครั้งพวกเราไปกินข้าวนอกบ้านวันศุกร์ | We sometimes eat out on Fridays. |
+q o | เขายุ่งเสมอ | He is always busy. |
+q w | I ___ eat meat. (ไม่เคยเลย) | ฉันไม่เคยกินเนื้อสัตว์เลย | never | ไม่เคยเลย คือ never
+q w | We ___ play football on Sundays. (บางครั้ง) | บางครั้งพวกเราเล่นฟุตบอลวันอาทิตย์ | sometimes | บางครั้ง คือ sometimes
+
+# l16 | A1 | บอกให้ทำ ห้ามทำ ชวนกันทำ
+goal: บอกให้คนอื่นทำ ห้ามทำ ขอร้องอย่างสุภาพ และชวนกันทำได้
+p: บอกให้ทำ: ใช้คำกริยารูปเดิมขึ้นต้นประโยคได้เลย ไม่ต้องมีประธาน เช่น Open the door. (เปิดประตู)
+p: ห้ามทำ: Don't + กริยา เช่น Don't touch it. (อย่าแตะนะ)
+p: ให้สุภาพขึ้น ใส่ please ไว้หน้าหรือท้ายประโยค เช่น Please sit down. หรือ Sit down, please.
+p: ชวนกันทำ: Let's + กริยา เช่น Let's go! (ไปกันเถอะ)
+t: บอกให้ทำ | Close the window. แปลว่า ปิดหน้าต่าง
+t: ห้ามทำ | Don't run. แปลว่า อย่าวิ่ง
+t: สุภาพ | Please wait here. แปลว่า กรุณารอตรงนี้
+t: ชวน | Let's eat. แปลว่า กินข้าวกันเถอะ
+e: Please sit down. | เชิญนั่งครับ
+e: Don't be late. | อย่ามาสายนะ
+e: Turn left at the bank. | เลี้ยวซ้ายที่ธนาคาร
+e: Let's take a taxi. | นั่งแท็กซี่กันเถอะ
+e: Don't worry. | ไม่ต้องห่วง
+e: Listen and repeat. | ฟังแล้วพูดตาม
+m: You open the door. | Open the door. | ประโยคบอกให้ทำไม่ต้องมี you
+m: Don't to run. | Don't run. | หลัง don't ไม่มี to
+m: Let's to go. | Let's go. | หลัง let's ใช้กริยารูปเดิม
+q c | ___ the window, please. | ช่วยปิดหน้าต่างหน่อย | Close*; Closes; Closing | บอกให้ทำ ขึ้นต้นด้วยกริยารูปเดิม
+q c | ___ touch it! | อย่าแตะนะ | Don't*; Not; No | ห้ามทำ ใช้ Don't
+q c | Let's ___ a taxi. | นั่งแท็กซี่กันเถอะ | take*; to take; takes | หลัง let's ใช้กริยารูปเดิม
+q c | Don't ___ late. | อย่ามาสายนะ | be*; are; is | หลัง don't ใช้กริยารูปเดิม คือ be
+q s | เลือกประโยคที่ถูก (เชิญนั่ง) | Please sit down.*; Please you sit down.; Please sitting down. | ไม่ต้องมี you และใช้กริยารูปเดิม
+q s | ชวนเพื่อนไปกินข้าว | Let's eat.*; Let's to eat.; Let eat us. | ชวนกันทำ ใช้ Let's + กริยา
+q o | เลี้ยวซ้ายที่ธนาคาร | Turn left at the bank. |
+q o | กรุณารอตรงนี้ | Please wait here. |
+q w | ___ worry. | ไม่ต้องห่วง | don't/do not | ห้ามหรือบอกว่าไม่ต้อง ใช้ Don't
+q w | ___ go! | ไปกันเถอะ | let's/let us | ชวนกันทำ ใช้ Let's
+
+# l17 | A1 | me him her us them
+goal: ใช้คำแทนคนหรือสิ่งของที่อยู่หลังคำกริยาได้ถูก
+p: ภาษาไทยใช้คำว่า "เขา" ได้ทั้งหน้าและหลังกริยา แต่ภาษาอังกฤษเปลี่ยนรูป
+p: หน้ากริยา (เป็นผู้ทำ) ใช้ I, he, she, we, they แต่หลังกริยา หรือหลังคำอย่าง with, for, to ใช้ me, him, her, us, them
+p: you กับ it ใช้รูปเดิมทั้งสองตำแหน่ง
+t: I → me | Call me. แปลว่า โทรหาฉัน
+t: he → him / she → her | I like him. / I know her.
+t: we → us / they → them | Help us. / I see them.
+e: Can you help me? | ช่วยฉันหน่อยได้ไหม
+e: I love her. | ฉันรักเธอ
+e: Tom is my friend. I play football with him. | ทอมเป็นเพื่อนฉัน ฉันเล่นฟุตบอลกับเขา
+e: Please call us tomorrow. | พรุ่งนี้โทรหาพวกเราด้วยนะ
+e: These shoes are nice. I want them. | รองเท้าคู่นี้สวย ฉันอยากได้
+e: This is for you. | นี่สำหรับคุณ
+m: She loves I. | She loves me. | หลังกริยาใช้ me
+m: Come with we. | Come with us. | หลัง with ใช้ us
+m: Him is my brother. | He is my brother. | หน้ากริยาใช้ he
+q c | Can you help ___? | ช่วยฉันหน่อยได้ไหม | me*; I; my | หลังกริยาใช้ me
+q c | I play football with ___. (ทอม) | ฉันเล่นฟุตบอลกับเขา | him*; he; his | หลัง with ใช้ him
+q c | Mali is nice. I like ___. | มะลินิสัยดี ฉันชอบเธอ | her*; she; I | หลังกริยาใช้ her
+q c | Please call ___ tomorrow. (พวกเรา) | พรุ่งนี้โทรหาพวกเราด้วยนะ | us*; we; our | หลังกริยาใช้ us
+q c | ___ is my brother. | เขาเป็นพี่ชายของฉัน | He*; Him; His | หน้ากริยาใช้ he
+q s | เลือกประโยคที่ถูก | I see them every day.*; I see they every day.; I see their every day. | หลังกริยาใช้ them
+q o | นี่สำหรับคุณ | This is for you. |
+q o | ฉันรักเธอ | I love her. |
+q w | The books are on the table. Give ___ to me. | หนังสืออยู่บนโต๊ะ ส่งมาให้ฉันหน่อย | them | books หลายเล่ม หลังกริยาใช้ them
+q w | Where is my phone? I can't find ___. | โทรศัพท์ของฉันอยู่ไหน ฉันหามันไม่เจอ | it | สิ่งของหนึ่งอัน ใช้ it
+
+# l18 | A1 | ชอบทำ อยากทำ like, want, would like
+goal: บอกสิ่งที่ชอบทำ อยากทำ และขอสิ่งของอย่างสุภาพ
+p: ชอบทำอะไร: like, love (ชอบมาก), hate (เกลียด) + กริยาเติม ing เช่น I like reading. (ฉันชอบอ่านหนังสือ)
+p: อยากทำอะไร: want to + กริยา เช่น I want to sleep. (ฉันอยากนอน) ส่วนอยากได้สิ่งของ: want + สิ่งของ เช่น I want a new bag.
+p: ขอแบบสุภาพ: I'd like (ย่อจาก I would like) + สิ่งของ หรือ I'd like to + กริยา เช่น I'd like a coffee, please. และถามเสนอว่า Would you like ...? (รับ...ไหม)
+p: วิธีเติม ing: ส่วนใหญ่เติม ing เช่น reading ถ้าลงท้ายด้วย e ให้ตัด e เช่น make เป็น making ถ้าเป็นคำสั้นที่ลงท้ายด้วยสระเดียวกับพยัญชนะเดียว ให้ซ้ำตัวท้าย เช่น swim เป็น swimming, run เป็น running
+t: ชอบทำ | I love cooking. แปลว่า ฉันชอบทำอาหารมาก
+t: อยากทำ | I want to go home. แปลว่า ฉันอยากกลับบ้าน
+t: ขอแบบสุภาพ | I'd like a glass of water, please. แปลว่า ขอน้ำหนึ่งแก้วครับ
+t: ถามเสนอ | Would you like some tea? แปลว่า รับชาไหม
+e: I like listening to music. | ฉันชอบฟังเพลง
+e: She hates getting up early. | เธอเกลียดการตื่นเช้า
+e: We want to learn English. | พวกเราอยากเรียนภาษาอังกฤษ
+e: I'd like to book a table for two. | ขอจองโต๊ะสำหรับสองคน
+e: Would you like some coffee? Yes, please. | รับกาแฟไหม รับครับ
+e: He loves swimming. | เขาชอบว่ายน้ำมาก
+m: I want go home. | I want to go home. | want + กริยา ต้องมี to
+m: I like swim. | I like swimming. | like + กริยาเติม ing
+m: She likes cook. | She likes cooking. | like + กริยาเติม ing
+q c | I like ___ to music. | ฉันชอบฟังเพลง | listening*; listen; to listening | like + กริยาเติม ing
+q c | We want ___ English. | พวกเราอยากเรียนภาษาอังกฤษ | to learn*; learning; learn | want + to + กริยา
+q c | ___ you like some tea? | รับชาไหม | Would*; Do; Are | ถามเสนออย่างสุภาพ ใช้ Would you like
+q c | He loves ___. | เขาชอบว่ายน้ำมาก | swimming*; swiming; swim | swim เติม ing ต้องซ้ำ m เป็น swimming
+q c | I'd like ___ glass of water, please. | ขอน้ำหนึ่งแก้ว | a*; an; to | glass หนึ่งใบ ใช้ a
+q s | เลือกประโยคที่ถูก | I want to go home.*; I want go home.; I want going home. | want + to + กริยา
+q o | ขอจองโต๊ะสำหรับสองคน | I'd like to book a table for two. |
+q o | เธอเกลียดการตื่นเช้า | She hates getting up early. |
+q w | I want ___ sleep. | ฉันอยากนอน | to | want + to + กริยา
+q w | She likes ___. (cook) | เธอชอบทำอาหาร | cooking | like + กริยาเติม ing

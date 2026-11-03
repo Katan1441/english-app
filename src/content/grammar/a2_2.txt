@@ -1,0 +1,119 @@
+# l33 | A2 | could: เมื่อก่อนทำได้ และการขอร้องอย่างสุภาพ
+goal: บอกว่าเมื่อก่อนทำอะไรได้หรือไม่ได้ และขอให้คนอื่นช่วยอย่างสุภาพ
+p: could คือรูปอดีตของ can ใช้บอกความสามารถในอดีต เช่น I could swim when I was six. แปลว่า ฉันว่ายน้ำได้ตั้งแต่อายุหกขวบ ปฏิเสธใช้ couldn't (could not) และหลัง could ใช้กริยารูปปกติเสมอ
+p: ใช้ขอให้คนอื่นช่วย: Could you ...? สุภาพกว่า Can you ...? เช่น Could you help me, please?
+p: ใช้ขออนุญาต: Can I ...? หรือ Could I ...? (สุภาพกว่า) เช่น Can I sit here? ตอบรับได้ว่า Sure. หรือ Of course.
+t: could + กริยา (อดีต) | I could read when I was four.
+t: couldn't + กริยา | I couldn't sleep last night.
+t: Could you ...? (ขอให้ช่วย) | Could you open the door, please?
+t: Can I ...? / Could I ...? (ขออนุญาต) | Can I sit here?
+e: I could swim when I was six. | ฉันว่ายน้ำได้ตั้งแต่อายุหกขวบ
+e: She couldn't come to the party. | เธอมางานปาร์ตี้ไม่ได้
+e: I couldn't sleep last night. | เมื่อคืนฉันนอนไม่หลับ
+e: Could you help me, please? | ช่วยฉันหน่อยได้ไหม
+e: Could you speak more slowly? | ช่วยพูดช้าลงหน่อยได้ไหม
+e: Can I use your pen? | ขอใช้ปากกาของคุณได้ไหม
+e: Could I have some water, please? | ขอน้ำหน่อยได้ไหม
+m: I could to swim. | I could swim. | หลัง could ไม่ต้องมี to
+m: She couldn't came. | She couldn't come. | หลัง couldn't ใช้กริยารูปปกติ
+m: You could help me? | Could you help me? | คำถามต้องย้าย could มาไว้หน้า you
+q c | When I was five, I ___ swim. | ตอนห้าขวบฉันว่ายน้ำได้แล้ว | could*; can; can't | เรื่องในอดีตใช้ could
+q c | I ___ sleep last night because it was hot. | เมื่อคืนฉันนอนไม่หลับเพราะอากาศร้อน | couldn't*; can't; could | ทำไม่ได้ในอดีตใช้ couldn't
+q c | ___ you open the window, please? | ช่วยเปิดหน้าต่างหน่อยได้ไหม | Could*; Do; Are | ขอให้ช่วยอย่างสุภาพใช้ Could you
+q c | ___ I sit here? | ขอนั่งตรงนี้ได้ไหม | Can*; Do; Am | ขออนุญาตใช้ Can I หรือ Could I
+q c | She couldn't ___ the answer. | เธอหาคำตอบไม่เจอ | find*; found; finding | หลัง couldn't ใช้กริยารูปปกติ
+q s | ขอให้เพื่อนพูดช้าลง | Could you speak more slowly?*; Could you to speak more slowly?; You could speak more slowly? | Could you + กริยารูปปกติ และย้าย could มาไว้หน้า
+q s | เลือกประโยคที่ถูก | My sister could read when she was four.*; My sister could reads when she was four.; My sister can read when she was four. | อดีตใช้ could + กริยารูปปกติ
+q o | ช่วยฉันหน่อยได้ไหม | Could you help me, please? | ขอให้ช่วยอย่างสุภาพขึ้นต้นด้วย Could you
+q w | I ___ find my keys this morning. | เช้านี้ฉันหากุญแจไม่เจอ | couldn't/could not | ทำไม่ได้ในอดีตใช้ couldn't
+q w | ___ I have some water, please? | ขอน้ำหน่อยได้ไหม | Could/Can | ขออนุญาตหรือขอสิ่งของใช้ Could I หรือ Can I
+
+# l34 | A2 | มากเกินไป และ พอ: too / enough / very
+goal: บอกได้ว่าอะไรมากเกินไป หรือมากพอแล้ว
+p: very แปลว่า มาก (ยังไม่เป็นปัญหา) เช่น It's very hot, but I like it. ส่วน too แปลว่า มากเกินไป (เป็นปัญหา) เช่น It's too hot. I can't sleep.
+p: enough แปลว่า พอ ถ้าใช้กับคุณศัพท์ให้วางไว้หลัง (old enough, big enough) ถ้าใช้กับคำนามให้วางไว้หน้า (enough money, enough time)
+p: ตามด้วย to + กริยาได้ เช่น I'm too tired to walk. (เหนื่อยเกินกว่าจะเดิน) / He isn't old enough to drive. (อายุยังไม่พอที่จะขับรถ)
+t: very + คุณศัพท์ | very hot ร้อนมาก
+t: too + คุณศัพท์ | too hot ร้อนเกินไป
+t: คุณศัพท์ + enough | old enough อายุมากพอ
+t: enough + คำนาม | enough money เงินพอ
+e: This coffee is too hot to drink. | กาแฟนี้ร้อนเกินกว่าจะดื่มได้
+e: These shoes are too small for me. | รองเท้าคู่นี้เล็กเกินไปสำหรับฉัน
+e: He isn't old enough to drive. | เขาอายุยังไม่ถึงที่จะขับรถได้
+e: We don't have enough time. | เรามีเวลาไม่พอ
+e: Is the room big enough? | ห้องใหญ่พอไหม
+e: It's very cold, but I like it. | อากาศหนาวมาก แต่ฉันชอบ
+e: I'm too tired to cook tonight. | คืนนี้ฉันเหนื่อยเกินกว่าจะทำอาหาร
+m: I'm enough old. | I'm old enough. | enough วางหลังคุณศัพท์
+m: This bag is too much expensive. | This bag is too expensive. | หน้าคุณศัพท์ใช้ too อย่างเดียว
+m: I have money enough. | I have enough money. | enough วางหน้าคำนาม
+q c | This shirt is ___ big for me. | เสื้อตัวนี้ใหญ่เกินไปสำหรับฉัน | too*; very; enough | มากเกินไปจนเป็นปัญหาใช้ too
+q c | She is old ___ to drive. | เธออายุมากพอที่จะขับรถได้ | enough*; too; very | enough วางหลังคุณศัพท์
+q c | We don't have ___ chairs for everyone. | เรามีเก้าอี้ไม่พอสำหรับทุกคน | enough*; too; very | enough วางหน้าคำนาม
+q c | This soup is ___ good. | ซุปนี้อร่อยมาก | very*; too; enough | ชมว่ามาก ไม่ใช่ปัญหา ใช้ very
+q c | I'm too tired ___ go out tonight. | คืนนี้ฉันเหนื่อยเกินกว่าจะออกไปข้างนอก | to*; for; that | too + คุณศัพท์ + to + กริยา
+q s | บอกว่ากาแฟร้อนเกินกว่าจะดื่ม | This coffee is too hot to drink.*; This coffee is too much hot to drink.; This coffee is hot too to drink. | เกินกว่าจะทำได้ใช้ too + คุณศัพท์ + to
+q s | เลือกประโยคที่ถูก | He isn't old enough to vote.*; He isn't enough old to vote.; He isn't old to enough vote. | enough วางหลังคุณศัพท์
+q o | ห้องใหญ่พอไหม | Is the room big enough? | enough วางหลังคุณศัพท์ big
+q w | These shoes are ___ small for me. | รองเท้าคู่นี้เล็กเกินไปสำหรับฉัน | too | มากเกินไปใช้ too
+q w | Do we have ___ food for the party? | เรามีอาหารพอสำหรับงานเลี้ยงไหม | enough | พอ ใช้ enough วางหน้าคำนาม
+
+# l35 | A2 | ของใคร: mine, yours และ whose
+goal: บอกได้ว่าสิ่งของเป็นของใคร
+p: my, your, his, her, our, their ต้องมีคำนามตามหลังเสมอ เช่น This is my bag. ส่วน mine, yours, his, hers, ours, theirs ใช้แทนคำนามได้เลย ไม่ต้องมีคำนามตาม เช่น This bag is mine.
+p: ชื่อคนหรือคำนาม + 's แปลว่า ของ... เช่น Tom's car (รถของทอม), my sister's room (ห้องของพี่สาว) ถ้าเป็นพหูพจน์ที่ลงท้ายด้วย s อยู่แล้ว ใส่แค่ ' เช่น my parents' house
+p: ถามว่าเป็นของใครใช้ Whose + คำนาม เช่น Whose phone is this? ระวังสับสนกับ who's ซึ่งย่อมาจาก who is
+t: my → mine, your → yours | This pen is mine.
+t: his → his, her → hers | The red bag is hers.
+t: our → ours, their → theirs | The house is ours.
+t: Whose + คำนาม ...? | Whose bag is this?
+e: This book is mine. | หนังสือเล่มนี้เป็นของฉัน
+e: Is this pen yours? | ปากกาด้ามนี้เป็นของคุณหรือเปล่า
+e: The blue car is his. | รถสีน้ำเงินเป็นของเขา
+e: That bag isn't hers. | กระเป๋าใบนั้นไม่ใช่ของเธอ
+e: Whose phone is this? | นี่โทรศัพท์ของใคร
+e: This is Tom's room. | นี่คือห้องของทอม
+e: Our house is small, but theirs is big. | บ้านของเราเล็ก แต่บ้านของพวกเขาใหญ่
+m: This is my. | This is mine. | ไม่มีคำนามตามหลัง ใช้ mine
+m: This bag is her. | This bag is hers. | ของเธอแบบไม่มีคำนามตาม ใช้ hers
+m: Who's phone is this? | Whose phone is this? | ถามว่าเป็นของใครใช้ whose (who's คือ who is)
+q c | This pen is ___. | ปากกาด้ามนี้เป็นของฉัน | mine*; my; me | ไม่มีคำนามตามหลัง ใช้ mine
+q c | Is this bag ___? | กระเป๋าใบนี้เป็นของคุณหรือเปล่า | yours*; your; you | ไม่มีคำนามตามหลัง ใช้ yours
+q c | ___ shoes are these? | นี่รองเท้าของใคร | Whose*; Who's; Who | ถามว่าเป็นของใครใช้ Whose
+q c | This is ___ house. | นี่คือบ้านของเรา | our*; ours; us | มีคำนาม house ตามหลัง ใช้ our
+q c | The red car is ___. | รถสีแดงเป็นของเธอ | hers*; her; she | ของเธอแบบไม่มีคำนามตาม ใช้ hers
+q s | เลือกประโยคที่ถูก | That is my brother's bike.*; That is my brother bike.; That is my bike's brother. | ของพี่ชาย ใช้ brother's วางหน้าสิ่งของ
+q s | ถามว่ากุญแจพวงนี้เป็นของใคร | Whose keys are these?*; Who's keys are these?; Whose are keys these? | ถามว่าเป็นของใครใช้ Whose + คำนาม
+q o | บ้านของเราเล็ก แต่บ้านของพวกเขาใหญ่ | Our house is small, but theirs is big. | theirs ใช้แทน their house
+q w | Is this phone ___? (you) | โทรศัพท์เครื่องนี้เป็นของคุณหรือเปล่า | yours | ไม่มีคำนามตามหลัง ใช้ yours
+q w | This is my ___ room. (sister) | นี่คือห้องของพี่สาวฉัน | sister's | ของ... ใช้ 's
+
+# l36 | A2 | something, anyone, nothing, everyone
+goal: ใช้คำว่า อะไรบางอย่าง ใครบางคน ไม่มีอะไร และทุกคน ได้ถูก
+p: some + thing, one, where ใช้ในประโยคบอกเล่า เช่น something (อะไรบางอย่าง), someone (ใครบางคน), somewhere (ที่ไหนสักแห่ง) และใช้ในคำเสนอ เช่น Would you like something to drink?
+p: any + thing, one, where ใช้ในประโยคปฏิเสธและคำถาม เช่น I didn't see anyone. / Is there anything to eat?
+p: nothing, no one, nowhere แปลว่า ไม่มีอะไร ไม่มีใคร ไม่มีที่ไหน ใช้กับกริยาบอกเล่าเท่านั้น ห้ามปฏิเสธซ้อน ส่วน everything, everyone, everywhere แปลว่า ทุกอย่าง ทุกคน ทุกที่ และใช้กริยาเอกพจน์ เช่น Everyone is here.
+t: something / someone / somewhere | There is someone at the door.
+t: anything / anyone / anywhere | I can't find my keys anywhere.
+t: nothing / no one / nowhere | There is nothing in the box.
+t: everything / everyone / everywhere | Everyone likes her.
+e: There is someone at the door. | มีใครบางคนอยู่ที่ประตู
+e: I want something to eat. | ฉันอยากกินอะไรสักอย่าง
+e: Did you see anyone in the room? | คุณเห็นใครในห้องไหม
+e: I don't know anything about it. | ฉันไม่รู้อะไรเกี่ยวกับเรื่องนั้นเลย
+e: There is nothing in the fridge. | ในตู้เย็นไม่มีอะไรเลย
+e: Everyone is happy today. | วันนี้ทุกคนมีความสุข
+e: I looked everywhere for my phone. | ฉันหาโทรศัพท์ไปทั่วทุกที่
+m: I don't know nothing. | I don't know anything. | ห้ามปฏิเสธซ้อน ใช้ don't + anything
+m: Everyone are here. | Everyone is here. | everyone ใช้กริยาเอกพจน์
+m: I didn't see someone. | I didn't see anyone. | ประโยคปฏิเสธใช้ anyone
+q c | There is ___ at the door. | มีใครบางคนอยู่ที่ประตู | someone*; anyone; no one | บอกเล่าใช้ someone
+q c | I didn't buy ___ at the market. | ฉันไม่ได้ซื้ออะไรที่ตลาดเลย | anything*; something; nothing | ปฏิเสธใช้ anything
+q c | ___ is ready for dinner. | ทุกอย่างพร้อมสำหรับมื้อเย็นแล้ว | Everything*; Anything; Nothing | ทุกอย่าง ใช้ everything
+q c | I can't find my keys ___. | ฉันหากุญแจไม่เจอเลย | anywhere*; somewhere; nowhere | ปฏิเสธใช้ anywhere
+q c | I'm hungry, but there is ___ in the fridge. | ฉันหิว แต่ในตู้เย็นไม่มีอะไรเลย | nothing*; anything; something | ไม่มีอะไร กับกริยาบอกเล่า ใช้ nothing
+q s | เลือกประโยคที่ถูก | I don't know anything about cars.*; I don't know nothing about cars.; I know anything about cars. | ห้ามปฏิเสธซ้อน ใช้ don't + anything
+q s | เลือกประโยคที่ถูก | Everyone likes our teacher.*; Everyone like our teacher.; Everyone are liking our teacher. | everyone ใช้กริยาเอกพจน์ likes
+q o | ฉันอยากกินอะไรสักอย่าง | I want something to eat. | บอกเล่าใช้ something
+q w | I didn't see ___ in the room. | ฉันไม่เห็นใครในห้องเลย | anyone/anybody | ปฏิเสธใช้ anyone
+q w | I looked ___ for my phone. | ฉันหาโทรศัพท์ไปทั่วทุกที่ | everywhere | ทุกที่ ใช้ everywhere

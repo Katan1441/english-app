@@ -1,0 +1,179 @@
+# l59 | B2 | เล่าคำถามและคำแนะนำ: asked if, suggested, advised
+goal: เล่าคำถามของคนอื่น และใช้กริยาเล่าเรื่องอื่นๆ นอกจาก said
+p: เล่าคำถามที่ตอบ yes หรือ no ใช้ asked + (คน) + if หรือ whether + ประธาน + กริยา เช่น "Are you hungry?" กลายเป็น She asked me if I was hungry. คำถามที่มี what, where ใช้ asked + คำถาม + ประธาน + กริยา เช่น He asked me where I lived. (ลำดับแบบประโยคบอกเล่า ไม่มี do หรือ did)
+p: กริยาเล่าเรื่องที่ตามด้วย คน + to + กริยา: advise, tell, ask, remind, warn เช่น The doctor advised me to rest. ส่วน agree, refuse, offer, promise ตามด้วย to + กริยาได้เลย เช่น He refused to help.
+p: กริยาเล่าเรื่องที่ตามด้วย -ing: suggest, deny, admit เช่น She suggested going to the beach. / He denied taking the money.
+t: asked + if + ประธาน + กริยา | She asked if I was tired.
+t: asked + where / what + ประธาน + กริยา | He asked where I lived.
+t: advised / reminded / warned + คน + to ... | The doctor advised me to rest.
+t: suggested / denied / admitted + -ing | She suggested taking a taxi.
+e: She asked me if I was hungry. | เธอถามฉันว่าหิวไหม
+e: He asked me where I lived. | เขาถามฉันว่าฉันอาศัยอยู่ที่ไหน
+e: The teacher asked us what we wanted to do. | ครูถามพวกเราว่าอยากทำอะไร
+e: The doctor advised me to drink more water. | หมอแนะนำให้ฉันดื่มน้ำมากขึ้น
+e: My mother reminded me to lock the door. | แม่เตือนให้ฉันล็อกประตู
+e: She suggested going to the beach. | เธอเสนอว่าไปทะเลกัน
+e: He refused to answer the question. | เขาปฏิเสธที่จะตอบคำถาม
+m: She asked me was I hungry. | She asked me if I was hungry. | เล่าคำถามที่ตอบ yes หรือ no ใช้ if
+m: He asked me where did I live. | He asked me where I lived. | เล่าคำถามใช้ลำดับแบบประโยคบอกเล่า ไม่มี did
+m: She suggested to go to the beach. | She suggested going to the beach. | suggest ตามด้วย -ing
+q c | She asked me ___ I was tired. | เธอถามฉันว่าเหนื่อยไหม | if*; that; what | เล่าคำถามที่ตอบ yes หรือ no ใช้ if
+q c | He asked me where I ___. | เขาถามฉันว่าฉันอาศัยอยู่ที่ไหน | lived*; did live; do live | เล่าคำถามใช้ลำดับแบบบอกเล่าและถอยเป็นอดีต
+q c | The doctor advised me ___ more water. | หมอแนะนำให้ฉันดื่มน้ำมากขึ้น | to drink*; drinking; drink | advise + คน + to + กริยา
+q c | She suggested ___ a taxi. | เธอเสนอว่านั่งแท็กซี่กัน | taking*; to take; take | suggest ตามด้วย -ing
+q c | He refused ___ the question. | เขาปฏิเสธที่จะตอบคำถาม | to answer*; answering; answer | refuse ตามด้วย to + กริยา
+q s | เล่าว่าครูถามว่าอยากทำอะไร | The teacher asked us what we wanted to do.*; The teacher asked us what did we want to do.; The teacher asked us what do we want to do. | เล่าคำถามไม่ใช้ did หรือ do
+q s | เล่าว่าแม่เตือนให้ล็อกประตู | My mother reminded me to lock the door.*; My mother reminded me locking the door.; My mother reminded to me lock the door. | remind + คน + to + กริยา
+q o | เธอถามฉันว่าหิวไหม | She asked me if I was hungry. | เล่าคำถามที่ตอบ yes หรือ no ใช้ if
+q w | He denied ___ the money. (take) | เขาปฏิเสธว่าไม่ได้เอาเงินไป | taking | deny ตามด้วย -ing
+q w | She asked me what time it ___. | เธอถามฉันว่ากี่โมงแล้ว | was | เล่าคำถามใช้ลำดับแบบบอกเล่าและถอยเป็นอดีต
+
+# l60 | B2 | อนาคตที่กำลังทำ และ ที่จะเสร็จแล้ว: will be + -ing, will have + V3
+goal: บอกว่า ณ เวลาหนึ่งในอนาคตจะกำลังทำอะไร หรือจะทำเสร็จแล้ว
+p: Future continuous คือ will be + กริยา -ing ใช้บอกว่า ณ เวลาหนึ่งในอนาคตจะกำลังทำอะไรอยู่ เช่น This time tomorrow, I will be flying to Japan. แปลว่า เวลานี้พรุ่งนี้ ฉันจะกำลังบินไปญี่ปุ่น
+p: Future perfect คือ will have + กริยาช่อง 3 ใช้บอกว่าก่อนเวลาหนึ่งในอนาคตจะทำเสร็จแล้ว เช่น By next year, I will have finished my degree. มักใช้คู่กับ by (ภายใน, ก่อน)
+p: will be + -ing ยังใช้ถามแผนของอีกฝ่ายอย่างสุภาพได้ เช่น Will you be using the car tonight?
+t: will be + -ing | I'll be working at nine tomorrow.
+t: This time next week, ... will be + -ing | This time next week, we'll be lying on the beach.
+t: will have + V3 | I'll have finished by six.
+t: by + เวลา | By the end of the year, ...
+e: This time tomorrow, I will be flying to Japan. | เวลานี้พรุ่งนี้ ฉันจะกำลังบินไปญี่ปุ่น
+e: Don't call me at eight. I'll be having dinner. | อย่าโทรมาตอนสองทุ่มนะ ตอนนั้นฉันจะกำลังกินข้าวเย็น
+e: This time next week, we'll be lying on the beach. | เวลานี้สัปดาห์หน้า เราจะกำลังนอนอยู่บนชายหาด
+e: By next year, I will have finished university. | ภายในปีหน้า ฉันจะเรียนจบมหาวิทยาลัยแล้ว
+e: The movie will have started by the time we get there. | กว่าเราจะไปถึง หนังก็คงเริ่มไปแล้ว
+e: Will you be using your car tonight? | คืนนี้คุณจะใช้รถไหม
+e: By six o'clock, I'll have cleaned the whole house. | ภายในหกโมง ฉันจะทำความสะอาดบ้านเสร็จทั้งหลังแล้ว
+m: This time tomorrow, I will fly to Japan. | This time tomorrow, I will be flying to Japan. | กำลังทำอยู่ในเวลานั้น ใช้ will be + -ing
+m: By next year, I will finish university. | By next year, I will have finished university. | เสร็จก่อนเวลาในอนาคต ใช้ will have + V3
+m: I will be work at nine. | I will be working at nine. | หลัง will be ใช้กริยา -ing
+q c | This time tomorrow, I will be ___ to Japan. | เวลานี้พรุ่งนี้ ฉันจะกำลังบินไปญี่ปุ่น | flying*; fly; flown | will be + -ing
+q c | By next year, she will ___ finished her degree. | ภายในปีหน้า เธอจะเรียนจบแล้ว | have*; be; has | will have + V3
+q c | Don't call at eight. I'll be ___ dinner. | อย่าโทรมาตอนสองทุ่ม ตอนนั้นฉันจะกำลังกินข้าวเย็น | having*; have; had | will be + -ing
+q c | The movie will have ___ by the time we arrive. | กว่าเราจะไปถึง หนังก็คงเริ่มไปแล้ว | started*; start; starting | will have + V3
+q c | ___ you be using the car tonight? | คืนนี้คุณจะใช้รถไหม | Will*; Are; Do | ถามแผนอย่างสุภาพ ใช้ Will you be + -ing
+q s | บอกว่าภายในหกโมงจะทำงานเสร็จแล้ว | I will have finished the work by six.*; I will finish the work until six.; I will be finished the work by six. | เสร็จก่อนเวลาในอนาคต ใช้ will have + V3
+q s | เลือกประโยคที่ถูก | This time next week, we will be lying on the beach.*; This time next week, we will lying on the beach.; This time next week, we will be lie on the beach. | will be + -ing
+q o | คืนนี้คุณจะใช้รถไหม | Will you be using your car tonight? | ถามแผนอย่างสุภาพ
+q w | At ten tomorrow, I will be ___ an exam. (take) | สิบโมงพรุ่งนี้ ฉันจะกำลังสอบอยู่ | taking | will be + -ing
+q w | By the time you get home, I will have ___ dinner. (cook) | กว่าคุณจะถึงบ้าน ฉันก็จะทำอาหารเย็นเสร็จแล้ว | cooked | will have + V3
+
+# l61 | B2 | ทำต่อเนื่องมาก่อนอีกเรื่องในอดีต: had been + -ing
+goal: เล่าเรื่องในอดีตให้ชัดว่าอะไรทำต่อเนื่องมาก่อนอีกเหตุการณ์หนึ่ง
+p: Past perfect continuous คือ had been + กริยา -ing ใช้กับการกระทำที่ทำต่อเนื่องมาสักพักก่อนอีกเหตุการณ์หนึ่งในอดีต เช่น I had been waiting for an hour when the bus finally came. แปลว่า ฉันรอมาชั่วโมงหนึ่งแล้วตอนที่รถเมล์มาในที่สุด
+p: ใช้อธิบายสาเหตุของสภาพในอดีตได้ เช่น She was tired because she had been working all day.
+p: เวลาเล่าเรื่อง ใช้ past simple กับเหตุการณ์หลักที่เกิดต่อกัน past continuous กับฉากที่กำลังเกิดอยู่ และ past perfect กับเรื่องที่เกิดก่อนหน้านั้น
+t: had been + -ing | I had been studying for hours.
+t: ... had been + -ing + when + past simple | We had been walking for an hour when it started to rain.
+t: because + had been + -ing | His eyes were red because he had been crying.
+t: How long had you been + -ing? | How long had you been waiting?
+e: I had been waiting for an hour when the bus finally came. | ฉันรอมาชั่วโมงหนึ่งแล้วตอนที่รถเมล์มาในที่สุด
+e: She was tired because she had been working all day. | เธอเหนื่อยเพราะทำงานมาทั้งวัน
+e: The ground was wet. It had been raining. | พื้นเปียก ฝนเพิ่งตกมา
+e: We had been walking for two hours when we found a cafe. | เราเดินมาสองชั่วโมงแล้วตอนที่เจอร้านกาแฟ
+e: His eyes were red because he had been crying. | ตาเขาแดงเพราะเพิ่งร้องไห้มา
+e: How long had you been living there before you moved? | คุณอยู่ที่นั่นมานานแค่ไหนก่อนจะย้ายออก
+e: They had been talking for hours when I arrived. | พวกเขาคุยกันมาหลายชั่วโมงแล้วตอนที่ฉันไปถึง
+m: I was waiting for an hour when the bus came. | I had been waiting for an hour when the bus came. | ทำต่อเนื่องมาก่อนอีกเหตุการณ์ ใช้ had been + -ing
+m: She was tired because she has been working. | She was tired because she had been working. | เรื่องในอดีต ใช้ had ไม่ใช่ has
+m: He had been cry. | He had been crying. | หลัง had been ใช้กริยา -ing
+q c | I had been ___ for an hour when he arrived. | ฉันรอมาชั่วโมงหนึ่งแล้วตอนที่เขามาถึง | waiting*; waited; wait | had been + -ing
+q c | She was tired because she ___ been working all day. | เธอเหนื่อยเพราะทำงานมาทั้งวัน | had*; has; was | ต่อเนื่องมาก่อนในอดีต ใช้ had been
+q c | The road was wet. It had ___ raining. | ถนนเปียก ฝนเพิ่งตกมา | been*; be; being | had been + -ing
+q c | We had been walking for hours when we ___ a cafe. | เราเดินมาหลายชั่วโมงแล้วตอนที่เจอร้านกาแฟ | found*; had found; were finding | เหตุการณ์ที่แทรกเข้ามาใช้ past simple
+q c | How long ___ you been living there before you moved? | คุณอยู่ที่นั่นมานานแค่ไหนก่อนจะย้ายออก | had*; have; did | ก่อนเหตุการณ์ในอดีต ใช้ had been
+q s | เลือกประโยคที่ถูก | His eyes were red because he had been crying.*; His eyes were red because he has been crying.; His eyes were red because he had been cried. | had been + -ing
+q s | เลือกประโยคที่ถูก | They had been talking for hours when I arrived.*; They have been talking for hours when I arrived.; They had talking for hours when I arrived. | ต่อเนื่องมาก่อนเหตุการณ์ในอดีต ใช้ had been + -ing
+q o | เธอเหนื่อยเพราะทำงานมาทั้งวัน | She was tired because she had been working all day. | had been + -ing
+q w | I had been ___ English for two years before I went to London. (study) | ฉันเรียนภาษาอังกฤษมาสองปีก่อนไปลอนดอน | studying | had been + -ing
+q w | He was out of breath because he had ___ running. | เขาหายใจหอบเพราะเพิ่งวิ่งมา | been | had been + -ing
+
+# l62 | B2 | เคยชิน: be used to และ get used to
+goal: แยก used to, be used to และ get used to ได้
+p: used to + กริยา แปลว่า เมื่อก่อนเคย (เรียนแล้วในระดับ B1) ส่วน be used to + คำนาม หรือกริยา -ing แปลว่า เคยชินกับ... เช่น I'm used to getting up early. แปลว่า ฉันชินกับการตื่นเช้า
+p: get used to + คำนาม หรือกริยา -ing แปลว่า เริ่มชิน หรือปรับตัวจนชิน เช่น I'm getting used to the weather. / You'll get used to it.
+p: หลัง be used to และ get used to ห้ามใช้กริยารูปปกติ ต้องเป็นคำนามหรือกริยา -ing เพราะ to ตรงนี้เป็นคำบุพบท
+t: used to + กริยา (เมื่อก่อนเคย) | I used to live in a village.
+t: be used to + -ing หรือคำนาม (ชินแล้ว) | She is used to working at night.
+t: get used to + -ing หรือคำนาม (เริ่มชิน) | I'm getting used to the food.
+t: not used to (ยังไม่ชิน) | I'm not used to spicy food.
+e: I'm used to getting up early. | ฉันชินกับการตื่นเช้า
+e: She is used to working at night. | เธอชินกับการทำงานตอนกลางคืน
+e: I'm not used to driving on the left. | ฉันยังไม่ชินกับการขับรถชิดซ้าย
+e: It was hard at first, but I got used to it. | ตอนแรกยาก แต่ฉันก็ชินแล้ว
+e: You'll soon get used to the weather here. | อีกไม่นานคุณก็จะชินกับอากาศที่นี่
+e: He is getting used to living alone. | เขากำลังปรับตัวให้ชินกับการอยู่คนเดียว
+e: I used to hate coffee, but now I love it. | เมื่อก่อนฉันเกลียดกาแฟ แต่ตอนนี้ชอบมาก
+m: I'm used to get up early. | I'm used to getting up early. | หลัง be used to ใช้กริยา -ing
+m: I can't get used to live here. | I can't get used to living here. | หลัง get used to ใช้กริยา -ing
+m: I am used to live in Japan when I was young. | I used to live in Japan when I was young. | เมื่อก่อนเคย ใช้ used to + กริยา ไม่มี am
+q c | I'm used to ___ up early. | ฉันชินกับการตื่นเช้า | getting*; get; got | หลัง be used to ใช้กริยา -ing
+q c | She isn't used to ___ spicy food. | เธอยังไม่ชินกับการกินอาหารเผ็ด | eating*; eat; ate | หลัง be used to ใช้กริยา -ing
+q c | It was hard at first, but I ___ used to it. | ตอนแรกยาก แต่ฉันก็ชินแล้ว | got*; get to; was get | ปรับตัวจนชินแล้ว ใช้ got used to
+q c | When I was a child, I ___ to play outside every day. | ตอนเด็กๆ ฉันเคยเล่นข้างนอกทุกวัน | used*; was used; got used | เมื่อก่อนเคย ใช้ used to + กริยา
+q c | You will soon get used to the ___. | อีกไม่นานคุณก็จะชินกับอากาศ | weather*; live here; be cold | หลัง get used to ใช้คำนามหรือกริยา -ing
+q s | บอกว่ายังไม่ชินกับการขับรถชิดซ้าย | I'm not used to driving on the left.*; I'm not used to drive on the left.; I don't used to driving on the left. | not used to + -ing
+q s | เลือกประโยคที่ถูก | He is getting used to living alone.*; He is getting used to live alone.; He is used to live alone. | get used to + -ing
+q o | ตอนแรกยาก แต่ฉันก็ชินแล้ว | It was hard at first, but I got used to it. | get used to + คำนาม หรือ it
+q w | She is used to ___ at night. (work) | เธอชินกับการทำงานตอนกลางคืน | working | หลัง be used to ใช้กริยา -ing
+q w | I ___ to hate vegetables, but now I like them. | เมื่อก่อนฉันเกลียดผัก แต่ตอนนี้ชอบแล้ว | used | เมื่อก่อนเคย ใช้ used to + กริยา
+
+# l63 | B2 | ทั้งที่... และ ตราบใดที่: despite, whereas, as long as
+goal: เชื่อมความคิดที่ขัดกันหรือเปรียบเทียบกัน และบอกเงื่อนไขแบบหนักแน่นขึ้น
+p: despite และ in spite of แปลว่า ทั้งที่ หรือ แม้จะ ตามด้วยคำนามหรือกริยา -ing ไม่ใช่ประโยคเต็ม เช่น Despite the rain, we went out. / In spite of being tired, she kept working. ถ้าจะตามด้วยประโยคเต็มให้ใช้ although
+p: whereas และ while ใช้เปรียบเทียบสองสิ่งที่ต่างกัน เช่น I like tea, whereas my brother prefers coffee.
+p: as long as และ provided that แปลว่า ตราบใดที่ หรือ โดยมีเงื่อนไขว่า เช่น You can borrow my car as long as you drive carefully. หลังคำเหล่านี้ใช้ present simple เมื่อพูดถึงอนาคต
+t: despite / in spite of + คำนาม หรือ -ing | Despite the traffic, we arrived on time.
+t: although + ประโยค | Although there was traffic, we arrived on time.
+t: whereas / while (เปรียบเทียบ) | She is tall, whereas her sister is short.
+t: as long as / provided that | You can go as long as you are back by ten.
+e: Despite the rain, we enjoyed the trip. | ทั้งที่ฝนตก เราก็สนุกกับการเดินทาง
+e: In spite of being tired, she finished the report. | แม้จะเหนื่อย เธอก็ทำรายงานเสร็จ
+e: Despite having little money, they were happy. | แม้จะมีเงินไม่มาก พวกเขาก็มีความสุข
+e: I like the city, whereas my wife prefers the countryside. | ฉันชอบเมือง ส่วนภรรยาชอบชนบทมากกว่า
+e: Some people love spicy food, while others hate it. | บางคนชอบอาหารเผ็ด ในขณะที่บางคนเกลียด
+e: You can borrow my car as long as you drive carefully. | คุณยืมรถฉันได้ ตราบใดที่คุณขับอย่างระมัดระวัง
+e: We will go provided that the weather is good. | เราจะไป โดยมีเงื่อนไขว่าอากาศต้องดี
+m: Despite it was raining, we went out. | Despite the rain, we went out. | despite ตามด้วยคำนาม ไม่ใช่ประโยคเต็ม
+m: In spite of she was tired, she worked. | In spite of being tired, she worked. | in spite of ตามด้วยคำนามหรือ -ing
+m: You can go as long as you will be back by ten. | You can go as long as you are back by ten. | หลัง as long as ใช้ present simple
+q c | ___ the rain, we enjoyed the trip. | ทั้งที่ฝนตก เราก็สนุกกับการเดินทาง | Despite*; Although; Whereas | ตามด้วยคำนาม ใช้ despite
+q c | ___ it was raining, we enjoyed the trip. | ถึงแม้ฝนจะตก เราก็สนุกกับการเดินทาง | Although*; Despite; In spite of | ตามด้วยประโยคเต็ม ใช้ although
+q c | In spite of ___ tired, she kept working. | แม้จะเหนื่อย เธอก็ยังทำงานต่อ | being*; she was; be | in spite of ตามด้วยคำนามหรือ -ing
+q c | I like the city, ___ my wife prefers the countryside. | ฉันชอบเมือง ส่วนภรรยาชอบชนบทมากกว่า | whereas*; despite; unless | เปรียบเทียบสองอย่างที่ต่างกัน ใช้ whereas
+q c | You can borrow my car as long as you ___ carefully. | คุณยืมรถฉันได้ ตราบใดที่คุณขับอย่างระมัดระวัง | drive*; will drive; drove | หลัง as long as ใช้ present simple
+q s | เลือกประโยคที่ถูก | Despite having little money, they were happy.*; Despite they had little money, they were happy.; Despite of having little money, they were happy. | despite ตามด้วย -ing และไม่มี of
+q s | บอกว่าเราจะไปโดยมีเงื่อนไขว่าอากาศต้องดี | We will go provided that the weather is good.*; We will go provided that the weather will be good.; We go provided the weather will good. | provided that + present simple
+q o | บางคนชอบอาหารเผ็ด ในขณะที่บางคนเกลียด | Some people love spicy food, while others hate it. | while ใช้เปรียบเทียบ
+q w | ___ the traffic, we arrived on time. | ทั้งที่รถติด เราก็มาถึงตรงเวลา | Despite/In spite of | ตามด้วยคำนาม ใช้ despite หรือ in spite of
+q w | You can stay ___ long as you are quiet. | คุณอยู่ต่อได้ ตราบใดที่คุณเงียบ | as | ตราบใดที่ ใช้ as long as
+
+# l64 | B2 | ทำ...ดีกว่า: had better, would rather, it's time
+goal: ให้คำแนะนำแบบหนักแน่น บอกสิ่งที่อยากทำมากกว่า และบอกว่าถึงเวลาต้องทำอะไรแล้ว
+p: had better ('d better) + กริยารูปปกติ แปลว่า ...ดีกว่านะ ไม่อย่างนั้นจะมีปัญหา หนักแน่นกว่า should เช่น You'd better hurry, or you'll miss the train. ปฏิเสธคือ had better not
+p: would rather ('d rather) + กริยารูปปกติ แปลว่า อยาก...มากกว่า เช่น I'd rather stay home tonight. / I'd rather walk than take the bus. ถ้าอยากให้คนอื่นทำ ใช้ would rather + คน + รูปอดีต เช่น I'd rather you didn't smoke here.
+p: it's time + to + กริยา แปลว่า ถึงเวลาต้อง... เช่น It's time to go. ถ้ามีประธานใช้ it's time + ประธาน + รูปอดีต ซึ่งมีความหมายว่า ควรทำได้แล้ว เช่น It's time you went to bed.
+t: had better (not) + กริยา | You'd better not be late.
+t: would rather + กริยา (+ than ...) | I'd rather walk than drive.
+t: would rather + คน + รูปอดีต | I'd rather you stayed here.
+t: it's time + to + กริยา / it's time + ประธาน + รูปอดีต | It's time we left.
+e: You'd better take an umbrella. It looks like rain. | คุณเอาร่มไปด้วยดีกว่านะ ท่าทางฝนจะตก
+e: We'd better not be late for the meeting. | เราอย่าไปประชุมสายดีกว่า
+e: I'd rather stay home tonight. | คืนนี้ฉันอยากอยู่บ้านมากกว่า
+e: I'd rather walk than take the bus. | ฉันอยากเดินมากกว่านั่งรถเมล์
+e: I'd rather you didn't tell anyone. | ฉันไม่อยากให้คุณบอกใคร
+e: It's time to go home. | ถึงเวลากลับบ้านแล้ว
+e: It's late. It's time you went to bed. | ดึกแล้ว ได้เวลาเข้านอนแล้วนะ
+m: You had better to hurry. | You had better hurry. | หลัง had better ไม่มี to
+m: I would rather to stay home. | I would rather stay home. | หลัง would rather ไม่มี to
+m: It's time we go home. | It's time we went home. | it's time + ประธาน ใช้รูปอดีต
+q c | You'd better ___, or you'll miss the train. | คุณรีบดีกว่านะ ไม่อย่างนั้นจะตกรถไฟ | hurry*; to hurry; hurrying | had better + กริยารูปปกติ
+q c | We'd better ___ be late. | เราอย่าไปสายดีกว่า | not*; don't; no | ปฏิเสธของ had better คือ had better not
+q c | I'd rather ___ home tonight. | คืนนี้ฉันอยากอยู่บ้านมากกว่า | stay*; to stay; staying | would rather + กริยารูปปกติ
+q c | I'd rather walk ___ take the bus. | ฉันอยากเดินมากกว่านั่งรถเมล์ | than*; that; then | would rather ... than ...
+q c | It's late. It's time we ___ home. | ดึกแล้ว ได้เวลากลับบ้านแล้ว | went*; go; going | it's time + ประธาน ใช้รูปอดีต
+q s | บอกเพื่อนว่าเอาร่มไปด้วยดีกว่า | You'd better take an umbrella.*; You'd better to take an umbrella.; You'd better taking an umbrella. | had better + กริยารูปปกติ
+q s | บอกว่าไม่อยากให้เพื่อนบอกใคร | I'd rather you didn't tell anyone.*; I'd rather you don't tell anyone.; I'd rather you not to tell anyone. | would rather + คน + รูปอดีต
+q o | ถึงเวลากลับบ้านแล้ว | It's time to go home. | it's time + to + กริยา
+q w | You had ___ see a doctor about that cough. | คุณไปหาหมอเรื่องอาการไอนั้นดีกว่านะ | better | had better + กริยารูปปกติ
+q w | I would ___ read a book than watch TV. | ฉันอยากอ่านหนังสือมากกว่าดูทีวี | rather | would rather ... than ...

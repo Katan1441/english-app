@@ -1,0 +1,239 @@
+# l37 | B1 | ทำมานานแค่ไหน: for, since และ How long
+goal: บอกได้ว่าทำอะไรมานานเท่าไรแล้ว หรือตั้งแต่เมื่อไร
+p: ถ้าเรื่องเริ่มในอดีตแล้วยังเป็นอยู่ถึงตอนนี้ ใช้ present perfect (have / has + กริยาช่อง 3) ไม่ใช้ present simple เช่น I have lived here for ten years. แปลว่า ฉันอาศัยอยู่ที่นี่มาสิบปีแล้ว (และตอนนี้ก็ยังอยู่)
+p: for + ช่วงเวลา เช่น for two hours, for a long time ส่วน since + จุดเริ่มต้น เช่น since Monday, since last year, since I was a child
+p: ถามว่านานแค่ไหนใช้ How long have you ...? เช่น How long have you known her? ถ้าเรื่องจบไปแล้ว ใช้ past simple เช่น I lived in Japan for two years. (ตอนนี้ไม่ได้อยู่แล้ว)
+t: have / has + V3 + for + ช่วงเวลา | I have lived here for ten years.
+t: have / has + V3 + since + จุดเริ่มต้น | She has worked here since May.
+t: How long have you + V3? | How long have you known him?
+t: past simple + for (จบไปแล้ว) | I lived in Japan for two years.
+e: I have lived in Bangkok for ten years. | ฉันอาศัยอยู่ในกรุงเทพฯ มาสิบปีแล้ว
+e: She has worked at the bank since March. | เธอทำงานที่ธนาคารมาตั้งแต่เดือนมีนาคม
+e: We have known each other since we were children. | เรารู้จักกันมาตั้งแต่เด็ก
+e: How long have you studied English? | คุณเรียนภาษาอังกฤษมานานเท่าไรแล้ว
+e: I haven't seen him for a long time. | ฉันไม่ได้เจอเขามานานแล้ว
+e: He has had this car since last year. | เขามีรถคันนี้มาตั้งแต่ปีที่แล้ว
+e: I lived in Japan for two years, then I came back. | ฉันเคยอยู่ญี่ปุ่นสองปี แล้วก็กลับมา
+m: I live here for ten years. | I have lived here for ten years. | เริ่มในอดีตและยังเป็นอยู่ ใช้ have lived
+m: She has worked here since three years. | She has worked here for three years. | ช่วงเวลาใช้ for
+m: I know him since I was a child. | I have known him since I was a child. | รู้จักมาจนถึงตอนนี้ ใช้ have known
+q c | I have lived here ___ ten years. | ฉันอยู่ที่นี่มาสิบปีแล้ว | for*; since; from | ช่วงเวลาใช้ for
+q c | She has worked here ___ Monday. | เธอทำงานที่นี่มาตั้งแต่วันจันทร์ | since*; for; from | จุดเริ่มต้นใช้ since
+q c | How long ___ you known her? | คุณรู้จักเธอมานานเท่าไรแล้ว | have*; do; did | How long + have you + V3
+q c | We ___ friends since we were children. | เราเป็นเพื่อนกันมาตั้งแต่เด็ก | have been*; are; were | เป็นมาจนถึงตอนนี้ ใช้ have been
+q c | I ___ in Japan for two years, but now I live in Bangkok. | ฉันเคยอยู่ญี่ปุ่นสองปี แต่ตอนนี้อยู่กรุงเทพฯ | lived*; have lived; live | เรื่องจบแล้ว ใช้ past simple
+q s | ถามเพื่อนว่าเรียนภาษาอังกฤษมานานเท่าไรแล้ว | How long have you studied English?*; How long do you study English?; How long you have studied English? | How long + have you + V3
+q s | เลือกประโยคที่ถูก | I haven't seen him for a long time.*; I didn't see him since a long time.; I don't see him for a long time. | ไม่ได้เจอมาจนถึงตอนนี้ ใช้ haven't seen + for
+q o | เขามีรถคันนี้มาตั้งแต่ปีที่แล้ว | He has had this car since last year. | since + จุดเริ่มต้น
+q w | She has been sick ___ Friday. | เธอป่วยมาตั้งแต่วันศุกร์ | since | จุดเริ่มต้นใช้ since
+q w | I have ___ my best friend for twenty years. (know) | ฉันรู้จักเพื่อนสนิทมายี่สิบปีแล้ว | known | know ช่อง 3 คือ known
+
+# l38 | B1 | ทำต่อเนื่องมาจนถึงตอนนี้: have been + -ing
+goal: บอกได้ว่าทำอะไรต่อเนื่องมาจนถึงตอนนี้
+p: Present perfect continuous คือ have / has been + กริยา -ing ใช้กับการกระทำที่เริ่มในอดีตและทำต่อเนื่องมาจนถึงตอนนี้ เน้นว่าทำมานาน เช่น I have been waiting for an hour. แปลว่า ฉันรอมาชั่วโมงหนึ่งแล้ว
+p: ใช้กับสิ่งที่เพิ่งหยุดแต่ยังเห็นผลอยู่ได้ด้วย เช่น It has been raining. The road is wet. แปลว่า ฝนเพิ่งตกมา ถนนยังเปียกอยู่
+p: กริยาที่ไม่ใช่การกระทำ เช่น know, like, want, have (ที่แปลว่า มี) ไม่ใช้รูปนี้ ให้ใช้ present perfect ธรรมดา เช่น I have known her for years.
+t: have / has been + -ing | I have been studying all day.
+t: How long have you been + -ing? | How long have you been waiting?
+t: + for / since | She has been working here since June.
+t: know, like, have (มี) → have + V3 | I have had this phone for two years.
+e: I have been waiting for you for an hour. | ฉันรอคุณมาชั่วโมงหนึ่งแล้ว
+e: She has been studying English since January. | เธอเรียนภาษาอังกฤษมาตั้งแต่เดือนมกราคม
+e: How long have you been living here? | คุณอาศัยอยู่ที่นี่มานานเท่าไรแล้ว
+e: It has been raining all day. | ฝนตกมาทั้งวันแล้ว
+e: They have been playing games for three hours. | พวกเขาเล่นเกมมาสามชั่วโมงแล้ว
+e: You look tired. Have you been working late? | คุณดูเหนื่อยนะ ทำงานดึกมาหรือเปล่า
+e: I have known her for ten years. | ฉันรู้จักเธอมาสิบปีแล้ว
+m: I am waiting for an hour. | I have been waiting for an hour. | ทำต่อเนื่องมาจนถึงตอนนี้ ใช้ have been + -ing
+m: She has been work here for a year. | She has been working here for a year. | หลัง been ใช้กริยา -ing
+m: I have been knowing him for years. | I have known him for years. | know ไม่ใช้รูป -ing
+q c | I have been ___ for the bus for twenty minutes. | ฉันรอรถเมล์มายี่สิบนาทีแล้ว | waiting*; wait; waited | have been + -ing
+q c | She ___ been studying all morning. | เธออ่านหนังสือมาทั้งเช้าแล้ว | has*; have; is | she ใช้ has been
+q c | How long have you ___ learning English? | คุณเรียนภาษาอังกฤษมานานเท่าไรแล้ว | been*; being; be | have you been + -ing
+q c | It has been ___ since this morning. | ฝนตกมาตั้งแต่เช้าแล้ว | raining*; rain; rained | have been + -ing
+q c | I have ___ this phone for two years. | ฉันมีโทรศัพท์เครื่องนี้มาสองปีแล้ว | had*; been having; have | have ที่แปลว่า มี ไม่ใช้รูป -ing จึงใช้ have had
+q s | เลือกประโยคที่ถูก | They have been playing football for two hours.*; They are playing football for two hours.; They have playing football for two hours. | ทำต่อเนื่องมาจนถึงตอนนี้ ใช้ have been + -ing
+q s | ถามเพื่อนว่ารอมานานหรือยัง | Have you been waiting long?*; Are you waiting long?; Have you waiting long? | ถามว่าทำต่อเนื่องมานานไหม ใช้ Have you been + -ing
+q o | ฝนตกมาทั้งวันแล้ว | It has been raining all day. | have been + -ing
+q w | I have been ___ here since last year. (work) | ฉันทำงานที่นี่มาตั้งแต่ปีที่แล้ว | working | หลัง been ใช้กริยา -ing
+q w | We have ___ waiting for you for an hour. | เรารอคุณมาชั่วโมงหนึ่งแล้ว | been | have been + -ing
+
+# l39 | B1 | เมื่อก่อนเคย: used to
+goal: เล่าสิ่งที่เคยทำเป็นประจำหรือเคยเป็นในอดีต แต่ตอนนี้ไม่แล้ว
+p: used to + กริยารูปปกติ ใช้กับนิสัยหรือสภาพในอดีตที่ตอนนี้ไม่เป็นแล้ว เช่น I used to play football every day. แปลว่า เมื่อก่อนฉันเล่นฟุตบอลทุกวัน (ตอนนี้ไม่เล่นแล้ว)
+p: ใช้รูปเดียวกันกับทุกประธาน ปฏิเสธใช้ didn't use to (ไม่มี d) คำถามใช้ Did you use to ...?
+p: นิสัยในปัจจุบันไม่ใช้ used to ให้ใช้ usually เช่น I usually walk to work.
+t: used to + กริยา | I used to live in Chiang Mai.
+t: didn't use to + กริยา | She didn't use to like coffee.
+t: Did you use to ...? | Did you use to walk to school?
+t: usually (ตอนนี้) | I usually take the bus now.
+e: I used to live in a small village. | เมื่อก่อนฉันอาศัยอยู่ในหมู่บ้านเล็กๆ
+e: My father used to smoke, but he stopped. | เมื่อก่อนพ่อสูบบุหรี่ แต่เลิกแล้ว
+e: She didn't use to like vegetables. | เมื่อก่อนเธอไม่ชอบกินผัก
+e: Did you use to walk to school? | เมื่อก่อนคุณเดินไปโรงเรียนหรือเปล่า
+e: There used to be a cinema here. | เมื่อก่อนตรงนี้เคยมีโรงหนัง
+e: We used to go to the beach every summer. | เมื่อก่อนเราไปทะเลทุกฤดูร้อน
+e: I usually get up at six now. | ตอนนี้ปกติฉันตื่นหกโมง
+m: I use to play football. | I used to play football. | รูปบอกเล่าคือ used to
+m: She used to lives here. | She used to live here. | หลัง used to ใช้กริยารูปปกติ
+m: I didn't used to like it. | I didn't use to like it. | หลัง didn't ใช้ use to ไม่มี d
+q c | I ___ to live in a village. | เมื่อก่อนฉันอาศัยอยู่ในหมู่บ้าน | used*; use; was | บอกเล่าใช้ used to
+q c | My father used to ___, but he stopped. | เมื่อก่อนพ่อสูบบุหรี่ แต่เลิกแล้ว | smoke*; smoking; smoked | หลัง used to ใช้กริยารูปปกติ
+q c | She didn't ___ to like vegetables. | เมื่อก่อนเธอไม่ชอบกินผัก | use*; used; using | หลัง didn't ใช้ use to
+q c | ___ you use to walk to school? | เมื่อก่อนคุณเดินไปโรงเรียนหรือเปล่า | Did*; Do; Were | คำถามใช้ Did you use to
+q c | There used to ___ a cinema here. | เมื่อก่อนตรงนี้เคยมีโรงหนัง | be*; is; being | used to + be
+q s | เลือกประโยคที่ถูก | We used to go to the beach every summer.*; We use to go to the beach every summer.; We used to going to the beach every summer. | used to + กริยารูปปกติ
+q s | บอกว่าเมื่อก่อนเคยไว้ผมยาว | I used to have long hair.*; I used to had long hair.; I was used to have long hair. | used to + กริยารูปปกติ
+q o | เมื่อก่อนพ่อสูบบุหรี่ แต่เลิกแล้ว | My father used to smoke, but he stopped. | used to บอกนิสัยในอดีต
+q w | I ___ to play the piano when I was young. | ตอนเด็กๆ ฉันเคยเล่นเปียโน | used | used to บอกสิ่งที่เคยทำในอดีต
+q w | He didn't use to ___ coffee. (drink) | เมื่อก่อนเขาไม่ดื่มกาแฟ | drink | หลัง use to ใช้กริยารูปปกติ
+
+# l40 | B1 | เกิดก่อนอีกเรื่องในอดีต: had + กริยาช่อง 3
+goal: เล่าได้ว่าเรื่องไหนเกิดก่อนอีกเรื่องหนึ่งในอดีต
+p: Past perfect คือ had + กริยาช่อง 3 ใช้กับเรื่องที่เกิดขึ้นก่อนอีกเรื่องหนึ่งในอดีต เช่น When I arrived, the train had left. แปลว่า ตอนที่ฉันไปถึง รถไฟออกไปแล้ว
+p: ใช้ had กับทุกประธาน ปฏิเสธใช้ hadn't คำที่มักใช้ด้วย: already, never ... before, by the time, after
+p: ถ้าเล่าเรื่องตามลำดับเวลาธรรมดา ใช้ past simple ต่อกันได้เลย เช่น I woke up, had a shower and left.
+t: had + V3 | She had already gone home.
+t: When + past simple, ... had + V3 | When I got there, the class had started.
+t: hadn't + V3 | I hadn't seen it before.
+t: after / before / by the time | By the time we arrived, the movie had started.
+e: When I arrived, the train had already left. | ตอนที่ฉันไปถึง รถไฟออกไปแล้ว
+e: She had never seen snow before she went to Japan. | ก่อนไปญี่ปุ่น เธอไม่เคยเห็นหิมะมาก่อน
+e: I was hungry because I hadn't eaten all day. | ฉันหิวเพราะไม่ได้กินอะไรมาทั้งวัน
+e: After he had finished his homework, he went out. | หลังจากทำการบ้านเสร็จ เขาก็ออกไปข้างนอก
+e: By the time we got to the cinema, the movie had started. | กว่าเราจะไปถึงโรงหนัง หนังก็เริ่มไปแล้ว
+e: I knew her because we had met before. | ฉันรู้จักเธอเพราะเราเคยเจอกันมาก่อน
+e: They had already eaten when I called. | ตอนที่ฉันโทรไป พวกเขากินข้าวไปแล้ว
+m: When I arrived, the train has left. | When I arrived, the train had left. | เกิดก่อนอีกเรื่องในอดีต ใช้ had + V3
+m: She had went home. | She had gone home. | หลัง had ใช้กริยาช่อง 3
+m: I hadn't eat all day. | I hadn't eaten all day. | หลัง hadn't ใช้กริยาช่อง 3
+q c | When I got to the station, the train had already ___. | ตอนที่ฉันไปถึงสถานี รถไฟออกไปแล้ว | left*; leave; leaving | had + V3
+q c | She ___ never seen the sea before that trip. | ก่อนการเดินทางครั้งนั้น เธอไม่เคยเห็นทะเลมาก่อน | had*; has; was | เกิดก่อนในอดีต ใช้ had
+q c | I was tired because I ___ slept well. | ฉันเหนื่อยเพราะนอนไม่ค่อยหลับ | hadn't*; haven't; didn't | เกิดก่อนอีกเรื่องในอดีต ใช้ hadn't + V3
+q c | After she had ___ dinner, she watched TV. | หลังจากกินข้าวเย็นเสร็จ เธอก็ดูทีวี | eaten*; ate; eat | had + V3
+q c | By the time we arrived, the party ___ finished. | กว่าเราจะไปถึง งานปาร์ตี้ก็เลิกแล้ว | had*; has; have | by the time + อดีต ใช้ had + V3
+q s | เลือกประโยคที่ถูก | I knew her because we had met before.*; I knew her because we have met before.; I knew her because we had meet before. | เรื่องที่เกิดก่อนใช้ had + V3
+q s | เลือกประโยคที่ถูก | When I called, they had already eaten.*; When I called, they have already eaten.; When I had called, they already eat. | เรื่องที่เกิดก่อนการโทร ใช้ had eaten
+q o | ตอนที่ฉันไปถึง รถไฟออกไปแล้ว | When I arrived, the train had left. | เรื่องที่เกิดก่อนใช้ had + V3
+q w | He was sad because he had ___ his wallet. (lose) | เขาเสียใจเพราะทำกระเป๋าสตางค์หาย | lost | lose ช่อง 3 คือ lost
+q w | I ___ never been on a plane before last year. | ก่อนปีที่แล้วฉันไม่เคยขึ้นเครื่องบินมาก่อน | had | เกิดก่อนอีกเรื่องในอดีต ใช้ had
+
+# l41 | B1 | พูดถึงอนาคต: นัดหมาย แผน และ when + ปัจจุบัน
+goal: เลือกรูปอนาคตได้เหมาะกับสถานการณ์ และใช้ when, as soon as, until กับอนาคตได้
+p: นัดหมายที่ตกลงกันแล้ว มีเวลาและสถานที่ชัดเจน ใช้ present continuous ได้ เช่น I'm meeting Tom at six. ส่วนแผนที่ตั้งใจไว้ และการคาดเดาจากสิ่งที่เห็นตอนนี้ ใช้ be going to เช่น Look at those clouds. It's going to rain.
+p: will ใช้กับการตัดสินใจตอนพูด คำสัญญา และการคาดเดาจากความคิด เช่น I'll call you tonight. / I promise I'll help. / I think you'll like it.
+p: หลัง when, as soon as, before, after, until ที่พูดถึงอนาคต ใช้ present simple ไม่ใช้ will เช่น I'll call you when I get home.
+t: am / is / are + -ing (นัดแล้ว) | I'm seeing the doctor tomorrow.
+t: be going to (แผน หรือเห็นสัญญาณ) | It's going to rain.
+t: will (ตัดสินใจตอนพูด, สัญญา) | I'll help you.
+t: when / as soon as / until + present simple | I'll call you when I arrive.
+e: I'm meeting my friends at six tonight. | คืนนี้ฉันนัดเจอเพื่อนตอนหกโมงเย็น
+e: We're flying to Japan next Monday. | วันจันทร์หน้าเราจะบินไปญี่ปุ่น
+e: Look at the sky. It's going to rain. | ดูท้องฟ้าสิ ฝนกำลังจะตก
+e: I promise I'll be there on time. | ฉันสัญญาว่าจะไปถึงตรงเวลา
+e: I'll call you when I get home. | ฉันจะโทรหาคุณตอนที่ถึงบ้าน
+e: As soon as the rain stops, we'll go out. | ทันทีที่ฝนหยุด เราจะออกไปข้างนอก
+e: Wait here until I come back. | รอตรงนี้จนกว่าฉันจะกลับมา
+m: I'll call you when I will get home. | I'll call you when I get home. | หลัง when ที่พูดถึงอนาคต ใช้ present simple
+m: I meet Tom tomorrow at six. | I'm meeting Tom tomorrow at six. | นัดที่ตกลงกันแล้วใช้ am + -ing
+m: I promise I help you. | I promise I'll help you. | คำสัญญาใช้ will
+q c | I'll call you when I ___ home. | ฉันจะโทรหาคุณตอนที่ถึงบ้าน | get*; will get; got | หลัง when ที่พูดถึงอนาคต ใช้ present simple
+q c | Look at those clouds. It's ___ to rain. | ดูเมฆพวกนั้นสิ ฝนกำลังจะตก | going*; will; go | เห็นสัญญาณตอนนี้ ใช้ be going to
+q c | I'm ___ my friends at six tonight. | คืนนี้ฉันนัดเจอเพื่อนตอนหกโมงเย็น | meeting*; meet; met | นัดที่ตกลงแล้วใช้ am + -ing
+q c | As soon as the rain ___, we will go out. | ทันทีที่ฝนหยุด เราจะออกไปข้างนอก | stops*; will stop; stopped | หลัง as soon as ใช้ present simple
+q c | Don't worry. I ___ help you. | ไม่ต้องห่วง ฉันจะช่วยคุณเอง | will*; am going; am | ตัดสินใจหรือสัญญาตอนพูด ใช้ will
+q s | บอกว่าจะส่งข้อความหาทันทีที่ไปถึง | I'll text you as soon as I arrive.*; I'll text you as soon as I will arrive.; I text you as soon as I will arrive. | หลัง as soon as ใช้ present simple
+q s | เลือกประโยคที่ถูก | We're flying to Japan next Monday.*; We are fly to Japan next Monday.; We will flying to Japan next Monday. | นัดหรือแผนที่จองไว้แล้ว ใช้ are + -ing
+q o | ฉันจะโทรหาคุณตอนที่ถึงบ้าน | I will call you when I get home. | หลัง when ใช้ present simple
+q w | Wait here until I ___ back. (come) | รอตรงนี้จนกว่าฉันจะกลับมา | come | หลัง until ที่พูดถึงอนาคต ใช้ present simple
+q w | I promise I ___ be late again. (ปฏิเสธ) | ฉันสัญญาว่าจะไม่มาสายอีก | won't/will not | คำสัญญาใช้ will และปฏิเสธคือ won't
+
+# l42 | B1 | ถ้า...ก็คง: If + อดีต, would
+goal: พูดถึงเรื่องสมมติที่ไม่จริงหรือไม่น่าจะเกิดขึ้น
+p: Second conditional: If + past simple, would + กริยารูปปกติ ใช้กับเรื่องสมมติที่ไม่จริงหรือไม่น่าจะเกิด เช่น If I had a lot of money, I would buy a house. แปลว่า ถ้าฉันมีเงินเยอะ ฉันก็คงซื้อบ้าน (แต่ตอนนี้ไม่มี)
+p: แม้จะใช้รูปอดีต แต่หมายถึงตอนนี้หรืออนาคต ถ้าเป็น be ใช้ were ได้กับทุกประธาน เช่น If I were you, I would rest. ซึ่งใช้ให้คำแนะนำ
+p: เทียบกับบทที่แล้ว: If it rains, I will stay home. (เป็นไปได้จริง) / If I won the lottery, I would travel. (สมมติ ไม่น่าจะเกิด) และ would ย่อเป็น 'd ได้ เช่น I'd
+t: If + past simple, would + กริยา | If I had time, I would help you.
+t: If I were you, I would ... | If I were you, I would see a doctor.
+t: would ('d) / wouldn't | I'd buy a big house.
+t: What would you do if ...? | What would you do if you were rich?
+e: If I had more time, I would learn to cook. | ถ้าฉันมีเวลามากกว่านี้ ฉันคงหัดทำอาหาร
+e: If I were you, I would talk to her. | ถ้าฉันเป็นคุณ ฉันจะคุยกับเธอ
+e: If we lived near the sea, we would swim every day. | ถ้าเราอยู่ใกล้ทะเล เราคงว่ายน้ำทุกวัน
+e: What would you do if you won the lottery? | ถ้าคุณถูกลอตเตอรี่ คุณจะทำอะไร
+e: I would travel around the world if I were rich. | ฉันคงเดินทางรอบโลกถ้าฉันรวย
+e: If it wasn't so expensive, I would buy it. | ถ้ามันไม่แพงขนาดนี้ ฉันคงซื้อแล้ว
+e: She wouldn't be tired if she slept more. | เธอคงไม่เหนื่อยถ้าเธอนอนมากกว่านี้
+m: If I have money, I would buy it. | If I had money, I would buy it. | เรื่องสมมติ ส่วนที่มี if ใช้รูปอดีต
+m: If I would be you, I would rest. | If I were you, I would rest. | ส่วนที่มี if ไม่ใช้ would
+m: If I were rich, I will travel. | If I were rich, I would travel. | เรื่องสมมติใช้ would ไม่ใช่ will
+q c | If I ___ a car, I would drive to work. | ถ้าฉันมีรถ ฉันคงขับรถไปทำงาน | had*; have; would have | ส่วนที่มี if ใช้รูปอดีต
+q c | If I were you, I ___ see a doctor. | ถ้าฉันเป็นคุณ ฉันจะไปหาหมอ | would*; will; am | ให้คำแนะนำด้วย If I were you, I would
+q c | If she ___ here, she would help us. | ถ้าเธออยู่ที่นี่ เธอคงช่วยเรา | were*; is; will be | กับ be ใช้ were
+q c | What ___ you do if you won the lottery? | ถ้าคุณถูกลอตเตอรี่ คุณจะทำอะไร | would*; will; did | เรื่องสมมติใช้ would
+q c | We would go to the beach if it ___ so hot. | เราคงไปทะเลถ้าอากาศไม่ร้อนขนาดนี้ | weren't*; isn't; won't be | ส่วนที่มี if ใช้รูปอดีต
+q s | ให้คำแนะนำเพื่อนว่าถ้าเป็นเราจะพักผ่อน | If I were you, I would rest.*; If I am you, I will rest.; If I would be you, I rest. | ให้คำแนะนำใช้ If I were you, I would
+q s | เลือกประโยคที่ถูก | If I had more money, I would buy a new phone.*; If I have more money, I would buy a new phone.; If I had more money, I will buy a new phone. | If + อดีต, would + กริยา
+q o | ถ้าฉันเป็นคุณ ฉันจะคุยกับเธอ | If I were you, I would talk to her. | ให้คำแนะนำด้วย If I were you
+q w | If I ___ rich, I would travel around the world. (be) | ถ้าฉันรวย ฉันคงเดินทางรอบโลก | were/was | เรื่องสมมติ ใช้ were (พูดว่า was ก็ได้)
+q w | She ___ be tired if she slept more. (ปฏิเสธ) | เธอคงไม่เหนื่อยถ้าเธอนอนมากกว่านี้ | wouldn't/would not | ผลของเรื่องสมมติใช้ would และปฏิเสธคือ wouldn't
+
+# l43 | B1 | ถูกกระทำ: is made, was built
+goal: พูดถึงสิ่งที่ถูกทำ โดยเน้นที่สิ่งนั้นมากกว่าคนที่ทำ
+p: Passive voice คือ be + กริยาช่อง 3 ใช้เมื่อสิ่งที่ถูกกระทำสำคัญกว่าคนทำ หรือไม่รู้ว่าใครทำ เช่น English is spoken in many countries. แปลว่า ภาษาอังกฤษใช้พูดกันในหลายประเทศ
+p: ปัจจุบันใช้ am, is, are + V3 อดีตใช้ was, were + V3 ถ้าอยากบอกคนทำให้ใช้ by เช่น This house was built by my grandfather.
+p: คำถามย้าย be ไปไว้หน้า เช่น Where was it made? ปฏิเสธใส่ not เช่น It isn't used anymore. ภาษาไทยมักไม่พูดคำว่า ถูก แต่ภาษาอังกฤษต้องใช้รูปนี้
+t: is / are + V3 | Rice is grown in Thailand.
+t: was / were + V3 | The bridge was built last year.
+t: ... by + คนทำ | It was written by my friend.
+t: Was it ...? / It isn't ... | Was the car made in Japan?
+e: English is spoken in many countries. | ภาษาอังกฤษใช้พูดกันในหลายประเทศ
+e: Rice is grown in many parts of Thailand. | ข้าวปลูกกันในหลายภาคของไทย
+e: This house was built by my grandfather. | บ้านหลังนี้สร้างโดยปู่ของฉัน
+e: My bike was stolen last night. | จักรยานของฉันถูกขโมยไปเมื่อคืน
+e: The letters are sent every morning. | จดหมายถูกส่งออกไปทุกเช้า
+e: Where was this phone made? | โทรศัพท์เครื่องนี้ผลิตที่ไหน
+e: The room isn't cleaned every day. | ห้องไม่ได้ทำความสะอาดทุกวัน
+m: English is speak in many countries. | English is spoken in many countries. | passive ใช้กริยาช่อง 3
+m: My bike stolen last night. | My bike was stolen last night. | ต้องมี was หน้ากริยาช่อง 3
+m: The book was written from my teacher. | The book was written by my teacher. | บอกคนทำใช้ by
+q c | Rice ___ grown in Thailand. | ข้าวปลูกในประเทศไทย | is*; are; be | rice นับไม่ได้ ใช้ is
+q c | My phone was ___ yesterday. | โทรศัพท์ของฉันถูกขโมยเมื่อวาน | stolen*; stole; steal | passive ใช้กริยาช่อง 3
+q c | This bridge ___ built last year. | สะพานนี้สร้างเมื่อปีที่แล้ว | was*; is; were | last year เป็นอดีต และ bridge เป็นเอกพจน์ ใช้ was
+q c | These cars ___ made in Japan. | รถพวกนี้ผลิตในญี่ปุ่น | are*; is; be | cars เป็นพหูพจน์ ใช้ are
+q c | This song was written ___ a famous singer. | เพลงนี้แต่งโดยนักร้องชื่อดัง | by*; from; with | บอกคนทำใช้ by
+q s | เลือกประโยคที่ถูก | English is spoken here.*; English is speak here.; English speaks here. | passive คือ be + กริยาช่อง 3
+q s | ถามว่าโทรศัพท์เครื่องนี้ผลิตที่ไหน | Where was this phone made?*; Where did this phone made?; Where this phone was made? | คำถาม passive ย้าย was มาไว้หน้า
+q o | จักรยานของฉันถูกขโมยไปเมื่อคืน | My bike was stolen last night. | was + กริยาช่อง 3
+q w | The windows are ___ every week. (clean) | หน้าต่างได้รับการทำความสะอาดทุกสัปดาห์ | cleaned | are + กริยาช่อง 3
+q w | This house was built ___ my grandfather. | บ้านหลังนี้สร้างโดยปู่ของฉัน | by | บอกคนทำใช้ by
+
+# l44 | B1 | คนที่... สิ่งที่... ที่ที่...: who, which, that, where
+goal: ขยายคำนามด้วยประโยคย่อย เช่น คนที่... สิ่งที่... ที่ที่...
+p: ใช้ who หรือ that ขยายคน เช่น The woman who lives next door is a nurse. แปลว่า ผู้หญิงที่อาศัยอยู่ข้างบ้านเป็นพยาบาล
+p: ใช้ which หรือ that ขยายสิ่งของหรือสัตว์ เช่น This is the book which I told you about. ใช้ where ขยายสถานที่ เช่น This is the hotel where we stayed. และใช้ whose แปลว่า ที่...ของเขา เช่น the man whose car was stolen
+p: ถ้าคำที่ถูกขยายเป็นกรรมของประโยคย่อย ละ who, which, that ได้ เช่น The book (that) I bought is good. แต่ถ้าเป็นประธานของประโยคย่อยต้องมีเสมอ
+t: คน + who / that | the man who called you
+t: สิ่งของ + which / that | the bag which I bought
+t: สถานที่ + where | the town where I was born
+t: คน + whose + คำนาม | the girl whose father is a doctor
+e: The woman who lives next door is a nurse. | ผู้หญิงที่อาศัยอยู่ข้างบ้านเป็นพยาบาล
+e: I have a friend who speaks five languages. | ฉันมีเพื่อนที่พูดได้ห้าภาษา
+e: This is the phone which I bought yesterday. | นี่คือโทรศัพท์ที่ฉันซื้อเมื่อวาน
+e: The movie that we watched was great. | หนังที่เราดูสนุกมาก
+e: This is the town where I was born. | นี่คือเมืองที่ฉันเกิด
+e: He is the man whose car was stolen. | เขาคือผู้ชายที่รถถูกขโมย
+e: The cake you made was delicious. | เค้กที่คุณทำอร่อยมาก
+m: The man which called you is my uncle. | The man who called you is my uncle. | ขยายคนใช้ who
+m: This is the house where I live in. | This is the house where I live. | where มีความหมายว่า ที่ซึ่ง อยู่แล้ว ไม่ต้องมี in
+m: I have a friend speaks English. | I have a friend who speaks English. | who เป็นประธานของประโยคย่อย ละไม่ได้
+q c | The woman ___ lives next door is a nurse. | ผู้หญิงที่อาศัยอยู่ข้างบ้านเป็นพยาบาล | who*; which; where | ขยายคนใช้ who
+q c | This is the bag ___ I bought yesterday. | นี่คือกระเป๋าที่ฉันซื้อเมื่อวาน | which*; who; where | ขยายสิ่งของใช้ which
+q c | This is the restaurant ___ we first met. | นี่คือร้านอาหารที่เราเจอกันครั้งแรก | where*; which; who | ขยายสถานที่ที่เหตุการณ์เกิดขึ้น ใช้ where
+q c | I know a boy ___ father is a pilot. | ฉันรู้จักเด็กผู้ชายคนหนึ่งที่พ่อเป็นนักบิน | whose*; who; which | ที่...ของเขา ใช้ whose
+q c | The movie ___ we watched last night was boring. | หนังที่เราดูเมื่อคืนน่าเบื่อ | that*; who; where | ขยายสิ่งของใช้ that หรือ which
+q s | เลือกประโยคที่ถูก | I have a friend who can speak Chinese.*; I have a friend which can speak Chinese.; I have a friend can speak Chinese. | ขยายคนใช้ who และละไม่ได้เพราะเป็นประธาน
+q s | เลือกประโยคที่ถูก | This is the town where I was born.*; This is the town which I was born.; This is the town where I was born in. | ขยายสถานที่ใช้ where
+q o | เค้กที่คุณทำอร่อยมาก | The cake that you made was delicious. | that ขยายสิ่งของ
+q w | He is the teacher ___ helped me a lot. | เขาคือครูที่ช่วยฉันไว้มาก | who/that | ขยายคนใช้ who หรือ that
+q w | Is this the shop ___ you bought your shoes? | นี่คือร้านที่คุณซื้อรองเท้าใช่ไหม | where | ขยายสถานที่ใช้ where

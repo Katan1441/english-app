@@ -1,0 +1,160 @@
+# r13 | A2 | m1 | A Weekend in Chiang Mai | สุดสัปดาห์ที่เชียงใหม่
+s: Last weekend, Ton went to Chiang Mai with two friends. | สุดสัปดาห์ที่แล้ว ต้นไปเชียงใหม่กับเพื่อนสองคน
+s: They took a night train from Bangkok. | พวกเขานั่งรถไฟกลางคืนจากกรุงเทพฯ
+s: The trip was long, but they talked and laughed all night. | การเดินทางใช้เวลานาน แต่พวกเขาคุยและหัวเราะกันทั้งคืน
+s: On Saturday, they visited an old temple on a mountain. | วันเสาร์ พวกเขาไปเที่ยววัดเก่าบนภูเขา
+s: The weather was cool, and the view was beautiful. | อากาศเย็นสบาย และวิวก็สวยมาก
+s: In the evening, they walked around a night market and bought some gifts. | ตอนเย็น พวกเขาเดินเที่ยวตลาดกลางคืนและซื้อของฝาก
+s: Ton tried khao soi for the first time. | ต้นลองกินข้าวซอยเป็นครั้งแรก
+s: He loved it so much that he ate it again the next day. | เขาชอบมากจนกินอีกครั้งในวันรุ่งขึ้น
+s: On Sunday night, they took the train back. They were tired but very happy. | คืนวันอาทิตย์ พวกเขานั่งรถไฟกลับ ทุกคนเหนื่อยแต่มีความสุขมาก
+q: ต้นไปเชียงใหม่ด้วยอะไร | รถไฟกลางคืน*; เครื่องบิน; รถทัวร์ | They took a night train from Bangkok.
+q: วันเสาร์พวกเขาไปเที่ยวที่ไหน | วัดเก่าบนภูเขา*; ทะเล; ห้างสรรพสินค้า | an old temple on a mountain แปลว่า วัดเก่าบนภูเขา
+q: ต้นลองกินอะไรเป็นครั้งแรก | ข้าวซอย*; ส้มตำ; ข้าวเหนียวมะม่วง | for the first time แปลว่า เป็นครั้งแรก
+
+# r14 | A2 | f1 | My Part-time Job | งานพิเศษของฉัน
+s: I work part-time at a café near my university. | ฉันทำงานพิเศษที่ร้านกาแฟใกล้มหาวิทยาลัย
+s: I work there on Saturdays and Sundays from nine to five. | ฉันทำงานที่นั่นทุกวันเสาร์และอาทิตย์ ตั้งแต่เก้าโมงเช้าถึงห้าโมงเย็น
+s: My job is to take orders, make drinks, and clean the tables. | งานของฉันคือรับออร์เดอร์ ทำเครื่องดื่ม และเช็ดโต๊ะ
+s: At first, it was hard because I made a lot of mistakes. | ตอนแรกมันยาก เพราะฉันทำผิดพลาดบ่อยมาก
+s: Once, I gave a customer hot milk instead of cold milk! | ครั้งหนึ่ง ฉันให้นมร้อนกับลูกค้า แทนที่จะเป็นนมเย็น
+s: Now I am faster, and I can make most drinks without help. | ตอนนี้ฉันทำได้เร็วขึ้น และทำเครื่องดื่มส่วนใหญ่ได้เองโดยไม่ต้องมีคนช่วย
+s: Some customers are foreigners, so I can practice my English. | ลูกค้าบางคนเป็นชาวต่างชาติ ฉันเลยได้ฝึกภาษาอังกฤษ
+s: The money is not much, but I enjoy the job. | เงินไม่มาก แต่ฉันสนุกกับงานนี้
+q: พลอยทำงานพิเศษวันไหน | วันเสาร์และวันอาทิตย์*; วันจันทร์ถึงวันศุกร์; เฉพาะวันอาทิตย์ | on Saturdays and Sundays แปลว่า ทุกวันเสาร์และวันอาทิตย์
+q: ตอนแรกทำไมงานถึงยาก | เพราะทำผิดพลาดบ่อย*; เพราะลูกค้าไม่สุภาพ; เพราะร้านไกล | I made a lot of mistakes แปลว่า ฉันทำผิดพลาดบ่อยมาก
+q: พลอยได้อะไรจากลูกค้าต่างชาติ | ได้ฝึกภาษาอังกฤษ*; ได้ทิปเยอะ; ได้เพื่อนใหม่ | so I can practice my English
+
+# r15 | A2 | talk | I Lost My Phone | โทรศัพท์หาย
+who: A=Ton|ต้น|m1 ; B=Ploy|พลอย|f1
+s: A: Ploy, can I use your phone? I can't find mine. | พลอย ขอยืมโทรศัพท์หน่อยได้ไหม หาของผมไม่เจอ
+s: B: Of course. When did you last see it? | ได้สิ เห็นครั้งสุดท้ายเมื่อไร
+s: A: I had it in the library this morning. | เมื่อเช้าตอนอยู่ห้องสมุดยังมีอยู่เลย
+s: B: Did you look in your bag? | ดูในกระเป๋าหรือยัง
+s: A: Yes, I looked everywhere, but it isn't there. | ดูแล้ว หาทุกที่แล้ว แต่ไม่เจอ
+s: B: Let's call it. Maybe someone will answer. | ลองโทรเข้าเครื่องดูสิ อาจมีคนรับ
+s: A: Good idea. Oh, someone answered! | ความคิดดี อ้าว มีคนรับแล้ว
+s: A: A librarian found it under a table. I'm going to get it now. | บรรณารักษ์เจอมันอยู่ใต้โต๊ะ ผมจะไปเอาเดี๋ยวนี้เลย
+q: ต้นเห็นโทรศัพท์ครั้งสุดท้ายที่ไหน | ห้องสมุด*; ร้านกาแฟ; บนรถเมล์ | I had it in the library this morning.
+q: พลอยแนะนำให้ทำอะไร | โทรเข้าเครื่อง*; ซื้อเครื่องใหม่; แจ้งตำรวจ | Let's call it. แปลว่า ลองโทรเข้าเครื่องดู
+q: ใครเจอโทรศัพท์ | บรรณารักษ์*; อาจารย์; เพื่อนของต้น | A librarian found it under a table.
+
+# r16 | A2 | m1 | A Rainy Day | วันที่ฝนตก
+s: Yesterday was a terrible day. | เมื่อวานเป็นวันที่แย่มาก
+s: I woke up late because my alarm didn't ring. | ผมตื่นสายเพราะนาฬิกาปลุกไม่ดัง
+s: I ran to the bus stop, but it started to rain heavily. | ผมวิ่งไปป้ายรถเมล์ แต่ฝนเริ่มตกหนัก
+s: I didn't have an umbrella, so I got very wet. | ผมไม่มีร่ม เลยเปียกโชกเลย
+s: The bus was full, and the traffic was terrible. | รถเมล์เต็ม และรถก็ติดมาก
+s: I arrived at class forty minutes late. | ผมไปถึงห้องเรียนสายสี่สิบนาที
+s: Luckily, my teacher wasn't angry. She gave me a towel! | โชคดีที่อาจารย์ไม่โกรธ เธอยังยื่นผ้าเช็ดตัวให้ผมด้วย
+s: Now I always keep an umbrella in my bag. | ตอนนี้ผมพกร่มไว้ในกระเป๋าเสมอ
+q: ทำไมต้นตื่นสาย | นาฬิกาปลุกไม่ดัง*; นอนดึก; ป่วย | my alarm didn't ring แปลว่า นาฬิกาปลุกไม่ดัง
+q: ทำไมต้นถึงเปียก | ไม่มีร่ม*; ตกลงไปในน้ำ; ล้างรถ | I didn't have an umbrella, so I got very wet.
+q: อาจารย์ทำอย่างไร | ยื่นผ้าเช็ดตัวให้*; ดุต้น; ให้ต้นกลับบ้าน | She gave me a towel!
+
+# r17 | A2 | talk | Making Plans | นัดกันไปเที่ยว
+who: A=Anna|แอนนา|f2 ; B=Ton|ต้น|m1
+s: A: What are you doing this Saturday? | เสาร์นี้มีแผนจะทำอะไรไหม
+s: B: Nothing special. Why? | ไม่มีอะไรพิเศษ ทำไมเหรอ
+s: A: I'm going to visit the floating market. Do you want to come? | ฉันจะไปเที่ยวตลาดน้ำ อยากไปด้วยไหม
+s: B: Sure! How are we going to get there? | ไปสิ เราจะไปกันยังไง
+s: A: We can take a van from the city center. | เรานั่งรถตู้จากในเมืองไปได้
+s: B: What time should we meet? | ควรเจอกันกี่โมงดี
+s: A: Let's meet at seven. It's better to go early because it gets very hot. | เจอกันเจ็ดโมงนะ ไปเช้าดีกว่า เพราะสายๆ จะร้อนมาก
+s: B: OK. I'll bring some water and a hat. | โอเค เดี๋ยวผมเอาน้ำกับหมวกไปด้วย
+q: แอนนาชวนต้นไปที่ไหน | ตลาดน้ำ*; ทะเล; พิพิธภัณฑ์ | the floating market แปลว่า ตลาดน้ำ
+q: พวกเขาจะไปด้วยอะไร | รถตู้*; รถไฟ; เรือ | We can take a van.
+q: ทำไมแอนนาอยากไปแต่เช้า | เพราะสายๆ จะร้อนมาก*; เพราะคนน้อย; เพราะของถูก | because it gets very hot แปลว่า เพราะอากาศจะร้อนมาก
+
+# r18 | A2 | f1 | Cooking for My Friends | ทำอาหารให้เพื่อน
+s: Last Friday was my friend Anna's birthday. | วันศุกร์ที่แล้วเป็นวันเกิดของแอนนาเพื่อนของฉัน
+s: I wanted to cook a Thai dinner for her. | ฉันอยากทำอาหารไทยเป็นมื้อเย็นให้เธอ
+s: I am not a good cook, so I watched some videos online first. | ฉันทำอาหารไม่เก่ง เลยดูวิดีโอออนไลน์ก่อน
+s: I made green curry, fried vegetables, and rice. | ฉันทำแกงเขียวหวาน ผัดผัก และหุงข้าว
+s: The curry was too salty, so I added some sugar and water. | แกงเค็มเกินไป ฉันเลยเติมน้ำตาลกับน้ำ
+s: After that, it tasted much better. | หลังจากนั้นรสชาติดีขึ้นมาก
+s: Anna and three other friends came at seven. | แอนนากับเพื่อนอีกสามคนมาถึงตอนหนึ่งทุ่ม
+s: Everyone ate a lot and said it was delicious. I was so proud. | ทุกคนกินเยอะและบอกว่าอร่อย ฉันภูมิใจมาก
+q: พลอยทำอาหารให้ใคร | แอนนาในวันเกิด*; แม่ของเธอ; ลูกค้าที่ร้าน | my friend Anna's birthday แปลว่า วันเกิดของแอนนาเพื่อนของฉัน
+q: พลอยเรียนทำอาหารจากที่ไหน | วิดีโอออนไลน์*; หนังสือ; แม่ | I watched some videos online first.
+q: พลอยแก้แกงที่เค็มเกินไปอย่างไร | เติมน้ำตาลกับน้ำ*; ทิ้งแล้วทำใหม่; เติมพริก | I added some sugar and water.
+
+# r19 | A2 | talk | At the Doctor's | ที่คลินิก
+who: A=Doctor|หมอ|f3 ; B=Ton|ต้น|m1
+s: A: Good afternoon. What's the matter? | สวัสดีค่ะ เป็นอะไรมาคะ
+s: B: I have a sore throat and a headache. | ผมเจ็บคอและปวดหัวครับ
+s: A: How long have you felt like this? | รู้สึกแบบนี้มานานแค่ไหนแล้วคะ
+s: B: Since yesterday morning. I also feel very tired. | ตั้งแต่เมื่อวานเช้าครับ แล้วก็รู้สึกเพลียมาก
+s: A: You have a small fever. It's probably a cold. | มีไข้ต่ำๆ ค่ะ น่าจะเป็นไข้หวัด
+s: A: You should drink a lot of water and get some rest. | ควรดื่มน้ำเยอะๆ และพักผ่อนนะคะ
+s: A: Take this medicine three times a day after meals. | กินยานี้วันละสามครั้งหลังอาหารนะคะ
+s: B: Thank you, doctor. | ขอบคุณครับคุณหมอ
+q: ต้นมีอาการอะไร | เจ็บคอและปวดหัว*; ปวดท้อง; ปวดหลัง | a sore throat and a headache แปลว่า เจ็บคอและปวดหัว
+q: หมอคิดว่าต้นเป็นอะไร | ไข้หวัด*; อาหารเป็นพิษ; ไม่ได้เป็นอะไร | It's probably a cold. แปลว่า น่าจะเป็นไข้หวัด
+q: ต้องกินยาอย่างไร | วันละ 3 ครั้งหลังอาหาร*; วันละครั้งก่อนนอน; เฉพาะตอนปวดหัว | three times a day after meals
+
+# r20 | A2 | m1 | Moving to a New Dorm | ย้ายหอใหม่
+s: Last month, I moved to a new dorm. | เดือนที่แล้ว ผมย้ายไปอยู่หอใหม่
+s: My old dorm was cheaper, but it was far from the university. | หอเก่าของผมถูกกว่า แต่ไกลจากมหาวิทยาลัย
+s: The new one is more expensive, but I can walk to class in ten minutes. | หอใหม่แพงกว่า แต่ผมเดินไปเรียนได้ในสิบนาที
+s: My room is bigger and brighter than before. | ห้องของผมใหญ่และสว่างกว่าเดิม
+s: There is a gym and a laundry room on the first floor. | มีห้องออกกำลังกายและห้องซักผ้าอยู่ที่ชั้นหนึ่ง
+s: The only problem is my neighbor. He plays loud music at night. | ปัญหาเดียวคือคนห้องข้างๆ เขาเปิดเพลงเสียงดังตอนกลางคืน
+s: Yesterday I asked him politely to turn it down. | เมื่อวานผมขอให้เขาเบาเสียงลงอย่างสุภาพ
+s: He said sorry, and now it's much quieter. | เขาขอโทษ และตอนนี้เงียบลงมาก
+q: ข้อดีของหอใหม่คืออะไร | เดินไปเรียนได้ใกล้*; ราคาถูกกว่า; มีสระว่ายน้ำ | I can walk to class in ten minutes.
+q: ชั้นหนึ่งของหอมีอะไร | ห้องออกกำลังกายและห้องซักผ้า*; ร้านอาหาร; ห้องสมุด | a gym and a laundry room on the first floor
+q: ต้นแก้ปัญหาคนห้องข้างๆ อย่างไร | ขอให้เบาเสียงอย่างสุภาพ*; ย้ายหออีกครั้ง; แจ้งตำรวจ | I asked him politely to turn it down.
+
+# r21 | A2 | talk | An Internship Interview | สัมภาษณ์ฝึกงาน
+who: A=Manager|ผู้จัดการ|m2 ; B=Ploy|พลอย|f1
+s: A: Please sit down. Can you tell me a little about yourself? | เชิญนั่งครับ ช่วยเล่าเกี่ยวกับตัวเองสักหน่อยได้ไหมครับ
+s: B: Sure. I'm a second-year student, and I study marketing. | ได้ค่ะ ดิฉันเป็นนักศึกษาปีสอง เรียนการตลาดค่ะ
+s: A: Why do you want to work here? | ทำไมถึงอยากทำงานที่นี่ครับ
+s: B: I love your products, and I want to get real work experience. | ดิฉันชอบสินค้าของบริษัทมาก และอยากได้ประสบการณ์ทำงานจริงค่ะ
+s: A: Have you ever worked before? | เคยทำงานมาก่อนไหมครับ
+s: B: Yes. I've worked part-time at a café for one year. | เคยค่ะ ดิฉันทำงานพิเศษที่ร้านกาแฟมาหนึ่งปีแล้วค่ะ
+s: A: The internship is three months long. Can you start in June? | การฝึกงานใช้เวลาสามเดือน เริ่มเดือนมิถุนายนได้ไหมครับ
+s: B: Yes, I can. My classes finish at the end of May. | ได้ค่ะ ดิฉันเรียนจบเทอมปลายเดือนพฤษภาคมค่ะ
+q: พลอยเรียนสาขาอะไร | การตลาด*; บัญชี; วิศวกรรม | I study marketing แปลว่า ฉันเรียนการตลาด
+q: พลอยเคยทำงานที่ไหนมาก่อน | ร้านกาแฟ*; ธนาคาร; โรงแรม | I've worked part-time at a café for one year.
+q: พลอยเริ่มฝึกงานได้เมื่อไร | เดือนมิถุนายน*; เดือนพฤษภาคม; เดือนมีนาคม | Can you start in June? Yes, I can.
+
+# r22 | A2 | m1 | The Football Match | การแข่งขันฟุตบอล
+s: Last Sunday, my younger brother played in a football match at his school. | วันอาทิตย์ที่แล้ว น้องชายของผมลงแข่งฟุตบอลที่โรงเรียน
+s: I went home to watch him, and my parents came too. | ผมกลับบ้านไปดูเขาแข่ง และพ่อแม่ก็มาด้วย
+s: The other team was stronger, and they scored first. | ทีมคู่แข่งเก่งกว่า และยิงประตูได้ก่อน
+s: At half-time, my brother's team was losing one to nothing. | ตอนพักครึ่ง ทีมของน้องชายผมตามอยู่หนึ่งต่อศูนย์
+s: In the second half, they played much better. | ครึ่งหลัง พวกเขาเล่นดีขึ้นมาก
+s: My brother scored a goal ten minutes before the end! | น้องชายผมยิงประตูได้ก่อนหมดเวลาสิบนาที
+s: The match finished one to one. | การแข่งขันจบลงที่หนึ่งต่อหนึ่ง
+s: My brother didn't win, but he was the happiest boy in the village that night. | น้องชายผมไม่ได้ชนะ แต่คืนนั้นเขาเป็นเด็กที่มีความสุขที่สุดในหมู่บ้าน
+q: ใครลงแข่งฟุตบอล | น้องชายของต้น*; ต้น; พ่อของต้น | my younger brother played in a football match
+q: ตอนพักครึ่ง ผลเป็นอย่างไร | ทีมของน้องตามอยู่ 0 ต่อ 1*; ทีมของน้องนำ 1 ต่อ 0; เสมอ 0 ต่อ 0 | my brother's team was losing แปลว่า ทีมของน้องกำลังแพ้
+q: ผลสุดท้ายเป็นอย่างไร | เสมอ 1 ต่อ 1*; ทีมของน้องชนะ; ทีมของน้องแพ้ | The match finished one to one.
+
+# r23 | A2 | talk | Calling About an Order | โทรตามของที่สั่ง
+who: A=Staff|พนักงาน|f3 ; B=Ton|ต้น|m1
+s: A: Hello, this is Happy Shop. How can I help you? | สวัสดีค่ะ ร้านแฮปปี้ช็อปค่ะ มีอะไรให้ช่วยคะ
+s: B: Hi. I ordered a pair of shoes last week, but they haven't arrived yet. | สวัสดีครับ ผมสั่งรองเท้าไปหนึ่งคู่เมื่อสัปดาห์ก่อน แต่ยังไม่ได้รับเลยครับ
+s: A: I'm sorry about that. What's your order number? | ขออภัยด้วยค่ะ หมายเลขคำสั่งซื้ออะไรคะ
+s: B: It's four, five, seven, two. | สี่ ห้า เจ็ด สองครับ
+s: A: Let me check. Your shoes are at the post office near your home. | ขอตรวจสอบก่อนนะคะ รองเท้าของคุณอยู่ที่ไปรษณีย์ใกล้บ้านค่ะ
+s: A: You can pick them up today, or we can send them again tomorrow. | คุณไปรับเองได้วันนี้ หรือให้เราส่งใหม่พรุ่งนี้ก็ได้ค่ะ
+s: B: I'll pick them up today. Thank you for your help. | ผมไปรับเองวันนี้ครับ ขอบคุณที่ช่วยครับ
+q: ต้นสั่งซื้ออะไร | รองเท้า*; เสื้อ; กระเป๋า | a pair of shoes แปลว่า รองเท้าหนึ่งคู่
+q: ตอนนี้ของอยู่ที่ไหน | ที่ไปรษณีย์ใกล้บ้าน*; ที่ร้าน; ที่บ้านเพื่อน | at the post office near your home
+q: ต้นตัดสินใจอย่างไร | ไปรับเองวันนี้*; ให้ส่งใหม่พรุ่งนี้; ยกเลิกคำสั่งซื้อ | I'll pick them up today. แปลว่า ผมจะไปรับเองวันนี้
+
+# r24 | A2 | f1 | My Goal This Year | เป้าหมายของฉันปีนี้
+s: This year, I want to improve my English. | ปีนี้ฉันอยากพัฒนาภาษาอังกฤษให้เก่งขึ้น
+s: Last year, I was too shy to speak with foreigners. | ปีที่แล้ว ฉันอายเกินกว่าจะพูดกับชาวต่างชาติ
+s: Now I study for thirty minutes every day. | ตอนนี้ฉันเรียนวันละสามสิบนาที
+s: I learn ten new words and review the old ones. | ฉันเรียนคำใหม่สิบคำ และทบทวนคำเก่า
+s: I also listen to short stories and repeat the sentences out loud. | ฉันยังฟังเรื่องสั้นและพูดตามประโยคออกเสียงดังๆ ด้วย
+s: Some days I am tired, but I never skip my review. | บางวันฉันเหนื่อย แต่ไม่เคยข้ามการทบทวนเลย
+s: After three months, I can understand much more than before. | ผ่านไปสามเดือน ฉันฟังเข้าใจมากกว่าเดิมเยอะ
+s: Last week, I talked with a tourist for five minutes. I was so happy! | สัปดาห์ที่แล้ว ฉันคุยกับนักท่องเที่ยวได้ห้านาที ดีใจมากเลย
+q: ปีที่แล้วพลอยมีปัญหาอะไร | อายที่จะพูดกับชาวต่างชาติ*; ไม่มีเวลาเรียน; ไม่ชอบภาษาอังกฤษ | I was too shy to speak with foreigners.
+q: พลอยเรียนวันละเท่าไร | 30 นาที*; 3 ชั่วโมง; 10 นาที | thirty minutes every day แปลว่า วันละสามสิบนาที
+q: สัปดาห์ที่แล้วเกิดอะไรขึ้น | พลอยคุยกับนักท่องเที่ยวได้ 5 นาที*; พลอยสอบตก; พลอยไปเที่ยวต่างประเทศ | I talked with a tourist for five minutes.

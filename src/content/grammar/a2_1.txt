@@ -1,0 +1,415 @@
+# l19 | A2 | กำลังทำอยู่ตอนนี้: am / is / are + -ing
+goal: บอกได้ว่าตอนนี้ใครกำลังทำอะไรอยู่
+p: ใช้ am, is, are + กริยาเติม -ing เมื่อพูดถึงสิ่งที่กำลังเกิดขึ้นตอนนี้ เช่น I am eating. แปลว่า ฉันกำลังกินอยู่
+p: วิธีเติม -ing: ส่วนใหญ่เติมได้เลย (read → reading) คำที่ลงท้ายด้วย e ให้ตัด e ก่อน (make → making) คำสั้นที่มีสระตัวเดียวแล้วจบด้วยพยัญชนะตัวเดียว ให้เพิ่มพยัญชนะตัวท้ายอีกตัว (run → running, sit → sitting)
+p: ปฏิเสธใส่ not หลัง am, is, are (I am not working.) คำถามให้ย้าย am, is, are ไปไว้หน้าประโยค (Are you working?)
+t: I am + -ing | I am reading. ฉันกำลังอ่านหนังสือ
+t: he / she / it is + -ing | She is cooking. เธอกำลังทำอาหาร
+t: you / we / they are + -ing | They are playing. พวกเขากำลังเล่น
+t: Are you + -ing? | Are you sleeping? คุณกำลังนอนอยู่หรือเปล่า
+e: I am watching TV now. | ตอนนี้ฉันกำลังดูทีวี
+e: She is cooking dinner. | เธอกำลังทำอาหารเย็น
+e: They are playing football. | พวกเขากำลังเล่นฟุตบอล
+e: It is raining outside. | ข้างนอกฝนกำลังตก
+e: We are not working today. | วันนี้พวกเราไม่ได้ทำงาน
+e: Are you listening to me? | คุณกำลังฟังฉันอยู่หรือเปล่า
+e: What are you doing? | คุณกำลังทำอะไรอยู่
+m: I watching TV. | I am watching TV. | ต้องมี am, is หรือ are หน้ากริยา -ing
+m: She is cook now. | She is cooking now. | หลัง is ต้องเป็นกริยาเติม -ing
+m: He is runing. | He is running. | run เป็นคำสั้นสระเดียว ต้องเพิ่ม n เป็น running
+q c | I am ___ a book. | ฉันกำลังอ่านหนังสือ | reading*; read; reads | หลัง am ใช้กริยาเติม -ing
+q c | She ___ cooking dinner. | เธอกำลังทำอาหารเย็น | is*; are; am | she ใช้ is
+q c | They are ___ football. | พวกเขากำลังเล่นฟุตบอล | playing*; play; plays | กำลังทำอยู่ ใช้กริยาเติม -ing
+q c | It is ___ outside. | ข้างนอกฝนกำลังตก | raining*; rain; rains | ฝนกำลังตก ใช้ is raining
+q c | He is ___ in the park. | เขากำลังวิ่งอยู่ในสวนสาธารณะ | running*; runing; run | run ต้องเพิ่ม n แล้วเติม -ing
+q s | เลือกประโยคที่ถูก | We are working now.*; We working now.; We are work now. | ต้องมี are และกริยาเติม -ing
+q s | ถามเพื่อนว่า "คุณกำลังทำอะไรอยู่" | What are you doing?*; What you are doing?; What do you doing? | คำถามย้าย are มาไว้หน้า you
+q o | คุณกำลังฟังฉันอยู่หรือเปล่า | Are you listening to me? | คำถามขึ้นต้นด้วย Are
+q w | She is ___ a letter. (write) | เธอกำลังเขียนจดหมาย | writing | write ลงท้ายด้วย e ให้ตัด e แล้วเติม -ing
+q w | I am ___ working today. | วันนี้ฉันไม่ได้ทำงาน | not | ปฏิเสธใส่ not หลัง am
+
+# l20 | A2 | ทำเป็นประจำ หรือ กำลังทำตอนนี้
+goal: เลือกได้ว่าจะพูดว่า I work หรือ I am working
+p: Present simple (I work) ใช้กับสิ่งที่ทำเป็นประจำ นิสัย หรือความจริง มักมีคำบอกความถี่ เช่น every day, usually, often
+p: Present continuous (I am working) ใช้กับสิ่งที่กำลังเกิดขึ้นตอนนี้หรือช่วงนี้ มักมีคำว่า now, right now, today, at the moment หรือ Look! Listen!
+p: กริยาบางคำไม่ค่อยใช้รูป -ing เพราะไม่ใช่การกระทำ เช่น like, love, want, know, need, understand ให้พูดว่า I want water. ไม่ใช่ I am wanting water.
+t: every day / usually / often → I work | ทำเป็นประจำ
+t: now / today / at the moment → I am working | กำลังทำตอนนี้
+t: like, love, want, know, need, understand | ไม่ใช้รูป -ing
+e: I usually drink coffee, but today I am drinking tea. | ปกติฉันดื่มกาแฟ แต่วันนี้ฉันดื่มชา
+e: He works in a bank. | เขาทำงานที่ธนาคาร
+e: He is working at home today. | วันนี้เขาทำงานอยู่ที่บ้าน
+e: It rains a lot in July. | เดือนกรกฎาคมฝนตกบ่อย
+e: Look! It is raining. | ดูสิ ฝนกำลังตก
+e: I know the answer. | ฉันรู้คำตอบ
+e: She wants a new phone. | เธออยากได้โทรศัพท์เครื่องใหม่
+m: I am going to school every day. | I go to school every day. | every day คือทำเป็นประจำ ใช้ present simple
+m: Listen! She sings. | Listen! She is singing. | Listen! บอกว่ากำลังเกิดขึ้นตอนนี้
+m: I am knowing him. | I know him. | know ไม่ใช้รูป -ing
+q c | I ___ to work every day. | ฉันไปทำงานทุกวัน | go*; am going; going | every day ใช้ present simple
+q c | Look! The baby ___. | ดูสิ เด็กกำลังยิ้ม | is smiling*; smiles; smile | Look! บอกว่ากำลังเกิดขึ้นตอนนี้
+q c | She usually ___ tea in the morning. | ปกติเธอดื่มชาตอนเช้า | drinks*; is drinking; drink | usually คือเป็นประจำ และ she ต้องเติม s
+q c | I ___ the answer. | ฉันรู้คำตอบ | know*; am knowing; knowing | know ไม่ใช้รูป -ing
+q c | We ___ dinner right now. | ตอนนี้เรากำลังกินข้าวเย็น | are having*; have; has | right now ใช้ are + -ing
+q s | เลือกประโยคที่ถูก | It rains a lot in July.*; It is raining a lot in July every year.; It rain a lot in July. | เรื่องที่เกิดทุกปี ใช้ present simple
+q s | เลือกประโยคที่ถูก | I want some water.*; I am wanting some water.; I wanting some water. | want ไม่ใช้รูป -ing
+q o | วันนี้เขาทำงานอยู่ที่บ้าน | He is working at home today. | today ใช้ is + -ing
+q w | My father ___ in a bank. (work) | พ่อของฉันทำงานที่ธนาคาร | works | งานประจำใช้ present simple และ father ต้องเติม s
+q w | Be quiet! The baby ___ sleeping. | เงียบหน่อย เด็กกำลังหลับ | is | กำลังหลับอยู่ตอนนี้ ใช้ is + -ing
+
+# l21 | A2 | เมื่อวาน: was / were
+goal: เล่าได้ว่าเมื่อก่อนหรือเมื่อวานเป็นอย่างไร อยู่ที่ไหน
+p: was และ were คือรูปอดีตของ am, is, are ใช้เมื่อพูดถึงเรื่องที่ผ่านไปแล้ว เช่น yesterday, last week, two days ago
+p: I, he, she, it หรือคนเดียว สิ่งเดียว ใช้ was ส่วน you, we, they หรือหลายคน หลายสิ่ง ใช้ were
+p: ปฏิเสธใช้ wasn't (was not) และ weren't (were not) คำถามให้ย้าย was, were ไปไว้หน้า เช่น Were you at home?
+t: I / he / she / it was | I was tired yesterday. เมื่อวานฉันเหนื่อย
+t: you / we / they were | They were at school. พวกเขาอยู่ที่โรงเรียน
+t: wasn't / weren't | It wasn't cold. อากาศไม่หนาว
+t: Was he ...? / Were you ...? | Were you at home? คุณอยู่บ้านไหม
+e: I was at home yesterday. | เมื่อวานฉันอยู่บ้าน
+e: She was sick last week. | สัปดาห์ที่แล้วเธอป่วย
+e: We were very happy. | พวกเรามีความสุขมาก
+e: The movie was boring. | หนังน่าเบื่อ
+e: They weren't at the party. | พวกเขาไม่ได้อยู่ที่งานปาร์ตี้
+e: Were you tired after work? | คุณเหนื่อยไหมหลังเลิกงาน
+e: Where were you last night? | เมื่อคืนคุณอยู่ที่ไหน
+m: I were at home. | I was at home. | I ใช้ was
+m: They was happy. | They were happy. | they ใช้ were
+m: Yesterday I am tired. | Yesterday I was tired. | เรื่องเมื่อวาน ใช้รูปอดีต was
+q c | I ___ at home yesterday. | เมื่อวานฉันอยู่บ้าน | was*; were; am | I ใช้ was ในอดีต
+q c | They ___ at the beach last week. | สัปดาห์ที่แล้วพวกเขาไปอยู่ที่ชายหาด | were*; was; are | they ใช้ were
+q c | The movie ___ very good. | หนังเรื่องนั้นดีมาก | was*; were; are | หนังเรื่องเดียว ใช้ was
+q c | We ___ tired after the trip. | พวกเราเหนื่อยหลังการเดินทาง | were*; was; is | we ใช้ were
+q c | It ___ cold last night. | เมื่อคืนอากาศไม่หนาว | wasn't*; weren't; isn't | it ใช้ wasn't และเป็นเรื่องในอดีต
+q s | ถามเพื่อนว่า "เมื่อคืนคุณอยู่ที่ไหน" | Where were you last night?*; Where was you last night?; Where you were last night? | you ใช้ were และย้าย were มาไว้หน้า you
+q s | เลือกประโยคที่ถูก | She was sick yesterday.*; She were sick yesterday.; She is sick yesterday. | she ใช้ was และ yesterday เป็นอดีต
+q o | คุณเหนื่อยไหมหลังเลิกงาน | Were you tired after work? | คำถามขึ้นต้นด้วย Were
+q w | My parents ___ in Japan last year. | ปีที่แล้วพ่อแม่ของฉันอยู่ที่ญี่ปุ่น | were | parents หลายคน ใช้ were
+q w | ___ your sister at school this morning? | เช้านี้น้องสาวของคุณอยู่ที่โรงเรียนไหม | was | sister คนเดียว ใช้ was
+
+# l22 | A2 | อดีต: กริยาเติม -ed
+goal: เล่าสิ่งที่ทำไปแล้วด้วยกริยาเติม -ed
+p: เมื่อเล่าเรื่องที่จบไปแล้ว กริยาต้องเปลี่ยนเป็นรูปอดีต กริยาส่วนใหญ่เติม -ed เช่น play → played, watch → watched และใช้รูปเดียวกันกับทุกประธาน
+p: วิธีเติม: ลงท้ายด้วย e เติมแค่ d (like → liked) ลงท้ายด้วยพยัญชนะ + y เปลี่ยน y เป็น ied (study → studied) คำสั้นสระเดียวจบด้วยพยัญชนะตัวเดียว เพิ่มตัวท้ายอีกตัว (stop → stopped)
+p: เสียงท้าย -ed มี 3 แบบ: เสียง /t/ เช่น watched, เสียง /d/ เช่น played และเสียง /อิด/ หลังเสียง t หรือ d เช่น wanted, needed
+t: play → played | I played football yesterday.
+t: like → liked | She liked the movie.
+t: study → studied | We studied English last night.
+t: stop → stopped | The bus stopped.
+e: I watched a movie last night. | เมื่อคืนฉันดูหนัง
+e: She cleaned her room yesterday. | เมื่อวานเธอทำความสะอาดห้อง
+e: We played football after school. | เราเล่นฟุตบอลหลังเลิกเรียน
+e: He studied English for two hours. | เขาเรียนภาษาอังกฤษสองชั่วโมง
+e: The bus stopped near my house. | รถเมล์จอดใกล้บ้านฉัน
+e: They wanted to go home. | พวกเขาอยากกลับบ้าน
+e: I called my mother this morning. | เช้านี้ฉันโทรหาแม่
+m: I watch a movie last night. | I watched a movie last night. | last night เป็นอดีต ต้องเติม -ed
+m: She studyed hard. | She studied hard. | study เปลี่ยน y เป็น ied
+m: He stoped the car. | He stopped the car. | stop ต้องเพิ่ม p เป็น stopped
+q c | I ___ a movie last night. | เมื่อคืนฉันดูหนัง | watched*; watch; watching | last night ใช้รูปอดีต
+q c | She ___ her room yesterday. | เมื่อวานเธอทำความสะอาดห้อง | cleaned*; cleans; clean | yesterday ใช้รูปอดีต
+q c | We ___ English last night. | เมื่อคืนเราเรียนภาษาอังกฤษ | studied*; studyed; study | study เปลี่ยน y เป็น ied
+q c | The car ___ at the red light. | รถหยุดที่ไฟแดง | stopped*; stoped; stop | stop เพิ่ม p แล้วเติม ed
+q c | Yesterday he ___ to go home early. | เมื่อวานเขาอยากกลับบ้านเร็ว | wanted*; want; wants | yesterday ใช้รูปอดีต
+q s | เลือกประโยคที่ถูก | They played games last weekend.*; They play games last weekend.; They playing games last weekend. | last weekend ใช้รูปอดีต played
+q s | เลือกประโยคที่ถูก | I liked the food.*; I likeed the food.; I likes the food. | like ลงท้ายด้วย e เติมแค่ d
+q o | เช้านี้ฉันโทรหาแม่ | I called my mother this morning. |
+q w | We ___ for the bus for an hour. (wait) | เรารอรถเมล์อยู่หนึ่งชั่วโมง | waited | wait เติม ed
+q w | She ___ the window because it was hot. (open) | เธอเปิดหน้าต่างเพราะอากาศร้อน | opened | open เติม ed
+
+# l23 | A2 | อดีต: กริยาเปลี่ยนรูป และ did
+goal: ใช้กริยาอดีตที่เปลี่ยนรูป และถามหรือปฏิเสธด้วย did ได้
+p: กริยาที่ใช้บ่อยหลายคำไม่เติม -ed แต่เปลี่ยนรูปไปเลย ต้องจำ เช่น go → went, eat → ate, see → saw, have → had, buy → bought, come → came, get → got, make → made, take → took
+p: ปฏิเสธในอดีตใช้ didn't + กริยารูปปกติ เช่น I didn't go. (ไม่ใช่ I didn't went.)
+p: คำถามใช้ Did + ประธาน + กริยารูปปกติ เช่น Did you eat? ตอบว่า Yes, I did. หรือ No, I didn't.
+t: go → went, eat → ate, see → saw | I went to Japan last year.
+t: have → had, buy → bought, take → took | She bought a new bag.
+t: didn't + กริยารูปปกติ | I didn't see him.
+t: Did you + กริยารูปปกติ? | Did you go out last night?
+e: I went to the beach last weekend. | สุดสัปดาห์ที่แล้วฉันไปทะเล
+e: We ate pizza for dinner. | เรากินพิซซ่าเป็นมื้อเย็น
+e: She bought a new phone yesterday. | เมื่อวานเธอซื้อโทรศัพท์เครื่องใหม่
+e: I saw a cat in the garden. | ฉันเห็นแมวในสวน
+e: He didn't come to class today. | วันนี้เขาไม่ได้มาเรียน
+e: Did you have breakfast? | คุณกินอาหารเช้าหรือยัง
+e: What did you do last night? | เมื่อคืนคุณทำอะไร
+m: I goed to school. | I went to school. | go เป็นกริยาเปลี่ยนรูป อดีตคือ went
+m: I didn't went home. | I didn't go home. | หลัง didn't ใช้กริยารูปปกติ
+m: Did you saw him? | Did you see him? | หลัง Did ใช้กริยารูปปกติ
+q c | I ___ to Japan last year. | ปีที่แล้วฉันไปญี่ปุ่น | went*; goed; go | อดีตของ go คือ went
+q c | Yesterday we ___ noodles for lunch. | เมื่อวานเรากินก๋วยเตี๋ยวเป็นมื้อกลางวัน | ate*; eated; eat | อดีตของ eat คือ ate
+q c | She ___ a new bag last week. | สัปดาห์ที่แล้วเธอซื้อกระเป๋าใบใหม่ | bought*; buyed; buys | อดีตของ buy คือ bought
+q c | He didn't ___ to the party. | เขาไม่ได้มางานปาร์ตี้ | come*; came; comes | หลัง didn't ใช้กริยารูปปกติ
+q c | ___ you see the news yesterday? | เมื่อวานคุณดูข่าวไหม | Did*; Do; Were | คำถามเรื่องในอดีตขึ้นต้นด้วย Did
+q s | ถามเพื่อนว่า "เมื่อคืนคุณทำอะไร" | What did you do last night?*; What you did last night?; What did you did last night? | ใช้ did และกริยารูปปกติ do
+q s | เลือกประโยคที่ถูก | I didn't see him.*; I didn't saw him.; I not saw him. | หลัง didn't ใช้กริยารูปปกติ see
+q o | สุดสัปดาห์ที่แล้วฉันไปทะเล | I went to the beach last weekend. |
+q w | I ___ a strange noise last night. (hear) | เมื่อคืนฉันได้ยินเสียงแปลกๆ | heard | อดีตของ hear คือ heard
+q w | She ___ a photo of us. (take) | เธอถ่ายรูปพวกเราไว้ | took | อดีตของ take คือ took
+
+# l24 | A2 | อนาคต: going to และ will
+goal: พูดถึงแผนและสิ่งที่จะเกิดขึ้นในอนาคตได้
+p: be going to + กริยา ใช้กับแผนที่ตั้งใจไว้แล้ว เช่น I am going to visit my grandmother this weekend.
+p: will + กริยา ใช้กับสิ่งที่ตัดสินใจตอนพูด การเสนอช่วย หรือการคาดเดา เช่น It's cold. I'll close the window. หรือ I think it will rain.
+p: ปฏิเสธใช้ I'm not going to ... หรือ I won't (will not) ... และหลัง will ใช้กริยารูปปกติเสมอ ไม่ต้องมี to
+t: am / is / are going to + กริยา | We are going to travel next month.
+t: will ('ll) + กริยา | I'll help you.
+t: won't + กริยา | She won't come.
+e: I'm going to visit my grandmother this weekend. | สุดสัปดาห์นี้ฉันจะไปเยี่ยมยาย
+e: We are going to buy a new car. | เรากำลังจะซื้อรถคันใหม่
+e: It's cold. I'll close the window. | อากาศหนาว เดี๋ยวฉันปิดหน้าต่างให้
+e: I think it will rain tomorrow. | ฉันคิดว่าพรุ่งนี้ฝนจะตก
+e: Don't worry, I'll help you. | ไม่ต้องห่วง ฉันจะช่วยคุณเอง
+e: She won't be late. | เธอจะไม่มาสาย
+e: What are you going to do tonight? | คืนนี้คุณจะทำอะไร
+m: I going to study tonight. | I'm going to study tonight. | ต้องมี am หน้า going to
+m: She will comes tomorrow. | She will come tomorrow. | หลัง will ใช้กริยารูปปกติ
+m: I will to help you. | I will help you. | หลัง will ไม่ต้องมี to
+q c | I'm going ___ visit my aunt tomorrow. | พรุ่งนี้ฉันจะไปเยี่ยมป้า | to*; will; for | be going to + กริยา
+q c | They ___ going to travel next month. | เดือนหน้าพวกเขาจะไปเที่ยว | are*; is; will | they ใช้ are going to
+q c | It's hot. I ___ open the window. | อากาศร้อน เดี๋ยวฉันเปิดหน้าต่างให้ | will*; am; going | ตัดสินใจตอนพูด ใช้ will
+q c | She will ___ late. | เธอจะมาสาย | be*; is; being | หลัง will ใช้ be
+q c | I think it ___ rain tomorrow. | ฉันคิดว่าพรุ่งนี้ฝนจะตก | will*; is; going | คาดเดาอนาคต ใช้ will
+q s | ถามเพื่อนว่า "คืนนี้คุณจะทำอะไร" | What are you going to do tonight?*; What you are going to do tonight?; What are you going do tonight? | ย้าย are มาไว้หน้า you และต้องมี to
+q s | เลือกประโยคที่ถูก | He won't come.*; He won't comes.; He not will come. | หลัง won't ใช้กริยารูปปกติ
+q o | ไม่ต้องห่วง ฉันจะช่วยคุณเอง | Don't worry, I will help you. |
+q w | We are going ___ buy a new car. | เรากำลังจะซื้อรถคันใหม่ | to | going to + กริยา
+q w | I ___ forget your birthday. (ปฏิเสธ) | ฉันจะไม่ลืมวันเกิดของคุณ | won't/will not | ปฏิเสธของ will คือ won't
+
+# l25 | A2 | นับได้ นับไม่ได้: some, any, much, many
+goal: ใช้ some, any, much, many และ a lot of กับคำนามได้ถูก
+p: คำนามนับได้ เช่น apple, book, friend เติม s เป็นพหูพจน์ได้ ส่วนคำนามนับไม่ได้ เช่น water, rice, money, time, information ไม่เติม s และไม่ใช้ a หรือ an
+p: some ใช้ในประโยคบอกเล่า any ใช้ในประโยคปฏิเสธและคำถาม เช่น I have some money. / I don't have any money. / Do you have any questions?
+p: many ใช้กับคำนามนับได้ much ใช้กับนับไม่ได้ (มักใช้ในปฏิเสธและคำถาม) ส่วน a lot of ใช้ได้ทั้งสองแบบ ถามจำนวนใช้ How many ...? และถามปริมาณหรือราคาใช้ How much ...?
+t: some (บอกเล่า) / any (ปฏิเสธ, คำถาม) | I have some friends. / I don't have any money.
+t: many + นับได้ | many books, many people
+t: much + นับไม่ได้ | much water, much time
+t: a lot of + ได้ทั้งสองแบบ | a lot of friends, a lot of money
+e: There is some milk in the fridge. | มีนมอยู่ในตู้เย็น
+e: I don't have any money. | ฉันไม่มีเงินเลย
+e: Do you have any questions? | คุณมีคำถามไหม
+e: She has many friends. | เธอมีเพื่อนเยอะ
+e: We don't have much time. | เรามีเวลาไม่มาก
+e: He drinks a lot of coffee. | เขาดื่มกาแฟเยอะ
+e: How many brothers do you have? | คุณมีพี่น้องผู้ชายกี่คน
+m: I don't have some money. | I don't have any money. | ประโยคปฏิเสธใช้ any
+m: How much books do you have? | How many books do you have? | books นับได้ ใช้ many
+m: I need an information. | I need some information. | information นับไม่ได้ ไม่ใช้ an
+q c | There is ___ water in the bottle. | มีน้ำอยู่ในขวด | some*; any; many | บอกเล่าใช้ some
+q c | I don't have ___ brothers. | ฉันไม่มีพี่น้องผู้ชาย | any*; some; much | ปฏิเสธใช้ any
+q c | How ___ students are in your class? | ห้องของคุณมีนักเรียนกี่คน | many*; much; any | students นับได้ ใช้ many
+q c | We don't have ___ time. | เรามีเวลาไม่มาก | much*; many; a | time นับไม่ได้ ใช้ much
+q c | Do you have ___ questions? | คุณมีคำถามไหม | any*; some; much | คำถามใช้ any
+q s | เลือกประโยคที่ถูก | He drinks a lot of water.*; He drinks many water.; He drinks a water. | water นับไม่ได้ ใช้ a lot of ได้
+q s | ถามราคาเสื้อตัวนี้ | How much is this shirt?*; How many is this shirt?; How much are this shirt? | ถามราคาใช้ How much
+q o | มีนมอยู่ในตู้เย็น | There is some milk in the fridge. |
+q w | She has a ___ of friends. | เธอมีเพื่อนเยอะ | lot | a lot of แปลว่า เยอะ
+q w | I need ___ information about the trip. | ฉันต้องการข้อมูลเกี่ยวกับการเดินทาง | some | information นับไม่ได้ ใช้ some
+
+# l26 | A2 | เปรียบเทียบ: -er, more ... than
+goal: เปรียบเทียบสองสิ่งได้
+p: คุณศัพท์สั้น (พยางค์เดียว) เติม -er แล้วตามด้วย than เช่น tall → taller than, cheap → cheaper than
+p: คำที่ลงท้ายด้วย y เปลี่ยนเป็น -ier (easy → easier) คำสั้นสระเดียวจบด้วยพยัญชนะตัวเดียวเพิ่มตัวท้าย (big → bigger, hot → hotter) ส่วนคำยาวใช้ more (more expensive, more interesting)
+p: ต้องจำรูปพิเศษ good → better และ bad → worse ถ้าเท่ากันใช้ as ... as เช่น She is as tall as her mother.
+t: คำสั้น + -er + than | My brother is taller than me.
+t: more + คำยาว + than | This bag is more expensive than that one.
+t: good → better, bad → worse | Today is better than yesterday.
+t: as + คุณศัพท์ + as | He is as old as my brother.
+e: My brother is taller than me. | พี่ชายของฉันสูงกว่าฉัน
+e: The bus is cheaper than the taxi. | รถเมล์ถูกกว่าแท็กซี่
+e: English is easier than Chinese. | ภาษาอังกฤษง่ายกว่าภาษาจีน
+e: This phone is more expensive than my old one. | โทรศัพท์เครื่องนี้แพงกว่าเครื่องเก่าของฉัน
+e: Today is hotter than yesterday. | วันนี้ร้อนกว่าเมื่อวาน
+e: Your English is better than mine. | ภาษาอังกฤษของคุณดีกว่าของฉัน
+e: She is as tall as her mother. | เธอสูงเท่ากับแม่ของเธอ
+m: He is more tall than me. | He is taller than me. | คำสั้นเติม -er ไม่ใช้ more
+m: She is taller that me. | She is taller than me. | การเปรียบเทียบใช้ than ไม่ใช่ that
+m: This is more better. | This is better. | better เป็นรูปเปรียบเทียบอยู่แล้ว
+q c | My sister is ___ than me. | น้องสาวของฉันสูงกว่าฉัน | taller*; more tall; tallest | คำสั้นเติม -er
+q c | This book is more interesting ___ that one. | หนังสือเล่มนี้น่าสนใจกว่าเล่มนั้น | than*; that; then | การเปรียบเทียบใช้ than
+q c | The train is ___ than the bus. | รถไฟเร็วกว่ารถเมล์ | faster*; more fast; fastest | fast เป็นคำสั้น เติม -er
+q c | Your answer is ___ than mine. | คำตอบของคุณดีกว่าของฉัน | better*; gooder; more good | good เปลี่ยนเป็น better
+q c | A car is more ___ than a bike. | รถยนต์แพงกว่าจักรยาน | expensive*; expensiver; cheaper | คำยาวใช้ more + คุณศัพท์
+q s | เลือกประโยคที่ถูก | Today is hotter than yesterday.*; Today is hoter than yesterday.; Today is more hot than yesterday. | hot เพิ่ม t แล้วเติม -er
+q s | บอกว่าเขาอายุเท่ากับพี่ชายของคุณ | He is as old as my brother.*; He is old as my brother.; He is as older as my brother. | เท่ากันใช้ as ... as
+q o | ภาษาอังกฤษง่ายกว่าภาษาจีน | English is easier than Chinese. |
+q w | My room is ___ than your room. (big) | ห้องของฉันใหญ่กว่าห้องของคุณ | bigger | big เพิ่ม g แล้วเติม -er
+q w | The weather today is ___ than yesterday. (bad) | อากาศวันนี้แย่กว่าเมื่อวาน | worse | bad เปลี่ยนเป็น worse
+
+# l27 | A2 | ที่สุด: the -est, the most
+goal: บอกได้ว่าอะไรมากที่สุดในกลุ่ม
+p: คุณศัพท์สั้นเติม -est และมี the นำหน้าเสมอ เช่น tall → the tallest ส่วนคำยาวใช้ the most เช่น the most beautiful
+p: กฎการเติมเหมือนบทที่แล้ว เช่น easy → the easiest, big → the biggest และรูปพิเศษ good → the best, bad → the worst
+p: มักตามด้วย in + สถานที่หรือกลุ่ม เช่น the tallest in the class ถ้ามี my, your อยู่หน้าแล้วไม่ต้องใส่ the เช่น my best friend
+t: the + คำสั้น + -est | He is the tallest in my class.
+t: the most + คำยาว | It is the most beautiful place.
+t: good → the best, bad → the worst | It was the best day of my life.
+e: He is the tallest boy in my class. | เขาเป็นเด็กผู้ชายที่สูงที่สุดในห้อง
+e: This is the cheapest phone in the shop. | นี่คือโทรศัพท์ที่ถูกที่สุดในร้าน
+e: April is the hottest month in Thailand. | เดือนเมษายนเป็นเดือนที่ร้อนที่สุดในประเทศไทย
+e: It is the most beautiful beach in Thailand. | นี่คือชายหาดที่สวยที่สุดในประเทศไทย
+e: She is my best friend. | เธอเป็นเพื่อนที่ดีที่สุดของฉัน
+e: That was the worst day of my life. | นั่นเป็นวันที่แย่ที่สุดในชีวิตฉัน
+e: What is the biggest city in your country? | เมืองที่ใหญ่ที่สุดในประเทศของคุณคือเมืองอะไร
+m: He is tallest boy. | He is the tallest boy. | ต้องมี the หน้า -est
+m: It is the beautifulest place. | It is the most beautiful place. | คำยาวใช้ the most
+m: She is the most smart. | She is the smartest. | smart เป็นคำสั้น เติม -est
+q c | He is the ___ boy in our class. | เขาเป็นเด็กผู้ชายที่สูงที่สุดในห้องเรา | tallest*; taller; most tall | ที่สุดใช้ the + -est
+q c | This is the ___ expensive car. | นี่คือรถที่แพงที่สุด | most*; more; much | คำยาวใช้ the most
+q c | April is ___ hottest month in Thailand. | เดือนเมษายนเป็นเดือนที่ร้อนที่สุดในประเทศไทย | the*; a; more | หน้า -est ต้องมี the
+q c | She is my ___ friend. | เธอเป็นเพื่อนที่ดีที่สุดของฉัน | best*; better; goodest | good เป็น best และหลัง my ไม่ต้องมี the
+q c | It was the ___ day of my life. | นั่นเป็นวันที่แย่ที่สุดในชีวิตฉัน | worst*; worse; baddest | bad เป็น the worst
+q s | เลือกประโยคที่ถูก | It is the biggest city in Thailand.*; It is the bigest city in Thailand.; It is biggest city in Thailand. | big เพิ่ม g และต้องมี the
+q s | เลือกประโยคที่ถูก | This is the easiest question.*; This is the most easy question.; This is the easyest question. | easy เปลี่ยน y เป็น iest
+q o | นี่คือชายหาดที่สวยที่สุดในประเทศไทย | This is the most beautiful beach in Thailand. |
+q w | This is the ___ shop in the city. (cheap) | นี่คือร้านที่ถูกที่สุดในเมือง | cheapest | cheap เติม -est
+q w | What is the ___ important thing in your life? | สิ่งที่สำคัญที่สุดในชีวิตของคุณคืออะไร | most | คำยาวใช้ the most
+
+# l28 | A2 | ทำอย่างไร: คำเติม -ly และ good / well
+goal: บอกได้ว่าทำสิ่งต่างๆ อย่างไร
+p: คุณศัพท์ใช้ขยายคำนาม (a slow car) ส่วนกริยาวิเศษณ์ใช้ขยายกริยา บอกว่าทำอย่างไร (He drives slowly.) ส่วนใหญ่สร้างโดยเติม -ly ท้ายคุณศัพท์
+p: วิธีเติม: quick → quickly, careful → carefully, easy → easily (y เปลี่ยนเป็น ily) บางคำไม่เปลี่ยนรูป: fast, hard, late
+p: good เป็นคุณศัพท์ ส่วน well เป็นกริยาวิเศษณ์ เช่น She is a good singer. / She sings well.
+t: คุณศัพท์ + -ly | slow → slowly, quiet → quietly
+t: easy → easily, happy → happily | She smiled happily.
+t: fast, hard, late (ไม่เติม -ly) | He works hard.
+t: good → well | He speaks English well.
+e: Please speak slowly. | กรุณาพูดช้าๆ
+e: She drives very carefully. | เธอขับรถอย่างระมัดระวังมาก
+e: He answered the question easily. | เขาตอบคำถามได้อย่างง่ายดาย
+e: The children played happily. | เด็กๆ เล่นกันอย่างมีความสุข
+e: My father works hard. | พ่อของฉันทำงานหนัก
+e: She runs very fast. | เธอวิ่งเร็วมาก
+e: You speak English very well. | คุณพูดภาษาอังกฤษเก่งมาก
+m: He drives careful. | He drives carefully. | ขยายกริยา drive ต้องใช้ carefully
+m: She sings good. | She sings well. | ขยายกริยาใช้ well ไม่ใช่ good
+m: He works hardly. | He works hard. | hard ไม่เติม -ly (hardly แปลว่า แทบจะไม่)
+q c | Please speak ___. | กรุณาพูดช้าๆ | slowly*; slow; slowest | ขยายกริยา speak ใช้ slowly
+q c | She plays the piano very ___. | เธอเล่นเปียโนเก่งมาก | well*; good; best | ขยายกริยาใช้ well
+q c | He is a ___ driver. | เขาเป็นคนขับรถที่ระมัดระวัง | careful*; carefully; care | ขยายคำนาม driver ใช้คุณศัพท์
+q c | They won the game ___. | พวกเขาชนะเกมได้อย่างง่ายดาย | easily*; easy; easyly | easy เปลี่ยนเป็น easily
+q c | My mother works very ___. | แม่ของฉันทำงานหนักมาก | hard*; hardly; harder | hard ไม่เติม -ly
+q s | เลือกประโยคที่ถูก | You speak English very well.*; You speak English very good.; You speak very well English. | ขยายกริยาใช้ well และวางไว้ท้ายประโยค
+q s | เลือกประโยคที่ถูก | The baby is sleeping quietly.*; The baby is sleeping quiet.; The baby quietly is sleeping. | ขยายกริยาใช้ quietly
+q o | เธอขับรถอย่างระมัดระวังมาก | She drives very carefully. |
+q w | The children played ___. (happy) | เด็กๆ เล่นกันอย่างมีความสุข | happily | happy เปลี่ยน y เป็น ily
+q w | He runs very ___. | เขาวิ่งเร็วมาก | fast | fast ไม่เติม -ly
+
+# l29 | A2 | ต้อง และ ควร: have to, must, should
+goal: บอกสิ่งที่ต้องทำ ห้ามทำ ไม่จำเป็นต้องทำ และควรทำ
+p: have to หรือ has to + กริยา แปลว่า ต้อง (เพราะกฎหรือสถานการณ์บังคับ) เช่น I have to work on Saturday. ส่วน he, she, it ใช้ has to
+p: must + กริยา แปลว่า ต้อง มักใช้กับกฎที่เขียนไว้หรือความรู้สึกของผู้พูด ส่วน mustn't แปลว่า ห้าม แต่ don't have to แปลว่า ไม่จำเป็นต้อง ความหมายต่างกันมาก
+p: should + กริยา ใช้ให้คำแนะนำ แปลว่า ควร ปฏิเสธคือ shouldn't (ไม่ควร) หลัง must และ should ใช้กริยารูปปกติ ไม่มี to
+t: have to / has to | She has to wear a uniform.
+t: must / mustn't (ห้าม) | You mustn't smoke here.
+t: don't have to (ไม่จำเป็นต้อง) | You don't have to pay.
+t: should / shouldn't | You should see a doctor.
+e: I have to get up early tomorrow. | พรุ่งนี้ฉันต้องตื่นเช้า
+e: She has to work on Saturdays. | เธอต้องทำงานทุกวันเสาร์
+e: You must wear a seat belt. | คุณต้องคาดเข็มขัดนิรภัย
+e: You mustn't smoke in the hospital. | ห้ามสูบบุหรี่ในโรงพยาบาล
+e: You don't have to pay. It's free. | คุณไม่ต้องจ่าย มันฟรี
+e: You should drink more water. | คุณควรดื่มน้ำให้มากขึ้น
+e: You shouldn't go to bed so late. | คุณไม่ควรเข้านอนดึกขนาดนั้น
+m: She have to work. | She has to work. | she ใช้ has to
+m: You should to rest. | You should rest. | หลัง should ไม่มี to
+m: You mustn't pay, it's free. | You don't have to pay, it's free. | ไม่จำเป็นต้อง ใช้ don't have to ส่วน mustn't แปลว่า ห้าม
+q c | I ___ to work tomorrow. | พรุ่งนี้ฉันต้องทำงาน | have*; has; must | I ใช้ have to
+q c | He ___ to wear a uniform at school. | เขาต้องใส่ชุดนักเรียนที่โรงเรียน | has*; have; must | he ใช้ has to
+q c | You ___ see a doctor. | คุณควรไปหาหมอ | should*; should to; have | ให้คำแนะนำใช้ should
+q c | You ___ smoke here. | ห้ามสูบบุหรี่ที่นี่ | mustn't*; don't have to; should | ห้ามใช้ mustn't
+q c | It's free. You ___ pay. | มันฟรี คุณไม่ต้องจ่าย | don't have to*; mustn't; shouldn't | ไม่จำเป็นต้อง ใช้ don't have to
+q s | เลือกประโยคที่ถูก | You should drink more water.*; You should to drink more water.; You should drinking more water. | หลัง should ใช้กริยารูปปกติ
+q s | เตือนเพื่อนว่าไม่ควรนอนดึก | You shouldn't go to bed so late.*; You don't should go to bed so late.; You shouldn't to go to bed so late. | ปฏิเสธของ should คือ shouldn't
+q o | พรุ่งนี้ฉันต้องตื่นเช้า | I have to get up early tomorrow. |
+q w | You ___ wear a seat belt in the car. | คุณต้องคาดเข็มขัดนิรภัยในรถ | must/have to | ทำตามกฎ ใช้ must หรือ have to
+q w | She ___ to study tonight because she has a test. | คืนนี้เธอต้องอ่านหนังสือเพราะมีสอบ | has | she ใช้ has to
+
+# l30 | A2 | เคยหรือยัง: have / has + กริยาช่อง 3
+goal: เล่าประสบการณ์ และบอกว่าทำอะไรเสร็จแล้วหรือยัง
+p: Present perfect คือ have หรือ has + กริยาช่อง 3 ใช้กับประสบการณ์ในชีวิตที่ไม่บอกเวลาแน่นอน เช่น I have been to Japan. แปลว่า ฉันเคยไปญี่ปุ่น
+p: กริยาที่เติม -ed ช่อง 3 เหมือนช่อง 2 (played) แต่กริยาเปลี่ยนรูปต้องจำ เช่น go → been / gone, eat → eaten, see → seen, do → done, write → written
+p: คำที่ใช้บ่อย: ever (เคย ใช้ในคำถาม), never (ไม่เคย), just (เพิ่ง), already (แล้ว), yet (ยัง ใช้ในคำถามและปฏิเสธ) ถ้าบอกเวลาในอดีตชัดเจน เช่น yesterday ให้ใช้ past simple แทน
+t: have / has + กริยาช่อง 3 | I have seen this movie.
+t: Have you ever ...? | Have you ever been to Japan?
+t: never / just / already | She has just left.
+t: haven't ... yet | I haven't finished yet.
+e: I have been to Japan twice. | ฉันเคยไปญี่ปุ่นสองครั้ง
+e: Have you ever seen snow? | คุณเคยเห็นหิมะไหม
+e: She has never eaten Indian food. | เธอไม่เคยกินอาหารอินเดีย
+e: I have just finished my homework. | ฉันเพิ่งทำการบ้านเสร็จ
+e: They have already left. | พวกเขาออกไปแล้ว
+e: Have you finished your lunch yet? | คุณกินข้าวกลางวันเสร็จหรือยัง
+e: I haven't read this book yet. | ฉันยังไม่ได้อ่านหนังสือเล่มนี้
+m: I have saw this movie. | I have seen this movie. | หลัง have ใช้กริยาช่อง 3 seen
+m: She have finished. | She has finished. | she ใช้ has
+m: I have seen him yesterday. | I saw him yesterday. | บอกเวลาในอดีตชัดเจน ใช้ past simple
+q c | I have ___ this movie before. | ฉันเคยดูหนังเรื่องนี้มาก่อน | seen*; saw; see | หลัง have ใช้กริยาช่อง 3
+q c | She ___ never been to Japan. | เธอไม่เคยไปญี่ปุ่น | has*; have; is | she ใช้ has
+q c | Have you ___ eaten Indian food? | คุณเคยกินอาหารอินเดียไหม | ever*; never; yet | ถามว่าเคยไหม ใช้ ever
+q c | I have ___ finished my homework. | ฉันเพิ่งทำการบ้านเสร็จ | just*; yet; ever | เพิ่ง ใช้ just
+q c | I haven't called him ___. | ฉันยังไม่ได้โทรหาเขา | yet*; already; just | ยัง ในประโยคปฏิเสธ ใช้ yet ไว้ท้ายประโยค
+q s | เลือกประโยคที่ถูก | I saw her yesterday.*; I have seen her yesterday.; I have saw her yesterday. | yesterday บอกเวลาชัดเจน ใช้ past simple
+q s | ถามเพื่อนว่าเคยเห็นหิมะไหม | Have you ever seen snow?*; Did you ever saw snow?; Have you ever saw snow? | Have + ever + กริยาช่อง 3
+q o | พวกเขาออกไปแล้ว | They have already left. |
+q w | We have ___ to Korea three times. (go) | เราเคยไปเกาหลีสามครั้ง | been | เคยไป ใช้ have been to
+q w | ___ you finished your work yet? | คุณทำงานเสร็จหรือยัง | have | คำถามขึ้นต้นด้วย Have
+
+# l31 | A2 | กำลังทำอยู่ในอดีต: was / were + -ing
+goal: เล่าว่าตอนนั้นกำลังทำอะไรอยู่ เมื่อมีอีกเหตุการณ์หนึ่งเกิดขึ้น
+p: Past continuous คือ was หรือ were + กริยา -ing ใช้กับสิ่งที่กำลังเกิดขึ้นอยู่ ณ เวลาหนึ่งในอดีต เช่น At eight last night, I was watching TV.
+p: มักใช้คู่กับ past simple เพื่อบอกว่าเรื่องหนึ่งกำลังเกิดอยู่ แล้วอีกเรื่องแทรกเข้ามา เช่น I was cooking when the phone rang. แปลว่า ฉันกำลังทำอาหารอยู่ตอนที่โทรศัพท์ดัง
+p: while ใช้กับเรื่องที่กำลังเกิดอยู่ (while + was, were -ing) ส่วน when มักตามด้วยเหตุการณ์สั้นที่แทรกเข้ามา (when + past simple)
+t: I / he / she / it was + -ing | I was sleeping.
+t: you / we / they were + -ing | They were playing.
+t: ... when + past simple | I was walking home when it started to rain.
+t: while + was / were + -ing | While I was cooking, he called me.
+e: At nine last night, I was watching a movie. | เมื่อคืนตอนสามทุ่ม ฉันกำลังดูหนังอยู่
+e: She was sleeping when I called her. | เธอกำลังหลับอยู่ตอนที่ฉันโทรหา
+e: We were having dinner when the lights went out. | เรากำลังกินข้าวเย็นอยู่ตอนที่ไฟดับ
+e: It was raining all morning. | ฝนตกตลอดทั้งเช้า
+e: While I was walking home, I saw an old friend. | ระหว่างที่ฉันกำลังเดินกลับบ้าน ฉันเห็นเพื่อนเก่าคนหนึ่ง
+e: What were you doing at ten o'clock? | ตอนสิบโมงคุณกำลังทำอะไรอยู่
+e: They weren't listening to the teacher. | พวกเขาไม่ได้ฟังครูพูด
+m: I was cook when he came. | I was cooking when he came. | หลัง was ใช้กริยา -ing
+m: They was playing football. | They were playing football. | they ใช้ were
+m: While I cooked, the phone was ringing. | While I was cooking, the phone rang. | เรื่องที่กำลังเกิดอยู่ใช้ was -ing ส่วนเรื่องที่แทรกเข้ามาใช้ past simple
+q c | I was ___ TV at nine last night. | เมื่อคืนตอนสามทุ่มฉันกำลังดูทีวี | watching*; watch; watched | หลัง was ใช้กริยา -ing
+q c | They ___ playing football when it started to rain. | พวกเขากำลังเล่นฟุตบอลอยู่ตอนที่ฝนเริ่มตก | were*; was; are | they ใช้ were
+q c | She was sleeping when I ___. | เธอกำลังหลับอยู่ตอนที่ฉันโทรไป | called*; was calling; call | เรื่องที่แทรกเข้ามาใช้ past simple
+q c | ___ I was walking home, I saw my teacher. | ระหว่างที่ฉันกำลังเดินกลับบ้าน ฉันเห็นครูของฉัน | While*; When I; During | while + was -ing
+q c | What ___ you doing at ten o'clock? | ตอนสิบโมงคุณกำลังทำอะไรอยู่ | were*; was; did | you ใช้ were
+q s | เลือกประโยคที่ถูก | We were having dinner when the lights went out.*; We had dinner when the lights were going out.; We were have dinner when the lights went out. | เรื่องที่กำลังเกิดใช้ were -ing ส่วนเรื่องที่แทรกเข้ามาใช้ past simple
+q s | เลือกประโยคที่ถูก | He wasn't listening to me.*; He didn't listening to me.; He wasn't listen to me. | ปฏิเสธใช้ wasn't + -ing
+q o | เธอกำลังทำอาหารอยู่ตอนที่ฉันกลับถึงบ้าน | She was cooking when I got home. |
+q w | It ___ raining all morning. | ฝนตกตลอดทั้งเช้า | was | it ใช้ was
+q w | I was reading a book ___ my phone rang. | ฉันกำลังอ่านหนังสืออยู่ตอนที่โทรศัพท์ดัง | when | เหตุการณ์สั้นที่แทรกเข้ามา ใช้ when
+
+# l32 | A2 | คำเชื่อม และ ถ้า ... จะ (if)
+goal: เชื่อมประโยคด้วย and, but, or, so, because และพูดเงื่อนไขในอนาคตด้วย if
+p: and (และ) เพิ่มข้อมูล but (แต่) บอกสิ่งที่ขัดกัน or (หรือ) ให้เลือก so (จึง ดังนั้น) บอกผล because (เพราะ) บอกเหตุ เช่น I was tired, so I went to bed early. / I went to bed early because I was tired.
+p: ประโยคเงื่อนไขที่เป็นไปได้จริง: If + present simple, will + กริยา เช่น If it rains, I will stay home. แปลว่า ถ้าฝนตก ฉันจะอยู่บ้าน ส่วนที่มี if ห้ามใช้ will
+p: สลับเอาส่วนที่มี if ไว้ท้ายก็ได้ เช่น I will stay home if it rains. ถ้า if ขึ้นต้นประโยคให้มีจุลภาคคั่น
+t: and / but / or | I like tea, but I don't like coffee.
+t: so (ผล) / because (เหตุ) | It was late, so I took a taxi.
+t: If + present simple, will + กริยา | If you study, you will pass.
+e: I like cats, but my sister likes dogs. | ฉันชอบแมว แต่น้องสาวชอบหมา
+e: Do you want tea or coffee? | คุณอยากได้ชาหรือกาแฟ
+e: It was raining, so we stayed home. | ฝนตก เราจึงอยู่บ้าน
+e: I am happy because I passed the test. | ฉันดีใจเพราะสอบผ่าน
+e: If it rains tomorrow, I will stay home. | ถ้าพรุ่งนี้ฝนตก ฉันจะอยู่บ้าน
+e: If you study hard, you will pass. | ถ้าคุณตั้งใจเรียน คุณจะสอบผ่าน
+e: I will call you if I am late. | ฉันจะโทรหาคุณถ้าฉันไปสาย
+m: If it will rain, I will stay home. | If it rains, I will stay home. | ส่วนที่มี if ใช้ present simple
+m: I was tired, because I went to bed early. | I was tired, so I went to bed early. | การเข้านอนเร็วเป็นผล ใช้ so
+m: Because I was hungry. I ate. | I ate because I was hungry. | because ต้องอยู่ในประโยคเดียวกับส่วนหลัก
+q c | I like tea, ___ I don't like coffee. | ฉันชอบชา แต่ไม่ชอบกาแฟ | but*; and; so | สิ่งที่ขัดกันใช้ but
+q c | It was late, ___ I took a taxi. | ดึกแล้ว ฉันจึงนั่งแท็กซี่ | so*; because; or | บอกผลใช้ so
+q c | I stayed home ___ I was sick. | ฉันอยู่บ้านเพราะป่วย | because*; so; but | บอกเหตุใช้ because
+q c | If it ___ tomorrow, we will stay home. | ถ้าพรุ่งนี้ฝนตก เราจะอยู่บ้าน | rains*; will rain; rained | ส่วนที่มี if ใช้ present simple
+q c | If you study hard, you ___ pass the test. | ถ้าคุณตั้งใจเรียน คุณจะสอบผ่าน | will*; would; are | ผลในอนาคตใช้ will
+q s | ถามเพื่อนว่าอยากได้ชาหรือกาแฟ | Do you want tea or coffee?*; Do you want tea and coffee or?; Do you want tea but coffee? | ให้เลือกใช้ or
+q s | เลือกประโยคที่ถูก | I will call you if I am late.*; I will call you if I will be late.; I call you if I will be late. | ส่วนที่มี if ใช้ present simple ส่วนผลใช้ will
+q o | ฝนตก เราจึงอยู่บ้าน | It was raining, so we stayed home. |
+q w | If you are hungry, I ___ make you a sandwich. | ถ้าคุณหิว ฉันจะทำแซนด์วิชให้ | will | ผลในอนาคตใช้ will
+q w | She was happy ___ she got a new job. | เธอดีใจเพราะได้งานใหม่ | because | บอกเหตุใช้ because

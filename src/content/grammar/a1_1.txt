@@ -1,0 +1,176 @@
+# l1 | A1 | ทักทายและแนะนำตัว
+goal: ทักทาย บอกชื่อ ถามชื่อ บอกว่ามาจากไหน และบอกลาได้
+p: ประโยคชุดแรกที่ควรพูดได้คล่อง ใช้ได้ทุกครั้งที่เจอคนใหม่ จำเป็นประโยคทั้งก้อนได้เลย ยังไม่ต้องแยกไวยากรณ์
+p: My name is ... แปลตรงตัวว่า "ชื่อของฉันคือ ..." ต้องมีคำว่า is เสมอ ส่วน I'm ย่อมาจาก I am แปลว่า "ฉันเป็น / ฉันอยู่"
+p: How are you? เป็นคำทักทาย ไม่ได้อยากรู้สุขภาพจริงจัง ตอบสั้นๆ ว่า I'm fine, thank you. หรือ I'm good. ก็พอ
+t: Hello. / Hi. | สวัสดี
+t: My name is ... | ฉันชื่อ ...
+t: What's your name? | คุณชื่ออะไร
+t: I'm from Thailand. | ฉันมาจากประเทศไทย
+t: Nice to meet you. | ยินดีที่ได้รู้จัก
+t: See you tomorrow. / Goodbye. | พรุ่งนี้เจอกัน / ลาก่อน
+e: Hello, my name is Mali. | สวัสดี ฉันชื่อมะลิ
+e: What's your name? | คุณชื่ออะไร
+e: I'm from Thailand. | ฉันมาจากประเทศไทย
+e: Where are you from? | คุณมาจากไหน
+e: Nice to meet you. | ยินดีที่ได้รู้จัก
+e: How are you? I'm fine, thank you. | สบายดีไหม สบายดี ขอบคุณ
+e: See you tomorrow. | พรุ่งนี้เจอกัน
+m: My name Mali. | My name is Mali. | ต้องมี is ระหว่าง name กับชื่อ
+m: I from Thailand. | I'm from Thailand. | ต้องมี am (I'm คือ I am) ก่อน from
+q c | My ___ is Mali. | ฉันชื่อมะลิ | name*; from; fine | My name is ... คือประโยคบอกชื่อ
+q c | I'm ___ Thailand. | ฉันมาจากประเทศไทย | from*; name; you | from แปลว่า มาจาก
+q c | What's your ___? | คุณชื่ออะไร | name*; from; fine | What's ย่อมาจาก What is
+q s | เพื่อนทักว่า How are you? ตอบว่าอะไร | I'm fine, thank you.*; My name is Ploy.; I'm from Thailand. | How are you? คือคำทักทาย ตอบว่าสบายดี
+q s | เจอคนใหม่ครั้งแรก หลังบอกชื่อกันแล้ว พูดว่าอะไร | Nice to meet you.*; See you tomorrow.; How old are you? | Nice to meet you. ใช้ตอนเจอกันครั้งแรก
+q s | จะแยกกับเพื่อนตอนเย็น พูดว่าอะไร | See you tomorrow.*; Nice to meet you.; What's your name? | See you ... ใช้ตอนลากัน
+q o | ฉันชื่อมะลิ | My name is Mali. |
+q o | คุณมาจากไหน | Where are you from? | คำถามขึ้นต้นด้วย Where ที่แปลว่า ที่ไหน
+q w | ___ are you from? | คุณมาจากไหน | where | Where แปลว่า ที่ไหน
+q w | Nice to ___ you. | ยินดีที่ได้รู้จัก | meet | meet แปลว่า พบ เจอ
+
+# l2 | A1 | ฉัน เธอ เขา กับ am is are
+goal: บอกได้ว่าใครเป็นใคร เป็นอะไร อยู่ที่ไหน หรือรู้สึกอย่างไร
+p: ภาษาไทยพูดว่า "ฉันหิว" ได้เลย แต่ภาษาอังกฤษต้องมี am, is หรือ are คั่นหลังประธานเสมอ ถ้าประโยคนั้นไม่มีคำกริยาอื่น เช่น I am hungry. ห้ามพูดว่า I hungry.
+p: เลือกตามประธาน: I ใช้ am ส่วน he, she, it หรือคนเดียว สิ่งเดียว ใช้ is และ you, we, they หรือหลายคน หลายสิ่ง ใช้ are
+p: พูดย่อได้และคนพูดกันแบบนี้เป็นปกติ: I'm, you're, he's, she's, it's, we're, they're
+t: I am (I'm) | I am a student. แปลว่า ฉันเป็นนักศึกษา
+t: he / she / it is | She is tired. แปลว่า เธอเหนื่อย
+t: you / we / they are | They are friends. แปลว่า พวกเขาเป็นเพื่อนกัน
+e: I am a student. | ฉันเป็นนักศึกษา
+e: She is my friend. | เธอเป็นเพื่อนของฉัน
+e: He is tired today. | วันนี้เขาเหนื่อย
+e: We are hungry. | พวกเราหิว
+e: It is hot today. | วันนี้อากาศร้อน
+e: They are in Bangkok. | พวกเขาอยู่ที่กรุงเทพฯ
+e: You are late. | คุณมาสาย
+m: I hungry. | I am hungry. | หลังประธานต้องมี am, is หรือ are ถ้าไม่มีกริยาอื่น
+m: She are happy. | She is happy. | she เป็นคนเดียว ใช้ is
+m: I am student. | I am a student. | อาชีพของคนคนเดียว ต้องมี a หรือ an (เรียนในบทที่ 4)
+q c | I ___ a student. | ฉันเป็นนักศึกษา | am*; is; are | I ใช้คู่กับ am เท่านั้น
+q c | She ___ tired. | เธอเหนื่อย | is*; am; are | she เป็นคนเดียว ใช้ is
+q c | They ___ my friends. | พวกเขาเป็นเพื่อนของฉัน | are*; is; am | they หลายคน ใช้ are
+q c | It ___ hot today. | วันนี้อากาศร้อน | is*; are; am | พูดถึงอากาศ ขึ้นต้นด้วย It is
+q c | We ___ hungry. | พวกเราหิว | are*; is; am | we ใช้ are
+q s | เลือกประโยคที่ถูก | He is happy.*; He happy.; He are happy. | ต้องมี is และ he ใช้ is
+q o | ฉันเป็นนักศึกษา | I am a student. |
+q o | พวกเขาอยู่ที่กรุงเทพฯ | They are in Bangkok. |
+q w | ___ is my teacher. (ผู้หญิง) | เธอเป็นครูของฉัน | she | เธอ (ผู้หญิง) คือ she
+q w | You ___ late. | คุณมาสาย | are | you ใช้ are
+
+# l3 | A1 | ปฏิเสธและถามด้วย am is are
+goal: พูดว่า "ไม่ใช่ / ไม่ได้" และถามคำถามแบบตอบใช่หรือไม่ใช่ ด้วย am, is, are
+p: ปฏิเสธ ให้เติม not หลัง am, is, are เช่น I am not tired. ย่อได้เป็น I'm not, he isn't, they aren't
+p: ถามแบบใช่หรือไม่ใช่ ให้ย้าย am, is, are ไปไว้หน้าสุด เช่น You are tired. กลายเป็น Are you tired?
+p: ตอบสั้นๆ ได้ว่า Yes, I am. / No, I'm not. หรือ Yes, she is. / No, she isn't. คำตอบแบบ Yes ห้ามย่อ เช่น ห้ามตอบว่า Yes, I'm.
+t: ปฏิเสธ | I'm not hungry. แปลว่า ฉันไม่หิว
+t: ปฏิเสธ he / she / it | He isn't at home. แปลว่า เขาไม่อยู่บ้าน
+t: คำถาม | Are you a student? แปลว่า คุณเป็นนักศึกษาหรือเปล่า
+t: ตอบสั้น | Yes, I am. / No, I'm not.
+e: I'm not tired. | ฉันไม่เหนื่อย
+e: She isn't at home. | เธอไม่อยู่บ้าน
+e: They aren't students. | พวกเขาไม่ใช่นักศึกษา
+e: Are you hungry? Yes, I am. | คุณหิวไหม หิว
+e: Is he your brother? No, he isn't. | เขาเป็นพี่ชายของคุณหรือเปล่า ไม่ใช่
+e: Is it far? | ไกลไหม
+m: You are tired? | Are you tired? | คำถามต้องย้าย are ขึ้นหน้าประโยค
+m: I amn't hungry. | I'm not hungry. | ไม่มีคำว่า amn't ใช้ I'm not
+m: Yes, I'm. | Yes, I am. | คำตอบสั้นแบบ Yes ห้ามย่อ
+q c | I ___ hungry. | ฉันไม่หิว | am not*; not am; no | not อยู่หลัง am
+q c | She ___ at home. | เธอไม่อยู่บ้าน | isn't*; aren't; not | she ใช้ is จึงเป็น isn't
+q c | ___ you a student? | คุณเป็นนักศึกษาหรือเปล่า | Are*; Is; Am | คำถามย้าย are ขึ้นหน้า
+q c | ___ he your brother? | เขาเป็นพี่ชายของคุณหรือเปล่า | Is*; Are; Am | he ใช้ is
+q s | ถามเพื่อนว่า "คุณเหนื่อยไหม" | Are you tired?*; You tired?; Is you tired? | ย้าย are ขึ้นหน้า และ you ใช้ are
+q s | ตอบคำถาม Are you a student? ว่า "ใช่" | Yes, I am.*; Yes, I'm.; Yes, I is. | คำตอบสั้นแบบ Yes ห้ามย่อ
+q o | พวกเขาไม่ใช่นักศึกษา | They aren't students. |
+q o | ไกลไหม | Is it far? |
+q w | They ___ at school. | พวกเขาไม่อยู่ที่โรงเรียน | aren't/are not | they ใช้ are จึงเป็น aren't
+q w | Is she your sister? No, she ___. | เธอเป็นพี่สาวของคุณหรือเปล่า ไม่ใช่ | isn't/is not | she ใช้ is จึงตอบ isn't
+
+# l4 | A1 | a, an, the และคำนามหลายอัน
+goal: ใช้ a, an, the ได้ถูก และเปลี่ยนคำนามเป็นหลายอันได้
+p: คำนามที่นับได้ ถ้ามีหนึ่งอัน ต้องมี a หรือ an นำหน้าเสมอ เช่น a book, a car ภาษาไทยไม่ต้องมี แต่ภาษาอังกฤษขาดไม่ได้
+p: ใช้ an เมื่อคำถัดไปออกเสียงขึ้นต้นด้วยสระ เช่น an apple, an egg, an hour (ตัว h ไม่ออกเสียง) ส่วน a university ใช้ a เพราะออกเสียงขึ้นต้นว่า "ยู"
+p: ใช้ the เมื่อคนพูดและคนฟังรู้อยู่แล้วว่าหมายถึงอันไหน เช่น the door (ประตูบานนี้) หรือมีอยู่อันเดียว เช่น the sun (ดวงอาทิตย์)
+p: มีหลายอัน ส่วนใหญ่เติม s เช่น books ถ้าลงท้ายด้วย s, sh, ch, x เติม es เช่น buses, boxes ถ้าลงท้ายด้วยพยัญชนะ + y เปลี่ยน y เป็น ies เช่น city เป็น cities และมีคำพิเศษ เช่น man เป็น men, woman เป็น women, child เป็น children, person เป็น people
+t: a + เสียงพยัญชนะ | a book, a university
+t: an + เสียงสระ | an apple, an hour
+t: the | the door, the sun
+t: หลายอัน | books, buses, cities, children
+e: I have a phone. | ฉันมีโทรศัพท์หนึ่งเครื่อง
+e: It is an old car. | มันเป็นรถเก่าคันหนึ่ง
+e: Please close the door. | กรุณาปิดประตู
+e: I have two cats. | ฉันมีแมวสองตัว
+e: The children are at school. | เด็กๆ อยู่ที่โรงเรียน
+e: Bangkok and Chiang Mai are big cities. | กรุงเทพฯ และเชียงใหม่เป็นเมืองใหญ่
+m: She is teacher. | She is a teacher. | อาชีพของคนคนเดียว ต้องมี a
+m: a apple | an apple | apple ขึ้นต้นด้วยเสียงสระ ใช้ an
+m: two book | two books | มากกว่าหนึ่ง ต้องเติม s
+q c | I have ___ egg. | ฉันมีไข่หนึ่งฟอง | an*; a; two | egg ขึ้นต้นด้วยเสียงสระ ใช้ an
+q c | He is ___ doctor. | เขาเป็นหมอ | a*; an; two | doctor ขึ้นต้นด้วยเสียงพยัญชนะ ใช้ a
+q c | It is ___ university. | มันเป็นมหาวิทยาลัยแห่งหนึ่ง | a*; an; two | university ออกเสียงขึ้นต้นว่า "ยู" จึงใช้ a
+q c | ___ sun is hot. | ดวงอาทิตย์ร้อน | The*; A; An | ดวงอาทิตย์มีดวงเดียว ใช้ the
+q c | Two ___ are here. | มีผู้หญิงสองคนอยู่ที่นี่ | women*; woman; womans | woman เป็นหลายคนคือ women
+q s | เลือกประโยคที่ถูก | They are students.*; They are student.; They are a students. | หลายคนใช้ students ไม่มี a
+q o | ฉันมีแมวสองตัว | I have two cats. |
+q o | เด็กๆ อยู่ที่โรงเรียน | The children are at school. |
+q w | I have two ___. (box) | ฉันมีกล่องสองใบ | boxes | box ลงท้ายด้วย x เติม es
+q w | Bangkok and Chiang Mai are big ___. (city) | กรุงเทพฯ และเชียงใหม่เป็นเมืองใหญ่ | cities | city ลงท้ายด้วยพยัญชนะ + y เปลี่ยนเป็น ies
+
+# l5 | A1 | this, that, these, those
+goal: ชี้และพูดถึงสิ่งที่อยู่ใกล้หรือไกล หนึ่งอันหรือหลายอันได้
+p: this แปลว่า สิ่งนี้ (อยู่ใกล้ หนึ่งอัน) ส่วน that แปลว่า สิ่งนั้น (อยู่ไกล หนึ่งอัน)
+p: these แปลว่า สิ่งเหล่านี้ (อยู่ใกล้ หลายอัน) ส่วน those แปลว่า สิ่งเหล่านั้น (อยู่ไกล หลายอัน)
+p: ใช้คู่กับ is หรือ are ให้ถูก: This is ..., That is ... แต่ These are ..., Those are ...
+p: วางหน้าคำนามก็ได้ เช่น this phone (โทรศัพท์เครื่องนี้), those shoes (รองเท้าคู่นั้น)
+t: ใกล้ หนึ่งอัน | This is my bag. แปลว่า นี่คือกระเป๋าของฉัน
+t: ไกล หนึ่งอัน | That is a hospital. แปลว่า นั่นคือโรงพยาบาล
+t: ใกล้ หลายอัน | These are my books. แปลว่า นี่คือหนังสือของฉัน
+t: ไกล หลายอัน | Those are cheap. แปลว่า พวกนั้นราคาถูก
+e: This is my friend, Ploy. | นี่คือพลอย เพื่อนของฉัน
+e: Is that your phone? | นั่นโทรศัพท์ของคุณหรือเปล่า
+e: These shoes are new. | รองเท้าคู่นี้ใหม่
+e: Those people are from Japan. | คนพวกนั้นมาจากญี่ปุ่น
+e: How much is this? | อันนี้ราคาเท่าไร
+e: I like this song. | ฉันชอบเพลงนี้
+m: This are my books. | These are my books. | หลายอันใช้ these คู่กับ are
+m: That shoes are nice. | Those shoes are nice. | shoes มีหลายอัน ใช้ those
+q c | ___ is my bag. (ใกล้ตัว) | นี่คือกระเป๋าของฉัน | This*; These; Those | ใกล้ตัว หนึ่งอัน ใช้ this
+q c | ___ are my books. (ใกล้ตัว) | นี่คือหนังสือของฉัน | These*; This; That | ใกล้ตัว หลายอัน ใช้ these
+q c | Look at ___ birds in the sky. | ดูนกพวกนั้นบนฟ้าสิ | those*; that; this | นกอยู่ไกลและมีหลายตัว ใช้ those
+q c | ___ shoes are new. (ใกล้ตัว) | รองเท้าคู่นี้ใหม่ | These*; This; That | shoes มีหลายอัน ใช้ these
+q c | How much is ___? (ของในมือ) | อันนี้ราคาเท่าไร | this*; these; those | ของในมือหนึ่งอัน ใช้ this
+q s | เลือกประโยคที่ถูก | Those are my friends.*; That are my friends.; Those is my friends. | หลายคนอยู่ไกล ใช้ those กับ are
+q o | นั่นโทรศัพท์ของคุณหรือเปล่า | Is that your phone? |
+q o | ฉันชอบเพลงนี้ | I like this song. |
+q w | ___ people are from Japan. (ไกลตัว) | คนพวกนั้นมาจากญี่ปุ่น | those | ไกลตัว หลายคน ใช้ those
+q w | ___ is my friend, Ploy. (ใกล้ตัว) | นี่คือพลอย เพื่อนของฉัน | this | ใกล้ตัว หนึ่งคน ใช้ this
+
+# l6 | A1 | ของใคร my your his her
+goal: บอกได้ว่าสิ่งของเป็นของใคร
+p: คำบอกความเป็นเจ้าของวางไว้หน้าคำนามเสมอ: my (ของฉัน), your (ของคุณ), his (ของเขา ผู้ชาย), her (ของเธอ ผู้หญิง), its (ของมัน), our (ของพวกเรา), their (ของพวกเขา)
+p: ภาษาไทยพูดว่า "กระเป๋าของฉัน" ส่วนภาษาอังกฤษสลับเป็น my bag
+p: ถ้าเป็นชื่อคน ให้เติม 's หลังชื่อ เช่น Tom's car แปลว่า รถของทอม
+t: I → my | my bag แปลว่า กระเป๋าของฉัน
+t: he → his / she → her | his car / her phone
+t: we → our / they → their | our class / their house
+t: ชื่อ + 's | Mali's room แปลว่า ห้องของมะลิ
+e: My name is Nok. | ฉันชื่อนก
+e: His car is red. | รถของเขาสีแดง
+e: Her phone is new. | โทรศัพท์ของเธอใหม่
+e: Our teacher is kind. | ครูของพวกเราใจดี
+e: Their house is big. | บ้านของพวกเขาใหญ่
+e: This is Tom's bag. | นี่คือกระเป๋าของทอม
+m: bag my | my bag | คำบอกเจ้าของอยู่หน้าคำนาม
+m: She is he sister. | She is his sister. | "ของเขา" ใช้ his ไม่ใช่ he
+m: the car of Tom | Tom's car | ใช้ 's เป็นธรรมชาติกว่า
+q c | This is ___ bag. (ของฉัน) | นี่คือกระเป๋าของฉัน | my*; I; me | ของฉัน ใช้ my
+q c | Tom is with ___ mother. | ทอมอยู่กับแม่ของเขา | his*; her; he | ทอมเป็นผู้ชาย ของเขาใช้ his
+q c | Mali loves ___ cat. | มะลิรักแมวของเธอ | her*; his; she | มะลิเป็นผู้หญิง ของเธอใช้ her
+q c | We love ___ teacher. | พวกเรารักครูของพวกเรา | our*; we; us | ของพวกเรา ใช้ our
+q c | They are in ___ house. | พวกเขาอยู่ในบ้านของพวกเขา | their*; they; there | ของพวกเขา ใช้ their ส่วน there แปลว่า ที่นั่น
+q s | เลือกประโยคที่ถูก (รถของทอม) | This is Tom's car.*; This is car Tom's.; This is Tom car. | ชื่อ + 's แล้วตามด้วยของ
+q o | โทรศัพท์ของเธอใหม่ | Her phone is new. |
+q o | ครูของพวกเราใจดี | Our teacher is kind. |
+q w | ___ name is Nok. (ของฉัน) | ฉันชื่อนก | my | ของฉัน ใช้ my
+q w | ___ car is red. (ของเขา ผู้ชาย) | รถของเขาสีแดง | his | ของเขา (ผู้ชาย) ใช้ his

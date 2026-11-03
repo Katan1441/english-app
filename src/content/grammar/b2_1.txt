@@ -1,0 +1,179 @@
+# l53 | B2 | ถ้าตอนนั้น...ก็คงจะ: If + had + V3, would have + V3
+goal: พูดถึงเรื่องในอดีตที่ไม่ได้เกิดขึ้นจริง และผลที่อาจจะเกิดขึ้น
+p: Third conditional: If + had + กริยาช่อง 3, would have + กริยาช่อง 3 ใช้สมมติเรื่องในอดีตที่ไม่ได้เกิดขึ้นจริง เช่น If I had studied harder, I would have passed the exam. แปลว่า ถ้าตอนนั้นฉันตั้งใจเรียนกว่านี้ ฉันก็คงสอบผ่านไปแล้ว (แต่ความจริงไม่ได้ตั้งใจ และสอบไม่ผ่าน)
+p: ใช้แสดงความเสียดาย หรือพูดถึงผลที่อาจเกิดขึ้น ใช้ could have หรือ might have แทน would have ได้ เช่น If you had told me, I could have helped you.
+p: ภาษาพูดมักย่อเป็น I'd have และ wouldn't have ระวังว่า 'd ในส่วนที่มี if คือ had เช่น If I'd known, I'd have come.
+t: If + had + V3, would have + V3 | If I had known, I would have come.
+t: could have / might have + V3 | If you had asked, I could have helped.
+t: hadn't + V3 / wouldn't have + V3 | If it hadn't rained, we wouldn't have stayed home.
+t: If I'd known, ... (I'd = I had) | If I'd known, I'd have called you.
+e: If I had studied harder, I would have passed the exam. | ถ้าตอนนั้นฉันตั้งใจเรียนกว่านี้ ฉันคงสอบผ่านไปแล้ว
+e: If you had told me, I could have helped you. | ถ้าคุณบอกฉัน ฉันก็คงช่วยคุณได้
+e: If we had left earlier, we wouldn't have missed the train. | ถ้าเราออกจากบ้านเร็วกว่านี้ เราคงไม่ตกรถไฟ
+e: She would have come if she had known about the party. | เธอคงมาแล้วถ้าเธอรู้เรื่องงานปาร์ตี้
+e: If it hadn't rained, we would have gone to the beach. | ถ้าฝนไม่ตก เราคงไปทะเลแล้ว
+e: What would you have done if you had lost your passport? | ถ้าตอนนั้นคุณทำพาสปอร์ตหาย คุณจะทำอย่างไร
+e: If I'd known you were sick, I would have visited you. | ถ้าฉันรู้ว่าคุณป่วย ฉันคงไปเยี่ยมแล้ว
+m: If I would have known, I would have come. | If I had known, I would have come. | ส่วนที่มี if ใช้ had + V3 ไม่ใช้ would
+m: If I had studied, I would pass. | If I had studied, I would have passed. | ผลในอดีตใช้ would have + V3
+m: If she had came, she would have seen him. | If she had come, she would have seen him. | หลัง had ใช้กริยาช่อง 3
+q c | If I had ___ harder, I would have passed. | ถ้าตอนนั้นฉันตั้งใจเรียนกว่านี้ ฉันคงสอบผ่าน | studied*; study; would study | had + V3
+q c | If you had told me, I ___ have helped you. | ถ้าคุณบอกฉัน ฉันก็คงช่วยคุณได้ | could*; can; will | could have + V3
+q c | We would have gone out if it ___ rained. | เราคงออกไปข้างนอกแล้วถ้าฝนไม่ตก | hadn't*; didn't; wouldn't | ส่วนที่มี if ใช้ had + V3
+q c | If she had known, she would have ___. | ถ้าเธอรู้ เธอคงมาแล้ว | come*; came; coming | would have + V3
+q c | If we ___ left earlier, we wouldn't have missed the bus. | ถ้าเราออกเร็วกว่านี้ เราคงไม่ตกรถเมล์ | had*; have; would | If + had + V3
+q s | บอกว่าถ้ารู้ว่าเพื่อนป่วยคงไปเยี่ยมแล้ว | If I had known you were sick, I would have visited you.*; If I knew you were sick, I would visit you yesterday.; If I would have known you were sick, I visited you. | อดีตที่ไม่ได้เกิดขึ้นจริง ใช้ had + V3 และ would have + V3
+q s | เลือกประโยคที่ถูก | If it hadn't rained, we would have played football.*; If it didn't rain, we would have played football.; If it hadn't rained, we would play football yesterday. | If + had + V3, would have + V3
+q o | ถ้าคุณบอกฉัน ฉันก็คงช่วยคุณได้ | If you had told me, I could have helped you. | could have + V3
+q w | If I had ___ about the party, I would have come. (know) | ถ้าฉันรู้เรื่องงานปาร์ตี้ ฉันคงมาแล้ว | known | หลัง had ใช้กริยาช่อง 3
+q w | She ___ have missed the bus if she had left earlier. (ปฏิเสธ) | เธอคงไม่ตกรถเมล์ถ้าออกเร็วกว่านี้ | wouldn't/would not | ผลในอดีตแบบปฏิเสธใช้ wouldn't have
+
+# l54 | B2 | อยากให้เป็นอย่างนั้น: wish และ if only
+goal: บอกความปรารถนาที่ไม่ตรงกับความจริง และความเสียดายเรื่องในอดีต
+p: wish + past simple ใช้กับสิ่งที่อยากให้เป็นตอนนี้แต่ไม่จริง เช่น I wish I had a car. แปลว่า อยากมีรถจัง (แต่ไม่มี) ถ้าเป็น be ใช้ were ได้ เช่น I wish I were taller.
+p: wish + had + กริยาช่อง 3 ใช้เสียดายเรื่องในอดีต เช่น I wish I had studied harder. แปลว่า เสียดายที่ตอนนั้นไม่ตั้งใจเรียน ส่วน wish + could ใช้กับความสามารถที่อยากมี เช่น I wish I could swim.
+p: wish + would ใช้บ่นว่าอยากให้คนอื่นเปลี่ยนพฤติกรรม เช่น I wish you would stop talking. ส่วน If only ใช้แบบเดียวกับ wish แต่ความรู้สึกแรงกว่า เช่น If only I had more time!
+t: wish + past simple (ตอนนี้) | I wish I lived near the sea.
+t: wish + had + V3 (อดีต) | I wish I hadn't said that.
+t: wish + could | I wish I could speak French.
+t: wish + would (อยากให้คนอื่นเปลี่ยน) | I wish he would call me.
+e: I wish I had more free time. | อยากมีเวลาว่างมากกว่านี้จัง
+e: I wish I were taller. | อยากสูงกว่านี้จัง
+e: I wish I could speak Japanese. | อยากพูดภาษาญี่ปุ่นได้จัง
+e: I wish I had studied harder at school. | เสียดายที่ตอนเรียนไม่ตั้งใจกว่านี้
+e: She wishes she hadn't eaten so much. | เธอเสียดายที่กินเยอะขนาดนั้น
+e: I wish you would listen to me. | ฉันอยากให้คุณฟังฉันบ้าง
+e: If only I knew the answer! | ถ้ารู้คำตอบก็ดีสิ
+m: I wish I have a car. | I wish I had a car. | wish กับเรื่องตอนนี้ใช้รูปอดีต
+m: I wish I didn't say that yesterday. | I wish I hadn't said that yesterday. | เสียดายเรื่องในอดีตใช้ had + V3
+m: I wish I can swim. | I wish I could swim. | wish ใช้ could ไม่ใช่ can
+q c | I wish I ___ a bigger room. | อยากมีห้องใหญ่กว่านี้จัง | had*; have; will have | wish กับเรื่องตอนนี้ใช้รูปอดีต
+q c | I wish I ___ studied harder last year. | เสียดายที่ปีที่แล้วไม่ตั้งใจเรียนกว่านี้ | had*; have; would | เสียดายเรื่องในอดีตใช้ had + V3
+q c | I wish I ___ speak French. | อยากพูดภาษาฝรั่งเศสได้จัง | could*; can; will | wish + could บอกความสามารถที่อยากมี
+q c | She wishes she ___ so tired. | เธออยากให้ตัวเองไม่เหนื่อยขนาดนี้ | weren't*; isn't; won't be | wish กับเรื่องตอนนี้ใช้รูปอดีต
+q c | I wish you ___ stop making that noise. | ฉันอยากให้คุณหยุดทำเสียงนั้นเสียที | would*; will; are | อยากให้คนอื่นเปลี่ยนพฤติกรรม ใช้ wish + would
+q s | บอกว่าเสียดายที่พูดแบบนั้นไป | I wish I hadn't said that.*; I wish I didn't say that.; I wish I don't say that. | เสียดายเรื่องในอดีตใช้ had + V3
+q s | เลือกประโยคที่ถูก | If only I had more money!*; If only I have more money!; If only I will have more money! | If only ใช้แบบเดียวกับ wish
+q o | อยากพูดภาษาญี่ปุ่นได้จัง | I wish I could speak Japanese. | wish + could
+q w | I wish I ___ taller. (be) | อยากสูงกว่านี้จัง | were/was | wish กับ be ใช้ were (พูดว่า was ก็ได้)
+q w | He wishes he ___ eaten so much. (ปฏิเสธ) | เขาเสียดายที่กินเยอะขนาดนั้น | hadn't/had not | เสียดายเรื่องในอดีตใช้ hadn't + V3
+
+# l55 | B2 | น่าจะ...แล้ว: should have, could have, must have
+goal: วิจารณ์ เสียดาย หรือเดาเรื่องที่เกิดขึ้นไปแล้ว
+p: should have + กริยาช่อง 3 แปลว่า ควรจะ... แต่ไม่ได้ทำ ใช้เสียดายหรือติ เช่น You should have told me. ส่วน shouldn't have แปลว่า ไม่น่าทำเลย (แต่ทำไปแล้ว)
+p: could have + V3 แปลว่า ตอนนั้นทำได้แต่ไม่ได้ทำ หรือ อาจจะเกิดขึ้นได้ เช่น You could have hurt yourself! ส่วน must have + V3 ใช้เดาอย่างมั่นใจเรื่องในอดีต เช่น She must have forgotten. และ can't have + V3 แปลว่า ไม่มีทางที่จะ...
+p: might have + V3 แปลว่า อาจจะ...ไปแล้ว (ไม่แน่ใจ) เช่น He might have missed the bus. ภาษาพูดมักออกเสียง should have เป็น should've
+t: should have + V3 | I should have left earlier.
+t: could have + V3 | We could have won.
+t: must have / can't have + V3 | He must have been tired.
+t: might have + V3 | She might have gone home.
+e: You should have told me earlier. | คุณน่าจะบอกฉันเร็วกว่านี้
+e: I shouldn't have eaten so much. | ฉันไม่น่ากินเยอะขนาดนั้นเลย
+e: We could have taken a taxi, but we walked. | ตอนนั้นเรานั่งแท็กซี่ได้ แต่เราเลือกเดิน
+e: She isn't here. She must have forgotten. | เธอไม่อยู่ที่นี่ เธอคงลืมแน่ๆ
+e: He can't have seen me. It was too dark. | เขาไม่มีทางเห็นฉันได้หรอก ตอนนั้นมืดเกินไป
+e: Tom is late. He might have missed the bus. | ทอมมาสาย เขาอาจจะตกรถเมล์
+e: You could have hurt yourself! | คุณอาจจะเจ็บตัวได้นะ
+m: You should told me. | You should have told me. | should have + V3
+m: She must have forget. | She must have forgotten. | หลัง have ใช้กริยาช่อง 3
+m: I should have went home. | I should have gone home. | หลัง have ใช้กริยาช่อง 3 คือ gone
+q c | You should ___ told me earlier. | คุณน่าจะบอกฉันเร็วกว่านี้ | have*; had; to | should have + V3
+q c | I'm so full. I ___ have eaten so much. | อิ่มมาก ฉันไม่น่ากินเยอะขนาดนั้นเลย | shouldn't*; must; could | เสียดายที่ทำไปแล้ว ใช้ shouldn't have
+q c | The ground is wet. It must have ___ last night. | พื้นเปียก เมื่อคืนฝนคงตกแน่ๆ | rained*; rain; raining | must have + V3
+q c | He ___ have seen me. It was too dark. | เขาไม่มีทางเห็นฉันได้ ตอนนั้นมืดเกินไป | can't*; must; should | ไม่มีทางที่จะ ใช้ can't have
+q c | She is late. She ___ have missed the bus. | เธอมาสาย เธออาจจะตกรถเมล์ | might*; should; can't | ไม่แน่ใจ ใช้ might have
+q s | ติว่าเพื่อนน่าจะโทรมาบอก | You should have called me.*; You should called me.; You should have call me. | should have + V3
+q s | เลือกประโยคที่ถูก | We could have won the game.*; We could won the game.; We could have win the game. | could have + V3
+q o | คุณอาจจะเจ็บตัวได้นะ | You could have hurt yourself! | could have + V3
+q w | I should have ___ to bed earlier. (go) | ฉันน่าจะเข้านอนเร็วกว่านี้ | gone | go ช่อง 3 คือ gone
+q w | She isn't here. She must have ___. (forget) | เธอไม่อยู่ที่นี่ เธอคงลืมแน่ๆ | forgotten | forget ช่อง 3 คือ forgotten
+
+# l56 | B2 | ถูกกระทำแบบอื่นๆ: has been done, will be done, can be done
+goal: ใช้ passive ได้ในหลาย tense และกับกริยาช่วย
+p: Passive ใช้ be + กริยาช่อง 3 เสมอ แค่เปลี่ยนรูปของ be ตาม tense เช่น has been + V3 (present perfect), will be + V3 (อนาคต), is being + V3 (กำลังถูกทำอยู่)
+p: กับกริยาช่วย เช่น can, must, should, might ใช้ กริยาช่วย + be + V3 เช่น This can be done tomorrow. / Phones must be turned off.
+p: ใช้บ่อยในข่าว ป้ายประกาศ และงานเขียนทางการ เช่น The road has been closed. / The meeting will be held on Monday.
+t: has / have been + V3 | My car has been stolen.
+t: will be + V3 | The results will be announced tomorrow.
+t: is / are being + V3 | The house is being painted.
+t: can / must / should + be + V3 | Phones must be turned off.
+e: My bag has been stolen. | กระเป๋าของฉันถูกขโมยไปแล้ว
+e: The road has been closed because of the flood. | ถนนถูกปิดเพราะน้ำท่วม
+e: The results will be announced next week. | ผลจะประกาศในสัปดาห์หน้า
+e: The house is being painted at the moment. | บ้านกำลังทาสีอยู่ตอนนี้
+e: This problem can be solved easily. | ปัญหานี้แก้ได้ง่ายๆ
+e: Phones must be turned off in the cinema. | ต้องปิดโทรศัพท์ในโรงหนัง
+e: The meeting has been cancelled. | การประชุมถูกยกเลิกแล้ว
+m: The road has been close. | The road has been closed. | passive ใช้กริยาช่อง 3
+m: The results will announced tomorrow. | The results will be announced tomorrow. | อนาคตใช้ will be + V3
+m: This can solved easily. | This can be solved easily. | กริยาช่วย + be + V3
+q c | My wallet has been ___. | กระเป๋าสตางค์ของฉันถูกขโมยไปแล้ว | stolen*; stole; steal | has been + V3
+q c | The results will ___ announced tomorrow. | ผลจะประกาศพรุ่งนี้ | be*; been; being | will be + V3
+q c | The house is ___ painted right now. | บ้านกำลังทาสีอยู่ตอนนี้ | being*; been; be | กำลังถูกทำอยู่ ใช้ is being + V3
+q c | Phones must be ___ off in class. | ต้องปิดโทรศัพท์ในห้องเรียน | turned*; turn; turning | must be + V3
+q c | The meeting ___ been cancelled. | การประชุมถูกยกเลิกแล้ว | has*; have; is | the meeting เป็นเอกพจน์ ใช้ has been
+q s | เลือกประโยคที่ถูก | This problem can be solved easily.*; This problem can solved easily.; This problem can be solve easily. | กริยาช่วย + be + V3
+q s | บอกว่าถนนถูกปิดแล้ว | The road has been closed.*; The road has closed by someone.; The road has been close. | has been + V3
+q o | ผลจะประกาศในสัปดาห์หน้า | The results will be announced next week. | will be + V3
+q w | All the tickets have been ___. (sell) | ตั๋วขายหมดแล้ว | sold | sell ช่อง 3 คือ sold
+q w | The new bridge will ___ opened next month. | สะพานใหม่จะเปิดเดือนหน้า | be | will be + V3
+
+# l57 | B2 | ให้คนอื่นทำให้: have something done
+goal: บอกได้ว่าเราจ้างหรือให้คนอื่นทำอะไรให้
+p: have + สิ่งของ + กริยาช่อง 3 ใช้เมื่อเราไม่ได้ทำเอง แต่ให้คนอื่นทำให้ (มักเป็นการจ้าง) เช่น I had my hair cut yesterday. แปลว่า เมื่อวานฉันไปตัดผมมา (ช่างตัดให้)
+p: ใช้ได้ทุก tense โดยเปลี่ยนรูปของ have เช่น I'm having my car repaired. / I'll have it done tomorrow. ภาษาพูดใช้ get แทน have ได้ เช่น I need to get my phone fixed.
+p: ถ้าพูดว่า I cut my hair. แปลว่า ฉันตัดผมเอง ซึ่งต่างกัน และรูปนี้ยังใช้กับเรื่องร้ายที่เกิดกับเราได้ เช่น She had her bag stolen. แปลว่า เธอโดนขโมยกระเป๋า
+t: have + สิ่งของ + V3 | I had my hair cut.
+t: get + สิ่งของ + V3 (ภาษาพูด) | I got my phone fixed.
+t: am having / will have + สิ่งของ + V3 | We're having our house painted.
+t: had + สิ่งของ + V3 (เรื่องร้าย) | He had his car stolen.
+e: I had my hair cut yesterday. | เมื่อวานฉันไปตัดผมมา
+e: We're having our kitchen painted this week. | สัปดาห์นี้เราจ้างคนมาทาสีห้องครัว
+e: I need to get my phone fixed. | ฉันต้องเอาโทรศัพท์ไปซ่อม
+e: She had her eyes tested last month. | เดือนที่แล้วเธอไปตรวจสายตามา
+e: Where do you have your car washed? | คุณเอารถไปล้างที่ไหน
+e: He had his wallet stolen on the bus. | เขาโดนขโมยกระเป๋าสตางค์บนรถเมล์
+e: I'll have the documents sent to you. | ฉันจะให้คนส่งเอกสารไปให้คุณ
+m: I had cut my hair at the shop. | I had my hair cut at the shop. | ลำดับคือ have + สิ่งของ + V3
+m: I need to get my phone fix. | I need to get my phone fixed. | หลังสิ่งของใช้กริยาช่อง 3
+m: She had stolen her bag. | She had her bag stolen. | โดนขโมย ใช้ had + สิ่งของ + V3
+q c | I had my hair ___ yesterday. | เมื่อวานฉันไปตัดผมมา | cut*; cutting; to cut | have + สิ่งของ + V3 (cut ช่อง 3 คือ cut)
+q c | We're having our house ___. | เรากำลังจ้างคนมาทาสีบ้าน | painted*; paint; painting | have + สิ่งของ + V3
+q c | I need to get my car ___. | ฉันต้องเอารถไปซ่อม | repaired*; repair; to repair | get + สิ่งของ + V3
+q c | He ___ his phone stolen at the market. | เขาโดนขโมยโทรศัพท์ที่ตลาด | had*; did; was | เรื่องร้ายที่เกิดกับเรา ใช้ had + สิ่งของ + V3
+q c | Where do you ___ your clothes cleaned? | คุณเอาเสื้อผ้าไปซักที่ไหน | have*; make; do | have + สิ่งของ + V3
+q s | บอกว่าเพิ่งไปตรวจสายตามา | I had my eyes tested.*; I tested my eyes by a doctor.; I had tested my eyes by a doctor. | ให้คนอื่นทำให้ ใช้ have + สิ่งของ + V3
+q s | เลือกประโยคที่ถูก | She had her bag stolen on the train.*; She had stolen her bag on the train.; She was stolen her bag on the train. | โดนขโมย ใช้ had + สิ่งของ + V3
+q o | ฉันต้องเอาโทรศัพท์ไปซ่อม | I need to get my phone fixed. | get + สิ่งของ + V3
+q w | I'll have the letter ___ to you tomorrow. (send) | พรุ่งนี้ฉันจะให้คนส่งจดหมายไปให้คุณ | sent | have + สิ่งของ + V3
+q w | We had our windows ___ last week. (clean) | สัปดาห์ที่แล้วเราจ้างคนมาทำความสะอาดหน้าต่าง | cleaned | have + สิ่งของ + V3
+
+# l58 | B2 | ข้อมูลเสริมคั่นด้วยจุลภาค: , who ..., which ...
+goal: เพิ่มข้อมูลเสริมเกี่ยวกับคนหรือสิ่งของด้วยประโยคย่อยที่มีจุลภาค
+p: ประโยคย่อยแบบนี้ให้ข้อมูลเสริม ไม่ได้ใช้ระบุว่าหมายถึงใคร ต้องมีจุลภาคคั่น เช่น My brother, who lives in Japan, is a doctor. (มีพี่ชายคนเดียว เรื่องที่อยู่ญี่ปุ่นเป็นข้อมูลเสริม)
+p: แบบนี้ห้ามใช้ that และห้ามละ who หรือ which ใช้ who กับคน which กับสิ่งของ where กับสถานที่ และ whose แปลว่า ซึ่ง...ของเขา
+p: which ใช้แทนทั้งประโยคข้างหน้าได้ เช่น He didn't call me, which made me angry. แปลว่า เขาไม่โทรมา ซึ่งทำให้ฉันโกรธ
+t: คำนาม, who ..., ... | My sister, who is a nurse, works at night.
+t: คำนาม, which ..., ... | My phone, which I bought last year, is broken.
+t: สถานที่, where ... | Chiang Mai, where I was born, is in the north.
+t: ประโยค, which ... (แทนทั้งเรื่อง) | It rained all day, which was annoying.
+e: My brother, who lives in Japan, is a doctor. | พี่ชายของฉันซึ่งอาศัยอยู่ที่ญี่ปุ่นเป็นหมอ
+e: Our teacher, whose husband is a pilot, has been to many countries. | ครูของเราซึ่งสามีเป็นนักบิน เคยไปมาแล้วหลายประเทศ
+e: My laptop, which I bought last year, is already broken. | แล็ปท็อปของฉันซึ่งซื้อมาเมื่อปีที่แล้ว เสียแล้ว
+e: Chiang Mai, where I was born, is a beautiful city. | เชียงใหม่ซึ่งเป็นที่ที่ฉันเกิด เป็นเมืองที่สวยงาม
+e: He didn't call me, which made me angry. | เขาไม่โทรมา ซึ่งทำให้ฉันโกรธ
+e: The train was late, which was a big problem. | รถไฟมาช้า ซึ่งเป็นปัญหาใหญ่
+e: I met Tom, who told me the news. | ฉันเจอทอม ซึ่งเป็นคนเล่าข่าวนี้ให้ฉันฟัง
+m: My mother, that is a teacher, loves books. | My mother, who is a teacher, loves books. | แบบมีจุลภาคห้ามใช้ that
+m: She didn't come, what was strange. | She didn't come, which was strange. | แทนทั้งเรื่องใช้ which
+m: My car which is very old still works. | My car, which is very old, still works. | ข้อมูลเสริมต้องมีจุลภาคคั่น
+q c | My sister, ___ lives in London, is a nurse. | พี่สาวของฉันซึ่งอาศัยอยู่ในลอนดอนเป็นพยาบาล | who*; that; which | ข้อมูลเสริมเกี่ยวกับคนใช้ who และห้ามใช้ that
+q c | My phone, ___ I bought last month, is already broken. | โทรศัพท์ของฉันซึ่งซื้อมาเมื่อเดือนที่แล้ว เสียแล้ว | which*; that; who | ข้อมูลเสริมเกี่ยวกับสิ่งของใช้ which
+q c | He failed the test, ___ made him very sad. | เขาสอบตก ซึ่งทำให้เขาเศร้ามาก | which*; what; that | แทนทั้งเรื่องใช้ which
+q c | Chiang Mai, ___ I was born, is in the north. | เชียงใหม่ซึ่งเป็นที่ที่ฉันเกิด อยู่ทางภาคเหนือ | where*; which; that | ข้อมูลเสริมเกี่ยวกับสถานที่ใช้ where
+q c | Our neighbor, ___ dog barks all night, is very nice. | เพื่อนบ้านของเราซึ่งสุนัขของเขาเห่าทั้งคืน เป็นคนดีมาก | whose*; who; which | ซึ่ง...ของเขา ใช้ whose
+q s | เลือกประโยคที่ถูก | My father, who is sixty, still plays football.*; My father, that is sixty, still plays football.; My father who is sixty, still plays football. | ข้อมูลเสริมใช้ who และมีจุลภาคทั้งสองข้าง
+q s | เลือกประโยคที่ถูก | The bus was late, which made us angry.*; The bus was late, what made us angry.; The bus was late, that made us angry. | แทนทั้งเรื่องใช้ which
+q o | เขาไม่โทรมา ซึ่งทำให้ฉันโกรธ | He didn't call me, which made me angry. | which แทนทั้งเรื่อง
+q w | I met Tom, ___ told me the news. | ฉันเจอทอม ซึ่งเป็นคนเล่าข่าวนี้ให้ฉันฟัง | who | ข้อมูลเสริมเกี่ยวกับคนใช้ who
+q w | The hotel, ___ was near the beach, was very expensive. | โรงแรมซึ่งอยู่ใกล้ชายหาด แพงมาก | which | ข้อมูลเสริมเกี่ยวกับสิ่งของใช้ which

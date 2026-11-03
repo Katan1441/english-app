@@ -1,0 +1,153 @@
+# r1 | A1 | f1 | Hello, I'm Ploy | สวัสดี ฉันชื่อพลอย
+s: Hello! My name is Ploy. | สวัสดี ฉันชื่อพลอย
+s: I am twenty years old. | ฉันอายุยี่สิบปี
+s: I am from Chiang Mai, but I live in Bangkok now. | ฉันมาจากเชียงใหม่ แต่ตอนนี้ฉันอาศัยอยู่ที่กรุงเทพฯ
+s: I am a student at a university. | ฉันเป็นนักศึกษามหาวิทยาลัย
+s: I live in a small room in a dorm. | ฉันอยู่ห้องเล็กๆ ในหอพัก
+s: My best friend is Ton. | เพื่อนสนิทของฉันชื่อต้น
+s: He is funny and kind. | เขาตลกและใจดี
+s: We study English together every day. | เราเรียนภาษาอังกฤษด้วยกันทุกวัน
+q: พลอยอายุเท่าไร | 20 ปี*; 12 ปี; 22 ปี | twenty แปลว่า ยี่สิบ
+q: ตอนนี้พลอยอาศัยอยู่ที่ไหน | กรุงเทพฯ*; เชียงใหม่; ภูเก็ต | I live in Bangkok now. แปลว่า ตอนนี้ฉันอาศัยอยู่ที่กรุงเทพฯ
+q: พลอยกับต้นทำอะไรด้วยกันทุกวัน | เรียนภาษาอังกฤษ*; ทำอาหาร; เล่นฟุตบอล | We study English together every day.
+
+# r2 | A1 | m1 | My Room | ห้องของผม
+s: Hi, I'm Ton. This is my room. | สวัสดีครับ ผมชื่อต้น นี่คือห้องของผม
+s: It is not big, but it is clean. | ห้องไม่ใหญ่ แต่สะอาด
+s: There is a bed next to the window. | มีเตียงอยู่ข้างหน้าต่าง
+s: There is a desk and a chair, too. | มีโต๊ะกับเก้าอี้ด้วย
+s: My computer is on the desk. | คอมพิวเตอร์ของผมอยู่บนโต๊ะ
+s: There are some books under the bed. | มีหนังสืออยู่ใต้เตียงหลายเล่ม
+s: I like my room because it is quiet. | ผมชอบห้องของผมเพราะมันเงียบ
+q: เตียงอยู่ตรงไหน | ข้างหน้าต่าง*; ใต้โต๊ะ; ข้างประตู | next to the window แปลว่า ข้างหน้าต่าง
+q: คอมพิวเตอร์อยู่ที่ไหน | บนโต๊ะ*; ใต้เตียง; บนเตียง | on the desk แปลว่า บนโต๊ะ
+q: ทำไมต้นชอบห้องของเขา | เพราะห้องเงียบ*; เพราะห้องใหญ่; เพราะห้องมีทีวี | because it is quiet แปลว่า เพราะมันเงียบ
+
+# r3 | A1 | f1 | Ploy's Day | หนึ่งวันของพลอย
+s: Ploy gets up at six thirty every morning. | พลอยตื่นนอนตอนหกโมงครึ่งทุกเช้า
+s: She takes a shower and drinks a glass of milk. | เธออาบน้ำ แล้วดื่มนมหนึ่งแก้ว
+s: Her first class starts at eight o'clock. | คาบเรียนแรกของเธอเริ่มตอนแปดโมง
+s: She has lunch with her friends at twelve. | เธอกินข้าวกลางวันกับเพื่อนๆ ตอนเที่ยง
+s: In the afternoon, she studies in the library. | ตอนบ่าย เธออ่านหนังสือในห้องสมุด
+s: She goes back to her dorm at five. | เธอกลับหอตอนห้าโมงเย็น
+s: In the evening, she watches videos and practices English. | ตอนเย็น เธอดูวิดีโอและฝึกภาษาอังกฤษ
+s: She goes to bed at eleven. | เธอเข้านอนตอนห้าทุ่ม
+q: พลอยตื่นนอนกี่โมง | หกโมงครึ่ง*; แปดโมง; ห้าโมง | six thirty แปลว่า หกโมงครึ่ง
+q: ตอนบ่ายพลอยทำอะไร | อ่านหนังสือในห้องสมุด*; นอนหลับ; ไปทำงาน | In the afternoon, she studies in the library.
+q: พลอยเข้านอนกี่โมง | ห้าทุ่ม*; สี่ทุ่ม; เที่ยงคืน | at eleven คือตอนสิบเอ็ดนาฬิกา หรือห้าทุ่ม
+
+# r4 | A1 | talk | At the Coffee Shop | ที่ร้านกาแฟ
+who: A=Staff|พนักงาน|m2 ; B=Ploy|พลอย|f1
+s: A: Good morning! What would you like? | สวัสดีครับ รับอะไรดีครับ
+s: B: Can I have an iced coffee, please? | ขอกาแฟเย็นหนึ่งแก้วค่ะ
+s: A: Sure. Small or large? | ได้ครับ แก้วเล็กหรือแก้วใหญ่ครับ
+s: B: Small, please. How much is it? | แก้วเล็กค่ะ เท่าไรคะ
+s: A: It's fifty baht. | ห้าสิบบาทครับ
+s: B: Here you are. | นี่ค่ะ
+s: A: Thank you. Please wait a minute. | ขอบคุณครับ รอสักครู่นะครับ
+s: B: OK. Thanks! | ได้ค่ะ ขอบคุณค่ะ
+q: พลอยสั่งอะไร | กาแฟเย็นแก้วเล็ก*; กาแฟร้อนแก้วใหญ่; ชาเย็นแก้วเล็ก | an iced coffee คือกาแฟเย็น และพลอยตอบว่า Small
+q: กาแฟราคาเท่าไร | 50 บาท*; 15 บาท; 60 บาท | fifty คือ ห้าสิบ ส่วน fifteen คือ สิบห้า
+q: ประโยค Here you are. ใช้ตอนไหน | ตอนยื่นของหรือเงินให้คนอื่น*; ตอนบอกลา; ตอนขอโทษ | Here you are. แปลว่า นี่ครับ หรือ นี่ค่ะ ใช้ตอนยื่นของให้
+
+# r5 | A1 | m1 | My Family | ครอบครัวของผม
+s: There are five people in my family. | ครอบครัวของผมมีห้าคน
+s: My father is a farmer, and my mother has a small shop. | พ่อของผมเป็นชาวนา ส่วนแม่มีร้านค้าเล็กๆ
+s: I have one older sister and one younger brother. | ผมมีพี่สาวหนึ่งคนและน้องชายหนึ่งคน
+s: My sister is a nurse. She works at a hospital. | พี่สาวของผมเป็นพยาบาล เธอทำงานที่โรงพยาบาล
+s: My brother is fifteen. He loves football. | น้องชายของผมอายุสิบห้า เขารักฟุตบอลมาก
+s: They live in a village in Khon Kaen. | พวกเขาอาศัยอยู่ในหมู่บ้านแห่งหนึ่งที่ขอนแก่น
+s: I call my mother every Sunday. | ผมโทรหาแม่ทุกวันอาทิตย์
+s: I miss them a lot. | ผมคิดถึงพวกเขามาก
+q: ครอบครัวของต้นมีกี่คน | 5 คน*; 4 คน; 3 คน | There are five people in my family.
+q: พี่สาวของต้นทำงานอะไร | พยาบาล*; ครู; ชาวนา | My sister is a nurse.
+q: ต้นโทรหาแม่เมื่อไร | ทุกวันอาทิตย์*; ทุกวัน; ทุกวันเสาร์ | every Sunday แปลว่า ทุกวันอาทิตย์
+
+# r6 | A1 | talk | What's the Weather Like? | อากาศเป็นอย่างไร
+who: A=Ton|ต้น|m1 ; B=Ploy|พลอย|f1
+s: A: Hi, Ploy. Are you going out? | หวัดดีพลอย จะออกไปข้างนอกเหรอ
+s: B: Yes, I want to go to the market. | ใช่ ฉันอยากไปตลาด
+s: A: Look outside. It's very cloudy. | ดูข้างนอกสิ เมฆครึ้มมากเลย
+s: B: Oh no. Is it going to rain? | แย่จัง ฝนจะตกไหม
+s: A: I think so. Take an umbrella with you. | ผมว่าตกนะ เอาร่มไปด้วยสิ
+s: B: Good idea. Thanks, Ton! | ดีเลย ขอบใจนะต้น
+q: พลอยจะไปที่ไหน | ตลาด*; มหาวิทยาลัย; ร้านกาแฟ | I want to go to the market.
+q: อากาศข้างนอกเป็นอย่างไร | เมฆครึ้ม*; แดดจัด; หิมะตก | cloudy แปลว่า มีเมฆมาก
+q: ต้นแนะนำให้พลอยทำอะไร | เอาร่มไปด้วย*; อยู่บ้าน; ใส่เสื้อกันหนาว | Take an umbrella with you.
+
+# r7 | A1 | f1 | Shopping at the Market | ซื้อของที่ตลาด
+s: On Saturday morning, Ploy goes to the market with her mother. | เช้าวันเสาร์ พลอยไปตลาดกับแม่
+s: The market is busy and noisy. | ตลาดคนเยอะและเสียงดัง
+s: They buy fruit, vegetables, and some fish. | พวกเธอซื้อผลไม้ ผัก และปลานิดหน่อย
+s: Ploy wants some mangoes. | พลอยอยากได้มะม่วง
+s: One kilo costs sixty baht. | หนึ่งกิโลราคาหกสิบบาท
+s: Her mother buys two kilos. | แม่ของเธอซื้อสองกิโล
+s: They also eat noodles at a small shop. | พวกเธอกินก๋วยเตี๋ยวที่ร้านเล็กๆ ด้วย
+s: Ploy is happy because the food is cheap and delicious. | พลอยมีความสุขเพราะอาหารถูกและอร่อย
+q: พลอยไปตลาดกับใคร | แม่*; ต้น; พี่สาว | with her mother แปลว่า กับแม่ของเธอ
+q: มะม่วงกิโลละเท่าไร | 60 บาท*; 16 บาท; 70 บาท | sixty คือ หกสิบ ส่วน sixteen คือ สิบหก
+q: แม่ซื้อมะม่วงกี่กิโล | 2 กิโล*; 1 กิโล; 3 กิโล | Her mother buys two kilos.
+
+# r8 | A1 | talk | Where Is the Bank? | ธนาคารอยู่ที่ไหน
+who: A=Tourist|นักท่องเที่ยว|f3 ; B=Ton|ต้น|m1
+s: A: Excuse me. Is there a bank near here? | ขอโทษค่ะ แถวนี้มีธนาคารไหมคะ
+s: B: Yes, there is. Go straight along this road. | มีครับ เดินตรงไปตามถนนเส้นนี้
+s: B: Then turn left at the traffic lights. | แล้วเลี้ยวซ้ายที่สัญญาณไฟจราจร
+s: B: The bank is next to the post office. | ธนาคารอยู่ข้างที่ทำการไปรษณีย์ครับ
+s: A: Is it far? | ไกลไหมคะ
+s: B: No, it's about five minutes on foot. | ไม่ไกลครับ เดินประมาณห้านาที
+s: A: Thank you very much! | ขอบคุณมากค่ะ
+s: B: You're welcome. | ยินดีครับ
+q: นักท่องเที่ยวกำลังหาอะไร | ธนาคาร*; ไปรษณีย์; โรงพยาบาล | Is there a bank near here?
+q: ที่สัญญาณไฟจราจรต้องเลี้ยวไปทางไหน | ซ้าย*; ขวา; ไม่ต้องเลี้ยว | turn left แปลว่า เลี้ยวซ้าย
+q: เดินไปธนาคารใช้เวลาเท่าไร | ประมาณ 5 นาที*; ประมาณ 15 นาที; ประมาณ 1 ชั่วโมง | about five minutes on foot แปลว่า เดินประมาณห้านาที
+
+# r9 | A1 | m1 | A Day at University | หนึ่งวันที่มหาวิทยาลัย
+s: I study engineering at a university in Bangkok. | ผมเรียนวิศวกรรมที่มหาวิทยาลัยแห่งหนึ่งในกรุงเทพฯ
+s: I go to university by bus. It takes thirty minutes. | ผมไปมหาวิทยาลัยด้วยรถเมล์ ใช้เวลาสามสิบนาที
+s: I have three classes today. | วันนี้ผมมีเรียนสามวิชา
+s: My favorite class is math because the teacher is good. | วิชาที่ผมชอบที่สุดคือคณิตศาสตร์ เพราะอาจารย์สอนดี
+s: English is difficult for me, but I try hard. | ภาษาอังกฤษยากสำหรับผม แต่ผมก็พยายามเต็มที่
+s: After class, I play basketball with my friends. | หลังเลิกเรียน ผมเล่นบาสเกตบอลกับเพื่อนๆ
+s: Then we eat dinner together near the university. | จากนั้นเรากินข้าวเย็นด้วยกันแถวมหาวิทยาลัย
+q: ต้นไปมหาวิทยาลัยด้วยอะไร | รถเมล์*; รถไฟฟ้า; จักรยาน | by bus แปลว่า ด้วยรถเมล์
+q: วิชาที่ต้นชอบที่สุดคืออะไร | คณิตศาสตร์*; ภาษาอังกฤษ; ประวัติศาสตร์ | My favorite class is math.
+q: หลังเลิกเรียน ต้นทำอะไร | เล่นบาสเกตบอล*; ทำงานพิเศษ; กลับบ้านทันที | After class, I play basketball with my friends.
+
+# r10 | A1 | talk | At the Restaurant | ที่ร้านอาหาร
+who: A=Waiter|พนักงานเสิร์ฟ|m2 ; B=Ploy|พลอย|f1
+s: A: Hello. Are you ready to order? | สวัสดีครับ พร้อมสั่งอาหารหรือยังครับ
+s: B: Yes. I'd like fried rice with chicken, please. | ค่ะ ขอข้าวผัดไก่ค่ะ
+s: A: Would you like something to drink? | รับเครื่องดื่มอะไรไหมครับ
+s: B: A glass of water, please. | ขอน้ำเปล่าหนึ่งแก้วค่ะ
+s: A: Do you want it spicy? | อยากให้เผ็ดไหมครับ
+s: B: Just a little, please. I can't eat very spicy food. | นิดเดียวค่ะ ฉันกินเผ็ดมากไม่ได้
+s: A: No problem. It'll be ready in ten minutes. | ได้ครับ อีกสิบนาทีได้ครับ
+q: พลอยสั่งอาหารอะไร | ข้าวผัดไก่*; ข้าวผัดหมู; ก๋วยเตี๋ยวไก่ | fried rice with chicken แปลว่า ข้าวผัดไก่
+q: พลอยสั่งเครื่องดื่มอะไร | น้ำเปล่า*; น้ำส้ม; กาแฟ | A glass of water, please.
+q: ทำไมพลอยขอเผ็ดนิดเดียว | เพราะกินเผ็ดมากไม่ได้*; เพราะไม่ชอบไก่; เพราะรีบ | I can't eat very spicy food.
+
+# r11 | A1 | f1 | My Friend Anna | แอนนาเพื่อนของฉัน
+s: Anna is my friend from England. | แอนนาเป็นเพื่อนของฉันจากอังกฤษ
+s: She is an exchange student at my university. | เธอเป็นนักศึกษาแลกเปลี่ยนที่มหาวิทยาลัยของฉัน
+s: She is tall and has short brown hair. | เธอตัวสูงและมีผมสั้นสีน้ำตาล
+s: Anna can speak a little Thai. | แอนนาพูดภาษาไทยได้นิดหน่อย
+s: She loves Thai food, especially mango sticky rice. | เธอชอบอาหารไทยมาก โดยเฉพาะข้าวเหนียวมะม่วง
+s: I help her with Thai, and she helps me with English. | ฉันช่วยเธอเรื่องภาษาไทย และเธอช่วยฉันเรื่องภาษาอังกฤษ
+s: We meet every Wednesday after class. | เราเจอกันทุกวันพุธหลังเลิกเรียน
+q: แอนนามาจากประเทศอะไร | อังกฤษ*; อเมริกา; ออสเตรเลีย | from England แปลว่า มาจากอังกฤษ
+q: แอนนาชอบกินอะไรเป็นพิเศษ | ข้าวเหนียวมะม่วง*; ส้มตำ; ก๋วยเตี๋ยว | especially mango sticky rice แปลว่า โดยเฉพาะข้าวเหนียวมะม่วง
+q: พลอยกับแอนนาเจอกันเมื่อไร | ทุกวันพุธหลังเลิกเรียน*; ทุกวันเสาร์ตอนเช้า; ทุกวันหลังกินข้าว | every Wednesday after class
+
+# r12 | A1 | talk | Can You Help Me? | ช่วยหน่อยได้ไหม
+who: A=Ploy|พลอย|f1 ; B=Ton|ต้น|m1
+s: A: Ton, are you busy now? | ต้น ตอนนี้ยุ่งอยู่ไหม
+s: B: No, I'm not. What's up? | ไม่ยุ่ง มีอะไรเหรอ
+s: A: My computer doesn't work. Can you help me? | คอมพิวเตอร์ของฉันใช้ไม่ได้ ช่วยหน่อยได้ไหม
+s: B: Sure. Let me see. | ได้สิ ขอดูหน่อย
+s: B: Look. The power cable is not connected. | ดูสิ สายไฟไม่ได้เสียบอยู่
+s: A: Oh! I feel so silly. Thank you! | โอ้ รู้สึกโง่จัง ขอบใจนะ
+s: B: No problem. It happens to everyone. | ไม่เป็นไร ใครๆ ก็เคยเป็น
+q: พลอยมีปัญหาอะไร | คอมพิวเตอร์ใช้ไม่ได้*; โทรศัพท์หาย; ลืมการบ้าน | My computer doesn't work.
+q: สาเหตุของปัญหาคืออะไร | สายไฟไม่ได้เสียบ*; คอมพิวเตอร์พัง; ไม่มีอินเทอร์เน็ต | The power cable is not connected.
+q: No problem. แปลว่าอะไร | ไม่เป็นไร*; มีปัญหา; ไม่รู้ | No problem. ใช้ตอบเวลามีคนขอบคุณหรือขอโทษ

@@ -1,0 +1,84 @@
+# r25 | B1 | m1 | A Group Project | งานกลุ่ม
+s: This semester, my teacher put me in a group with four other students for a big project. | เทอมนี้ อาจารย์จับผมเข้ากลุ่มกับนักศึกษาอีกสี่คนเพื่อทำโปรเจกต์ใหญ่
+s: We had to design a simple app that helps students find cheap food near the university. | เราต้องออกแบบแอปง่ายๆ ที่ช่วยให้นักศึกษาหาอาหารราคาถูกแถวมหาวิทยาลัย
+s: At the beginning, everything went well, and everyone had good ideas. | ช่วงแรกทุกอย่างไปได้ดี และทุกคนมีไอเดียดีๆ
+s: However, after two weeks, one member stopped answering our messages. | แต่หลังจากสองสัปดาห์ สมาชิกคนหนึ่งเลิกตอบข้อความของพวกเรา
+s: The rest of us were worried because the deadline was getting closer. | พวกเราที่เหลือกังวล เพราะใกล้ถึงกำหนดส่งเข้าไปทุกที
+s: Instead of complaining to the teacher, we decided to talk to him first. | แทนที่จะไปฟ้องอาจารย์ เราตัดสินใจคุยกับเขาก่อน
+s: It turned out that his father was sick, and he had to help at the family shop every evening. | ปรากฏว่าพ่อของเขาป่วย และเขาต้องไปช่วยงานที่ร้านของครอบครัวทุกเย็น
+s: We gave him a smaller part of the work that he could do on weekends. | เราแบ่งงานส่วนที่เล็กลงให้เขา ซึ่งเขาทำได้ในวันหยุดสุดสัปดาห์
+s: In the end, we finished on time and got a good grade. | สุดท้ายเราทำเสร็จทันเวลาและได้เกรดดี
+s: I learned that it is better to ask questions before you judge someone. | ผมได้เรียนรู้ว่า ควรถามก่อนที่จะตัดสินใคร
+q: โปรเจกต์ของกลุ่มคืออะไร | ออกแบบแอปหาอาหารราคาถูก*; เขียนรายงานเรื่องอาหาร; เปิดร้านอาหาร | design a simple app that helps students find cheap food
+q: ทำไมสมาชิกคนหนึ่งหายไป | พ่อป่วยและต้องช่วยงานที่ร้าน*; ไม่อยากทำงานกลุ่ม; ลาออกจากมหาวิทยาลัย | his father was sick, and he had to help at the family shop
+q: ต้นได้เรียนรู้อะไร | ควรถามก่อนตัดสินคนอื่น*; ควรทำงานคนเดียว; ควรฟ้องอาจารย์ทันที | it is better to ask questions before you judge someone
+
+# r26 | B1 | talk | Studying Abroad | ไปเรียนต่อต่างประเทศ
+who: A=Anna|แอนนา|f2 ; B=Ploy|พลอย|f1
+s: A: Ploy, have you ever thought about studying abroad? | พลอย เคยคิดเรื่องไปเรียนต่อต่างประเทศไหม
+s: B: Yes, I'd love to do a master's degree in Australia one day. | เคยสิ สักวันฉันอยากไปเรียนปริญญาโทที่ออสเตรเลีย
+s: A: That sounds great. What's stopping you? | ฟังดูดีนะ แล้วอะไรที่ทำให้ยังไม่ไปล่ะ
+s: B: Mostly money and my English. My speaking isn't good enough yet. | ส่วนใหญ่เป็นเรื่องเงินกับภาษาอังกฤษ การพูดของฉันยังไม่ดีพอ
+s: A: You could apply for a scholarship. Many universities offer them to international students. | เธอสมัครทุนได้นะ มหาวิทยาลัยหลายแห่งให้ทุนนักศึกษาต่างชาติ
+s: A: And your English is better than you think. If you keep practicing, you'll be ready in a year or two. | แล้วภาษาอังกฤษของเธอก็ดีกว่าที่เธอคิดนะ ถ้าฝึกไปเรื่อยๆ อีกปีสองปีก็พร้อมแล้ว
+s: B: Really? Then maybe I should take an English test next year to see my level. | จริงเหรอ งั้นปีหน้าฉันน่าจะไปสอบภาษาอังกฤษดูว่าตัวเองอยู่ระดับไหน
+s: A: Good plan. I can help you prepare if you want. | แผนดีนะ ถ้าอยากให้ช่วย ฉันช่วยเตรียมตัวให้ได้
+q: พลอยอยากไปเรียนต่อที่ไหน | ออสเตรเลีย*; อังกฤษ; อเมริกา | a master's degree in Australia แปลว่า ปริญญาโทที่ออสเตรเลีย
+q: อะไรทำให้พลอยยังไม่ไป | เงินและภาษาอังกฤษ*; ครอบครัวไม่ให้ไป; ไม่มีมหาวิทยาลัยที่ชอบ | Mostly money and my English.
+q: แอนนาแนะนำอะไร | สมัครทุนและฝึกภาษาต่อไป*; ทำงานเก็บเงินสิบปี; เลิกคิดเรื่องนี้ | You could apply for a scholarship. If you keep practicing, you'll be ready.
+
+# r27 | B1 | f1 | Too Much Screen Time | ติดจอมากเกินไป
+s: Like many people my age, I used to spend hours on social media every day. | เหมือนคนรุ่นเดียวกันหลายคน ฉันเคยใช้เวลาหลายชั่วโมงต่อวันกับโซเชียลมีเดีย
+s: I checked my phone as soon as I woke up and again before I went to sleep. | ฉันเช็กโทรศัพท์ทันทีที่ตื่น และอีกครั้งก่อนนอน
+s: One day, I looked at my screen time and was shocked. It was almost six hours a day! | วันหนึ่ง ฉันดูเวลาที่ใช้หน้าจอแล้วตกใจมาก เกือบหกชั่วโมงต่อวัน
+s: I realized that I was always tired and that I hardly ever read books anymore. | ฉันรู้ตัวว่าตัวเองเหนื่อยตลอด และแทบไม่ได้อ่านหนังสือเลย
+s: So I decided to make some small changes. | ฉันเลยตัดสินใจเปลี่ยนแปลงเล็กๆ น้อยๆ
+s: I turned off most notifications and moved the apps off my home screen. | ฉันปิดการแจ้งเตือนเกือบทั้งหมด และย้ายแอปออกจากหน้าจอหลัก
+s: I also stopped using my phone in bed. | ฉันเลิกเล่นโทรศัพท์บนเตียงด้วย
+s: It wasn't easy at first, but after a month, my screen time dropped to two hours. | ตอนแรกไม่ง่ายเลย แต่ผ่านไปหนึ่งเดือน เวลาหน้าจอของฉันลดลงเหลือสองชั่วโมง
+s: Now I sleep better, and I use the extra time to study and exercise. | ตอนนี้ฉันนอนหลับดีขึ้น และใช้เวลาที่เหลือไปเรียนและออกกำลังกาย
+q: เมื่อก่อนพลอยใช้โซเชียลมีเดียวันละเท่าไร | เกือบ 6 ชั่วโมง*; 2 ชั่วโมง; 30 นาที | almost six hours a day แปลว่า เกือบหกชั่วโมงต่อวัน
+q: พลอยเปลี่ยนอะไรบ้าง | ปิดแจ้งเตือนและเลิกเล่นมือถือบนเตียง*; ลบบัญชีทั้งหมด; ซื้อโทรศัพท์ใหม่ | I turned off most notifications. I also stopped using my phone in bed.
+q: ผลที่ได้คืออะไร | นอนหลับดีขึ้นและมีเวลาเรียนมากขึ้น*; มีเพื่อนน้อยลง; เหนื่อยกว่าเดิม | Now I sleep better, and I use the extra time to study and exercise.
+
+# r28 | B1 | m1 | My First Internship | ฝึกงานครั้งแรก
+s: Last summer, I did a two-month internship at a company that makes car parts. | ซัมเมอร์ที่แล้ว ผมฝึกงานสองเดือนที่บริษัทที่ผลิตชิ้นส่วนรถยนต์
+s: On my first day, I was nervous because everyone seemed so busy. | วันแรกผมประหม่ามาก เพราะทุกคนดูยุ่งไปหมด
+s: My boss, Khun Nok, showed me around the factory and explained how the machines worked. | คุณนกหัวหน้าของผม พาผมเดินดูโรงงาน และอธิบายว่าเครื่องจักรทำงานอย่างไร
+s: My main job was to check the quality of the parts and write a short report every day. | งานหลักของผมคือตรวจสอบคุณภาพชิ้นส่วน และเขียนรายงานสั้นๆ ทุกวัน
+s: Some of the engineers were from Japan, so we had to communicate in English. | วิศวกรบางคนมาจากญี่ปุ่น เราจึงต้องสื่อสารกันเป็นภาษาอังกฤษ
+s: At first, I was afraid of making mistakes, so I didn't say much. | ตอนแรกผมกลัวพูดผิด เลยไม่ค่อยพูด
+s: But I soon noticed that their English wasn't perfect either, and nobody cared about small mistakes. | แต่ไม่นานผมก็สังเกตว่าภาษาอังกฤษของพวกเขาก็ไม่ได้สมบูรณ์แบบ และไม่มีใครสนใจข้อผิดพลาดเล็กๆ
+s: What mattered was that we understood each other. | สิ่งที่สำคัญคือเราเข้าใจกัน
+s: By the end of the internship, I felt much more confident, both at work and in English. | พอจบการฝึกงาน ผมมั่นใจขึ้นมาก ทั้งเรื่องงานและภาษาอังกฤษ
+q: ต้นฝึกงานที่บริษัทแบบไหน | ผลิตชิ้นส่วนรถยนต์*; ร้านกาแฟ; ธนาคาร | a company that makes car parts
+q: งานหลักของต้นคืออะไร | ตรวจคุณภาพชิ้นส่วนและเขียนรายงาน*; ขายสินค้า; ซ่อมรถ | check the quality of the parts and write a short report
+q: ต้นได้เรียนรู้อะไรเรื่องภาษาอังกฤษ | การเข้าใจกันสำคัญกว่าการพูดไม่ผิดเลย*; ต้องพูดให้สมบูรณ์แบบเท่านั้น; คนญี่ปุ่นพูดอังกฤษไม่ได้ | What mattered was that we understood each other.
+
+# r29 | B1 | talk | Saving Money | การเก็บเงิน
+who: A=Ton|ต้น|m1 ; B=Ploy|พลอย|f1
+s: A: I don't understand where my money goes. It's only the twentieth, and I have almost nothing left. | ผมไม่เข้าใจเลยว่าเงินหายไปไหน เพิ่งวันที่ยี่สิบเอง เงินแทบไม่เหลือแล้ว
+s: B: Do you write down what you spend? | เธอจดรายจ่ายไหม
+s: A: No. I've never done that. | ไม่ ไม่เคยทำเลย
+s: B: You should try it for a month. When I started, I found out that I was spending too much on coffee and delivery food. | ลองทำดูสักเดือนสิ ตอนที่ฉันเริ่มจด ฉันพบว่าตัวเองใช้เงินกับกาแฟและอาหารเดลิเวอรีมากเกินไป
+s: A: That's probably my problem too. I order food almost every night. | นั่นน่าจะเป็นปัญหาของผมเหมือนกัน ผมสั่งอาหารเกือบทุกคืน
+s: B: If you cooked simple meals two or three times a week, you would save a lot. | ถ้าเธอทำอาหารง่ายๆ กินเองสัปดาห์ละสองสามครั้ง ก็จะประหยัดได้เยอะ
+s: A: You're right. And I'll put some money aside as soon as I get it, not at the end of the month. | ถูกของเธอ แล้วผมจะกันเงินเก็บไว้ทันทีที่ได้เงินมา ไม่ใช่รอสิ้นเดือน
+s: B: That's the best way. Save first, then spend! | นั่นแหละวิธีที่ดีที่สุด เก็บก่อนแล้วค่อยใช้
+q: ต้นมีปัญหาอะไร | เงินใกล้หมดก่อนสิ้นเดือน*; ทำบัตรหาย; ไม่มีงานทำ | It's only the twentieth, and I have almost nothing left.
+q: พลอยแนะนำให้ทำอะไรเป็นอย่างแรก | จดรายจ่ายสักหนึ่งเดือน*; ขอเงินพ่อแม่; หางานพิเศษ | Do you write down what you spend? You should try it for a month.
+q: ประโยค If you cooked simple meals, you would save a lot. หมายถึงอะไร | ถ้าทำอาหารกินเองก็จะประหยัดได้มาก*; ทำอาหารเองแพงกว่า; ต้นทำอาหารเก่งอยู่แล้ว | If + อดีต, would + กริยา ใช้พูดถึงสิ่งที่ยังไม่เกิด ว่าถ้าทำแล้วจะเป็นอย่างไร
+
+# r30 | B1 | f1 | A Small Act of Kindness | น้ำใจเล็กๆ
+s: Last month, something happened that I will never forget. | เดือนที่แล้ว มีเรื่องหนึ่งเกิดขึ้นที่ฉันจะไม่มีวันลืม
+s: I was waiting for the train when I saw an old man who looked lost. | ตอนที่ฉันกำลังรอรถไฟฟ้า ฉันเห็นคุณลุงคนหนึ่งที่ดูเหมือนหลงทาง
+s: He was holding a piece of paper with an address in English. | เขาถือกระดาษแผ่นหนึ่งที่มีที่อยู่เป็นภาษาอังกฤษ
+s: Many people walked past him, but nobody stopped. | หลายคนเดินผ่านเขาไป แต่ไม่มีใครหยุด
+s: I asked him if he needed help, and he explained that he was visiting his daughter for the first time. | ฉันถามว่าเขาต้องการความช่วยเหลือไหม เขาอธิบายว่ากำลังจะไปหาลูกสาวเป็นครั้งแรก
+s: The address was only two stations away, so I decided to go with him. | ที่อยู่นั้นห่างไปแค่สองสถานี ฉันจึงตัดสินใจไปเป็นเพื่อนเขา
+s: When we arrived, his daughter ran out to meet us. She couldn't stop thanking me. | พอไปถึง ลูกสาวของเขาวิ่งออกมารับ เธอขอบคุณฉันไม่หยุดเลย
+s: I was late for class that day, but I didn't mind at all. | วันนั้นฉันไปเรียนสาย แต่ฉันไม่ถือเลย
+s: Sometimes a few minutes of your time can mean a lot to someone else. | บางครั้งเวลาเพียงไม่กี่นาทีของเรา ก็มีความหมายมากสำหรับคนอื่น
+q: คุณลุงมีปัญหาอะไร | หลงทาง*; ทำกระเป๋าหาย; ไม่สบาย | an old man who looked lost แปลว่า คุณลุงที่ดูเหมือนหลงทาง
+q: คุณลุงจะไปหาใคร | ลูกสาว*; หมอ; เพื่อนเก่า | he was visiting his daughter for the first time
+q: ข้อคิดของเรื่องนี้คืออะไร | เวลาไม่กี่นาทีของเราอาจมีความหมายมากกับคนอื่น*; อย่าคุยกับคนแปลกหน้า; ต้องไปเรียนให้ตรงเวลาเสมอ | Sometimes a few minutes of your time can mean a lot to someone else.
