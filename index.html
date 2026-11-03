@@ -465,7 +465,31 @@ button.tile b{color:var(--primary)}
 .big-lv{font-family:var(--f-en);font-weight:600;font-size:3rem;line-height:1}
 .hist{display:flex;flex-direction:column;gap:6px;font-size:.92rem}
 .hist li{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding:6px 0}
-@media (prefers-reduced-motion:reduce){.sheet.enter,.wsheet,.opt.pop{animation:none}.confetti{display:none}}
+
+/* speaking practice: mic buttons are mango so they stand apart from the teal listen buttons; the panel slides up over the page */
+.listen.round.mic{background:var(--sun-wash);color:var(--sun-ink)}
+.spk{position:fixed;inset:0;z-index:50;display:flex;align-items:flex-end;justify-content:center}
+.spk-shade{position:absolute;inset:0;background:var(--shade)}
+.spk-panel{position:relative;width:100%;max-width:640px;max-height:88vh;overflow-y:auto;background:var(--surface);border-radius:24px 24px 0 0;border-top:4px solid var(--sun-deep);box-shadow:0 -10px 30px var(--shade);padding:16px 16px calc(18px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:12px;animation:sheetUp .22s ease-out}
+.spk-head{display:flex;align-items:center;gap:10px}
+.spk-head h3{flex:1 1 auto;min-width:0}
+.spk-target{font-size:1.35rem;line-height:1.6;overflow-wrap:anywhere;background:var(--surface-2);border-radius:16px;padding:12px 14px}
+.spk-target .ok{color:var(--good);font-weight:600}
+.spk-target .miss{color:var(--bad);font-weight:600;text-decoration:underline wavy var(--bad);text-decoration-thickness:1.5px;text-underline-offset:5px}
+.spk-th{font-size:.95rem;color:var(--ink-soft);margin-top:-4px}
+.spk-heard{font-size:.95rem;color:var(--ink-soft);overflow-wrap:anywhere}
+.spk-heard:empty,.spk-msg:empty{display:none}
+.spk-heard .en{color:var(--ink);font-weight:500}
+.spk-msg{font-weight:600}
+.spk-msg.ok{color:var(--good)}
+.spk-msg.mid{color:var(--sun-ink)}
+.spk-msg.no{color:var(--bad)}
+.spk-msg.on{color:var(--primary)}
+.btn.spk-on{background:var(--bad);color:var(--on-bad);box-shadow:0 4px 0 var(--ink-soft)}
+.spk-play{display:flex;flex-wrap:wrap;gap:10px}
+.spk-play .btn{flex:1 1 9rem}
+@media (max-width:359px){.ex{grid-template-columns:minmax(0,1fr)}.ex .ex-say{grid-row:2}}
+@media (prefers-reduced-motion:reduce){.sheet.enter,.wsheet,.spk-panel,.opt.pop{animation:none}.confetti{display:none}}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -724,16 +748,21 @@ button.tile b{color:var(--primary)}
     if (!Snd.has(kind.charAt(0), W[n])) return '';
     return '<button type="button" class="listen round' + (text ? ' txt' : '') + '" data-act="say" data-k="' + kind + '" data-n="' + n + '" aria-label="' + esc(label) + '" title="' + esc(label) + '">' + (text ? esc(text) : ICON) + '</button>';
   }
+  var IC_MIC = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor"/><path d="M6 11a6 6 0 0 0 12 0M12 17v3.5M8.5 20.5h7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+  /* opens the speaking panel for this text; kind, c and k point at the model clip (Snd.playRef), th is the Thai meaning */
+  function micBtn(kind, c, k, text, th) {
+    return '<button type="button" class="listen round mic" data-act="sp-open" data-sk="' + kind + '" data-sc="' + c + '" data-sn="' + k + '" data-text="' + esc(text) + '" data-th="' + esc(th || '') + '" aria-label="ฝึกพูด" title="ฝึกพูด">' + IC_MIC + '</button>';
+  }
   function exBlock(w) {
     if (!w.x) return '';
-    var say = sayRound('s', w.n, 'ฟังประโยค') + sayRound('ss', w.n, 'ฟังประโยคช้าๆ', 'ช้า');
-    return '<div class="ex"><p class="ex-en">' + exHtml(w) + '</p>' + (say ? '<span class="ex-say">' + say + '</span>' : '') + '<p class="ex-th">' + esc(w.xt) + '</p></div>';
+    var say = sayRound('s', w.n, 'ฟังประโยค') + sayRound('ss', w.n, 'ฟังประโยคช้าๆ', 'ช้า') + micBtn('s', w.c, w.k, exPlain(w), w.xt);
+    return '<div class="ex"><p class="ex-en">' + exHtml(w) + '</p><span class="ex-say">' + say + '</span><p class="ex-th">' + esc(w.xt) + '</p></div>';
   }
   function wordRow(w, withLink, withEx) {
     return '<li class="word"><span class="word-en">' + esc(w.w) + ' <span class="pos">' + esc(posTh(w.p)) + '</span></span>' +
       '<span class="word-read">' + rd(w.r) + '</span>' +
       '<span class="word-th">' + esc(w.t) + '</span>' +
-      '<span class="word-side">' + sayRound('w', w.n, 'ฟังเสียง ' + w.w) + pips(boxOf(w.n)) +
+      '<span class="word-side"><span class="ex-say">' + sayRound('w', w.n, 'ฟังเสียง ' + w.w) + micBtn('w', w.c, w.k, w.w, w.t) + '</span>' + pips(boxOf(w.n)) +
       (withLink ? '<button type="button" class="word-go" data-act="open-set" data-c="' + w.c + '" data-s="' + w.si + '">หมวด ' + catNo(w.c) + ' ชุดที่ ' + (w.si + 1) + '</button>' : '') +
       '</span>' + (withEx ? exBlock(w) : '') + '</li>';
   }
@@ -1097,6 +1126,249 @@ button.tile b{color:var(--primary)}
   /* the connection is back: try the sound files again */
   window.addEventListener('online', function () { if (AU && (Snd.fail || Snd.viaEl || Snd.msg)) Snd.reset(); });
 
+  /* ---------------- speaking practice ----------------
+     The mic button next to a word, an example sentence, a grammar example or a story line opens a panel over the page.
+     The learner says the text; the browser's speech recognition (Chrome on Android) writes down what it heard, and each
+     word of the text turns green when it was heard or red when it was missed. Where the browser allows, the voice is
+     recorded at the same time, so the learner can play it next to the model clip. Nothing is saved and nothing waits for it. */
+  var NUM1 = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+  var NUM10 = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+  function numWords(n) {
+    if (n < 20) return NUM1[n];
+    if (n < 100) return NUM10[Math.floor(n / 10)] + (n % 10 ? ' ' + NUM1[n % 10] : '');
+    if (n < 1000) return NUM1[Math.floor(n / 100)] + ' hundred' + (n % 100 ? ' ' + numWords(n % 100) : '');
+    return String(n);
+  }
+  var SPRON = /^(it|he|she|that|what|there|here|where|who|how|let)$/, SPEXP = { m: 'am', re: 'are', ve: 'have', ll: 'will', d: 'would' };
+  /* the words one written word stands for, in a form that compares well with what the recognizer writes:
+     "I'm" -> i am, "don't" -> do not, "20" -> twenty, "7:30" -> seven thirty, "well-known" -> well known */
+  function spKeys(raw) {
+    var w = String(raw).toLowerCase().replace(/[‘’ʼ`]/g, "'").replace(/^[^a-z0-9à-ÿ]+|[^a-z0-9à-ÿ]+$/g, '');
+    if (!w) return [];
+    var m = /^(\d+):(\d\d)$/.exec(w);
+    if (m) return spKeys(m[1]).concat(m[2] === '00' ? [] : spKeys(String(+m[2])));
+    if (/[-–—\/]/.test(w)) return w.split(/[-–—\/]+/).reduce(function (a, x) { return a.concat(spKeys(x)); }, []);
+    if (/^\d+$/.test(w)) return numWords(+w).split(' ');
+    var keys;
+    if (w === "can't" || w === 'cannot') keys = ['can', 'not'];
+    else if (w === "won't") keys = ['will', 'not'];
+    else if (/n't$/.test(w)) keys = [w.slice(0, -3), 'not'];
+    else if ((m = /^(.+)'(m|re|ve|ll|d)$/.exec(w))) keys = [m[1], SPEXP[m[2]]];
+    else if ((m = /^(.+)'s$/.exec(w)) && SPRON.test(m[1])) keys = [m[1], m[1] === 'let' ? 'us' : 'is'];
+    else keys = [w === 'okay' ? 'ok' : w];
+    return keys.map(function (k) { return k.replace(/[^a-z0-9à-ÿ]/g, ''); }).filter(function (k) { return k.length > 0; });
+  }
+  function spWords(text) { return String(text).split(/\s+/).filter(Boolean).map(function (d) { return { d: d, k: spKeys(d) }; }); }
+  /* which words of the text were heard, using the recognizer's guess (of several) that matches the most words in order */
+  function spGrade(text, alts) {
+    var tw = spWords(text), tk = [], own = [], best = null;
+    tw.forEach(function (t, i) { t.k.forEach(function (k) { tk.push(k); own.push(i); }); });
+    alts.forEach(function (a) {
+      var hk = [], n = tk.length, L = [], i, j, hit = {};
+      spWords(a).forEach(function (h) { hk = hk.concat(h.k); });
+      var m = hk.length;
+      for (i = 0; i <= n; i++) { L.push([]); for (j = 0; j <= m; j++) L[i].push(0); }
+      for (i = n - 1; i >= 0; i--) for (j = m - 1; j >= 0; j--) L[i][j] = tk[i] === hk[j] ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
+      i = 0; j = 0;
+      while (i < n && j < m) { if (tk[i] === hk[j]) { hit[i] = true; i++; j++; } else if (L[i + 1][j] >= L[i][j + 1]) i++; else j++; }
+      if (!best || L[0][0] > best.got) best = { got: L[0][0], hit: hit, heard: String(a).trim() };
+    });
+    var words = tw.map(function (t) { return { d: t.d, ok: true, key: t.k.length > 0 }; });
+    own.forEach(function (wi, ki) { if (!best || !best.hit[ki]) words[wi].ok = false; });
+    var keyed = words.filter(function (x) { return x.key; });
+    return { words: words, heard: best ? best.heard : '', ok: keyed.filter(function (x) { return x.ok; }).length, total: keyed.length };
+  }
+  function spStopTracks(s) { try { s.getTracks().forEach(function (t) { t.stop(); }); } catch (e) {} }
+  var SPMSG = {
+    'not-allowed': 'ยังไม่ได้อนุญาตให้ใช้ไมโครโฟน เปิดการตั้งค่าเว็บไซต์ใน Chrome แล้วอนุญาตไมโครโฟนให้แอปนี้',
+    'network': 'การตรวจเสียงพูดต้องต่ออินเทอร์เน็ต ลองใหม่เมื่อออนไลน์',
+    'audio-capture': 'หาไมโครโฟนไม่เจอ ดูว่าไม่มีแอปอื่นใช้ไมค์อยู่ แล้วลองอีกครั้ง',
+    'no-speech': 'ไม่ได้ยินเสียงพูด ลองพูดดังขึ้นหรือถือเครื่องใกล้ปากอีกนิด แล้วกดอีกครั้ง',
+    'other': 'ฟังเสียงไม่สำเร็จ ลองกดอีกครั้ง'
+  };
+  SPMSG['service-not-allowed'] = SPMSG['not-allowed'];
+  var Spk = {
+    el: null, ref: null, from: null, st: 'idle', seq: 0, rec: null, mr: null, stream: null, url: null, mine: null,
+    timer: null, solo: false, res: null, err: '', interim: '',
+    SR: function () { return window.SpeechRecognition || window.webkitSpeechRecognition || null; },
+    canRec: function () { return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder); },
+    open: function (btn) {
+      this.close();
+      if (view.name === 'story') rStop();
+      Snd.stop();
+      var g = function (a) { return btn.getAttribute(a) || ''; };
+      this.ref = { kind: g('data-sk'), c: parseInt(g('data-sc'), 10), k: parseInt(g('data-sn'), 10), text: g('data-text'), th: g('data-th') };
+      this.from = btn; this.st = 'idle'; this.res = null; this.err = ''; this.interim = ''; this.solo = false;
+      var one = this.ref.text.trim().indexOf(' ') < 0;
+      document.body.insertAdjacentHTML('beforeend', '<div class="spk" id="spk" role="dialog" aria-modal="true" aria-labelledby="spk-title">' +
+        '<div class="spk-shade" data-act="sp-close"></div><div class="spk-panel">' +
+        '<div class="spk-head"><h3 id="spk-title">ฝึกพูด' + (one ? 'คำนี้' : 'ประโยคนี้') + '</h3>' +
+        '<button type="button" class="iconbtn" id="spk-close" data-act="sp-close" aria-label="ปิด" title="ปิด">' + IC_X + '</button></div>' +
+        '<p class="spk-target en" id="spk-target"></p>' + (this.ref.th ? '<p class="spk-th">' + esc(this.ref.th) + '</p>' : '') +
+        '<p class="spk-heard" id="spk-heard"></p><p class="spk-msg" id="spk-msg" role="status" aria-live="polite"></p>' +
+        '<button type="button" class="btn wide" id="spk-mic" data-act="sp-mic"></button>' +
+        '<div class="spk-play"><button type="button" class="btn ghost small" id="spk-model" data-act="sp-model">' + ICON + 'ฟังต้นแบบ</button>' +
+        '<button type="button" class="btn ghost small" id="spk-mine" data-act="sp-mine" hidden>' + IC_PLAY + 'ฟังเสียงตัวเอง</button></div>' +
+        '<p class="note">ฝึกพูดไม่นับคะแนน พูดกี่รอบก็ได้ ฟังต้นแบบแล้วเทียบกับเสียงตัวเอง</p></div></div>');
+      this.el = document.getElementById('spk');
+      this.draw();
+      var f = document.getElementById('spk-mic');
+      try { (f && !f.disabled ? f : document.getElementById('spk-close')).focus(); } catch (e) {}
+    },
+    close: function () {
+      if (!this.el) return;
+      this.seq++;
+      clearTimeout(this.timer);
+      if (this.rec) { try { this.rec.abort(); } catch (e) {} this.rec = null; }
+      this.stopRec(true);
+      this.stopMine();
+      if (this.url) { try { URL.revokeObjectURL(this.url); } catch (e) {} this.url = null; }
+      if (this.el.parentNode) this.el.parentNode.removeChild(this.el);
+      this.el = null;
+      var b = this.from; this.from = null;
+      if (b && document.body.contains(b)) { try { b.focus(); } catch (e) {} }
+    },
+    draw: function () {
+      if (!this.el) return;
+      var SR = this.SR(), can = !!SR || this.canRec(), r = this.res, one = this.ref.text.trim().indexOf(' ') < 0;
+      var tg = document.getElementById('spk-target'), hd = document.getElementById('spk-heard'), ms = document.getElementById('spk-msg');
+      var mic = document.getElementById('spk-mic'), mine = document.getElementById('spk-mine');
+      tg.innerHTML = r ? r.words.map(function (x) { return '<span class="' + (x.ok ? 'ok' : 'miss') + '">' + esc(x.d) + '</span>'; }).join(' ') : esc(this.ref.text);
+      if (this.st === 'listen' && this.interim) hd.innerHTML = 'กำลังฟัง <span class="en">' + esc(this.interim) + '</span>';
+      else if (r) hd.innerHTML = r.heard ? 'เครื่องได้ยินว่า <span class="en">' + esc(r.heard) + '</span>' : 'เครื่องไม่ได้ยินคำไหนเลย';
+      else hd.textContent = '';
+      var msg = '', cls = '';
+      if (!SR) msg = 'เบราว์เซอร์นี้ตรวจเสียงพูดไม่ได้ ใช้ Chrome บนมือถือ Android จะตรวจได้ ตอนนี้ฟังต้นแบบแล้วพูดตามดังๆ' + (this.canRec() ? ' หรืออัดเสียงตัวเองไว้ฟังเทียบ' : '');
+      if (this.st === 'listen') { msg = SR ? 'กำลังฟัง พูดได้เลย' : 'กำลังอัดเสียง พูดได้เลย แล้วกดหยุด'; cls = 'on'; }
+      else if (this.err) { msg = SPMSG[this.err] || SPMSG.other; cls = 'no'; }
+      else if (r && r.ok === r.total) { msg = one ? 'ออกเสียงคำนี้ได้ถูกต้อง เก่งมาก' : 'ได้ยินครบทุกคำ เก่งมาก'; cls = 'ok'; }
+      else if (r) { msg = 'ได้ยินถูก ' + r.ok + ' จาก ' + r.total + ' คำ ' + (r.ok >= r.total * 0.6 ? 'ฝึกคำสีแดงอีกครั้ง' : 'ฟังต้นแบบก่อน แล้วพูดช้าๆ ชัดๆ'); cls = r.ok >= r.total * 0.6 ? 'mid' : 'no'; }
+      else if (this.st === 'done' && !SR && this.url) msg = 'อัดเสียงแล้ว กดฟังเสียงตัวเองเทียบกับต้นแบบ';
+      else if (SR) msg = 'กดปุ่มไมค์ แล้วพูด' + (one ? 'คำนี้' : 'ประโยคนี้') + 'ออกเสียงให้ชัด';
+      ms.textContent = msg; ms.className = 'spk-msg' + (cls ? ' ' + cls : '');
+      mic.disabled = !can;
+      mic.classList.toggle('spk-on', this.st === 'listen');
+      mic.innerHTML = this.st === 'listen' ? IC_STOP + 'หยุด' : IC_MIC + (!SR ? 'อัดเสียงตัวเอง' : (r || this.err ? 'พูดอีกครั้ง' : 'กดแล้วพูด'));
+      mine.hidden = !this.url || this.st === 'listen';
+    },
+    start: function () {
+      var self = this, SR = this.SR(), id = ++this.seq;
+      Snd.stop(); this.stopMine();
+      this.res = null; this.err = ''; this.interim = ''; this.st = 'listen';
+      this.draw();
+      function go() {
+        if (id !== self.seq) return;
+        if (SR) self.listen(id);
+        clearTimeout(self.timer);
+        self.timer = setTimeout(function () { if (id === self.seq) self.stop(); }, SR ? 15000 : 12000);
+      }
+      if (this.canRec() && !this.solo) {
+        navigator.mediaDevices.getUserMedia({ audio: true }).then(function (s) {
+          if (id !== self.seq) { spStopTracks(s); return; }
+          self.record(s); go();
+        }, function () {
+          if (id !== self.seq) return;
+          if (SR) { go(); return; }
+          self.st = 'done'; self.err = 'not-allowed'; self.draw();
+        });
+      } else go();
+    },
+    /* the learner pressed stop: the recognizer still sends what it heard, then ends */
+    stop: function () {
+      clearTimeout(this.timer);
+      if (this.rec) { try { this.rec.stop(); } catch (e) {} return; }
+      this.stopRec();
+      if (this.st === 'listen') { this.st = 'done'; this.draw(); }
+    },
+    listen: function (id) {
+      var self = this, SR = this.SR(), alts = [], err = '';
+      var r;
+      try {
+        r = new SR();
+        r.lang = 'en-US'; r.interimResults = true; r.maxAlternatives = 5; r.continuous = false;
+      } catch (e) { this.stopRec(true); this.st = 'done'; this.err = 'other'; this.draw(); return; }
+      r.onresult = function (e) {
+        if (id !== self.seq) return;
+        var head = [], last = null, part = '';
+        for (var i = 0; i < e.results.length; i++) {
+          var x = e.results[i];
+          if (x.isFinal) { if (last) head.push(last[0].transcript); last = x; } else part += x[0].transcript;
+        }
+        if (last) {
+          alts = [];
+          for (var j = 0; j < last.length; j++) alts.push(head.concat([last[j].transcript]).join(' '));
+        }
+        self.interim = (head.concat(last ? [last[0].transcript] : []).join(' ') + ' ' + part).trim();
+        self.draw();
+      };
+      r.onerror = function (e) { err = (e && e.error) || 'other'; };
+      r.onend = function () {
+        if (id !== self.seq) return;
+        self.rec = null;
+        /* on some phones the recognizer cannot share the microphone with the recording: listen again without recording */
+        if (err === 'audio-capture' && self.stream && !alts.length) { self.solo = true; self.stopRec(true); self.listen(id); return; }
+        clearTimeout(self.timer);
+        self.stopRec();
+        self.st = 'done'; self.interim = '';
+        if (alts.length) {
+          self.res = spGrade(self.ref.text, alts);
+          if (self.res.ok === self.res.total) FX.play('ok');
+        } else self.err = err === 'aborted' ? 'no-speech' : (err || 'no-speech');
+        self.draw();
+      };
+      try { r.start(); this.rec = r; } catch (e) { this.stopRec(true); this.st = 'done'; this.err = 'other'; this.draw(); }
+    },
+    record: function (s) {
+      var self = this, chunks = [], mr;
+      this.stream = s;
+      try { mr = new MediaRecorder(s); } catch (e) { spStopTracks(s); this.stream = null; return; }
+      mr.ondataavailable = function (e) { if (e.data && e.data.size) chunks.push(e.data); };
+      mr.onstop = function () {
+        spStopTracks(s);
+        if (self.stream === s) self.stream = null;
+        if (mr.drop || !chunks.length || !self.el) return;
+        if (self.url) { try { URL.revokeObjectURL(self.url); } catch (e) {} }
+        self.url = URL.createObjectURL(new Blob(chunks, { type: mr.mimeType || 'audio/webm' }));
+        self.draw();
+      };
+      try { mr.start(); this.mr = mr; } catch (e) { spStopTracks(s); this.stream = null; }
+    },
+    /* drop: throw the recording away (the panel closed, or the recognizer needs the microphone alone) */
+    stopRec: function (drop) {
+      var mr = this.mr; this.mr = null;
+      if (mr) { mr.drop = !!drop; try { if (mr.state !== 'inactive') mr.stop(); else if (this.stream) spStopTracks(this.stream); } catch (e) {} }
+      else if (this.stream) { spStopTracks(this.stream); this.stream = null; }
+    },
+    model: function (btn) {
+      this.stopMine();
+      var r = this.ref;
+      Snd.playRef(r.kind, r.c, r.k, r.text, false, btn);
+    },
+    playMine: function () {
+      if (!this.url) return;
+      Snd.stop(); this.stopMine();
+      try { this.mine = new Audio(this.url); var p = this.mine.play(); if (p && p.catch) p.catch(function () {}); } catch (e) {}
+    },
+    stopMine: function () { if (this.mine) { try { this.mine.pause(); } catch (e) {} this.mine = null; } }
+  };
+  document.addEventListener('click', function (ev) {
+    var el = ev.target.closest ? ev.target.closest('[data-act]') : null;
+    if (!el || el.disabled) return;
+    var act = el.getAttribute('data-act');
+    if (act === 'sp-open') { Spk.open(el); return; }
+    if (!Spk.el) return;
+    if (act === 'sp-close') Spk.close();
+    else if (act === 'sp-mic') { if (Spk.st === 'listen') Spk.stop(); else Spk.start(); }
+    else if (act === 'sp-model') Spk.model(el);
+    else if (act === 'sp-mine') Spk.playMine();
+  });
+  /* while the panel is open, keys belong to it: Escape closes it, and the practice screens behind do not react */
+  document.addEventListener('keydown', function (ev) {
+    if (!Spk.el) return;
+    if (ev.key === 'Escape') { ev.preventDefault(); Spk.close(); }
+    ev.stopPropagation();
+  }, true);
+
   /* ---------------- Claude as a sentence checker (optional) ---------------- */
   var AI = { fn: null, off: false };
   function aiReady() { return !!AI.fn && !AI.off; }
@@ -1157,6 +1429,7 @@ button.tile b{color:var(--primary)}
   var S = null;   /* the running practice session */
 
   function go(v) {
+    Spk.close();
     if (view.name === 'run' && v.name !== 'run') { aiStop(); Snd.stop(); }
     if (view.name === 'g-run' && v.name !== 'g-run') Snd.stop();
     if (view.name === 'story' && v.name !== 'story') rStop();
@@ -1522,7 +1795,7 @@ button.tile b{color:var(--primary)}
     h += '<div class="card" id="card">';
     if (q === 'card') {
       h += '<p class="ask">บัตรคำ ลองนึกคำแปลในใจก่อนเปิดดู</p>' +
-        '<div class="prompt-row"><div class="ruled">' + esc(w.w) + '</div>' + sayBtn('w', w.n, 'ฟังเสียง') + '</div>' +
+        '<div class="prompt-row"><div class="ruled">' + esc(w.w) + '</div>' + sayBtn('w', w.n, 'ฟังเสียง') + micBtn('w', w.c, w.k, w.w, w.t) + '</div>' +
         '<p class="reading">อ่านว่า ' + rd(w.r) + ' <span class="pos">' + esc(posTh(w.p)) + '</span></p>';
       if (!cur.revealed) h += '<div class="actions"><button type="button" class="btn" id="reveal" data-act="reveal">ดูคำแปล</button></div>';
       else h += '<p class="meaning">' + esc(w.t) + '</p>' + exBlock(w) + '<div class="actions">' +
@@ -1919,10 +2192,10 @@ button.tile b{color:var(--primary)}
   function gBare(s) { return gNorm(s).replace(/'/g, ''); }
   function gHas(a) { return !!a && Snd.hasRef('g', a[0]); }
   function gSayAttrs(a, text, slow) { return ' data-act="g-say" data-c="' + (a ? a[0] : -1) + '" data-k="' + (a ? a[1] : -1) + '" data-text="' + esc(text) + '"' + (slow ? ' data-slow="1"' : ''); }
-  function gSayPair(a, text) {
-    if (!gHas(a)) return '';
-    return '<span class="ex-say"><button type="button" class="listen round"' + gSayAttrs(a, text) + ' aria-label="ฟังเสียง" title="ฟังเสียง">' + ICON + '</button>' +
-      '<button type="button" class="listen round txt"' + gSayAttrs(a, text, true) + ' aria-label="ฟังช้าๆ" title="ฟังช้าๆ">ช้า</button></span>';
+  function gSayPair(a, text, th) {
+    return '<span class="ex-say">' + (gHas(a) ? '<button type="button" class="listen round"' + gSayAttrs(a, text) + ' aria-label="ฟังเสียง" title="ฟังเสียง">' + ICON + '</button>' +
+      '<button type="button" class="listen round txt"' + gSayAttrs(a, text, true) + ' aria-label="ฟังช้าๆ" title="ฟังช้าๆ">ช้า</button>' : '') +
+      micBtn('g', a ? a[0] : -1, a ? a[1] : -1, text, th) + '</span>';
   }
   function gStatus(l) { var r = gRec(l.id); if (!r) return 'ยังไม่เริ่ม'; return (gPassed(l) ? 'ผ่าน ' : 'ยังไม่ผ่าน ') + r[0] + '/' + r[1]; }
   function gPool() { var a = []; GLS.forEach(function (l) { if (gRec(l.id)) l.q.forEach(function (q) { a.push(q); }); }); return a; }
@@ -1978,7 +2251,7 @@ button.tile b{color:var(--primary)}
     h += '<section class="block"><h3>เรื่องที่ต้องรู้</h3><div class="lesson-p">' + l.p.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('') + '</div>' +
       '<table class="pattern"><tbody>' + l.t.map(function (t) { return '<tr><td>' + esc(t[0]) + '</td><td>' + esc(t[1]) + '</td></tr>'; }).join('') + '</tbody></table></section>';
     h += '<section class="block"><h3>ตัวอย่าง</h3><p class="syncnote" id="sndnote"></p><div class="exs">' + l.e.map(function (e) {
-      return '<div class="ex"><p class="ex-en">' + esc(e[0]) + '</p>' + gSayPair(e[2], e[0]) + '<p class="ex-th">' + esc(e[1]) + '</p></div>';
+      return '<div class="ex"><p class="ex-en">' + esc(e[0]) + '</p>' + gSayPair(e[2], e[0], e[1]) + '<p class="ex-th">' + esc(e[1]) + '</p></div>';
     }).join('') + '</div></section>';
     if (l.m.length) h += '<section class="block"><h3>ที่คนไทยพลาดบ่อย</h3><ul class="mists">' + l.m.map(function (m) {
       return '<li class="mist"><span class="say-no"><span class="tag">ผิด</span><s>' + esc(m[0]) + '</s></span><span></span>' +
@@ -2565,13 +2838,13 @@ button.tile b{color:var(--primary)}
     h += '<div class="rbar">' + (can ? '<button type="button" class="btn" id="r-play" data-act="r-play">' + (RS.play ? IC_STOP + 'หยุด' : IC_PLAY + 'ฟังทั้งเรื่อง') + '</button>' : '') +
       '<button type="button" class="chip pick" id="r-th" data-act="r-th" aria-pressed="' + (UI.rth ? 'true' : 'false') + '">คำแปลทุกบรรทัด</button>' +
       (can ? '<button type="button" class="chip pick" id="r-slow" data-act="r-slow" aria-pressed="' + (UI.rslow ? 'true' : 'false') + '">ฟังช้า</button>' : '') + '</div>' +
-      '<p class="syncnote" id="sndnote"></p><p class="note">แตะคำไหนก็ได้เพื่อดูความหมาย กดลำโพงเพื่อฟังทีละประโยค แล้วพูดตามออกเสียง</p>';
+      '<p class="syncnote" id="sndnote"></p><p class="note">แตะคำไหนก็ได้เพื่อดูความหมาย กดลำโพงเพื่อฟังทีละประโยค กดไมค์เพื่อพูดตามแล้วให้แอปช่วยตรวจ</p>';
     h += '<ol class="lines">' + s.l.map(function (l, k) {
       var show = UI.rth || RS.open[k];
       return '<li class="line' + (RS.k === k ? ' cur' : '') + '" id="line-' + k + '">' +
         (l.sp ? '<span class="who' + (l.sp === 'B' ? ' b' : '') + '">' + esc(s.who[l.sp].en) + '</span>' : '') +
         '<p class="l-en">' + rLineHtml(s, k) + '</p><span class="l-side">' +
-        (can ? '<button type="button" class="listen round" data-act="r-line" data-k="' + k + '" aria-label="ฟังประโยคนี้" title="ฟังประโยคนี้">' + ICON + '</button>' : '') +
+        (can ? '<button type="button" class="listen round" data-act="r-line" data-k="' + k + '" aria-label="ฟังประโยคนี้" title="ฟังประโยคนี้">' + ICON + '</button>' : '') + micBtn('r', 0, s.a + k, l.en, l.th) +
         (UI.rth ? '' : '<button type="button" class="l-tr" data-act="r-tr" data-k="' + k + '" aria-expanded="' + (show ? 'true' : 'false') + '">' + (show ? 'ซ่อนคำแปล' : 'แปล') + '</button>') + '</span>' +
         (show ? '<p class="l-th">' + esc(l.th) + '</p>' : '') + '</li>';
     }).join('') + '</ol>';

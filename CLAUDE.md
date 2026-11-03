@@ -21,6 +21,13 @@ who is learning English from below A1. Everything the learner sees is in Thai; E
   tap any word for its meaning (dictionary + word forms + glossary), 3 questions each.
 - Answer panel slides up from the bottom after each answer; short answer sounds (oscillators) and confetti;
   settings (auto voice, answer sounds, text size, daily goal), backup code, offline sound download.
+- **ฝึกพูด (speaking)**: a mango mic button (`micBtn`, `data-act="sp-open"`) next to every word, example sentence,
+  flash card, grammar example and story line opens the speaking panel (`Spk`, `#spk`). Speech recognition
+  (`SpeechRecognition`/`webkitSpeechRecognition`, `en-US`) hears the learner; `spGrade` marks each word green or red
+  (contractions, numbers and hyphens are normalised; best of up to 5 guesses). The voice is recorded at the same time
+  (MediaRecorder) for "ฟังเสียงตัวเอง"; if the phone cannot share the mic, it listens again without recording.
+  No recognition → explained in Thai, recording only. Optional: it saves nothing and is not logged in today's activity
+  (the days record has a fixed format).
 
 ## Files
 
@@ -44,10 +51,12 @@ python3 src/build.py --plain /tmp/app/vocab-trainer.html && cp -r audio /tmp/app
 node src/tests/t2.js /tmp/app /tmp/app/shots     # vocabulary: 9 steps, review, sound fallbacks, saving
 node src/tests/gt2.js /tmp/app /tmp/app/gshots   # grammar: all 64 lessons
 node src/tests/t3.js /tmp/app /tmp/app/shots3    # today, answer panel, settings, reading, level check, backup code
+node src/tests/sp.js /tmp/app /tmp/app/spshots   # speaking: mic buttons, word marking, errors, recording, layout
 node src/tests/pwatest.js .                      # app from a sub-path, service worker, all sound offline
 ```
 
-Chromium is expected at `/opt/pw-browsers/chromium`; `NODE_PATH` must reach `playwright`. Tests click by ids and
+Chromium is expected at `/opt/pw-browsers/chromium`, or set `CHROMIUM` to a browser path (on Windows also pass
+`C:\...` folders to the tests, not `/c/...`); `NODE_PATH` must reach `playwright`. Tests click by ids and
 `data-act` values — keep them, or update the tests in the same change. Check the layout at 390 px and 320 px wide,
 in light and dark: no horizontal scroll (the tests check this too).
 
@@ -84,7 +93,8 @@ then two dark blocks). Thai copy: short, plain, no emoji.
 
 ## Ideas the owner and Claude discussed, in order
 
-1. **ฝึกพูด (speaking)** — the biggest gap left. Now that the app runs outside claude.ai, Chrome on Android offers
+1. **ฝึกพูด (speaking)** — done (see "What is in the app"); a later step could count speaking rounds under a new key.
+   The original note: the biggest gap left. Now that the app runs outside claude.ai, Chrome on Android offers
    speech recognition (`webkitSpeechRecognition`, `lang: 'en-US'`) and the microphone. Add a mic button to story lines,
    grammar examples and word cards: the learner says the sentence, show what was heard word by word (right words green,
    missed ones marked), let them retry, and play their own recording next to the model clip. Optional, never blocks
