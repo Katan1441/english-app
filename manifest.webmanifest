@@ -1,7 +1,7 @@
 {
  "name": "ฝึกภาษาอังกฤษ",
  "short_name": "ฝึกอังกฤษ",
- "description": "ศัพท์ 3,600 คำ ไวยากรณ์ 64 บท เรื่องอ่าน-ฟัง 48 เรื่อง พร้อมเสียง ใช้แบบออฟไลน์ได้",
+ "description": "ศัพท์ 3,750 คำ ไวยากรณ์ 64 บท เรื่องอ่าน-ฟัง 48 เรื่อง พร้อมเสียง ใช้แบบออฟไลน์ได้",
  "lang": "th",
  "start_url": "./",
  "scope": "./",
@@ -27,6 +27,62 @@
    "sizes": "512x512",
    "type": "image/png",
    "purpose": "maskable"
+  }
+ ],
+ "shortcuts": [
+  {
+   "name": "เรียนต่อ",
+   "short_name": "เรียนต่อ",
+   "description": "เริ่มบทต่อไปในเส้นทาง",
+   "url": "./#go=next",
+   "icons": [
+    {
+     "src": "icons/sc-next-96.png",
+     "sizes": "96x96",
+     "type": "image/png"
+    },
+    {
+     "src": "icons/sc-next-192.png",
+     "sizes": "192x192",
+     "type": "image/png"
+    }
+   ]
+  },
+  {
+   "name": "ทบทวนคำ",
+   "short_name": "ทบทวนคำ",
+   "description": "ทบทวนคำที่ถึงเวลา",
+   "url": "./#go=review",
+   "icons": [
+    {
+     "src": "icons/sc-review-96.png",
+     "sizes": "96x96",
+     "type": "image/png"
+    },
+    {
+     "src": "icons/sc-review-192.png",
+     "sizes": "192x192",
+     "type": "image/png"
+    }
+   ]
+  },
+  {
+   "name": "ฝึกพูด",
+   "short_name": "ฝึกพูด",
+   "description": "พูดตามประโยค ให้แอปช่วยฟัง",
+   "url": "./#go=say",
+   "icons": [
+    {
+     "src": "icons/sc-say-96.png",
+     "sizes": "96x96",
+     "type": "image/png"
+    },
+    {
+     "src": "icons/sc-say-192.png",
+     "sizes": "192x192",
+     "type": "image/png"
+    }
+   ]
   }
  ]
 }

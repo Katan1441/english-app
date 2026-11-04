@@ -21,8 +21,9 @@ who is learning English from below A1. Everything the learner sees is in Thai; E
   nothing stored). The header has `#p-prefs` (settings) and `#open-me`. Each drawn unit is a `section.punit#unit-N`: its
   banner (`.ubanner`, sticky while its circles scroll by) shows "ทำแล้ว x จาก y บท" and has "ไวยากรณ์" (its grammar lesson)
   and, on units ahead, "ทดสอบข้าม" (its checkpoint); a trail (`pathTrail`, an SVG drawn after layout and on resize) links
-  the circles, a screentone ribbon where walked, dotted ahead. First run with no progress: three questions
-  (`#ob-why-*`, `#ob-min-*`, `#ob-zero` / `#ob-check` → level check → `#p-place`), then the first node opens. Existing
+  the circles, a screentone ribbon where walked, dotted ahead. First run with no progress: four questions
+  (`#ob-why-*`, `#ob-min-*`, the study plan `#ob-plan-*`, `#ob-zero` / `#ob-check` → level check → `#p-place`), then the
+  first node opens. Existing
   learners see a one-time note (`UI.pn`).
 - **A node runs as parts** (`PRUN`, `nodeParts`): a word stage = its three steps in a row; a grammar lesson = the lesson
   text (path mode) then its 10 questions; a story = "คำใหม่ในเรื่องนี้" (`p-words`) then the story; a say-along
@@ -74,6 +75,20 @@ who is learning English from below A1. Everything the learner sees is in Thai; E
   path (`exitStart`, `from: 'me'`), 75% passes; the best result is kept; view `cert` shows the certificate, `#cert-save`
   saves it as a PNG drawn on a canvas. Path lessons (not reviews, practice rounds or say-alongs) add to `ADAPT` in `pathEnd`
   after their own record is kept.
+- **Habit engine (phase 9, `ROADMAP-NEXT.md`)**: a study plan ("ถ้า...แล้วจะ...") picked in the first run (step 3 of 4,
+  `#ob-plan-0..2`, own words `#ob-plan-own`, time `#ob-plan-time`, `#ob-plan-go`) or in settings (section `#plan-sec`:
+  `#pl-a-0..2`, `#pl-own`, `#pl-clear`; the time `#rm-time` is the plan's time and the calendar reminder's, `UI.rt`), shown
+  as one line under the path header (`#p-plan`, "หลังกินข้าวเช้า ฉันจะเรียน 10 นาที", minutes from the XP goal; a quiet
+  "ตั้งเวลาเรียนประจำวัน" link without a plan). The daily notification is asked for only from settings (`#nt-on` / `#nt-off`,
+  `UI.nt`, never on first open): Periodic Background Sync `daily-nudge` (installed app, Chrome; the phone picks the moment);
+  the service worker shows "วันนี้ยังไม่ได้เรียน 5 นาทีก็พอ" once a day after the planned time, never 22:00–07:00, not when
+  something was practised that day or the app is on screen; the page copies what it needs (`{on, t, last}`) into the cache
+  `habit-v1` (`hbMirror`). App shortcuts in `manifest.webmanifest` (เรียนต่อ, ทบทวนคำ, ฝึกพูด; icons `icons/sc-*`) and the
+  notification open `#go=next|review|say` (`goHash`, also on `hashchange`; never breaks off a running lesson; the first-run
+  questions come first). The weekly report (view `week`, `wkStats`, Monday to Sunday): days studied, XP, words learned,
+  words kept long, accuracy of first answers, sentences said right, each against the week before, and one suggestion with a
+  button (`#wk-tip`, `#wk-act`); a card on the path in a new week (`#p-week`, `#p-week-x`, `UI.wk`) and on demand from ฉัน
+  (`#open-week`, `#wk-now` / `#wk-last`).
 - **คำศัพท์**: 3,750 words in 62 topics (group A basics first, then 36 topics from the Oxford 3000 PDF, group C, and group
   W: 150 work and technology words in topics 55–61 added in phase 4, read by the phone's voice, "เสียงจากเครื่อง"),
   sets of 10, nine practice steps per set, spaced review, search, Thai readings with the stressed syllable marked.
@@ -102,7 +117,8 @@ who is learning English from below A1. Everything the learner sees is in Thai; E
 - `src/data/vocab.js` (topics and words), `src/data/gram.json` (grammar), `src/data/read.json` (stories and word tables),
   `src/data/sounds.json`, `talk.json`, `drills.json`, `write.json` (phase 4 lessons),
   `src/data/audio-index.json` (frame counts of every clip in every sound file, file names).
-- `src/build.py` → writes `index.html` (page + data + app head) and `sw.js` (from `src/sw.template.js` with a new version).
+- `src/build.py` → writes `index.html` (page + data + app head) and `sw.js` (from `src/sw.template.js` with a new version;
+  the service worker also shows the daily reminder and opens the app from it).
 - `audio/*.mp3` — sound packs: `wNN` words and `sNN` example sentences per topic (`r2` = re-recorded), `ga1…gb2` grammar,
   `rd1` stories. `icons/`, `manifest.webmanifest`, `.nojekyll`.
 - `src/content/` — source text of the grammar lessons and stories (reference; the JSON in `src/data` is what the app uses).
@@ -124,6 +140,7 @@ node src/tests/t4.js /tmp/app /tmp/app/pshots    # path: first run, nodes, XP, c
 node src/tests/t5.js /tmp/app /tmp/app/p3shots   # practice tab, mistakes, dictation, match race, rest days, badges, reminder, backup file
 node src/tests/t6.js /tmp/app /tmp/app/p4shots   # phase 4 data, sounds, dialogues, drills, writing, work words, placement, backup
 node src/tests/t7.js /tmp/app /tmp/app/p5shots   # phase 5: intervals, test-out, choice first, skill levels, exit test, certificate
+node src/tests/t8.js /tmp/app /tmp/app/p9shots   # phase 9: study plan, notification (page and service worker), shortcuts, weekly report
 node src/tests/pwatest.js .                      # app from a sub-path, service worker, all sound offline
 node src/tests/stories.js                        # stories data: complete, clips exist, length per level, 5% word rule
 ```
@@ -148,7 +165,10 @@ in light and dark: no horizontal scroll (the tests check this too).
   rounds}}`), `vocab3000-streak-v1` (`{s: first day rest days applied, u: {day: 1} days covered by a rest day}`),
   `vocab3000-badges-v1` (`{c: {badgeId: day celebrated}}`), `vocab3000-lessons-v1` (`{p|d|e|w: {id: [best, total, time]},
   x: {drillItemId: misses}}`), `vocab3000-adapt-v1` (`{h: {nodeType: [[right, asked], … the last 5]}}`), `vocab3000-exit-v1`
-  (`{A1: [right, asked, time in s, then right and asked for words, grammar, listening, reading, speaking]}`). Days are
+  (`{A1: [right, asked, time in s, then right and asked for words, grammar, listening, reading, speaking]}`),
+  `vocab3000-habit-v1` (`{p: {a: anchor 0-2 or -1, o: own words, t: 'HH:MM', u: set (s)}, d: {day: [words learned, first
+  answers right, first answers]}, k: {week: words kept long at the week's start}, s: first day counted}`; weeks start on
+  Monday, `wkOf(day) = floor((day + 3) / 7)`). Days are
   `Math.floor((local ms) / 86400000)`. The word record keeps its format; only the next due day of a level-5 word changed.
 - **Path node ids are stable**: `v:<topic>.<set>.<stage>`, `g:<lessonId>`, `r:<storyId>`, `t:<storyId>`, `x:<n>`,
   `k:<unitNo>`, `p:<soundId>`, `d:<dialogueId>`, `e:<drillId>`, `w:<writingId>`. Done comes from existing records (step bits, `gPassed`, `rDone`) plus the path key; never write fake
@@ -161,7 +181,7 @@ in light and dark: no horizontal scroll (the tests check this too).
 - Word numbers `n`, topic indexes and step bits are fixed: topics 37-55 were appended after the first 36, and the display
   order (`ORD`) differs from the data order. Add new words or topics only at the end.
 - The backup code (`EN1:` + base64 JSON of the documents `cNN`, `gram`, `days`, `read`, `level`, `xp`, `path`, `prac`,
-  `streak`, `badges`, `lessons`, `adapt`, `exit`) must keep working, also for old codes without the later ones; restoring merges and never lowers
+  `streak`, `badges`, `lessons`, `adapt`, `exit`, `habit`) must keep working, also for old codes without the later ones; restoring merges and never lowers
   progress (`Sync.merge`, `EXTRA`; the race keeps the shorter time). The same code can be saved and opened as a file.
 - `Sync` (account saving) and `AI` (sentence check by Claude) only exist inside claude.ai; on GitHub Pages they stay off
   and the app saves locally and offers the self-check. Keep both paths working.

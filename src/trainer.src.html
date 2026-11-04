@@ -709,6 +709,32 @@ a.btn{text-decoration:none}
 .cert-tbl b{font-family:var(--f-display);font-weight:800;font-size:1.05rem;font-variant-numeric:tabular-nums}
 .cert-tbl span{font-size:.68rem;color:var(--ink-soft);line-height:1.3;overflow-wrap:anywhere}
 .p5-offer{display:flex;flex-direction:column;gap:8px}
+/* phase 9: the plan under the path header, the plan fields, the weekly report, the daily notification */
+.pplan{display:flex;align-items:center;gap:8px;width:100%;min-height:44px;padding:6px 12px;background:var(--paper);color:var(--ink);border:2px solid var(--ink);border-radius:6px;text-align:left;font-weight:600;font-size:.92rem;min-width:0}
+.pplan svg{width:22px;height:22px;flex:none}
+.pplan span{flex:1 1 auto;min-width:0;overflow-wrap:anywhere;line-height:1.35}
+.pplan b{flex:none;font-family:var(--f-display);font-weight:800;font-variant-numeric:tabular-nums}
+.pplan.none{border-style:dashed;color:var(--ink-soft);font-weight:500}
+.pplan:active{background:var(--tone-1)}
+.type-in.th{flex:none;font-family:var(--f-body);font-size:1.05rem}
+#plan-sec{scroll-margin-top:76px}
+.pref .self-start{align-self:flex-start}
+.plan-own{display:flex;flex-direction:column;align-items:stretch;gap:8px}
+.plan-own .rm-time{align-self:flex-start}
+.plan-line{font-family:var(--f-hand);font-weight:700;line-height:1.5;overflow-wrap:anywhere}
+.plan-line b{font-family:var(--f-display);font-weight:800;margin-left:4px;font-variant-numeric:tabular-nums}
+.pweek-b{display:flex;align-items:center;gap:8px}
+.pweek-b .iconbtn{width:40px;height:40px}
+.wk-tbl{list-style:none;margin:0;padding:0;background:var(--paper);border:3px solid var(--ink);border-radius:12px;overflow:hidden}
+.wk-row{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr) minmax(0,1fr);gap:8px;align-items:center;padding:10px 12px;border-bottom:1.5px solid var(--ink)}
+.wk-row:last-child{border-bottom:0}
+.wk-k{font-weight:600;min-width:0;overflow-wrap:anywhere;line-height:1.35}
+.wk-v{font-family:var(--f-display);font-weight:800;font-size:1.05rem;font-variant-numeric:tabular-nums;min-width:0;overflow-wrap:anywhere}
+.wk-d{font-size:.86rem;font-weight:600;color:var(--ink-soft);font-variant-numeric:tabular-nums;min-width:0;overflow-wrap:anywhere;text-align:right}
+.wk-head{padding-block:8px}
+.wk-head .wk-v,.wk-head .wk-d{font-family:var(--f-body);font-weight:600;font-size:.78rem;color:var(--ink-soft)}
+.nt-on{display:flex;align-items:center;gap:8px;font-weight:600}
+.nt-on svg{width:22px;height:22px;flex:none}
 @media (max-width:359px){.ex{grid-template-columns:minmax(0,1fr)}.ex .ex-say{grid-row:2}.pfull{right:12px}.pair-opts{grid-template-columns:minmax(0,1fr)}}
 @media (prefers-reduced-motion:reduce){.sheet.enter,.wsheet,.spk-panel,.opt.pop,.pbub,.combo.pop,.dlg-panel,.toast,.burst,.speedfx{animation:none}.speedfx{display:none}}
 
@@ -796,7 +822,7 @@ a.btn{text-decoration:none}
   /* og: topic groups and grammar levels the learner opened or closed; goal: new-word steps a day (the old daily goal, kept as it was);
      xg: XP a day; vib: buzz on answers; ob: first-run questions answered or skipped; pn: the note about the new path was seen;
      why: what the learner studies for (study, work, travel, general) */
-  var UI = { auto: true, last: null, rn: 10, tab: 'vocab', og: {}, fx: true, fs: 100, goal: 9, rth: false, rslow: false, rf: 'pick', xg: 20, vib: true, ob: 0, pn: 0, why: '', rt: '19:00', pace: 0 };
+  var UI = { auto: true, last: null, rn: 10, tab: 'vocab', og: {}, fx: true, fs: 100, goal: 9, rth: false, rslow: false, rf: 'pick', xg: 20, vib: true, ob: 0, pn: 0, why: '', rt: '19:00', pace: 0, nt: 0, wk: 0 };
   function lsGet(k) { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) { return null; } }
   function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   function cleanRec(a) {
@@ -836,6 +862,8 @@ a.btn{text-decoration:none}
       if (u.why === 'study' || u.why === 'work' || u.why === 'travel' || u.why === 'general') UI.why = u.why;
       if (typeof u.rt === 'string' && /^([01]\d|2[0-3]):[0-5]\d$/.test(u.rt)) UI.rt = u.rt;
       if (typeof u.pace === 'number' && u.pace > 0) UI.pace = u.pace | 0;
+      if (u.nt === 1) UI.nt = 1;
+      if (typeof u.wk === 'number' && u.wk > 0) UI.wk = Math.floor(u.wk);
     }
   })();
   var saveT = null;
@@ -851,10 +879,11 @@ a.btn{text-decoration:none}
   /* One step up per day at most, and never on a day the word was missed. A miss drops one level and brings the word back today.
      early: extra practice of a word that is not due yet leaves its level and its date alone when the answer is right. */
   function mark(n, ok, early) {
+    hbSnap();
     var r = rec(n).slice(), t = today();
     if (ok) {
       if (early && r[0] >= 1 && r[1] > t) { /* keep the schedule */ }
-      else if (r[0] === 0) { r[0] = 1; r[2] = t; r[1] = t + 1; }
+      else if (r[0] === 0) { r[0] = 1; r[2] = t; r[1] = t + 1; hbLearned(); }
       else if (r[2] !== t && r[3] !== t) {
         /* a word at the top level comes back after twice the time since it was last right, 15 to 180 days */
         var was5 = r[0] === 5, gap = t - r[2];
@@ -1770,7 +1799,7 @@ a.btn{text-decoration:none}
   /* bottom menu: marks the section in use and shows on the path tab how many words are due for review */
   var TABBAR = document.getElementById('tabbar');
   function tabOf(v) {
-    if (view.path || v === 'path' || v === 'me' || v === 'cert' || v === 'prefs' || v === 'level' || v === 'lvl' || v.indexOf('p-') === 0) return 'path';
+    if (view.path || v === 'path' || v === 'me' || v === 'cert' || v === 'week' || v === 'prefs' || v === 'level' || v === 'lvl' || v.indexOf('p-') === 0) return 'path';
     if (v.indexOf('g-') === 0) return view.from === 'path' ? 'path' : 'gram';
     if (v === 'read' || v === 'story') return 'read';
     if (v === 'rev') return view.from === 'home' ? 'vocab' : 'path';
@@ -1810,6 +1839,7 @@ a.btn{text-decoration:none}
     else if (view.name === 'p-write') vWrite();
     else if (view.name === 'lib') vLib();
     else if (view.name === 'cert') vCert();
+    else if (view.name === 'week') vWeek();
     else if (view.name === 'prefs') vPrefs();
     else if (view.name === 'prac') vPrac();
     else if (view.name === 'mist') vMist();
@@ -2843,6 +2873,7 @@ a.btn{text-decoration:none}
     saveDays();
     Sync.touch('days');
     questCheck();
+    hbMirrorSoon();
   }
   /* any practice makes a day count: something logged above, or XP earned (saying sentences earns XP and logs nothing else).
      Rest days (วันพัก): one is earned at every 7 practised days in a row, at most two are held; a missed day on or after STRK.s,
@@ -2892,8 +2923,15 @@ a.btn{text-decoration:none}
       (canVib ? '<div class="pref"><p class="pref-name">สั่นเมื่อตอบ<small>เครื่องสั่นสั้นๆ เมื่อตอบถูก สั่นสองครั้งเมื่อตอบผิด</small></p>' + seg('vib', [[1, 'เปิด'], [0, 'ปิด']]) + '</div>' : '') + '</div></section>' +
       '<section class="block"><h3>การแสดงผล</h3><div class="prefs"><div class="pref"><p class="pref-name">ขนาดตัวอักษร</p>' + seg('fs', [[100, 'ปกติ'], [112, 'ใหญ่'], [125, 'ใหญ่มาก']]) + '</div></div></section>' +
       '<section class="block"><h3>เป้าหมายรายวัน</h3><div class="prefs"><div class="pref"><p class="pref-name">XP ต่อวัน<small>ตอบถูกได้ 1 XP จบหนึ่งบทในเส้นทางได้อีก 10 XP บทละราว 5 นาที</small></p>' + seg('xg', [[10, '10 สบายๆ'], [20, '20 ปกติ'], [30, '30 จริงจัง'], [50, '50 เต็มที่']]) + '</div></div></section>' +
-      '<section class="block"><h3>เตือนให้มาเรียน</h3><div class="prefs"><div class="pref"><p class="pref-name">เวลาเตือนทุกวัน<small>แอปส่งการแจ้งเตือนเองไม่ได้ ใช้ปฏิทินในมือถือช่วยเตือนแทน เลือกเวลา แล้วเพิ่มลงปฏิทิน</small></p>' +
-      '<label class="sr" for="rm-time">เวลาเตือน</label><input type="time" class="type-in rm-time" id="rm-time" value="' + esc(UI.rt) + '">' +
+      '<section class="block" id="plan-sec"><h3>แผนการเรียนและการเตือน</h3><p class="plan-line" id="pl-line">' + planLineHtml() + '</p><div class="prefs">' +
+      '<div class="pref"><p class="pref-name">เรียนตอนไหน<small>ผูกการเรียนไว้กับสิ่งที่ทำทุกวัน จะทำได้สม่ำเสมอขึ้น แผนจะขึ้นที่หัวหน้าเรียน</small></p><div class="seg" role="group" aria-label="เรียนตอนไหน">' +
+      ANCH.map(function (a, i) { return '<button type="button" class="chip" id="pl-a-' + i + '" data-act="pl-a" data-v="' + i + '" aria-pressed="' + (!!HB.p && HB.p.a === i) + '">' + a[0] + '</button>'; }).join('') + '</div>' +
+      '<label class="lbl" for="pl-own">หรือพิมพ์เอง</label><input type="text" class="type-in th" id="pl-own" maxlength="40" autocomplete="off" placeholder="เช่น หลังเลิกเรียน" value="' + esc(HB.p && HB.p.a === -1 ? HB.p.o : '') + '">' +
+      (HB.p ? '<button type="button" class="btn ghost small self-start" id="pl-clear" data-act="pl-clear">ลบแผน</button>' : '') + '</div>' +
+      '<div class="pref"><p class="pref-name">เวลาเรียน<small>ใช้กับการแจ้งเตือนและปฏิทินด้านล่าง</small></p>' +
+      '<label class="sr" for="rm-time">เวลาเรียน</label><input type="time" class="type-in rm-time" id="rm-time" value="' + esc(planTime()) + '"></div>' +
+      '<div class="pref" id="nt-pref">' + ntHtml() + '</div>' +
+      '<div class="pref"><p class="pref-name">เตือนด้วยปฏิทิน<small>วิธีที่เตือนตรงเวลาแน่นอน เพิ่มเวลาเรียนลงปฏิทินในมือถือ</small></p>' +
       '<div class="actions stack"><a class="btn ghost" id="rm-gcal" href="' + esc(rmLink()) + '" target="_blank" rel="noopener">เพิ่มใน Google Calendar</a>' +
       '<button type="button" class="btn ghost" id="rm-ics" data-act="rm-ics">ดาวน์โหลดไฟล์ปฏิทิน</button></div></div></div></section>' +
       '<section class="block"><h3>การบันทึกความคืบหน้า</h3><p class="syncnote" id="syncnote"></p></section>' +
@@ -3501,6 +3539,7 @@ a.btn{text-decoration:none}
     if (PRUN) PRUN.xp += n;
     xpSave();
     questCheck();
+    hbMirrorSoon();
   }
   /* a count for today: one more (no v), or the larger of the stored number and v */
   function xpBump(f, v) {
@@ -3524,6 +3563,7 @@ a.btn{text-decoration:none}
   function answered(ok, first, cur, helped) {
     var good = ok && !helped;
     vib(ok ? 'ok' : 'no');
+    if (first) hbAnswer(good);
     if (first && good) xpAdd(1);
     if (!PRUN) return;
     if (first) { PRUN.ans++; if (good) PRUN.right++; }
@@ -5015,6 +5055,259 @@ a.btn{text-decoration:none}
     try { var a = document.createElement('a'); a.href = u; a.download = 'english-certificate-' + lv + '.png'; a.style.display = 'none'; document.body.appendChild(a); a.click(); setTimeout(function () { if (a.parentNode) a.parentNode.removeChild(a); }, 1500); return true; } catch (e) { return false; }
   }
 
+
+  /* ---------------- phase 9: the habit engine ----------------
+     HB = { p: the study plan {a: anchor 0-2, or -1 with own words o; t: 'HH:MM'; u: when it was set (s)},
+     d: {day: [words learned that day, answers right the first time, answers]}, k: {week: words kept long (next review over
+     30 days away) at the first use of the app that week}, s: the first day counted }. A week runs Monday to Sunday (wkOf).
+     On this device only: UI.nt (the daily notification is on), UI.wk (the week whose report card was seen).
+     The service worker cannot read localStorage: what it needs for the reminder is copied into the cache 'habit-v1'. */
+  var HBKEY = 'vocab3000-habit-v1', HB = { p: null, d: {}, k: {}, s: 0 }, HBC = 'habit-v1', HBT = null, HBMT = null, HBM = '';
+  var ANCH = [['หลังกินข้าวเช้า', '07:30'], ['ระหว่างเดินทาง', '08:00'], ['ก่อนนอน', '21:00']], XGMIN = { 10: 5, 20: 10, 30: 15, 50: 20 };
+  function okTime(s) { return typeof s === 'string' && /^([01]\d|2[0-3]):[0-5]\d$/.test(s); }
+  function cleanPlan(p) {
+    if (!p || typeof p !== 'object') return null;
+    var a = Number(p.a), o = typeof p.o === 'string' ? p.o.replace(/\s+/g, ' ').trim().slice(0, 40) : '';
+    if (!(a === -1 || a === 0 || a === 1 || a === 2) || (a === -1 && !o) || !okTime(p.t)) return null;
+    return { a: a, o: a === -1 ? o : '', t: p.t, u: Math.max(0, Math.floor(Number(p.u) || 0)) };
+  }
+  function cleanHbDay(a) { var r = cleanNums(a, 3); return r && r[1] <= r[2] ? r.slice(0, 3) : null; }
+  (function () {
+    var x = lsGet(HBKEY), k, r, v;
+    if (!x || typeof x !== 'object') return;
+    HB.p = cleanPlan(x.p);
+    if (x.d && typeof x.d === 'object') for (k in x.d) { r = cleanHbDay(x.d[k]); if (/^\d+$/.test(k) && r) HB.d[k] = r; }
+    if (x.k && typeof x.k === 'object') for (k in x.k) { v = Number(x.k[k]); if (/^\d+$/.test(k) && isFinite(v) && v >= 0) HB.k[k] = Math.floor(v); }
+    if (Number(x.s) > 0) HB.s = Math.floor(Number(x.s));
+  })();
+  function hbSave() {
+    var ks = Object.keys(HB.d).map(Number).sort(function (a, b) { return a - b; }), wk = Object.keys(HB.k).map(Number).sort(function (a, b) { return a - b; });
+    while (ks.length > 400) delete HB.d[ks.shift()];
+    while (wk.length > 60) delete HB.k[wk.shift()];
+    lsSet(HBKEY, HB); Sync.touch('habit');
+  }
+  function hbSoon() { clearTimeout(HBT); HBT = setTimeout(function () { HBT = null; hbSave(); hbMirror(); }, 400); }
+  function hbFlush() { if (HBT) { clearTimeout(HBT); HBT = null; hbSave(); } hbMirror(); }
+  function wkOf(d) { return Math.floor((d + 3) / 7); }
+  function wkStart(w) { return w * 7 - 3; }
+  /* at the first use of the app in a week nothing was practised that week yet: the count of words kept long is the week's start */
+  function hbSnap() {
+    var t = today(), w = wkOf(t), ch = false;
+    if (!HB.s) { HB.s = t; ch = true; }
+    if (HB.k[w] === undefined) { HB.k[w] = longKnown(); ch = true; }
+    if (ch) hbSave();
+  }
+  function hbDay() { hbSnap(); var t = today(); return HB.d[t] || (HB.d[t] = [0, 0, 0]); }
+  function hbAnswer(good) { var a = hbDay(); a[2]++; if (good) a[1]++; hbSoon(); }
+  function hbLearned() { hbDay()[0]++; hbSoon(); }
+  EXTRA.habit = {
+    get: function () { return { v: 1, p: HB.p, d: HB.d, k: HB.k, s: HB.s }; },
+    has: function () { return !!HB.p || Object.keys(HB.d).length > 0; },
+    /* the newer plan wins; day counts and week counts only go up; the first day counted is the earlier one */
+    merge: function (data) {
+      var o = data && typeof data === 'object' ? data : {}, changed = false, newer = false, p = cleanPlan(o.p), k, r, v;
+      if (p && (!HB.p || p.u > HB.p.u)) { HB.p = p; UI.rt = p.t; saveUI(); changed = true; }
+      if (HB.p && (!p || HB.p.u > p.u)) newer = true;
+      var od = o.d && typeof o.d === 'object' ? o.d : {}, ok = o.k && typeof o.k === 'object' ? o.k : {};
+      for (k in od) {
+        r = /^\d+$/.test(k) ? cleanHbDay(od[k]) : null;
+        if (!r) continue;
+        var m = HB.d[k] || [0, 0, 0], n2 = [Math.max(r[0], m[0]), r[2] > m[2] ? r[1] : m[1], Math.max(r[2], m[2])];
+        if (!HB.d[k] || n2[0] !== m[0] || n2[1] !== m[1] || n2[2] !== m[2]) { HB.d[k] = n2; changed = true; }
+      }
+      for (k in HB.d) { r = cleanHbDay(od[k]); if (!r || r[2] < HB.d[k][2] || r[0] < HB.d[k][0]) newer = true; }
+      /* a week's starting count: the larger one (the other phone may hold more of the learner's words) */
+      for (k in ok) { v = Math.floor(Number(ok[k])); if (/^\d+$/.test(k) && isFinite(v) && v >= 0 && (HB.k[k] === undefined || v > HB.k[k])) { HB.k[k] = v; changed = true; } }
+      for (k in HB.k) if (!(Number(ok[k]) >= HB.k[k])) newer = true;
+      v = Number(o.s);
+      if (v > 0 && (!HB.s || v < HB.s)) { HB.s = Math.floor(v); changed = true; }
+      if (HB.s && !(v > 0 && v <= HB.s)) newer = true;
+      if (changed) { hbSave(); hbMirror(); }
+      return { changed: changed, newer: newer };
+    }
+  };
+
+  /* 9.1 the plan: when and after what the learner will study ("if X, then I will study N minutes") */
+  function planTime() { return HB.p ? HB.p.t : UI.rt; }
+  function planMins() { return XGMIN[UI.xg] || 10; }
+  function planWhen(p) { return p ? (p.a === -1 ? p.o : ANCH[p.a][0]) : ''; }
+  function planLine(p) { p = p === undefined ? HB.p : p; return p ? planWhen(p) + ' ฉันจะเรียน ' + planMins() + ' นาที' : ''; }
+  function planSet(p) {
+    p = cleanPlan({ a: p.a, o: p.o, t: p.t, u: nowSec() });
+    if (!p) return false;
+    HB.p = p; UI.rt = p.t; saveUI(); hbSave(); hbMirror();
+    return true;
+  }
+  function planClear() { HB.p = null; hbSave(); hbMirror(); }
+  /* the plan as one line under the header of the path */
+  function planBar() {
+    return '<button type="button" class="pplan' + (HB.p ? '' : ' none') + '" id="p-plan" data-act="plan">' + IC_CLOCK +
+      '<span>' + (HB.p ? esc(planLine()) : 'ตั้งเวลาเรียนประจำวัน') + '</span>' + (HB.p ? ' <b>' + esc(HB.p.t) + '</b>' : '') + '</button>';
+  }
+  /* the plan step of the first run (OB.plan keeps what is picked until "ต่อไป") */
+  function obPlanHtml(opt) {
+    var p = OB.plan || (OB.plan = { a: HB.p ? HB.p.a : -2, o: HB.p ? HB.p.o : '', t: HB.p ? HB.p.t : '', ts: !!HB.p });
+    return ANCH.map(function (a, i) { return opt('ob-plan-' + i, 'ob-plan', i, a[0], 'ราว ' + a[1] + ' น.', p.a === i); }).join('') +
+      '</div><div class="plan-own"><label class="lbl" for="ob-plan-own">หรือพิมพ์เอง</label>' +
+      '<input type="text" class="type-in th" id="ob-plan-own" maxlength="40" autocomplete="off" placeholder="เช่น หลังเลิกเรียน" value="' + esc(p.a === -1 ? p.o : '') + '">' +
+      '<label class="lbl" for="ob-plan-time">เวลา</label><input type="time" class="type-in rm-time" id="ob-plan-time" value="' + esc(p.t || (p.a >= 0 ? ANCH[p.a][1] : UI.rt)) + '">' +
+      '<p class="plan-line" id="ob-plan-line">' + obPlanLine() + '</p>' +
+      '<button type="button" class="btn" id="ob-plan-go" data-act="ob-plan-go">ต่อไป</button>';
+  }
+  function obPlanPick() { var p = OB.plan; return p && (p.a >= 0 || (p.a === -1 && p.o.trim())) ? { a: p.a, o: p.o, t: p.t || (p.a >= 0 ? ANCH[p.a][1] : UI.rt) } : null; }
+  function obPlanLine() { var p = obPlanPick(); return p ? esc(planLine(p)) + ' <b>' + esc(p.t) + '</b>' : 'ยังไม่อยากตั้งก็กดต่อไปได้เลย'; }
+
+  /* 9.2 the daily notification: Periodic Background Sync (Chrome, installed app) wakes the service worker when the phone
+     chooses; it shows one notification after the planned time when nothing was practised that day, never 22:00-07:00 */
+  var NT = { busy: false, msg: '' };
+  function ntCan() { try { return typeof window.Notification === 'function' && !!navigator.serviceWorker; } catch (e) { return false; } }
+  function hbLast() { var t = today(); return dayOn(t) ? t : lastOn(t); }
+  function hbMirror() {
+    var s = JSON.stringify({ v: 1, on: UI.nt ? 1 : 0, t: planTime(), last: hbLast() });
+    if (s === HBM) return;
+    HBM = s;
+    try { if (window.caches) caches.open(HBC).then(function (c) { return c.put(new URL('habit-state.json', location.href).href, new Response(s, { headers: { 'content-type': 'application/json' } })); }).catch(function () {}); } catch (e) {}
+  }
+  function hbMirrorSoon() { clearTimeout(HBMT); HBMT = setTimeout(function () { HBMT = null; hbMirror(); }, 600); }
+  function ntSay(m) { NT.msg = m; var el = document.getElementById('nt-note'); if (el) el.textContent = m; }
+  function ntHtml() {
+    var h = '<p class="pref-name">แจ้งเตือนวันละครั้ง<small>ถ้าวันนั้นยังไม่ได้เรียน แอปจะเตือน 1 ครั้งหลังเวลาเรียน ไม่เตือนช่วง 22:00–07:00 มือถือเป็นคนเลือกเวลาที่แน่นอนเอง จึงอาจช้ากว่าที่ตั้งไว้ ใช้ได้เมื่อติดตั้งแอปจาก Chrome ถ้าอยากให้เตือนตรงเวลาแน่นอน ใช้ปฏิทินด้านล่าง</small></p>';
+    if (!ntCan()) return h + '<p class="note" id="nt-note" role="status">เครื่องนี้แจ้งเตือนเองไม่ได้ ใช้ปฏิทินด้านล่างช่วยเตือนแทน</p>';
+    if (UI.nt) h += '<p class="nt-on" id="nt-state">' + IC_OK + '<span>เปิดอยู่ จะเตือนหลัง ' + esc(planTime()) + ' ถ้าวันนั้นยังไม่ได้เรียน</span></p><button type="button" class="btn ghost small self-start" id="nt-off" data-act="nt-off">ปิดการแจ้งเตือน</button>';
+    else h += '<button type="button" class="btn ghost" id="nt-on" data-act="nt-on"' + (NT.busy ? ' disabled' : '') + '>เปิดการแจ้งเตือน</button>';
+    return h + '<p class="note" id="nt-note" role="status">' + esc(NT.msg) + '</p>';
+  }
+  function ntRedraw() { var el = document.getElementById('nt-pref'); if (el) el.innerHTML = ntHtml(); }
+  function ntOn() {
+    if (NT.busy) return;
+    if (!ntCan()) { ntSay('เครื่องนี้แจ้งเตือนเองไม่ได้ ใช้ปฏิทินด้านล่างช่วยเตือนแทน'); return; }
+    NT.busy = true; NT.msg = 'กำลังเปิด...'; ntRedraw();
+    Promise.resolve(Notification.permission === 'granted' ? 'granted' : Notification.requestPermission()).then(function (p) {
+      if (p !== 'granted') throw new Error('perm');
+      /* the service worker of the installed app; a page without one cannot be woken */
+      return new Promise(function (res, rej) { navigator.serviceWorker.ready.then(res, rej); setTimeout(function () { rej(new Error('nosync')); }, 5000); });
+    }).then(function (reg) {
+      if (!reg || !reg.periodicSync) throw new Error('nosync');
+      var q = navigator.permissions && navigator.permissions.query ? navigator.permissions.query({ name: 'periodic-background-sync' }).catch(function () { return { state: 'prompt' }; }) : Promise.resolve({ state: 'prompt' });
+      return q.then(function (st) {
+        if (st && st.state === 'denied') throw new Error('nosync');
+        return reg.periodicSync.register('daily-nudge', { minInterval: 60 * 60 * 1000 });
+      });
+    }).then(function () {
+      NT.busy = false; NT.msg = ''; UI.nt = 1; saveUI(); hbMirror(); ntRedraw();
+    }, function (e) {
+      NT.busy = false;
+      NT.msg = String(e && e.message) === 'perm' ? 'ยังไม่ได้อนุญาตให้แจ้งเตือน ถ้าเปลี่ยนใจ เปิดได้ในการตั้งค่าเว็บไซต์ของ Chrome แล้วกดปุ่มนี้อีกครั้ง' :
+        'เครื่องนี้ยังเตือนเองไม่ได้ ต้องติดตั้งแอปจาก Chrome ก่อน (เมนู ⋮ แล้วเลือก "เพิ่มลงในหน้าจอหลัก") หรือใช้ปฏิทินด้านล่างแทน';
+      ntRedraw();
+    });
+  }
+  function ntOff() {
+    UI.nt = 0; saveUI(); hbMirror(); NT.msg = 'ปิดการแจ้งเตือนแล้ว'; ntRedraw();
+    try { navigator.serviceWorker.ready.then(function (reg) { if (reg && reg.periodicSync) return reg.periodicSync.unregister('daily-nudge'); }).catch(function () {}); } catch (e) {}
+  }
+
+  /* 9.3 the app's shortcuts (long-press the icon) and the notification open the page with #go=next, #go=review or #go=say */
+  function dueStart(from) {
+    var M = pm(), s0 = pathScan(), cu = s0.cur >= 0 ? M.PN[s0.cur].u : M.PU.length - 1;
+    pathSheetClose();
+    if (!pathStart({ t: 'x', id: 'x:0', n: 0, u: cu, virt: true, from: from || '' })) render();
+  }
+  function goHash() {
+    var m = /^#go=(next|review|say)$/.exec(location.hash || '');
+    if (!m) return false;
+    try { history.replaceState(null, '', location.href.split('#')[0]); } catch (e) {}
+    if (runLike()) return true;   /* never break off a lesson that is running */
+    if (!UI.ob && !hasProgress()) { go({ name: 'path' }); return true; }   /* the first-run questions come first */
+    if (m[1] === 'next') pathStartCurrent();
+    else if (m[1] === 'say') { PRS = null; go({ name: 'pr-say' }); }
+    else if (stats().due) dueStart('');
+    else { go({ name: 'prac' }); toast('<span>ยังไม่มีคำที่ถึงเวลาทบทวน เลือกฝึกอย่างอื่นจากหน้านี้ได้</span>'); }
+    return true;
+  }
+
+  /* 9.4 the weekly report: Monday to Sunday against the week before, with one suggestion */
+  var THMON = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
+  function dayDm(d) { var x = new Date(d * 86400000); return { d: x.getUTCDate(), m: THMON[x.getUTCMonth()] }; }
+  function wkRange(w) { var a = dayDm(wkStart(w)), b = dayDm(wkStart(w) + 6); return a.m === b.m ? a.d + '–' + b.d + ' ' + b.m : a.d + ' ' + a.m + ' – ' + b.d + ' ' + b.m; }
+  function wkStats(w) {
+    var t = today(), d0 = wkStart(w), S = { w: w, days: 0, xp: 0, nw: 0, right: 0, ans: 0, said: 0, long: null, gain: null, full: !!HB.s && HB.s <= d0, cur: w === wkOf(t) }, d, a;
+    for (d = d0; d <= d0 + 6 && d <= t; d++) {
+      if (dayOn(d)) S.days++;
+      S.xp += xpDay(d);
+      S.said += XP.s[d] || 0;
+      a = HB.d[d];
+      if (a) { S.nw += a[0]; S.right += a[1]; S.ans += a[2]; }
+    }
+    var end = S.cur ? longKnown() : HB.k[w + 1], start = HB.k[w];
+    if (end !== undefined) S.long = end;
+    if (end !== undefined && start !== undefined) S.gain = end - start;
+    S.acc = S.ans ? Math.round(S.right / S.ans * 100) : null;
+    return S;
+  }
+  function wkCard() {
+    var cw = wkOf(today());
+    if (UI.wk >= cw) return '';
+    var S = wkStats(cw - 1);
+    if (!S.days) return '';
+    return '<section class="pwb pweek" id="p-week-box"><p><b>รายงานสัปดาห์ที่แล้ว</b><small>เรียน ' + S.days + ' วัน ได้ ' + fmt(S.xp) + ' XP</small></p>' +
+      '<span class="pweek-b"><button type="button" class="btn small" id="p-week" data-act="p-week">ดู</button>' +
+      '<button type="button" class="iconbtn" id="p-week-x" data-act="p-week-x" aria-label="ไม่ดูรายงานนี้" title="ปิด">' + IC_X + '</button></span></section>';
+  }
+  /* one concrete thing to do next week, with a button that does it */
+  function wkTip(S) {
+    var due = stats().due;
+    if (S.days < 4) return HB.p ? ['เรียนไป ' + S.days + ' วัน ลองทำตามแผนให้ได้ทุกวัน: ' + planLine() + ' วันละบทก็พอ', 'p-go-cur', 'เรียนต่อ'] :
+      ['เรียนไป ' + S.days + ' วัน ลองตั้งเวลาเรียนประจำวัน แล้วเรียนวันละ 5 นาทีทุกวัน', 'plan', 'ตั้งเวลาเรียน'];
+    if (S.ans >= 20 && S.acc < 70) return ['ตอบถูกครั้งแรก ' + S.acc + '% ลองฝึกข้อที่ผิดบ่อยก่อนเรียนบทใหม่', 'mist', 'ฝึกข้อที่ผิดบ่อย'];
+    if (due > 30) return ['มีคำถึงเวลาทบทวน ' + fmt(due) + ' คำ ทบทวนก่อนเรียนคำใหม่ จะจำได้นานขึ้น', 'p-due', 'ทบทวนเลย'];
+    if (!S.said && Spk.SR()) return ['ยังไม่ได้ฝึกพูดเลย ลองพูดวันละ 3 ประโยคในแท็บฝึก', 'pr-say', 'ฝึกพูด'];
+    if (S.days >= 6 && UI.xg < 50 && S.xp >= UI.xg * 6) return ['ทำได้ดีมาก ได้เกินเป้าเกือบทุกวัน ลองเพิ่มเป้า XP ต่อวัน', 'prefs', 'เปลี่ยนเป้า'];
+    return ['รักษาจังหวะนี้ไว้ เรียนต่อในเส้นทางทุกวัน', 'p-go-cur', 'เรียนต่อ'];
+  }
+  function wkDelta(a, b, unit) {
+    if (a === null || b === null || a === undefined || b === undefined) return '<span class="wk-d">—</span>';
+    var d = a - b;
+    return '<span class="wk-d">' + (d > 0 ? '+' + fmt(d) : (d < 0 ? '−' + fmt(-d) : 'เท่าเดิม')) + (d && unit ? unit : '') + '</span>';
+  }
+  function vWeek() {
+    var t = today(), cw = wkOf(t), w = view.w === cw - 1 ? cw - 1 : cw, S = wkStats(w), B = wkStats(w - 1), tip = wkTip(S);
+    var row = function (id, k, v, d) { return '<li class="wk-row" id="wk-' + id + '"><span class="wk-k">' + k + '</span><b class="wk-v">' + v + '</b>' + d + '</li>'; };
+    var part = !S.full || !B.full;
+    var h = crumb([view.from === 'path' ? { label: 'เส้นทาง', act: 'path' } : { label: 'ฉัน', act: 'me' }]) +
+      '<header class="top"><p class="eyebrow">รายงานรายสัปดาห์</p><h2 id="wk-h">' + (w === cw ? 'สัปดาห์นี้' : 'สัปดาห์ที่แล้ว') + '</h2><p class="lede">' + esc(wkRange(w)) + (S.cur ? ' (ถึงวันนี้)' : '') + '</p></header>' +
+      '<div class="seg" role="group" aria-label="เลือกสัปดาห์"><button type="button" class="chip" id="wk-now" data-act="week" data-w="0" aria-pressed="' + (w === cw) + '">สัปดาห์นี้</button>' +
+      '<button type="button" class="chip" id="wk-last" data-act="week" data-w="1" aria-pressed="' + (w !== cw) + '">สัปดาห์ที่แล้ว</button></div>' +
+      '<section class="block"><ul class="wk-tbl"><li class="wk-row wk-head"><span class="wk-k"></span><span class="wk-v">' + (w === cw ? 'สัปดาห์นี้' : 'สัปดาห์ที่แล้ว') + '</span><span class="wk-d">เทียบสัปดาห์ก่อน</span></li>' +
+      row('days', 'วันที่เรียน', S.days + ' วัน', wkDelta(S.days, B.days, ' วัน')) +
+      row('xp', 'XP', fmt(S.xp), wkDelta(S.xp, B.xp)) +
+      row('new', 'คำใหม่', fmt(S.nw) + ' คำ', wkDelta(S.full ? S.nw : null, B.full ? B.nw : null, ' คำ')) +
+      row('long', 'จำได้นาน (เกิน 30 วัน)', S.long === null ? '—' : fmt(S.long) + ' คำ', wkDelta(S.gain === null ? null : S.long, S.gain === null ? null : S.long - S.gain, ' คำ')) +
+      row('acc', 'ตอบถูกครั้งแรก', S.acc === null ? '—' : S.acc + '%', wkDelta(S.full ? S.acc : null, B.full ? B.acc : null, '%')) +
+      row('said', 'พูดถูก', fmt(S.said) + ' ประโยค', wkDelta(S.said, B.said, ' ประโยค')) + '</ul>' +
+      (part && HB.s ? '<p class="note">คำใหม่และการตอบถูกเริ่มนับตั้งแต่ ' + esc(dayDm(HB.s).d + ' ' + dayDm(HB.s).m) + ' จึงยังเทียบบางข้อไม่ได้</p>' : '') + '</section>' +
+      '<section class="block wk-tip"><h3>ข้อแนะนำสำหรับสัปดาห์นี้</h3><div class="say">' + faceSvg('mint') + '<p class="bubble" id="wk-tip">' + esc(tip[0]) + '</p></div>' +
+      '<button type="button" class="btn" id="wk-act" data-act="' + tip[1] + '">' + esc(tip[2]) + '</button></section>';
+    app.innerHTML = h;
+  }
+  function planLineHtml() { return HB.p ? esc(planLine()) + ' <b>' + esc(HB.p.t) + '</b>' : 'ยังไม่ได้ตั้งแผน เลือกด้านล่างได้เลย'; }
+  /* the plan fields: own words typed in the first run, a time picked there, own words in the settings */
+  app.addEventListener('input', function (ev) {
+    var t = ev.target;
+    if (!t || t.id !== 'ob-plan-own' || !OB.plan) return;
+    OB.plan.o = t.value;
+    if (t.value.trim()) OB.plan.a = -1; else if (OB.plan.a === -1) OB.plan.a = -2;
+    Array.prototype.forEach.call(document.querySelectorAll('.opt[data-act="ob-plan"]'), function (b) { b.classList.toggle('is-sel', Number(b.getAttribute('data-v')) === OB.plan.a); });
+    var ln = document.getElementById('ob-plan-line');
+    if (ln) ln.innerHTML = obPlanLine();
+  });
+  app.addEventListener('change', function (ev) {
+    var t = ev.target, ln;
+    if (!t) return;
+    if (t.id === 'ob-plan-time' && OB.plan && okTime(t.value)) { OB.plan.t = t.value; OB.plan.ts = true; ln = document.getElementById('ob-plan-line'); if (ln) ln.innerHTML = obPlanLine(); }
+    else if (t.id === 'pl-own') { var o = t.value.replace(/\s+/g, ' ').trim(); if (o) { planSet({ a: -1, o: o, t: planTime() }); render(); } }
+  });
+
   /* ---------------- path screens ---------------- */
   var POFF = [0, 44, 64, 44, 0, -44, -64, -44], OB = { step: 0 }, OBX = false;
   function vPath() {
@@ -5030,9 +5323,10 @@ a.btn{text-decoration:none}
       '<button type="button" class="pstat" id="p-xp" data-act="me" aria-label="วันนี้ได้ ' + xp + ' XP จากเป้า ' + UI.xg + ' XP">' + ring(xp / UI.xg) +
       '<span class="pstat-t"><b>' + xp + '/' + UI.xg + '</b><small>XP วันนี้</small></span></button>' +
       '<button type="button" class="pstat" id="p-quests" data-act="p-quests" aria-label="ภารกิจวันนี้ ทำแล้ว ' + qd + ' จาก 3"><span class="flag">' + IC_FLAG + '</span>' +
-      '<span class="pstat-t"><b>' + qd + '/3</b><small>ภารกิจ</small></span></button></div>' +
+      '<span class="pstat-t"><b>' + qd + '/3</b><small>ภารกิจ</small></span></button></div>' + planBar() +
       '<p class="syncnote" id="sndnote"></p></header>';
     var due = stats().due, wb = welcomeBack();
+    h += wkCard();
     if (wb) h += '<section class="pwb" id="p-wb-box"><p><b>ยินดีต้อนรับกลับ เริ่มเบาๆ 5 ข้อ</b><small>ไม่ต้องรีบ ทำทีละนิดก็พอ</small></p>' +
       '<button type="button" class="btn small" id="p-wb" data-act="p-wb">เริ่ม</button></section>';
     else if (due && !(curN && curN.t === 'x')) h += '<section class="pdue" id="p-due-box"><p><b>ถึงเวลาทบทวน ' + fmt(due) + ' คำ</b><small>ทบทวนตอนนี้จะจำได้นานขึ้น ราว ' + (due > 10 ? 3 : 2) + ' นาที</small></p>' +
@@ -5165,14 +5459,16 @@ a.btn{text-decoration:none}
     var st = [
       ['เรียนเพื่ออะไร', 'เลือกข้อที่ตรงที่สุด แอปจะใช้เลือกบทสนทนาให้เหมาะ'],
       ['วันละกี่นาที', 'เลือกเวลาที่ทำได้จริงทุกวัน เปลี่ยนได้ทีหลังในตั้งค่า'],
+      ['เรียนตอนไหนดี', 'ผูกการเรียนไว้กับสิ่งที่ทำทุกวัน จะทำได้สม่ำเสมอขึ้น เปลี่ยนได้ทีหลังในตั้งค่า'],
       ['เริ่มจากไหน', 'ยังไม่แน่ใจก็เริ่มจากศูนย์ได้เลย']
     ][OB.step];
     function opt(id, act, v, title, sub, on) {
       return '<button type="button" class="opt' + (on ? ' is-sel' : '') + '" id="' + id + '" data-act="' + act + '" data-v="' + v + '"><span class="opt-t"><b>' + title + '</b>' + (sub ? '<small>' + sub + '</small>' : '') + '</span></button>';
     }
-    var h = '<div class="ob"><header class="top"><p class="eyebrow">ขั้นที่ ' + (OB.step + 1) + ' จาก 3</p><h1>' + st[0] + '</h1><p class="lede">' + st[1] + '</p></header><div class="opts">';
+    var h = '<div class="ob"><header class="top"><p class="eyebrow">ขั้นที่ ' + (OB.step + 1) + ' จาก 4</p><h1>' + st[0] + '</h1><p class="lede">' + st[1] + '</p></header><div class="opts">';
     if (OB.step === 0) h += [['study', 'เรียนและสอบ'], ['work', 'ทำงาน'], ['travel', 'เที่ยว'], ['general', 'ทั่วไป']].map(function (o) { return opt('ob-why-' + o[0], 'ob-why', o[0], o[1], '', UI.why === o[0]); }).join('');
     else if (OB.step === 1) h += [[5, 10], [10, 20], [15, 30], [20, 50]].map(function (o) { return opt('ob-min-' + o[0], 'ob-min', o[1], o[0] + ' นาที', 'เป้า ' + o[1] + ' XP ต่อวัน', UI.xg === o[1]); }).join('');
+    else if (OB.step === 2) h += obPlanHtml(opt);
     else h += opt('ob-zero', 'ob-zero', '', 'เริ่มจากศูนย์', 'เริ่มที่หน่วยที่ 1 ' + esc(pm().PU.length ? pm().PU[0].title : ''), false) +
       opt('ob-check', 'ob-check', '', 'พอรู้บ้าง', 'วัดระดับก่อนราว 10 นาที แล้วเริ่มที่ระดับที่เหมาะ', false);
     h += '</div><div class="actions">' + (OB.step ? '<button type="button" class="btn ghost small" id="ob-back" data-act="ob-back">ย้อนกลับ</button>' : '') +
@@ -5202,7 +5498,8 @@ a.btn{text-decoration:none}
       (GLS.length ? '<div class="tile"><b>' + GLS.filter(gPassed).length + '/' + GLS.length + '</b><span>บทไวยากรณ์ที่ผ่าน</span></div>' : '') +
       (RDS.length ? '<div class="tile"><b>' + rDoneCount() + '/' + RDS.length + '</b><span>เรื่องที่อ่านแล้ว</span></div>' : '') +
       '<button type="button" class="tile" id="open-level" data-act="level"><b>' + (lv ? lvName(lv.o) : 'วัดระดับ') + '</b><span>' + (lv ? 'ระดับโดยประมาณ เมื่อ ' + dateTh(lv.t) + ' กดเพื่อวัดใหม่' : 'แบบทดสอบราว 10 นาที ดูว่าตอนนี้อยู่ระดับไหน') + '</span></button>' +
-      '<div class="tile"><b>' + skn.best + '</b><span>วันต่อเนื่องสูงสุด</span></div></div></section>';
+      '<div class="tile"><b>' + skn.best + '</b><span>วันต่อเนื่องสูงสุด</span></div>' +
+      '<button type="button" class="tile" id="open-week" data-act="week"><b>รายงาน</b><span>สรุปรายสัปดาห์ เทียบกับสัปดาห์ก่อน</span></button></div></section>';
     h += skillsHtml() + exitHtml() + badgesHtml();
     app.innerHTML = h;
   }
@@ -5351,12 +5648,18 @@ a.btn{text-decoration:none}
       return;
     }
     if (act === 'bk-load') { var fi = document.getElementById('bk-file'); if (fi) fi.click(); return; }
-    if (act === 'p-due') {
-      M = pm(); var s0 = pathScan(), cu = s0.cur >= 0 ? M.PN[s0.cur].u : M.PU.length - 1;
-      pathSheetClose();
-      if (!pathStart({ t: 'x', id: 'x:0', n: 0, u: cu, virt: true, from: view.name === 'prac' ? 'prac' : '' })) render();
-      return;
-    }
+    if (act === 'p-due') { dueStart(view.name === 'prac' ? 'prac' : ''); return; }
+    if (act === 'plan') { go({ name: 'prefs', from: view.name === 'path' ? 'path' : 'me' }); try { var ps = document.getElementById('plan-sec'); if (ps) ps.scrollIntoView({ block: 'start' }); } catch (e) {} return; }
+    if (act === 'ob-plan') { var pi = Number(el.getAttribute('data-v')) | 0; if (!OB.plan) OB.plan = { a: -2, o: '', t: '', ts: false }; if (ANCH[pi]) { OB.plan.a = pi; OB.plan.o = ''; if (!OB.plan.ts) OB.plan.t = ANCH[pi][1]; } render(); return; }
+    if (act === 'ob-plan-go') { var pk = obPlanPick(); if (pk) planSet(pk); OB.step = 3; render(); return; }
+    if (act === 'pl-a') { var ai = Number(el.getAttribute('data-v')) | 0; if (ANCH[ai]) planSet({ a: ai, o: '', t: planTime() }); render(); return; }
+    if (act === 'pl-clear') { planClear(); render(); return; }
+    if (act === 'nt-on') { ntOn(); return; }
+    if (act === 'nt-off') { ntOff(); return; }
+    if (act === 'p-week') { UI.wk = wkOf(today()); saveUI(); go({ name: 'week', w: UI.wk - 1, from: 'path' }); return; }
+    if (act === 'p-week-x') { UI.wk = wkOf(today()); saveUI(); render(); return; }
+    if (act === 'week') { var cw0 = wkOf(today()); go({ name: 'week', w: cw0 - (Number(el.getAttribute('data-w')) | 0), from: view.name === 'week' ? view.from : (view.name === 'path' ? 'path' : 'me') }); return; }
+    if (act === 'p-go-cur') { pathStartCurrent(); return; }
     if (act === 'p-quests') { pathSheet(sheetBox(IC_FLAG, 'ภารกิจวันนี้', questsHtml(questsFor(today())) + '<p class="note">ภารกิจเปลี่ยนทุกวัน ทำครบ 3 อย่างนับเป็นวันที่ทำครบ</p>', '')); return; }
     if (act === 'p-close') { pathSheetClose(); return; }
     if (act === 'p-news-ok') { UI.pn = 1; saveUI(); pathSheetClose(); return; }
@@ -5392,7 +5695,15 @@ a.btn{text-decoration:none}
     var t = ev.target;
     if (!t) return;
     if (t.id === 'rm-time') {
-      if (/^([01]\d|2[0-3]):[0-5]\d$/.test(t.value)) { UI.rt = t.value; saveUI(); var a = document.getElementById('rm-gcal'); if (a) a.href = rmLink(); }
+      if (/^([01]\d|2[0-3]):[0-5]\d$/.test(t.value)) {
+        UI.rt = t.value; saveUI();
+        if (HB.p && HB.p.t !== t.value) { HB.p.t = t.value; HB.p.u = nowSec(); hbSave(); }
+        hbMirror();
+        var a = document.getElementById('rm-gcal'), pl = document.getElementById('pl-line');
+        if (a) a.href = rmLink();
+        if (pl) pl.innerHTML = planLineHtml();
+        ntRedraw();
+      }
       return;
     }
     if (t.id === 'bk-file' && t.files && t.files[0]) {
@@ -5574,8 +5885,14 @@ a.btn{text-decoration:none}
 
   view = { name: 'path' };
   applyFs();
+  hbSnap();
   render();
   pathScroll(false);
   Sync.init();
+  hbMirror();
+  goHash();
+  window.addEventListener('hashchange', goHash);
+  window.addEventListener('pagehide', hbFlush);
+  document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') hbFlush(); else { hbSnap(); hbMirror(); } });
 })();
 </script>

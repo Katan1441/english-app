@@ -171,9 +171,9 @@ const DAY = Math.floor((Date.now() - new Date().getTimezoneOffset() * 60000) / 8
   const allOk = () => 'ok';
   const failOnce = () => { const seenQ = new Set(); return (k, key) => { if (key === undefined || seenQ.has(key)) return 'ok'; seenQ.add(key); return 'bad'; }; };
 
-  /* 1. first run: three questions, the first node opens, its end screen, the next node */
+  /* 1. first run: four questions (the plan step is checked in t8.js), the first node opens, its end screen, the next node */
   let { ctx, page } = await open({});
-  check(/เรียนเพื่ออะไร/.test(await txt(page, '#app h1')) && /ขั้นที่ 1 จาก 3/.test(await txt(page, '.eyebrow')), 'first run: what for');
+  check(/เรียนเพื่ออะไร/.test(await txt(page, '#app h1')) && /ขั้นที่ 1 จาก 4/.test(await txt(page, '.eyebrow')), 'first run: what for');
   check(await has(page, '.tab[data-tab="path"][aria-current="page"]') && await page.evaluate(() => getComputedStyle(document.getElementById('tabbar')).display !== 'none'), 'first run: path tab marked, menu still usable');
   await page.screenshot({ path: path.join(shots, 'p-ob1.png') });
   await page.click('#ob-why-work');
@@ -181,6 +181,8 @@ const DAY = Math.floor((Date.now() - new Date().getTimezoneOffset() * 60000) / 8
   await page.click('#ob-back');
   check(await has(page, '#ob-why-work.is-sel'), 'first run: back keeps the choice');
   await page.click('#ob-why-work'); await page.click('#ob-min-15');
+  check(/เรียนตอนไหนดี/.test(await txt(page, '#app h1')) && await has(page, '#ob-plan-go'), 'first run: when to study');
+  await page.click('#ob-plan-go');
   check(/เริ่มจากไหน/.test(await txt(page, '#app h1')) && await has(page, '#ob-zero') && await has(page, '#ob-check'), 'first run: where to start');
   await page.click('#ob-zero');
   let ui = await store(page, 'vocab3000-ui-v1');
@@ -239,7 +241,7 @@ const DAY = Math.floor((Date.now() - new Date().getTimezoneOffset() * 60000) / 8
 
   /* 1b. first run, "I know some": the level check, then the path starts at the level it suggests */
   ({ ctx, page } = await open({}));
-  await page.click('#ob-why-study'); await page.click('#ob-min-5'); await page.click('#ob-check');
+  await page.click('#ob-why-study'); await page.click('#ob-min-5'); await page.click('#ob-plan-go'); await page.click('#ob-check');
   check((await viewOf(page)) === 'lvl', 'the level check starts');
   for (let i = 0; i < 60 && (await has(page, '#card')); i++) { await page.click('#lvl-skip'); await sleep(20); }
   check(await has(page, '.big-lv') && /เริ่มเรียนที่ระดับ A1/.test(await txt(page, '#p-place')), 'result offers to start at its level');

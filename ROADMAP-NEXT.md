@@ -6,7 +6,7 @@
 
 - **ขั้น 7 จำได้มากขึ้นแต่ทบทวนน้อยลง**: เปลี่ยนวิธีนัดทบทวนคำเป็น FSRS แบบเดียวกับ Anki เพิ่มวลีที่ใช้บ่อย 500 วลี และสมุดคำของฉัน (กดเก็บคำหรือประโยคจากที่ไหนก็ได้)
 - **ขั้น 8 ครู AI ในแอป**: คุยภาษาอังกฤษด้วยเสียงกับ AI ตามระดับของเรา เล่นบทบาทสมมติ ตรวจงานเขียน อธิบายเป็นภาษาไทย ใช้ key ฟรีของ Gemini ที่เก็บไว้ในเครื่องคุณเท่านั้น
-- **ขั้น 9 สร้างนิสัย**: แจ้งเตือนวันละครั้งถ้ายังไม่ได้เรียน ตั้งเวลาเรียนประจำแบบ "ถ้า...แล้วจะ..." ทางลัดจากไอคอนแอป และรายงานรายสัปดาห์
+- **ขั้น 9 สร้างนิสัย** (เสร็จแล้ว ยกเว้นทางลัด "ครู AI" ที่รอขั้น 8): แจ้งเตือนวันละครั้งถ้ายังไม่ได้เรียน ตั้งเวลาเรียนประจำแบบ "ถ้า...แล้วจะ..." ทางลัดจากไอคอนแอป และรายงานรายสัปดาห์
 - **ขั้น 10 ฟังและพูดเหมือนของจริง**: พูดตามแบบ shadowing ปรับความเร็วเสียง ฝึกพูดคล่องแบบ 4/3/2 และโหมดฟังตอนเดินทาง (ปิดจอได้)
 - **ขั้น 11 ต่อยอดคำศัพท์และการอ่าน**: เรียนหน้าคำ-ท้ายคำ (un-, re-, -tion...) และจับเวลาอ่าน
 
@@ -29,7 +29,7 @@
 | :- | :- | :- |
 | 7 | FSRS review scheduling, 500 everyday phrases, my phrasebook | todo |
 | 8 | AI tutor with the learner's own Gemini key (voice chat, role-play, writing feedback) | todo |
-| 9 | Habit engine: daily notification, study-time plan, app shortcuts, weekly report | todo |
+| 9 | Habit engine: daily notification, study-time plan, app shortcuts, weekly report | done (4 Nov 2026), see "As built" under Phase 9; the ครู AI shortcut waits for phase 8 |
 | 10 | Shadowing with speed control, 4/3/2 fluency rounds, commute listening mode | todo |
 | 11 | Word building (affixes), timed reading | todo |
 
@@ -94,6 +94,8 @@
   friendly and age-appropriate. Inside claude.ai, use the existing `AI` path instead of a key. Corrections the learner
   got wrong twice join the mistakes list. XP: +2 per learner turn of five or more words; a daily quest can ask for five
   turns.
+- **Shortcut.** Add "ครู AI" to the app shortcuts in `manifest.webmanifest` (phase 9.3 left it out until the tutor exists),
+  for example `./#go=tutor` handled by `goHash`, with a 96 and a 192 px icon like `icons/sc-*`.
 - **Tests**: the API stubbed (no real calls); no request without a key; the key absent from the page source, backup code
   and storage of other keys; offline message; corrections rendered; role-play summary; quota error handled.
 
@@ -110,6 +112,31 @@
   long-term, accuracy, sentences said right, compared with last week, plus one concrete suggestion.
 - **Tests**: plan saved and shown; notification logic (studied today → none; quiet hours → none) with the APIs stubbed;
   manifest shortcuts valid; weekly numbers on seeded data.
+
+### As built (4 Nov 2026)
+
+- **9.1.** The first run has a fourth step "เรียนตอนไหนดี" (step 3): หลังกินข้าวเช้า (07:30), ระหว่างเดินทาง (08:00),
+  ก่อนนอน (21:00) or own words, and a time; "ต่อไป" with nothing picked sets no plan. Settings has the same choices in one
+  section with the time, the notification and the calendar reminder; the plan's time and the calendar's time are one
+  value. The plan shows as one line under the path header; the minutes come from the daily XP goal (10 XP = 5 minutes).
+  The plan is in the new key `vocab3000-habit-v1` with an `EXTRA` entry, so it travels in the backup code (the newer plan
+  wins when merging).
+- **9.2.** "เปิดการแจ้งเตือน" in settings asks for permission (with a Thai explanation; never on first open) and registers
+  Periodic Background Sync `daily-nudge`. The service worker cannot read localStorage, so the page keeps `{on, time, last
+  day practised}` in the cache `habit-v1`, updated as soon as something is practised. When woken, the worker shows one
+  notification a day only after the planned time, never 22:00–07:00 (a plan time inside those hours counts as 21:00 or
+  07:00), and not when something was practised today or the app is on screen; tapping it opens the next lesson. Without
+  background sync (not installed, or not Chrome) the setting says so and points to the calendar reminder.
+- **9.3.** Three shortcuts: เรียนต่อ, ทบทวนคำ, ฝึกพูด (`./#go=next|review|say`, 96 and 192 px icons in the manga style). The
+  page follows the address on start and on `hashchange`, never breaking off a running lesson; ทบทวนคำ with nothing due
+  opens the practice tab with a note. **ครู AI** is left for phase 8, which builds the tutor.
+- **9.4.** A card on the path in a new week when last week had practice ("ดู" opens the report, ✕ closes it for the
+  week) and "รายงาน" on ฉัน. Rows: days studied, XP, words learned, words kept long (next review over 30 days away),
+  accuracy of first answers, sentences said right, each against the week before. Words learned and accuracy are new counts
+  (from the first day of this version), so the first weeks say they started counting and show no comparison for those two.
+  The suggestion is the first that applies: study more days (or set a plan), practise the most-missed questions under
+  70%, review over 30 due words, try speaking, raise the goal, or keep going; each has a button.
+- **Tests**: `src/tests/t8.js` (the service worker's reminder runs in Node with its APIs stubbed).
 
 ## Phase 10: listen and speak like real life
 
